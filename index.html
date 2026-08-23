@@ -243,7 +243,7 @@
             WR
           </div>
           <div>
-            <span class="font-bold text-slate-900 dark:text-white tracking-tight text-sm sm:text-base md:text-lg">Haftalık Rapor</span>
+            <span class="font-bold text-slate-900 dark:text-white tracking-[0.03em] text-sm sm:text-base md:text-lg">Haftalık Rapor</span>
             <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden md:block">Araştırma Notları & Pratik Takip Sistemi</p>
           </div>
         </div>
@@ -314,12 +314,15 @@
         <div class="flex md:hidden items-center">
           <button 
             id="mobileMenuToggleBtn"
-            onclick="app.toggleMobileMenu()"
-            class="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-xs flex items-center justify-center cursor-pointer"
+            type="button"
+            onclick="app.toggleMobileMenu(event)"
+            class="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-xs flex items-center justify-center cursor-pointer select-none active:scale-95 touch-manipulation"
             title="Menüyü Aç / Kapat"
             aria-label="Menüyü Aç / Kapat"
+            aria-expanded="false"
           >
-            <i id="mobileMenuIcon" data-lucide="menu" class="w-5 h-5"></i>
+            <i id="mobileIconMenu" data-lucide="menu" class="w-5 h-5 pointer-events-none transition-transform duration-150"></i>
+            <i id="mobileIconClose" data-lucide="x" class="w-5 h-5 hidden pointer-events-none transition-transform duration-150"></i>
           </button>
         </div>
 
@@ -329,85 +332,107 @@
     <!-- MOBİL AÇILIR MENÜ (md:hidden - Aşağı Doğru Açılan Küçük Menü) -->
     <div 
       id="mobileDropdownMenu" 
-      class="hidden md:hidden border-t border-slate-200/80 dark:border-slate-800/80 bg-white/98 dark:bg-[#0F172A]/98 backdrop-blur-xl px-4 py-3 space-y-1.5 shadow-xl transition-all animate-in fade-in slide-in-from-top-2 duration-150"
+      class="md:hidden border-t border-slate-200/80 dark:border-slate-800/80 bg-white/98 dark:bg-[#0F172A]/98 backdrop-blur-xl px-4 overflow-hidden transition-all duration-200 ease-out max-h-0 opacity-0 pointer-events-none shadow-xl"
     >
-      <!-- 1. Tam Raporlar -->
-      <button 
-        id="mobile-nav-tam-raporlar"
-        onclick="app.navigateTo('tam-raporlar')"
-        class="mobile-nav-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left cursor-pointer"
-      >
-        <div class="flex items-center gap-2.5">
-          <div class="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
-            <i data-lucide="file-text" class="w-4 h-4"></i>
-          </div>
-          <div>
-            <span class="block">Tam Raporlar</span>
-            <span class="text-[10px] text-slate-400 font-normal">Haftalık detaylı araştırma notları</span>
-          </div>
-        </div>
-        <span class="text-[10px] px-2 py-0.5 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold rounded-md">
-          PDF / Metin
-        </span>
-      </button>
-
-      <!-- 2. İpuçları & Öneriler -->
-      <button 
-        id="mobile-nav-ipuclari"
-        onclick="app.navigateTo('ipuclari')"
-        class="mobile-nav-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left cursor-pointer"
-      >
-        <div class="flex items-center gap-2.5">
-          <div class="w-7 h-7 rounded-lg bg-amber-50 dark:bg-amber-950/70 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
-            <i data-lucide="lightbulb" class="w-4 h-4"></i>
-          </div>
-          <div>
-            <span class="block">İpuçları & Gelecek Önerileri</span>
-            <span class="text-[10px] text-slate-400 font-normal">Pratik tüyolar & araştırma tavsiyeleri</span>
-          </div>
-        </div>
-        <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
-      </button>
-
-      <!-- 3. Hakkında -->
-      <button 
-        onclick="app.openModal('hakkindaModal'); app.closeMobileMenu();"
-        class="mobile-nav-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left cursor-pointer"
-      >
-        <div class="flex items-center gap-2.5">
-          <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center shrink-0">
-            <i data-lucide="info" class="w-4 h-4"></i>
-          </div>
-          <div>
-            <span class="block">Hakkında</span>
-            <span class="text-[10px] text-slate-400 font-normal">Uygulama bilgisi & tasarım amacı</span>
-          </div>
-        </div>
-        <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
-      </button>
-
-      <!-- İnce Ayırıcı Çizgi -->
-      <div class="my-1 border-t border-slate-100 dark:border-slate-800/80"></div>
-
-      <!-- 4. Karanlık / Aydınlık Mod Düğmesi -->
-      <div class="px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between border border-slate-100 dark:border-slate-800">
-        <div class="flex items-center gap-2.5">
-          <div class="w-7 h-7 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center shrink-0 shadow-xs">
-            <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-700"></i>
-            <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
-          </div>
-          <div>
-            <span class="text-xs font-semibold text-slate-800 dark:text-slate-200 block">Tema Görünümü</span>
-            <span id="mobileThemeStatus" class="text-[10px] text-slate-400 dark:text-slate-500 block">Açık Tema Aktif</span>
-          </div>
-        </div>
+      <div class="py-3 space-y-1.5">
+        <!-- 1. Ana Sayfa -->
         <button 
-          onclick="app.toggleTheme()"
-          class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-xs cursor-pointer flex items-center gap-1.5"
+          id="mobile-nav-ana-sayfa"
+          onclick="app.navigateTo('ana-sayfa')"
+          class="mobile-nav-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-bold text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 transition-colors text-left cursor-pointer"
         >
-          <span id="mobileThemeToggleText">Koyu Yap</span>
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center shrink-0">
+              <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <span class="block">Ana Sayfa</span>
+              <span class="text-[10px] text-slate-400 font-normal">Haftalık özet & günlük çalışma takvimi</span>
+            </div>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
         </button>
+
+        <!-- 2. Tam Raporlar -->
+        <button 
+          id="mobile-nav-tam-raporlar"
+          onclick="app.navigateTo('tam-raporlar')"
+          class="mobile-nav-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left cursor-pointer"
+        >
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-indigo-50 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 flex items-center justify-center shrink-0">
+              <i data-lucide="file-text" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <span class="block">Tam Raporlar</span>
+              <span class="text-[10px] text-slate-400 font-normal">Haftalık detaylı araştırma notları</span>
+            </div>
+          </div>
+          <span class="text-[10px] px-2 py-0.5 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold rounded-md">
+            PDF / Metin
+          </span>
+        </button>
+
+        <!-- 3. İpuçları & Öneriler -->
+        <button 
+          id="mobile-nav-ipuclari"
+          onclick="app.navigateTo('ipuclari')"
+          class="mobile-nav-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left cursor-pointer"
+        >
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-amber-50 dark:bg-amber-950/70 text-amber-600 dark:text-amber-400 flex items-center justify-center shrink-0">
+              <i data-lucide="lightbulb" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <span class="block">İpuçları & Gelecek Önerileri</span>
+              <span class="text-[10px] text-slate-400 font-normal">Pratik tüyolar & araştırma tavsiyeleri</span>
+            </div>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </button>
+
+        <!-- 4. Hakkında -->
+        <button 
+          onclick="app.openModal('hakkindaModal'); app.closeMobileMenu();"
+          class="mobile-nav-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left cursor-pointer"
+        >
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center shrink-0">
+              <i data-lucide="info" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <span class="block">Hakkında</span>
+              <span class="text-[10px] text-slate-400 font-normal">Uygulama bilgisi & tasarım amacı</span>
+            </div>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </button>
+
+        <!-- İnce Ayırıcı Çizgi -->
+        <div class="my-1 border-t border-slate-100 dark:border-slate-800/80"></div>
+
+        <!-- 4. Karanlık / Aydınlık Mod Düğmesi -->
+        <div class="px-3.5 py-2.5 rounded-xl bg-slate-50 dark:bg-slate-800/50 flex items-center justify-between border border-slate-100 dark:border-slate-800">
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-white dark:bg-slate-800 text-slate-700 dark:text-slate-300 flex items-center justify-center shrink-0 shadow-xs">
+              <i data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-700"></i>
+              <i data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+            </div>
+            <div>
+              <span class="text-xs font-semibold text-slate-800 dark:text-slate-200 block">Tema Görünümü</span>
+              <span id="mobileThemeStatus" class="text-[10px] text-slate-400 dark:text-slate-500 block">Açık Tema Aktif</span>
+            </div>
+          </div>
+          <button 
+            type="button"
+            onclick="app.toggleTheme()"
+            class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 bg-white dark:bg-slate-800 text-slate-800 dark:text-slate-100 text-xs font-semibold hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-xs cursor-pointer flex items-center gap-1.5"
+          >
+            <span id="mobileThemeToggleText">Koyu Yap</span>
+          </button>
+        </div>
       </div>
+    </div>
 
     </div>
   </header>
@@ -1076,30 +1101,54 @@
       // ==================== MOBİL MENÜ YÖNETİMİ ====================
       isMobileMenuOpen: false,
 
-      toggleMobileMenu() {
-        this.isMobileMenuOpen = !this.isMobileMenuOpen;
+      toggleMobileMenu(e) {
+        if (e && e.stopPropagation) {
+          e.stopPropagation();
+        }
+        if (this.isMobileMenuOpen) {
+          this.closeMobileMenu();
+        } else {
+          this.openMobileMenu();
+        }
+      },
+
+      openMobileMenu() {
+        this.isMobileMenuOpen = true;
         const menu = document.getElementById('mobileDropdownMenu');
-        const icon = document.getElementById('mobileMenuIcon');
+        const iconMenu = document.getElementById('mobileIconMenu');
+        const iconClose = document.getElementById('mobileIconClose');
+        const toggleBtn = document.getElementById('mobileMenuToggleBtn');
+
         if (menu) {
-          if (this.isMobileMenuOpen) {
-            menu.classList.remove('hidden');
-            if (icon) icon.setAttribute('data-lucide', 'x');
-          } else {
-            menu.classList.add('hidden');
-            if (icon) icon.setAttribute('data-lucide', 'menu');
-          }
+          menu.classList.remove('max-h-0', 'opacity-0', 'pointer-events-none');
+          menu.classList.add('max-h-[400px]', 'opacity-100', 'pointer-events-auto');
+        }
+        if (iconMenu) iconMenu.classList.add('hidden');
+        if (iconClose) iconClose.classList.remove('hidden');
+        if (toggleBtn) {
+          toggleBtn.setAttribute('aria-expanded', 'true');
+          toggleBtn.classList.add('bg-slate-100', 'dark:bg-slate-700');
         }
         this.updateThemeLabels();
-        lucide.createIcons();
       },
 
       closeMobileMenu() {
         this.isMobileMenuOpen = false;
         const menu = document.getElementById('mobileDropdownMenu');
-        const icon = document.getElementById('mobileMenuIcon');
-        if (menu) menu.classList.add('hidden');
-        if (icon) icon.setAttribute('data-lucide', 'menu');
-        lucide.createIcons();
+        const iconMenu = document.getElementById('mobileIconMenu');
+        const iconClose = document.getElementById('mobileIconClose');
+        const toggleBtn = document.getElementById('mobileMenuToggleBtn');
+
+        if (menu) {
+          menu.classList.add('max-h-0', 'opacity-0', 'pointer-events-none');
+          menu.classList.remove('max-h-[400px]', 'opacity-100', 'pointer-events-auto');
+        }
+        if (iconMenu) iconMenu.classList.remove('hidden');
+        if (iconClose) iconClose.classList.add('hidden');
+        if (toggleBtn) {
+          toggleBtn.setAttribute('aria-expanded', 'false');
+          toggleBtn.classList.remove('bg-slate-100', 'dark:bg-slate-700');
+        }
       },
 
       // Sayfa yönlendirmesi
