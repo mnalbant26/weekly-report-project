@@ -283,7 +283,19 @@
               <span>İpuçları & Öneriler</span>
             </button>
 
-            <!-- 4. Hakkında -->
+            <!-- 4. AI Asistanı -->
+            <button 
+              id="nav-ai-asistan"
+              onclick="app.navigateTo('ai-asistan')"
+              class="nav-btn px-3 py-1.5 rounded-lg text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap shrink-0 cursor-pointer"
+            >
+              <div class="w-2 h-2 rounded-full bg-indigo-500 animate-pulse"></div>
+              <i data-lucide="sparkles" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+              <span>AI Asistanı</span>
+              <span class="text-[10px] px-1.5 py-0.2 bg-gradient-to-r from-indigo-50 to-purple-50 dark:from-indigo-950/60 dark:to-purple-950/60 text-indigo-700 dark:text-indigo-300 font-bold rounded border border-indigo-200/50 dark:border-indigo-800/50">Gemini</span>
+            </button>
+
+            <!-- 5. Hakkında -->
             <button 
               id="nav-hakkinda"
               onclick="app.openModal('hakkindaModal')"
@@ -391,7 +403,28 @@
           <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
         </button>
 
-        <!-- 4. Hakkında -->
+        <!-- 4. AI Rapor Asistanı -->
+        <button 
+          id="mobile-nav-ai-asistan"
+          onclick="app.navigateTo('ai-asistan')"
+          class="mobile-nav-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left cursor-pointer"
+        >
+          <div class="flex items-center gap-2.5">
+            <div class="w-7 h-7 rounded-lg bg-gradient-to-br from-indigo-500 to-purple-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-1.5">
+                <span class="block font-bold">Haftalık Rapor Asistanı</span>
+                <span class="text-[9px] px-1 py-0.2 bg-indigo-100 dark:bg-indigo-900/80 text-indigo-700 dark:text-indigo-300 font-bold rounded">AI</span>
+              </div>
+              <span class="text-[10px] text-slate-400 font-normal">Gemini ile anlık rapor analizi ve soru-cevap</span>
+            </div>
+          </div>
+          <i data-lucide="chevron-right" class="w-4 h-4 text-slate-400"></i>
+        </button>
+
+        <!-- 5. Hakkında -->
         <button 
           onclick="app.openModal('hakkindaModal'); app.closeMobileMenu();"
           class="mobile-nav-btn w-full flex items-center justify-between px-3.5 py-2.5 rounded-xl text-xs font-semibold text-slate-700 dark:text-slate-200 hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors text-left cursor-pointer"
@@ -611,6 +644,29 @@
               <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i> Tamamlandı
             </strong>
           </div>
+        </div>
+
+        <!-- AI Asistan Hızlı Soru Şeridi -->
+        <div class="mt-4 p-3 sm:p-4 rounded-xl bg-gradient-to-r from-indigo-50/80 via-purple-50/50 to-indigo-50/80 dark:from-indigo-950/40 dark:via-purple-950/30 dark:to-indigo-950/40 border border-indigo-100 dark:border-indigo-900/60 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-3">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-indigo-600 text-white flex items-center justify-center shrink-0 shadow-xs">
+              <i data-lucide="sparkles" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-1.5">
+                <strong class="text-xs sm:text-sm text-indigo-950 dark:text-indigo-200">Haftalık Rapor Asistanı ile Analiz Edin</strong>
+                <span class="text-[10px] font-bold px-1.5 py-0.2 rounded bg-indigo-200/60 dark:bg-indigo-900 text-indigo-800 dark:text-indigo-200">Gemini</span>
+              </div>
+              <p class="text-[11px] text-indigo-900/70 dark:text-indigo-300/80">"1. haftadaki pazartesi günü verimli miydi?" veya "Araştırmacı raporlarını iyi hazırlamış mı?" gibi soruları anında yanıtlar.</p>
+            </div>
+          </div>
+          <button 
+            onclick="app.navigateTo('ai-asistan')" 
+            class="w-full sm:w-auto px-3.5 py-1.5 rounded-lg bg-indigo-600 hover:bg-indigo-700 text-white text-xs font-semibold flex items-center justify-center gap-1.5 shadow-xs transition-colors shrink-0 cursor-pointer"
+          >
+            <span>Asistana Soru Sor</span>
+            <i data-lucide="arrow-right" class="w-3.5 h-3.5"></i>
+          </button>
         </div>
       </section>
 
@@ -919,7 +975,218 @@
 
     </div>
 
+
+    <!-- ==================== GÖRÜNÜM 4: HAFTALIK RAPOR ASİSTANI (TAM EKRAN AI ANALİZ PANELİ) ==================== -->
+    <div id="view-ai-asistan" class="hidden space-y-4 sm:space-y-6">
+      
+      <!-- Başlık Kartı -->
+      <section class="bg-gradient-to-br from-indigo-900 via-indigo-950 to-slate-950 text-white border border-indigo-800/40 rounded-2xl sm:rounded-3xl p-4 sm:p-7 shadow-xl relative overflow-hidden">
+        <div class="absolute -right-8 -bottom-8 w-44 h-44 rounded-full bg-indigo-500/10 blur-2xl pointer-events-none"></div>
+        <div class="relative z-10 flex flex-col sm:flex-row sm:items-center justify-between gap-4">
+          <div class="flex items-start sm:items-center gap-3">
+            <div class="w-10 h-10 sm:w-12 sm:h-12 rounded-2xl bg-gradient-to-tr from-indigo-500 to-purple-500 text-white flex items-center justify-center shrink-0 shadow-lg shadow-indigo-500/30">
+              <i data-lucide="sparkles" class="w-5 h-5 sm:w-6 sm:h-6"></i>
+            </div>
+            <div>
+              <div class="flex items-center gap-2 flex-wrap">
+                <h2 class="text-base sm:text-xl font-bold tracking-tight">Haftalık Rapor Asistanı</h2>
+                <span class="text-[10px] font-bold px-2 py-0.5 rounded-full bg-indigo-500/30 text-indigo-200 border border-indigo-400/30">
+                  Google Gemini Destekli
+                </span>
+              </div>
+              <p class="text-xs sm:text-sm text-indigo-200/80 mt-0.5 leading-relaxed">
+                Tüm haftaların araştırma notları, günlük kazanımları ve pratik kodlama çıktıları üzerinde anlık derinlemesine soru-cevap ve verimlilik analizi yapın.
+              </p>
+            </div>
+          </div>
+
+          <div class="flex items-center gap-2 self-start sm:self-auto shrink-0">
+            <button 
+              onclick="app.clearChatHistory()"
+              class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white/90 hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer border border-white/10 backdrop-blur-xs"
+              title="Sohbet Geçmişini Temizle"
+            >
+              <i data-lucide="trash-2" class="w-3.5 h-3.5"></i>
+              <span>Geçmişi Temizle</span>
+            </button>
+          </div>
+        </div>
+      </section>
+
+      <!-- Hızlı Soru Şablonları (Chips) -->
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-3.5 sm:p-5 shadow-xs space-y-2.5 transition-colors">
+        <div class="flex items-center justify-between">
+          <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+            <i data-lucide="help-circle" class="w-3.5 h-3.5 text-indigo-500"></i>
+            Örnek & Popüler Sorular
+          </span>
+          <span class="text-[10px] text-slate-400">Tek dokunuşla sorun</span>
+        </div>
+        <div class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 no-scrollbar -mx-1 px-1 sm:mx-0 sm:px-0">
+          <button 
+            onclick="app.askSuggestedQuestion('1. ay genel olarak verimli geçti mi? Araştırmacının gelişim eğrisi nasıl?')"
+            class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-50 dark:bg-slate-800/80 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 text-slate-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 border border-slate-200 dark:border-slate-700 transition-all shrink-0 cursor-pointer shadow-xs"
+          >
+            📊 1. ay verimli miydi?
+          </button>
+          <button 
+            onclick="app.askSuggestedQuestion('1. haftalık raporda Pazartesi gününün öne çıkan yanları ve çıkarımları neler?')"
+            class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-50 dark:bg-slate-800/80 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 text-slate-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 border border-slate-200 dark:border-slate-700 transition-all shrink-0 cursor-pointer shadow-xs"
+          >
+            📅 1. Hafta Pazartesi öne çıkanlar?
+          </button>
+          <button 
+            onclick="app.askSuggestedQuestion('Günlük araştırmalar doğru bir öğrenme sırasında ve metodolojisinde ilerlemiş mi?')"
+            class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-50 dark:bg-slate-800/80 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 text-slate-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 border border-slate-200 dark:border-slate-700 transition-all shrink-0 cursor-pointer shadow-xs"
+          >
+            🎯 Araştırma sırası doğru mu?
+          </button>
+          <button 
+            onclick="app.askSuggestedQuestion('Araştırmacı raporlarını iyi hazırlamış mı? Güçlü yönleri ve eksik kaldığı yerler neler?')"
+            class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-50 dark:bg-slate-800/80 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 text-slate-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 border border-slate-200 dark:border-slate-700 transition-all shrink-0 cursor-pointer shadow-xs"
+          >
+            📝 Rapor kalitesi nasıl?
+          </button>
+          <button 
+            onclick="app.askSuggestedQuestion('2. haftada yapılan pratik HTML/CSS çalışmaları ve kodlanan dosyalar nelerdir?')"
+            class="px-3 py-1.5 rounded-xl text-xs font-medium bg-slate-50 dark:bg-slate-800/80 hover:bg-indigo-50 dark:hover:bg-indigo-950/60 text-slate-700 dark:text-slate-300 hover:text-indigo-700 dark:hover:text-indigo-300 border border-slate-200 dark:border-slate-700 transition-all shrink-0 cursor-pointer shadow-xs"
+          >
+            💻 2. Hafta pratik çalışmaları?
+          </button>
+        </div>
+      </section>
+
+      <!-- Ana Sohbet Penceresi -->
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl shadow-xs overflow-hidden flex flex-col h-[600px] sm:h-[650px] transition-colors">
+        
+        <!-- Sohbet Mesaj Listesi -->
+        <div id="aiChatMessages" class="flex-1 p-4 sm:p-6 overflow-y-auto space-y-4 custom-scrollbar bg-slate-50/50 dark:bg-[#0d1321]">
+          <!-- İlk karşılama mesajı JS ile eklenir -->
+        </div>
+
+        <!-- Yükleniyor / Yanıt Üretiliyor Göstergesi -->
+        <div id="aiLoadingIndicator" class="hidden px-4 sm:px-6 py-2 bg-indigo-50/50 dark:bg-indigo-950/30 border-t border-indigo-100 dark:border-indigo-900/40 flex items-center gap-2.5 text-xs text-indigo-700 dark:text-indigo-300 animate-pulse">
+          <div class="w-3.5 h-3.5 rounded-full border-2 border-indigo-600 dark:border-indigo-400 border-t-transparent animate-spin"></div>
+          <span class="font-medium">Gemini rapor kayıtlarını tarıyor ve yanıt hazırlıyor...</span>
+        </div>
+
+        <!-- Soru Giriş Formu -->
+        <form id="aiChatForm" onsubmit="app.handleChatSubmit(event)" class="p-3 sm:p-4 bg-white dark:bg-[#111827] border-t border-slate-200 dark:border-slate-800">
+          <div class="flex items-center gap-2">
+            <input 
+              type="text" 
+              id="aiChatInput" 
+              placeholder="Raporlar hakkında bir soru sorun (Örn: 1. haftadaki pazartesi günü verimli miydi?)..." 
+              class="flex-1 px-4 py-3 bg-slate-100 dark:bg-slate-800/80 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 dark:focus:ring-indigo-400 transition-all"
+              autocomplete="off"
+            />
+            <button 
+              type="submit" 
+              id="aiChatSubmitBtn"
+              class="px-4 sm:px-5 py-3 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs sm:text-sm font-semibold transition-all flex items-center gap-1.5 shrink-0 shadow-xs cursor-pointer active:scale-95 disabled:opacity-50 disabled:cursor-not-allowed"
+            >
+              <span>Sor</span>
+              <i data-lucide="send" class="w-4 h-4"></i>
+            </button>
+          </div>
+          <div class="flex items-center justify-between text-[11px] text-slate-400 mt-2 px-1">
+            <span>Model: Gemini 3.7 Flash</span>
+            <span>Rapor Verileriyle Doğrulanmıştır</span>
+          </div>
+        </form>
+
+      </section>
+
+    </div>
+
   </main>
+
+  <!-- ==================== MOBİL & MASAÜSTÜ YÜZEN AI ASİSTAN WIDGET'I (FLOATING WIDGET) ==================== -->
+  <div id="aiFloatingWidgetContainer" class="fixed bottom-4 right-4 z-40 no-print flex flex-col items-end">
+    
+    <!-- Açılır Mini Sohbet Penceresi (Widget Popup) -->
+    <div 
+      id="aiFloatingChatBox" 
+      class="hidden w-[92vw] sm:w-[380px] md:w-[420px] h-[520px] max-h-[82vh] bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl shadow-2xl flex flex-col mb-3 overflow-hidden transition-all animate-in fade-in slide-in-from-bottom-5 duration-200"
+    >
+      <!-- Widget Başlık -->
+      <div class="bg-gradient-to-r from-indigo-900 via-indigo-950 to-slate-900 p-3 sm:p-4 text-white flex items-center justify-between border-b border-indigo-800/40">
+        <div class="flex items-center gap-2.5">
+          <div class="w-7 h-7 rounded-lg bg-gradient-to-tr from-indigo-500 to-purple-500 flex items-center justify-center text-white shadow-xs">
+            <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+          </div>
+          <div>
+            <h4 class="text-xs sm:text-sm font-bold leading-tight">Haftalık Rapor Asistanı</h4>
+            <span class="text-[10px] text-indigo-200 flex items-center gap-1">
+              <span class="w-1.5 h-1.5 rounded-full bg-emerald-400 animate-pulse"></span>
+              Çevrimiçi • Gemini AI
+            </span>
+          </div>
+        </div>
+        <div class="flex items-center gap-1">
+          <button 
+            onclick="app.navigateTo('ai-asistan'); app.toggleFloatingChat(false);" 
+            class="p-1 text-indigo-200 hover:text-white rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+            title="Tam Sayfada Aç"
+          >
+            <i data-lucide="maximize-2" class="w-4 h-4"></i>
+          </button>
+          <button 
+            onclick="app.toggleFloatingChat(false)" 
+            class="p-1 text-indigo-200 hover:text-white rounded-lg hover:bg-white/10 transition-colors cursor-pointer"
+            title="Kapat"
+          >
+            <i data-lucide="x" class="w-4 h-4"></i>
+          </button>
+        </div>
+      </div>
+
+      <!-- Widget Mesaj Alanı -->
+      <div id="aiFloatingMessages" class="flex-1 p-3.5 overflow-y-auto space-y-3 custom-scrollbar bg-slate-50/60 dark:bg-[#0c121e] text-xs">
+        <!-- JS ile mesajlar eklenir -->
+      </div>
+
+      <!-- Widget Yükleniyor -->
+      <div id="aiFloatingLoading" class="hidden px-3 py-1.5 bg-indigo-50/50 dark:bg-indigo-950/40 border-t border-indigo-100 dark:border-indigo-900/40 text-[11px] text-indigo-600 dark:text-indigo-300 flex items-center gap-2 animate-pulse">
+        <div class="w-3 h-3 rounded-full border-2 border-indigo-500 border-t-transparent animate-spin"></div>
+        <span>Cevap hazırlanıyor...</span>
+      </div>
+
+      <!-- Widget Giriş Formu -->
+      <form id="aiFloatingForm" onsubmit="app.handleFloatingChatSubmit(event)" class="p-2.5 bg-white dark:bg-[#111827] border-t border-slate-200 dark:border-slate-800">
+        <div class="flex items-center gap-1.5">
+          <input 
+            type="text" 
+            id="aiFloatingInput" 
+            placeholder="Bir soru yazın..." 
+            class="flex-1 px-3 py-2 bg-slate-100 dark:bg-slate-800 rounded-xl text-xs text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-1.5 focus:ring-indigo-500"
+            autocomplete="off"
+          />
+          <button 
+            type="submit" 
+            class="p-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl transition-all shrink-0 cursor-pointer shadow-xs active:scale-95"
+          >
+            <i data-lucide="send" class="w-3.5 h-3.5"></i>
+          </button>
+        </div>
+      </form>
+    </div>
+
+    <!-- Tetikleyici Yüzen Buton (FAB) -->
+    <button 
+      id="aiFloatingTriggerBtn" 
+      onclick="app.toggleFloatingChat()" 
+      class="group p-3 sm:px-4 sm:py-3 rounded-full bg-gradient-to-r from-indigo-600 via-indigo-700 to-purple-600 hover:from-indigo-500 hover:to-purple-500 text-white shadow-xl hover:shadow-indigo-500/30 flex items-center gap-2 transition-all transform active:scale-95 cursor-pointer border border-indigo-400/30"
+      title="Haftalık Rapor Asistanı ile Sohbet Et"
+      aria-label="AI Asistanı Aç"
+    >
+      <div class="relative">
+        <i data-lucide="sparkles" class="w-5 h-5 transition-transform group-hover:scale-110"></i>
+        <span class="absolute -top-1 -right-1 w-2.5 h-2.5 rounded-full bg-emerald-400 border-2 border-indigo-700"></span>
+      </div>
+      <span class="text-xs font-bold hidden sm:inline tracking-wide">Rapor Asistanı</span>
+    </button>
+  </div>
 
 
   <!-- ==================== HAKKINDA MODAL ==================== -->
@@ -1061,6 +1328,7 @@
         this.renderAnaSayfa();
         this.renderTamRaporlar();
         this.renderTipsExplorer();
+        this.initAIChat();
         lucide.createIcons();
       },
 
@@ -1508,7 +1776,7 @@
             kazanimlarContainer.innerHTML = (report.haftalikDegerlendirme.kazanimlar || []).map(k => `
               <li class="flex items-start gap-2">
                 <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0"></i>
-                <span>${k}</span>
+                <span class="leading-relaxed">${this.formatInlineText(k)}</span>
               </li>
             `).join('');
           }
@@ -1518,7 +1786,7 @@
             hedeflerContainer.innerHTML = (report.haftalikDegerlendirme.gelecekHaftaHedefleri || []).map(h => `
               <li class="flex items-start gap-2">
                 <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0"></i>
-                <span>${h}</span>
+                <span class="leading-relaxed">${this.formatInlineText(h)}</span>
               </li>
             `).join('');
           }
@@ -1600,10 +1868,10 @@
                     <span class="w-5 h-5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-[10px] font-bold flex items-center justify-center shrink-0">
                       ${idx + 1}
                     </span>
-                    <strong class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">${k.baslik}</strong>
+                    <strong class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">${this.formatInlineText(k.baslik)}</strong>
                   </div>
                   <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-7">
-                    ${k.icerik}
+                    ${this.formatInlineText(k.icerik)}
                   </p>
                 </div>
               `).join('')}
@@ -1619,13 +1887,13 @@
               </h4>
               <div class="bg-emerald-50/40 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-850/50 rounded-xl p-3.5 sm:p-5 space-y-3">
                 <div class="flex flex-wrap items-center justify-between gap-2">
-                  <strong class="text-xs sm:text-sm font-bold text-emerald-950 dark:text-emerald-200">${day.pratikUygulama.baslik}</strong>
+                  <strong class="text-xs sm:text-sm font-bold text-emerald-950 dark:text-emerald-200">${this.formatInlineText(day.pratikUygulama.baslik)}</strong>
                   <span class="text-[10px] font-semibold px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/80 text-emerald-800 dark:text-emerald-200 rounded-md">
                     Uygulandı
                   </span>
                 </div>
                 <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
-                  ${day.pratikUygulama.aciklama}
+                  ${this.formatInlineText(day.pratikUygulama.aciklama)}
                 </p>
 
                 <!-- Etiketler -->
@@ -1633,7 +1901,7 @@
                   <div class="flex flex-wrap items-center gap-1.5 pt-1">
                     ${day.pratikUygulama.etiketler.map(t => `
                       <span class="text-[10px] sm:text-[11px] font-medium px-2 py-0.5 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 rounded-md border border-emerald-200 dark:border-emerald-800 shadow-xs">
-                        #${t}
+                        #${this.escapeHtml(t)}
                       </span>
                     `).join('')}
                   </div>
@@ -1649,7 +1917,7 @@
                       ${day.pratikUygulama.dosyalar.map(d => `
                         <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 flex items-center gap-2 shadow-xs">
                           <i data-lucide="file-code" class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"></i>
-                          <span class="truncate font-semibold">${d}</span>
+                          <span class="truncate font-semibold">${this.escapeHtml(d)}</span>
                         </div>
                       `).join('')}
                     </div>
@@ -1668,7 +1936,7 @@
               <div class="space-y-0.5">
                 <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-300 block">Kilit Çıkarım</span>
                 <p class="text-xs text-amber-950 dark:text-amber-100 leading-relaxed font-medium">
-                  "${day.oneCikanBilgi}"
+                  "${this.formatInlineText(day.oneCikanBilgi)}"
                 </p>
               </div>
             </div>
@@ -1941,10 +2209,14 @@
 
       // Satır içi formatlamalar (kalın, kod vb.)
       formatInlineText(text) {
+        if (!text) return '';
         let formatted = this.escapeHtml(text);
         
-        // Komutlar ve dosya adları için code görünümü
-        formatted = formatted.replace(/(\/clear|\/terminal-setup|\/init|claude-edits|\/context|\/cost|\/compact|Memory\.md|buttons\.html|exercise\.html|practice\.html|practice2\.html|practice3\.html|website\.html)/g, '<code>$1</code>');
+        // HTML etiketleri (&lt;img&gt;, &lt;input&gt;, &lt;span&gt;, &lt;div&gt;, vb.) için güvenli ve şık kod rozeti
+        formatted = formatted.replace(/(&lt;[a-zA-Z0-9!_\-\/]+&gt;)/g, '<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-mono text-[11px] font-semibold text-indigo-700 dark:text-indigo-300 border border-slate-200 dark:border-slate-700">$1</code>');
+        
+        // Komutlar, CSS özellikleri ve dosya adları için code görünümü
+        formatted = formatted.replace(/(\/clear|\/terminal-setup|\/init|claude-edits|\/context|\/cost|\/compact|Memory\.md|buttons\.html|exercise\.html|practice\.html|practice2\.html|practice3\.html|website\.html|youtube\.html|lesson6exercise\.html|text\.html|youtube-exercise\.html)/g, '<code class="px-1 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-mono text-[11px] text-slate-800 dark:text-slate-200 border border-slate-200/80 dark:border-slate-700">$1</code>');
         
         return formatted;
       },
@@ -2139,11 +2411,11 @@
                       <span class="w-5 h-5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-[10px] font-bold flex items-center justify-center shrink-0">
                         ${idx + 1}
                       </span>
-                      <strong class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">${item.baslik}</strong>
+                      <strong class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">${this.formatInlineText(item.baslik)}</strong>
                     </div>
                     <div class="flex items-center gap-1.5">
                       <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
-                        ${item.kategori}
+                        ${this.formatInlineText(item.kategori)}
                       </span>
                       <span class="text-[10px] font-bold px-2 py-0.5 rounded-md ${
                         item.onem === 'Kritik' 
@@ -2152,12 +2424,12 @@
                             ? 'bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-200' 
                             : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
                       }">
-                        ${item.onem}
+                        ${this.escapeHtml(item.onem)}
                       </span>
                     </div>
                   </div>
                   <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-7">
-                    ${item.aciklama}
+                    ${this.formatInlineText(item.aciklama)}
                   </p>
                 </div>
               `).join('')}
@@ -2191,19 +2463,19 @@
                       <span class="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 text-[10px] font-bold flex items-center justify-center shrink-0">
                         ${idx + 1}
                       </span>
-                      <strong class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">${item.baslik}</strong>
+                      <strong class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">${this.formatInlineText(item.baslik)}</strong>
                     </div>
                     <div class="flex items-center gap-1.5">
                       <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
-                        ${item.odak}
+                        ${this.formatInlineText(item.odak)}
                       </span>
                       <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-200">
-                        ${item.hedefSure}
+                        ${this.escapeHtml(item.hedefSure)}
                       </span>
                     </div>
                   </div>
                   <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-7">
-                    ${item.aciklama}
+                    ${this.formatInlineText(item.aciklama)}
                   </p>
                 </div>
               `).join('')}
@@ -2211,6 +2483,241 @@
 
           </div>
         `;
+      },
+
+      // ==================== AI SOHBET & RAPOR ASİSTANI YÖNETİMİ ====================
+      chatHistory: [],
+      isAiLoading: false,
+      isFloatingChatOpen: false,
+
+      initAIChat() {
+        if (this.chatHistory.length === 0) {
+          this.chatHistory.push({
+            role: 'model',
+            text: 'Merhaba! Ben **Haftalık Rapor Asistanı**. Araştırmacının hazırladığı haftalık raporlar, günlük çalışma notları, kodlanan pratik alıştırmalar ve gelecek planları hakkında sorularınızı yanıtlayabilirim.\n\n*Örnek:* *"1. ay verimli miydi?"*, *"1. haftadaki pazartesi günü öne çıkanlar neler?"* veya *"2. haftada yapılan alıştırmalar neler?"*'
+          });
+        }
+        this.renderChatMessages();
+        this.renderFloatingChatMessages();
+      },
+
+      toggleFloatingChat(forceState) {
+        const box = document.getElementById('aiFloatingChatBox');
+        if (!box) return;
+
+        if (typeof forceState === 'boolean') {
+          this.isFloatingChatOpen = forceState;
+        } else {
+          this.isFloatingChatOpen = !this.isFloatingChatOpen;
+        }
+
+        if (this.isFloatingChatOpen) {
+          box.classList.remove('hidden');
+          const input = document.getElementById('aiFloatingInput');
+          if (input) setTimeout(() => input.focus(), 150);
+          this.scrollFloatingChatToBottom();
+        } else {
+          box.classList.add('hidden');
+        }
+        lucide.createIcons();
+      },
+
+      renderChatMessages() {
+        const container = document.getElementById('aiChatMessages');
+        if (!container) return;
+
+        container.innerHTML = this.chatHistory.map((msg, index) => {
+          const isUser = msg.role === 'user';
+          return `
+            <div class="flex items-start gap-3 ${isUser ? 'flex-row-reverse' : ''} animate-in fade-in duration-200">
+              <div class="w-8 h-8 rounded-xl flex items-center justify-center shrink-0 text-xs font-bold shadow-xs ${
+                isUser 
+                  ? 'bg-indigo-600 text-white' 
+                  : 'bg-gradient-to-tr from-indigo-500 to-purple-600 text-white'
+              }">
+                ${isUser ? '<i data-lucide="user" class="w-4 h-4"></i>' : '<i data-lucide="sparkles" class="w-4 h-4"></i>'}
+              </div>
+              <div class="max-w-[85%] sm:max-w-[75%] space-y-1">
+                <div class="flex items-center gap-1.5 ${isUser ? 'justify-end' : ''} text-[11px] text-slate-400">
+                  <span>${isUser ? 'Siz' : 'Rapor Asistanı'}</span>
+                  <span>•</span>
+                  <span>${new Date().toLocaleTimeString([], { hour: '2-digit', minute: '2-digit' })}</span>
+                </div>
+                <div class="p-3.5 sm:p-4 rounded-2xl text-xs sm:text-sm leading-relaxed shadow-xs ${
+                  isUser 
+                    ? 'bg-indigo-600 text-white rounded-tr-xs' 
+                    : 'bg-white dark:bg-[#161F30] border border-slate-200/80 dark:border-slate-800 text-slate-800 dark:text-slate-200 rounded-tl-xs'
+                }">
+                  ${this.formatMarkdownText(msg.text)}
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        this.scrollChatToBottom();
+        lucide.createIcons();
+      },
+
+      renderFloatingChatMessages() {
+        const container = document.getElementById('aiFloatingMessages');
+        if (!container) return;
+
+        container.innerHTML = this.chatHistory.map((msg) => {
+          const isUser = msg.role === 'user';
+          return `
+            <div class="flex items-start gap-2 ${isUser ? 'flex-row-reverse' : ''}">
+              <div class="w-6 h-6 rounded-lg flex items-center justify-center shrink-0 text-[10px] ${
+                isUser ? 'bg-indigo-600 text-white' : 'bg-indigo-700 text-white'
+              }">
+                ${isUser ? '<i data-lucide="user" class="w-3 h-3"></i>' : '<i data-lucide="sparkles" class="w-3 h-3"></i>'}
+              </div>
+              <div class="max-w-[85%] space-y-0.5">
+                <div class="p-2.5 rounded-xl text-xs leading-relaxed ${
+                  isUser 
+                    ? 'bg-indigo-600 text-white rounded-tr-xs' 
+                    : 'bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 rounded-tl-xs'
+                }">
+                  ${this.formatMarkdownText(msg.text)}
+                </div>
+              </div>
+            </div>
+          `;
+        }).join('');
+
+        this.scrollFloatingChatToBottom();
+        lucide.createIcons();
+      },
+
+      scrollChatToBottom() {
+        const container = document.getElementById('aiChatMessages');
+        if (container) {
+          setTimeout(() => {
+            container.scrollTop = container.scrollHeight;
+          }, 50);
+        }
+      },
+
+      scrollFloatingChatToBottom() {
+        const container = document.getElementById('aiFloatingMessages');
+        if (container) {
+          setTimeout(() => {
+            container.scrollTop = container.scrollHeight;
+          }, 50);
+        }
+      },
+
+      formatMarkdownText(text) {
+        if (!text) return '';
+        let html = this.escapeHtml(text);
+
+        // Bold
+        html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-indigo-950 dark:text-indigo-200">$1</strong>');
+        // Italic
+        html = html.replace(/\*(.*?)\*/g, '<em class="italic opacity-90">$1</em>');
+        // Inline Code
+        html = html.replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-mono text-[11px] text-indigo-600 dark:text-indigo-400 border border-slate-200 dark:border-slate-700">$1</code>');
+        // Madde işaretleri
+        html = html.replace(/^\s*[-•]\s+(.*)$/gm, '<li class="ml-4 list-disc my-1">$1</li>');
+        // Satır sonları
+        html = html.replace(/\n/g, '<br/>');
+
+        return html;
+      },
+
+      askSuggestedQuestion(question) {
+        const input = document.getElementById('aiChatInput');
+        if (input) {
+          input.value = question;
+          this.handleChatSubmit(new Event('submit'));
+        }
+      },
+
+      async handleChatSubmit(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        const input = document.getElementById('aiChatInput');
+        if (!input) return;
+        const text = input.value.trim();
+        if (!text || this.isAiLoading) return;
+
+        input.value = '';
+        await this.sendMessage(text);
+      },
+
+      async handleFloatingChatSubmit(e) {
+        if (e && e.preventDefault) e.preventDefault();
+        const input = document.getElementById('aiFloatingInput');
+        if (!input) return;
+        const text = input.value.trim();
+        if (!text || this.isAiLoading) return;
+
+        input.value = '';
+        await this.sendMessage(text);
+      },
+
+      async sendMessage(question) {
+        // Kullanıcı mesajını geçmişe ekle
+        this.chatHistory.push({ role: 'user', text: question });
+        this.renderChatMessages();
+        this.renderFloatingChatMessages();
+
+        this.setLoading(true);
+
+        try {
+          const res = await fetch('/api/chat', {
+            method: 'POST',
+            headers: { 'Content-Type': 'application/json' },
+            body: JSON.stringify({
+              question: question,
+              history: this.chatHistory.slice(0, -1)
+            })
+          });
+
+          if (!res.ok) {
+            const errData = await res.json().catch(() => ({}));
+            throw new Error(errData.error || `Sunucu hatası: ${res.status}`);
+          }
+
+          const data = await res.json();
+          this.chatHistory.push({
+            role: 'model',
+            text: data.reply || 'Cevap üretilemedi.'
+          });
+        } catch (err) {
+          console.error('AI Chat Hatası:', err);
+          this.chatHistory.push({
+            role: 'model',
+            text: `⚠️ **Bağlantı Hatası:** ${err.message || 'Yapay zeka asistanına bağlanırken bir sorun oluştu.'} Lütfen daha sonra tekrar deneyiniz.`
+          });
+        } finally {
+          this.setLoading(false);
+          this.renderChatMessages();
+          this.renderFloatingChatMessages();
+        }
+      },
+
+      setLoading(loading) {
+        this.isAiLoading = loading;
+        const loader = document.getElementById('aiLoadingIndicator');
+        const floatingLoader = document.getElementById('aiFloatingLoading');
+        const submitBtn = document.getElementById('aiChatSubmitBtn');
+
+        if (loader) {
+          if (loading) loader.classList.remove('hidden');
+          else loader.classList.add('hidden');
+        }
+        if (floatingLoader) {
+          if (loading) floatingLoader.classList.remove('hidden');
+          else floatingLoader.classList.add('hidden');
+        }
+        if (submitBtn) {
+          submitBtn.disabled = loading;
+        }
+      },
+
+      clearChatHistory() {
+        this.chatHistory = [];
+        this.initAIChat();
       },
 
       // Fallback Raw Metin Üretici

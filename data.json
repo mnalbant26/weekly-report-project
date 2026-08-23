@@ -348,16 +348,28 @@
           "aciklama": "Görselleri ölçeklendirirken basıklaşmayı engellemek için object-fit: cover ve odak noktasını ayarlamak için object-position: center kuralı kullanılmalıdır."
         },
         {
-          "baslik": "CSS Specificity ve Sınıf Tabanlı (.class) Seçiciler",
+          "baslik": "CSS Specificity ve Sınıf Tabanlı (.class) Seçici Önceliği",
           "kategori": "CSS Mimarisi",
           "onem": "Yüksek",
-          "aciklama": "Genel etiket seçicileri (p, h1) yerine sınıf seçicileri (.video-title) tercih edilmelidir. Birden fazla aynı stili paylaşan seçiciler virgülle (p, .class-ismi { ... }) birleştirilerek DRY (Don't Repeat Yourself) kuralı uygulanmalıdır."
+          "aciklama": "Genel etiket seçicileri (p, h1) yerine sınıf seçicileri (.video-title) tercih edilmeli; <span> ile metnin belirli kısımları hedeflenerek beklenmeyen stil çakışmalarının ve ezilmelerinin önüne geçilmelidir."
         },
         {
-          "baslik": "VS Code Live Server ve AI Asistanından Hata Ayıklama",
+          "baslik": "Çoklu Selector Gruplama ile DRY (Don't Repeat Yourself) Prensibi",
+          "kategori": "Temiz Kod & Optimizasyon",
+          "onem": "Orta",
+          "aciklama": "Aynı stil kurallarını paylaşan farklı seçiciler aralarına virgül eklenerek (örneğin: p, .class-ismi { ... }) tek bir bildirim kümesinde toplanmalı, kod tekrarı önlenmelidir."
+        },
+        {
+          "baslik": "VS Code Live Server ile Canlı Tarayıcı Önizlemesi",
           "kategori": "Geliştirici Araçları",
           "onem": "Pratik",
-          "aciklama": "Live Server ile anlık tarayıcı yenilemesi sağlanmalı; kod yazımında takılınan CSS syntax hatalarında VS Code içindeki AI desteği ile hata açıklaması ve düzeltmeler alınarak öğrenme süreci hızlandırılmalıdır."
+          "aciklama": "Harici .css ve HTML dosyaları geliştirilirken VS Code Live Server eklentisi kullanılarak dosya kaydedildiği an tarayıcının otomatik yenilenmesi sağlanmalı ve geliştirme hızı artırılmalıdır."
+        },
+        {
+          "baslik": "VS Code AI Desteği ile Syntax Hata Ayıklama",
+          "kategori": "Hata Ayıklama & Öğrenme",
+          "onem": "Pratik",
+          "aciklama": "Kod yazımında karşılaşılan CSS ve HTML syntax hatalarında VS Code içindeki AI desteğinden yararlanılarak hatanın teknik sebebi anlaşılmalı ve doğru çözüm yöntemleri öğrenilmelidir."
         }
       ],
       "ileriye_donuk_arastirma": [
