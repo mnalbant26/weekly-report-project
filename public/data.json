@@ -1,7 +1,7 @@
 [
   {
     "id": "hafta-1",
-    "haftaNo": "1. Hafta",
+    "haftaNo": "1. Haftalık Rapor",
     "tarihAraligi": "29 Haziran – 04 Temmuz 2026",
     "yil": 2026,
     "ay": "Haziran / Temmuz",
@@ -15,7 +15,9 @@
       "departman": "Ürün & İnovasyon"
     },
     "istatistikler": {
-      "toplamSaat": 38,
+      "toplamSaat": 45,
+      "gunlukSaat": 7.5,
+      "toplamGun": 6,
       "konuSayisi": 14,
       "dosyaSayisi": 6,
       "pratikUygulama": "6 HTML Dosyası & Analizler"
@@ -291,5 +293,304 @@
       }
     ],
     "raw_content": "Haftalık Rapor 1 (29 Haziran – 4 Temmuz)\n\nBu rapor, verilen konular üzerinde yapılan araştırmalar, alınan notlar, edinilen bilgiler ve üzerinde çalışılan pratik uygulamaların haftalık bir derlemesidir.\n\n------------------------------------------------------------\nPazartesi – 29 Haziran 2026\n------------------------------------------------------------\nHaftaya sıklıkla gördüğüm fakat anlamını pek oturtamadığım bir kavramı araştırarak başladım.\n\nFramework: A framework is a guided system for building things.\n\nYani bir frameworkün aslında kodlama sürecinde işleri kolaylaştıran kodlama bütünleri olduğunu gördüm. Baştan yapmaya çalışılsa çok zaman alabilecek kodları, bir bütün haline getirip kolaylıkla kullanmayı sağlayan bir sistem.\n\nSonrasında web tasarımlarında yaygın bir programlama dili PHP’nin ne olduğunu araştırdım. Öğrendiğime göre PHP, verileri kullanıcıya sunmadan önce arka planda işleyerek dinamik ve etkileşimli web siteleri oluşturmak için kullanılan, sunucu taraflı bir programlama dili. Yani websitesinde arkaplanda sitenin beyni gibi çalışarak veri işleme görevini üstleniyor.\n\nAyrıca Laravel isimli framework de PHP programlama dilini kullanıyormuş. Başta bunların hepsi kafamı karıştırsa da, ilerleyen günlerde birbirleriyle bağlantılarını daha iyi kavramaya ve anlayabilmeye başladım.\n\nGenel anlamda kodlamayla alakalı bir araştırma yaptığımda ise kodlamanın programlama dillerinde bilgisayarın anlayabileceği ve uygulayabileceği yönergeler yazma sürecinin tamamına dendiğini gördüm. Popüler kodlama dillerinden birkaçını gördüm: Python, JavaScript, HTML, CSS, C++, C#. HTML ve CSS dillerinin web sitesi tasarımı için son derece önemli yapı taşları olduğunu öğrendim. Genel olarak bir web sitesi HTML, CSS ve PHP programlama dillerini içeriyormuş.\n\nHTML: Sitenin iskeleti | CSS: Sitenin makyajı | PHP: Sitenin Beyni\nşeklinde bir betimleme ile aklıma daha iyi bir şekilde kazımaya çalıştım.\n\nTüm bunların dışında yaptığım diğer bir araştırma da PR üzerine oldu. Bu alanda Marka Bilinirliği, İtibar Yönetimi ve Güvenilirlik gibi bazı önemli kavramlarla karşılaştım. Marka bilinirliğinin hedef kitlenin markayı tanıması, hatırlaması ve ürün veya sunulan servisleri rakip firmalardan ayırt edebilmesi anlamına geldiğini gördüm. İtibar yönetiminin ise sadece olumlu anlarda değil, kriz anlarında da durumu iyi yönetmek açısından önemli olduğunu gördüm. Son olarak güvenilirliğinse, tüketicilerin markanın verdiği sözleri yerine getirme yeteneğine ve sunduğu bilgilerin doğruluğuna duyduğu inanç olduğunu öğrendim.\n\nPr.plus için rakip firmalardan biri olan ve köklü bir geçmişe sahip olan Pr Newswire sitesine girerek inceleyip, bazı karşılaştırmalarda bulundum.\n\nGördüğüm kadarıyla:\n• Paketleri Pr.plus’tan daha pahalı\n• Kelime limit aşımı için ekstra ücret talep ediyorlar\n• Fotoğraf ve video eklemek de ekstra sayılıyor\n\nAyrıca son olarak Pr.plus sitesinde biraz daha gezinti yaptığımda fark ettiğim şeylerden biri de sitenin en alt kısımlarında bulunan ve follow us yazısının altında kalan sosyal medya butonlarından Instagram butonunun, tıklanıldığında LinkedIn sitesine yönlendirdiği ve LinkedIn butonunun ise tıklanıldığında Instagram adresine yönlendirdiği oldu. Her ne kadar küçük ve basit bir şey olsa da eklemek istedim.\n\n------------------------------------------------------------\nSalı – 30 Haziran 2026\n------------------------------------------------------------\nSalı gününe yapay zekayı (AI) araştırarak başladım. Bu bağlamda Deep Learning kavramı ile karşılaştım ve çalışma mantığını anlamak için çabaladım. Anlatımı kolaylaştıran ve hızlandıran güzel bir şema buldum:\n\nInput layerda aldığı verileri, hidden layerda işliyor, karşılaştırmalar yapıp seçenekleri eleyerek doğru noktaya ulaşmaya çalışıyor. Output layerda ise en son doğru olduğuna karar kıldığı ürünü önümüze sunuyor. Bu şekilde üç farklı layer sonucunda yapay zekanın bilgiyi işleyip, son aşamada ürünü ortaya koyduğunu gördüm. Bu sürecin isminin ise Deep Learning olduğunu öğrendim. Tanım olarak ise;\n\nDeep Learning: Yapay zeka ve makine öğreniminin özelleşmiş bir alt kümesidir. İnsan beyninin örüntüleri tanımlama ve öğrenme şeklini taklit ederek, muazzam miktarda yapılandırılmamış veriyi işlemek suretiyle karmaşık problemleri çözmek için çok katmanlı yapay sinir ağları kullanır.\n\nSonrasında en çok kullanılan/popüler olan AI Chatbotlarına ve Toollara baktım. Gördüğüm kadarıyla bunların arasında en üste çıkan isimler: ChatGPT, Perplexity (Araştırma ve Akademik Arama), Gemini, Copilot, Claude (Kodlama, Mantık), Notebook LM, Cursor, Midjourney, Elevenlabs, Gamma, Veo ve Sora.\n\nBunların çoğunu halihazırda duymuş olsam da Perplexity ve Gamma’yı ilk kez gördüm. Diğerlerininse bir iki tanesi hariç hepsini zaten kullanmışlığım vardı. Bu yüzden bu isimleri gördüğümde çok yabancılık çekmedim.\n\nBu araştırmaların arasında ise Claude Code’un bilgisayarda ek bir program gerekmeden direkt terminalde çalışabildiğini öğrendim.\n\nBu günü kapatmadan önce bana iletilen pr.plus websitesinin kullandığı mail sistemini ilk kez gördüğüm için biraz incelemek amacıyla verilen bilgilerle giriş yaptım. Sitede yanlışlıkla bir şeylere basıp mahvetme düşüncesinden dolayı bugün içerisinde çok fazla şey yapmadım. Yine de sitedeki ana bileşenleri görebildim ve gelen bazı mail kategorilerini mailleri hiç açmadan görebildim:\n• Telif Haklarıyla ilgili mailler\n• Partnership mailleri\n• Yayınlama istekleri\n\n------------------------------------------------------------\nÇarşamba – 01 Temmuz 2026\n------------------------------------------------------------\nBugün Marketing kavramını araştırmaya karar verdim ve gün bu şekilde başladı.\n\nMarketingin, yani pazarlamanın, tanımı aslında onun amacında yatıyor. Ürün satarak ya da hizmet sunarak bundan gelir elde etmek. Oldukça basit ve anlaması kolay bir kavram. Fakat işin daha derinine dalınca farklı kavramlar ortaya çıkıyor. Bundan önce marketingde uygulanması/yapılması ve sorulması gerekenleri özetle bir araya getirdim:\n\n• 'İnsanların neye ihtiyacı var?' sorusunu sormak\n• Satış pazarını araştırmak\n• Fiyatları ve dağıtımı planlamak\n• Pazarda hayatta kalmak için stratejiler uygulamak\n• Marka ve ürün/hizmet için reklam yapmak\n• İyi kalitede ve tatmin edici ürün/hizmet sağlamak\n\nBu basit gibi görünen noktaların pazarlama stratejilerinde önemli bir yeri olduğunu gördüm. Ayrıca marketingin alt başlıklarından biri olan ve günümüzde oldukça fazla kullanılan Digital Marketing (Dijital Pazarlama) başlığıyla da karşılaştım.\n\nBuradaki en önemli kavramlardan biri ise SEO (Search Engine Optimization) oldu. Bu kavram dijital pazarlamada önemli çünkü websitesi içeriklerini, arama motorlarında daha üstlerde çıkması için optimize etme anlamını taşıyor. Özellikle PR alanında müşterilerin büyük önem verdiği ise aşikar.\n\nBunların yanısıra, Social Media Marketing’in de önemini vurgulayan birkaç yazıyla karşılaştım. Markaların kitlelerle Instagram, LinkedIn, TikTok gibi sosyal medya mecralarında etkileşime geçtiğini zaten günlük yaşantımızda da açıkça görebiliyoruz. Bu sayede markalar marka tanınırlığını artırıyor, bir topluluk oluşturuyor ve sosyal pazarlama yapmış oluyorlar. Bu da onları, bunu yapmayan rakiplerine kıyasla büyük ölçüde öne geçiriyor.\n\nPazarlamada dikkat edilmesi gereken birkaç unsur daha keşfettim:\n• Kim olduğun ve ne yaptığın\n• Hedef kitlen\n• Mesajın\n• Konumlandırma stratejin\n• Kanalların\n• Hunin\n\nÖzellikle huni oldukça dikkatimi çekti çünkü bu genel bir pazarlama hiyerarşisi gibi görünüyordu.\n\nTHE AIDA MODEL:\n1. Awareness (Farkındalık): Hiyerarşinin en üst kısmında farkındalık var. Marka tarafından müşterilerin ilgisinin çekileceği aşama.\n2. Interest (İlgi): Müşteriler yavaş yavaş araştırma yapmaya başlıyorlar.\n3. Desire (İstek): Müşteriler, markayı rakip firmalarla kıyaslıyorlar.\n4. Action (Eylem): En son aşamada müşteriler ürünü ya da hizmeti satın alıyorlar.\n\nBu model bana hem çok mantıklı hem de uygulanabilir bir bakış açısı olarak göründü.\n\nSonrasında marketingdeki stratejilere göz atarken şu iki kavramla karşılaştım:\n• Direct Response: Kitleyle doğrudan veya anında eyleme geçmek. (Bir eylem)\n• Brand Awareness: Zaman içinde kitleyle güven ve tanınırlık oluşturmak. (Bir süreç)\n\n------------------------------------------------------------\nPerşembe – 02 Temmuz 2026\n------------------------------------------------------------\nPerşembe günü marketing araştırmalarına devam ederek güne başladım. En son öğrenmiş olduğum SEO, Digital Marketing ve AIDA modeli üzerine, yeni iki kavramla karşılaştım: Push Marketing ve Pull Marketing.\n\nPush Marketing: İnsanlara talep edilip edilmemesine bakmaksızın mesajını itmek/göstermekle ilgili bir strateji. İsminden de anlaşılacağı gibi bir nevi mesajını dayatmak üzerine kuruludur. ('Ürünümü satın al.' gibi.)\n\nPull Marketing: Kitleyle iletişim kurmak, insanlara bir problemi çözmelerinde gerçekten yardımcı olmayı istemektir ('Bu problemi çözmenize yardımcı olalım.' gibi). İnsanların sizi arayıp bulmalarını sağlayacak kadar değerli içerikler üretmek önem taşır.\n\nAyrıca Organic Traffic ve Paid Traffic şeklinde iki kavram daha öğrendim:\n• Organic Traffic: Dikkat çekmek için çok fazla zaman ve çaba harcamaktır. (Bir YouTube kanalı kurmak gibi.)\n• Paid Traffic: Erişim sağlamak için para harcamaktır / platformlardaki izlenmeler için ödeme yapmaktır. (Bütçe gerektirdiğinden dolayı yeni başlayanlar için en mantıklı seçenek sayılmaz.)\n\nModern pazarlamada AI’ın yerine baktığımda ise yaptığımız işi daha hızlı hale getirecek bir araç olması gerektiğini, tamamen yerimizi almaması gerektiğini gördüm.\n\nMarketingde stratejimizi ve yol haritamızı iyileştirmek için bazı önemli noktalar keşfettim.\nKim olduğun konusunda netleş:\n• Taviz veremeyeceğim/vazgeçemeyeceğim şeyler neler? (Non-negotiables)\n• Değer verdiğim şeyler neler?\n• Sektörümde görmek istediğim değişim ne?\n• Kitleme nasıl hizmet etmek istiyorum?\n• Marka vaadim nedir?\n\nBu soruları es geçmeden belirleyerek ilerlemenin, pazardaki yerini yükseklere taşıyacak basit ama önemli bilgiler olduğunu gördüm. Ayrıca müşterilerin dilinden konuşabilmenin de her zaman artı bir puan olduğunu öğrendim. Onlarla duygusal bir bağ kurup, şunları öğrenmenin önemini gördüm:\n• Arzuları/istekleri neler?\n• Korkuları neler?\n• Motivasyonları neler?\n• Onları ne geri tutuyor/engelliyor?\n• Onlara hiç kimsenin sunmadığı şekilde nasıl hizmet sunabilirim?\n\nSonrasında tanınırlığı ve görünürlüğü artırmak için Keyword kullanımının olmasını gerektiğini gördüm. Kitlenin gerçekte sorduğu ilgili anahtar kelimeleri ve soruları bulmak gerektiğini öğrendim. Araçlar: TubeBuddy, vidIQ, Google Ads Keyword Planner, Moz Keyword Analysis, Ubersuggest, ChatGPT, Answer the Public.\n\nYine marketingde rakiplerin ne yaptığını, ne tür içerik paylaştıklarını, ne gibi teklifleri/ürünleri olduğunu ve neyi onlardan daha iyi veya daha farklı yapabileceğimizi takip etmenin oldukça değerli olduğunu öğrendim.\n\nPersona: Benzer hedeflere, davranışlara ve zorluklara sahip bir grup insanı temsil eden yarı kurgusal bir profildir. Tahminlere değil, gerçek kullanıcı araştırmalarına dayanarak oluşturulur.\nGüçlü bir persona genellikle şunları içerir: İsim, Persona Türü, Rol veya Kimlik Özeti, Arka Plan / Bağlam, Hedefler, Ağrı Noktaları / Sıkıntılar, Davranışlar, Karar Tetikleyicileri, Tercih Edilen Kanallar, Alıntı / Söz, Üründen Ne İhtiyaç Duyulduğu.\n\n------------------------------------------------------------\nCuma – 03 Temmuz 2026\n------------------------------------------------------------\nBugüne ise Claude Code araştırması yaparak başladım. En başta edindiğim bilgilerin bazıları şunlardı:\n• Bilgisayardaki terminal ile kullanılabilir.\n• Visual Studio Code adlı uygulama ile kullanılabilir.\n• Terminal, VS Code uygulamasının içerisine entegre edilerek kullanılabilir.\n• Claude Code CLI içerisinde Context Rewind (Bağlamı Geri Sarma) yapmak mümkündür.\n\nVS Code içerisinde web sitesinin assetleri için klasör oluşturabileceğimizi ve @ işareti ile bunlara referans verebileceğimizi öğrendim. Ayrıca Puppeteer sayesinde Claude Code'un değişiklik yapmayı kolaylaştırmak için ekran görüntülerini otomatik olarak alabileceğini öğrendim. 'Allow dangerously skip permissions' açılırsa soru sormayı bırakır ancak sandbox modunda yapmak daha güvenlidir.\n\nBir websitesinde genellikle 1 ila 3 framework kullanılır:\nBackend: Laravel (PHP), Django (Python), Express.js (JavaScript)\nFrontend: React veya Next.js, Vue veya Nuxt.js, Angular\nCSS: Tailwind CSS, Bootstrap\nGitHub & Vercel: Kodları barındırma ve yayındaki web sitesini otomatik güncelleme.\n\nClaude Code Temel Komutları:\n• /clear: Mevcut sohbeti temizler.\n• /terminal-setup: Shift+Enter kombinasyonunu ekler.\n• /init: Projeyi analiz eder ve Claude.md oluşturur.\n• claude-edits: Commitler arasındaki değişiklikleri incelemeyi sağlar.\n\nClaude Token Tasarrufu İpuçları:\n• Memory.md dosyası oluşturup commitlerde güncellenmesini sağlamak.\n• Temel görevler için daha düşük modeller seçmek.\n• Yeni sohbetler açmak.\n• Claude Skills kullanmak.\n• MCP bağlantılarını yönetmek.\n• Promptları tek bir mesajda toplu (batch) iletmek.\n• Plan Modu'nu kullanmak.\n• /context ve /cost komutları ile harcamayı izlemek.\n• Yoğun saatlerden (TR 15:00 - 21:00) kaçınmak.\n\n------------------------------------------------------------\nCumartesi – 04 Temmuz 2026\n------------------------------------------------------------\nCumartesi gününe API (Application Programming Interface)'in ne olduğunu öğrenerek başladım. İki farklı yazılım uygulamasının veya sistemin birbirleriyle iletişim kurmasını ve veri alışverişinde bulunmasını sağlayan dijital bir köprü olduğunu öğrendim.\n\nDaha sonrasında Laravel araştırması yapmak istedim fakat gördüm ki Laravel'den önce PHP'ye, PHP'den önce ise HTML ve CSS'e hakim olmak gerekiyor. Bu sebeple araştırmamı HTML ve CSS yönüne doğru çevirdim.\n\nHTML'in bilgisayarlara talimat veren hiper metin işaretleme dili olduğunu gördüm. Visual Studio Code indirerek video dersleri eşliğinde sıfırdan uygulamalı çalışmaya başladım.\n\nOluşturulan 6 Adet HTML Uygulama Dosyası:\n1. buttons.html (Buton stilleri ve durumları)\n2. exercise.html (Metin ve başlık denemeleri)\n3. practice.html (Temel etiket pratikleri)\n4. practice2.html (Liste ve bağlantı yapıları)\n5. practice3.html (Form ve giriş elemanları)\n6. website.html (Bütünleşik mini web sayfası)\n\nDevam edip ilerletmeyi planlıyorum."
+  },
+  {
+    "id": "hafta-2",
+    "haftaNo": "2. Haftalık Rapor",
+    "tarihAraligi": "13 Temmuz – 18 Temmuz 2026",
+    "yil": 2026,
+    "ay": "Temmuz",
+    "aylar": ["Temmuz"],
+    "baslik": "HTML & CSS Derinleşmesi: BoxModel, Text Styles, Void Elements, CSS Display & <div> Mimarisi",
+    "aciklama": "Bu rapor, verilen konular üzerinde yapılan araştırmalar, alınan notlar, edinilen bilgiler ve üzerinde çalışılan pratik uygulamaların haftalık bir derlemesidir.",
+    "pdf_url": "haftalik_rapor_2_temmuz_2026.pdf",
+    "arastirmaci": {
+      "isim": "Araştırmacı",
+      "rol": "Teknoloji & Pazarlama Stajyeri",
+      "departman": "Ürün & İnovasyon"
+    },
+    "istatistikler": {
+      "toplamSaat": 45,
+      "gunlukSaat": 7.5,
+      "toplamGun": 6,
+      "konuSayisi": 16,
+      "dosyaSayisi": 8,
+      "pratikUygulama": "YouTube Prototipi & CSS Egzersizleri"
+    },
+    "haftalikDegerlendirme": {
+      "ozet": "Bu hafta boyunca HTML ve CSS'in temel ve orta seviye mekanizmaları derinlemesine incelendi. Chrome DevTools ve CSS Box Model (margin, border, padding, height/width yerine padding kullanımı), tipografi stilleri (Text Styles, font özellikleri, CSS Specificity, entity karakterler, span), temel HTML5 doküman yapısı (!DOCTYPE, html, head, body, title, Live Server ve harici CSS bağlama), medya ve form elemanları (img, object-fit/object-position, void elementler, input türleri ve placeholder), CSS Display özellikleri (block, inline-block, inline, çoklu selector hedefleme) ve sayfa bölümlendirme iskeleti olan <div> (container mantığı) kavrandı. Ayrıca kapsamlı YouTube klon projesinin temelleri atıldı.",
+      "kazanimlar": [
+        "CSS Box Model mantığı, DevTools ile kutu analizi ve butonlarda height/width yerine padding kullanımının avantajları öğrenildi.",
+        "CSS Specificity (Özgüllük - Class > Element) hiyerarşisi ve <span> etiketi ile hedeflenmiş metin biçimlendirmesi kavrandı.",
+        "HTML5 iskeleti, VS Code Live Server eklentisi, Google Fonts entegrasyonu ve harici .css dosyası linkleme pratiği yapıldı.",
+        "Görsellerde object-fit: cover ve object-position ile oran koruma, <img> ve <input> gibi Void (kapanmayan) elementler uygulandı.",
+        "CSS Display tipleri (Block, Inline-Block, Inline) arasındaki farklar ve <div> container mimarisiyle YouTube video kartı prototiplendi."
+      ],
+      "gelecekHaftaHedefleri": [
+        "YouTube ana sayfa prototipinin grid / flexbox düzenini ve video listeleme ızgarasını tamamlamak.",
+        "Üst gezinme çubuğu (Header / Navbar) ve arama çubuğunu responsive şekilde konumlandırmak.",
+        "CSS Pseudo-class'lar (:hover, :active, :focus) ile etkileşimli buton ve kart animasyonları eklemek.",
+        "İleri seviye Flexbox ve Grid mimarilerini YouTube bileşenlerine entegre etmek."
+      ]
+    },
+    "ipuclari_ve_oneriler": {
+      "gelistirme_onerileri": [
+        {
+          "baslik": "Buton Boyutlandırmasında Height/Width Yerine Padding Kullanımı",
+          "kategori": "CSS Best Practice",
+          "onem": "Kritik",
+          "aciklama": "Butonlara ve kutulara sabit height/width vermek yerine padding uygulamak, içindeki metin uzadığında veya farklı dillere çevrildiğinde butonun taşmasını veya bozulmasını engeller; responsive uyumu otomatik sağlar."
+        },
+        {
+          "baslik": "Görsel Oranlarını Koruma: object-fit: cover & object-position",
+          "kategori": "Frontend & Medya",
+          "onem": "Yüksek",
+          "aciklama": "Görselleri ölçeklendirirken basıklaşmayı engellemek için object-fit: cover ve odak noktasını ayarlamak için object-position: center kuralı kullanılmalıdır."
+        },
+        {
+          "baslik": "CSS Specificity ve Sınıf Tabanlı (.class) Seçiciler",
+          "kategori": "CSS Mimarisi",
+          "onem": "Yüksek",
+          "aciklama": "Genel etiket seçicileri (p, h1) yerine sınıf seçicileri (.video-title) tercih edilmelidir. Birden fazla aynı stili paylaşan seçiciler virgülle (p, .class-ismi { ... }) birleştirilerek DRY (Don't Repeat Yourself) kuralı uygulanmalıdır."
+        },
+        {
+          "baslik": "VS Code Live Server ve AI Asistanından Hata Ayıklama",
+          "kategori": "Geliştirici Araçları",
+          "onem": "Pratik",
+          "aciklama": "Live Server ile anlık tarayıcı yenilemesi sağlanmalı; kod yazımında takılınan CSS syntax hatalarında VS Code içindeki AI desteği ile hata açıklaması ve düzeltmeler alınarak öğrenme süreci hızlandırılmalıdır."
+        }
+      ],
+      "ileriye_donuk_arastirma": [
+        {
+          "baslik": "Modern CSS Flexbox & CSS Grid ile YouTube Grid Düzeni",
+          "odak": "Arayüz & Layout",
+          "hedefSure": "3. Hafta",
+          "aciklama": "YouTube video önizleme kartlarını ve yan yana dizilimleri kusursuz responsive ızgaraya oturtmak için Flexbox (justify-content, align-items) ve CSS Grid (grid-template-columns) detaylı araştırılmalıdır."
+        },
+        {
+          "baslik": "İnteraktif Durumlar: Hover, Focus & Active Pseudo-Classes",
+          "odak": "UI/UX & Etkileşim",
+          "hedefSure": "3. Hafta",
+          "aciklama": "Butonlar, arama çubuğu ve video kartlarına tıklandığında veya üzerine gelindiğinde gölge ve renk geçişleri (transitions) kazandırılmalıdır."
+        },
+        {
+          "baslik": "Semantic HTML5 Etiketleri: <header>, <nav>, <main>, <section>, <article>",
+          "odak": "Web Standartları & SEO",
+          "hedefSure": "3. - 4. Hafta",
+          "aciklama": "Sadece <div> kullanmak yerine sayfa bölümlerini semantik etiketlerle yapılandırarak erişilebilirlik (a11y) ve SEO uyumu güçlendirilmelidir."
+        },
+        {
+          "baslik": "Responsive Navbar & Sidebar Tasarımı",
+          "odak": "Frontend Mimarisi",
+          "hedefSure": "3. Hafta",
+          "aciklama": "Mobil ve masaüstü ekran boyutlarında farklılaşan YouTube sol menü (sidebar) ve arama çubuğu düzeni prototiplenmelidir."
+        }
+      ]
+    },
+    "gunler": [
+      {
+        "id": "pazartesi-h2",
+        "gun": "Pazartesi",
+        "tarih": "13 Temmuz 2026",
+        "yil": 2026,
+        "ay": 6,
+        "gunNo": 13,
+        "etiket": "Chrome DevTools & CSS Box Model",
+        "arastirilanKonular": [
+          {
+            "baslik": "Chrome Dev Tools İnceleme Konsolu",
+            "icerik": "İnternette gezinirken web sitesinde sağ tıklayıp 'İncele' dediğimizde ekranın sağ tarafında beliren konsol yapısı. Bu yapı web sitesinin içerisindeki DOM elementlerini ve siteyi oluşturan CSS kurallarını anlık olarak incelemeyi sağlar."
+          },
+          {
+            "baslik": "CSS Box Model (Kutu Modeli) Mantığı",
+            "icerik": "Chrome Dev Tools sekmesinde incelenen web bileşenlerini bir kutucuk şeklinde göstererek 'margin, border, padding' gibi iç ve dış boşluklarının tüm hiyerarşik bilgilerini sağlar."
+          },
+          {
+            "baslik": "Height & Width Yerine Padding Kullanımı",
+            "icerik": "Butonlara veya elementlere sabit 'height, width' ayarlamanın, içerideki yazı değiştiğinde şeklin istenmeyen şekilde bozulmasına yol açtığı öğrenildi. Bu sorunun sabit yükseklik/genişlik yerine 'padding' eklenerek çözülebildiği keşfedildi."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Buton Stilleme ve Box Model Egzersizleri (buttons.html)",
+          "aciklama": "SUBSCRIBE, JOIN ve Tweet butonları için margin, border, padding değerleri ayarlandı. DevTools üzerinden kutu modeli incelenerek buton yükseklik/genişlikleri padding ile dengelendi.",
+          "etiketler": ["Box Model", "DevTools", "Padding vs Height", "Buton Egzersizleri"]
+        },
+        "oneCikanBilgi": "Elementlere sabit height ve width vermek yerine padding eklemek, metin içeriği değiştiğinde şeklin bozulmasını engeller ve responsive uyumu korur."
+      },
+      {
+        "id": "sali-h2",
+        "gun": "Salı",
+        "tarih": "14 Temmuz 2026",
+        "yil": 2026,
+        "ay": 6,
+        "gunNo": 14,
+        "etiket": "Text Styles, CSS Specificity & <span>",
+        "arastirilanKonular": [
+          {
+            "baslik": "Temel HTML ve CSS Kavramlar Sözlüğü",
+            "icerik": "Element (yapı taşı), Tag (başlangıç/bitiş), Attribute (özellik/bilgi), Entity (özel karakter kodları), Selector (hedef eleman), Property (stil adı), Value (ölçü/değer), Declaration (özellik+değer), Rule (selector + bildirimler kümesi)."
+          },
+          {
+            "baslik": "CSS Text Styles Komutları",
+            "icerik": "font-family, font-size, font-weight, font-style, text-decoration komutlarının yanı sıra text-align ile metin hizalama, line-height ile satır aralığı dengeleme ve metne width vererek alt satıra geçiş kontrolü öğrenildi."
+          },
+          {
+            "baslik": "CSS Specificity (Seçici Öncelik Sıralaması)",
+            "icerik": "Selector'lerin öncelik hiyerarşisi olduğu ve dosyanın bu önceliğe göre uygulandığı görüldü. .class {} seçicisinin p {} element seçicisinden daha öncelikli olduğu (Class name selector > Element name selector) kavrandı."
+          },
+          {
+            "baslik": "<span> Komutu ve Otomatik Paragraf Marginleri",
+            "icerik": "<p> elementlerinin tarayıcı tarafından otomatik varsayılan bir margin ile oluştuğu öğrenildi. <span> komutu ile metin içerisindeki belirli bir kelime grubunun sınıflandırılarak özel stillendirilebileceği keşfedildi."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Metin Biçimlendirme & YouTube Başlık Egzersizi (text.html)",
+          "aciklama": "Sundar Pichai ile röportaj başlığı, Marques Brownlee kanal bilgisi, görüntülenme istatistikleri ve kırmızı indirim banner'ı stilleri <span> ve CSS sınıflarıyla uygulandı.",
+          "etiketler": ["Text Styles", "CSS Specificity", "<span>", "Google Fonts"]
+        },
+        "oneCikanBilgi": "CSS Specificity kuralına göre Class seçicileri (.class) Element seçicilerinden (p, h1) her zaman daha önceliklidir; <span> etiketi ise metnin belirli bir kısmını hedefe alarak stillendirmeyi sağlar."
+      },
+      {
+        "id": "carsamba-h2",
+        "gun": "Çarşamba",
+        "tarih": "15 Temmuz 2026",
+        "yil": 2026,
+        "ay": 6,
+        "gunNo": 15,
+        "etiket": "HTML5 İskeleti, Live Server & Harici CSS",
+        "arastirilanKonular": [
+          {
+            "baslik": "HTML5 Ana İskelet Bileşenleri & Nesting",
+            "icerik": "!Doctype (güncel HTML deklarasyonu), <html> (ana kök element), <head> (meta veriler ve başlık), <body> (kullanıcıya görünen alan), <title> (sekme adı) ve elementlerin iç içe yazılması (Nesting) öğrenildi."
+          },
+          {
+            "baslik": "VS Code Live Server Eklentisi",
+            "icerik": "Geliştirme sürecini hızlandırmak amacıyla VS Code içerisine Live Server extension'ı kuruldu; projedeki değişikliklerin kaydedildiği an tarayıcıda anlık güncellenmesi sağlandı."
+          },
+          {
+            "baslik": "Harici CSS (.css) Linkleme & Modülerlik",
+            "icerik": "HTML içerisindeki <style> komutlarını ayırıp bağımsız '.css' uzantılı dosyalarda toplama ve <link rel='stylesheet' href='...'> ile HTML'e bağlama mantığı kavrandı; projenin kalabalıktan arınması sağlandı."
+          },
+          {
+            "baslik": "Google Fonts Entegrasyonu",
+            "icerik": "İnternet üzerinden Google Fonts kütüphanesini kullanarak projelere farklı yazı tiplerini (Montserrat vb.) linkleme yöntemi öğrenildi."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Model 3 Tesla Sipariş Kartı (lesson6exercise.html)",
+          "aciklama": "Google Fonts üzerinden Montserrat fontu çekilerek 'Model 3 - Order Online for Touchless Delivery' başlığı harici styles/lesson6exercise.css dosyası üzerinden linklenerek oluşturuldu.",
+          "etiketler": ["HTML5 Structure", "Live Server", "External CSS", "Google Fonts"]
+        },
+        "oneCikanBilgi": "CSS kodlarını HTML içerisindeki <style> yerine harici .css dosyasında toplamak projeyi sadeleştirir; Live Server ise kaydetme anında anlık önizleme sağlar."
+      },
+      {
+        "id": "persembe-h2",
+        "gun": "Perşembe",
+        "tarih": "16 Temmuz 2026",
+        "yil": 2026,
+        "ay": 6,
+        "gunNo": 16,
+        "etiket": "Görseller (<img>), Void Elementler & Inputlar",
+        "arastirilanKonular": [
+          {
+            "baslik": "YouTube Final Projesine Başlangıç & Klasörleme",
+            "icerik": "Kursun YouTube sayfası tasarlama projesine başlandı. Dosyaların kalabalıklaşıp karışmaması için 'thumbnails/' ve 'styles/' gibi alt klasörler açılarak kaynaklar düzenlendi."
+          },
+          {
+            "baslik": "<img> ve Void Elementler",
+            "icerik": "<img> (resim ekleme) ve <input> gibi kapatma etiketine (closing tag) ihtiyaç duymayan, kendi kendini kapatan Void element türleri öğrenildi. Klasör yolu belirtme (<img src='thumbnails/image.jpg'>) pratiği yapıldı."
+          },
+          {
+            "baslik": "object-fit: cover ve object-position",
+            "icerik": "Resme height verildiğinde basıklaşarak şeklinin bozulmaması için 'object-fit: cover;' komutunun orijinal oranı koruduğu ve 'object-position:' ile odak noktasının ayarlanabildiği keşfedildi."
+          },
+          {
+            "baslik": "Etkileşimli Veri Giriş Elemanları (<input>)",
+            "icerik": "<input type='text'> ile arama çubuğu, <input type='checkbox'> ile onay kutusu yapımı ve 'placeholder' niteliği ile kullanıcı tıklamadan önce görünen kılavuz metin tanımlama öğrenildi."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Profil Avatarları, Tweet Kutusu & Arama Çubuğu",
+          "aciklama": "Border-radius ile dairesel profil görselleri, object-fit: cover ile ölçeklendirilmiş avatarlar, 'What's happening?' tweet girdi alanı ve Google arama kutusu oluşturuldu.",
+          "etiketler": ["<img>", "Void Elements", "object-fit: cover", "<input>", "Border Radius"]
+        },
+        "oneCikanBilgi": "Görsellerde yükseklik verildiğinde orantının bozulmaması için object-fit: cover; kullanılır; <img> ve <input> etiketleri kapatma tag'i gerektirmeyen Void elementlerdir."
+      },
+      {
+        "id": "cuma-h2",
+        "gun": "Cuma",
+        "tarih": "17 Temmuz 2026",
+        "yil": 2026,
+        "ay": 6,
+        "gunNo": 17,
+        "etiket": "CSS Display Özellikleri (Block, Inline-Block, Inline)",
+        "arastirilanKonular": [
+          {
+            "baslik": "CSS Display Özelliği",
+            "icerik": "Bir HTML elementinin sayfada nasıl görüntüleneceğini ve diğer elementlerin yanına mı yoksa altına mı yerleşeceğini belirleyen temel kural."
+          },
+          {
+            "baslik": "Block vs In-line Block vs Inline Elementler",
+            "icerik": "Block: Yatayda tüm satırı kaplar ve sonrakini alt satıra atar. Inline-Block: Kendi içeriği kadar yer kaplar, yan yana dizilir ve width/height alır. Inline: Metin parçası gibi davranır, yan yana gelir ancak doğrudan genişlik/yükseklik almaz."
+          },
+          {
+            "baslik": "Çoklu Selector Gruplama (DRY Kuralı)",
+            "icerik": "İki farklı CSS selector'ının tamamen aynı stilleri paylaşması durumunda, kod tekrarını önlemek için aralarına virgül konularak birleştirilebildiği (örn: p, .class-ismi { display: block; }) öğrenildi."
+          },
+          {
+            "baslik": "VS Code AI Desteği ile Hata Ayıklama",
+            "icerik": "VS Code içerisindeki AI desteğinin syntax hatalarını tespit edip nedenini açıklayarak hızlı düzeltmeler sunmasının öğrenme sürecini hızlandırdığı gözlemlendi."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Google Arama Sayfası & Giriş Formu (youtube-exercise.html)",
+          "aciklama": "Google logosu altına arama çubuğu yerleşimi, form kontrolleri (Name, Email alanları), 'Thanks for chatting' anketi ve yan yana dizilen butonlar inline-block ile kodlandı.",
+          "etiketler": ["CSS Display", "Block vs Inline", "Selector Gruplama", "VS Code AI"]
+        },
+        "oneCikanBilgi": "Block elementler tüm satırı kaplayıp alt satıra kaydırırken, Inline-Block elementler yan yana dizilebilir ve width/height ölçülerini tam olarak destekler."
+      },
+      {
+        "id": "cumartesi-h2",
+        "gun": "Cumartesi",
+        "tarih": "18 Temmuz 2026",
+        "yil": 2026,
+        "ay": 6,
+        "gunNo": 18,
+        "etiket": "<div> Elementi & YouTube Video Kartı Mimarisi",
+        "arastirilanKonular": [
+          {
+            "baslik": "<div> (Division) Container Mantığı",
+            "icerik": "Kelime anlamı 'bölüm' olan ve web sayfasında görünmez kutu (box) görevi gören element. Elementleri bir arada tutan, organize eden ve gruplayan temel bir container işlevi görür."
+          },
+          {
+            "baslik": "<div>'in Block Yapısı",
+            "icerik": "<div> bir block elementtir; kendi konteyneri içerisindeki tüm satırı yatayda tamamen kaplar."
+          },
+          {
+            "baslik": "Modern Arayüz Tasarımında <div> Rolü",
+            "icerik": "Sosyal medya ve video platformlarının arayüz tasarımında bolca kullanılan, YouTube projesinde video kartlarını ve grid yapılarını inşa etmeyi sağlayan temel iskelettir."
+          },
+          {
+            "baslik": "Display Özellikleri ile <div> Uyumu",
+            "icerik": "Display özellikleri ile <div> kutularının birleştirilerek thumbnail, başlık, yazar ve istatistiklerin düzenli YouTube video önizleme kartlarına dönüştürülmesi sağlandı."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "YouTube Video Önizleme Kartları (youtube.html)",
+          "aciklama": "Thumbnail resmi, video başlığı ('Talking Tech and AI with Google CEO Sundar Pichai' ve 'Try not to Laugh Challenge #9'), kanal ismi (Marques Brownlee, Markiplier) ve izlenme sayıları div.video-preview container kutuları içerisine alınarak yan yana dizildi.",
+          "etiketler": ["<div> Container", "YouTube Video Grid", "Bileşen Mimarisi", "youtube.html"],
+          "dosyalar": [
+            "youtube.html",
+            "buttons.html",
+            "text.html",
+            "lesson6exercise.html",
+            "image-exercise.html",
+            "textbox-exercise.html"
+          ]
+        },
+        "oneCikanBilgi": "<div> elementi, görünmez bir konteyner kutusu olarak ilgili HTML elementlerini bir arada toplar; YouTube video kartları gibi modüler UI bileşenlerinin temelini oluşturur."
+      }
+    ],
+    "raw_content": "Haftalık Rapor 2 (13 Temmuz - 18 Temmuz)\n\nBu rapor, verilen konular üzerinde yapılan araştırmalar, alınan notlar, edinilen bilgiler ve üzerinde çalışılan pratik uygulamaların haftalık bir derlemesidir.\n\n------------------------------------------------------------\nPazartesi – 13 Temmuz 2026\n------------------------------------------------------------\nBu haftaya, geçen hafta başladığım Html – CSS kursuna kaldığım yerden devam ederek başladım. Visual Studio Code programına daha aşina bir şekilde, kurstaki dersleri izlemeye devam ettim ve Chrome Dev Tools ve CSS BoxModel hakkında bilgiler edindim.\n\nÖğrendiğime göre Chrome Dev Tools, internette gezinirken web sitesinde sağ tıklayıp “İncele” dediğimizde ekranın sağ tarafında beliren, konsol benzeri bir yapı. Bu yapı bize web sitesinin içerisindeki elementleri ve siteyi oluşturan bileşenleri gösteriyor.\n\nAyrıca CSS BoxModel olarak bu derste gördüğüm kutu modeli ise, bu bahsi geçen Chrome Dev Tools sekmesinde, incelediğimiz web sitesi bileşenlerini bir kutucuk şeklinde göstererek onların “margin, border, padding” gibi iç ve dış boşluklarının bilgilerini bize sağlıyor.\n\nDaha sonra bu dersin içerisinde butonlara ya da diğer elementlere “height, width” ayarlamanın çoğu zaman, içerisindeki yazının değişmesiyle beraber şeklin de istenmeyen bir şekilde değişmesine sebep olduğunu öğrendim. Bu sorunu ise yükseklik ve genişliği silip bunlar yerine padding ekleyerek tamamen çözebildiğimizi gördüm.\n\nBu yeni öğrendiklerimi denediğim practice dosyalarımdan bazı görüntüler uygulandı ve incelendi.\n\n------------------------------------------------------------\nSalı – 14 Temmuz 2026\n------------------------------------------------------------\nBugün ise kursa devam ederek, Text Styles ismindeki diğer bir önemli derse geçtim. Ayrıca bu dersin içeriğinde öğrendiklerimden bahsetmeden önce, değinmediğimi fark ettiğim bazı yeni bilgiler daha edindim. Ayrıca daha önce gördüğüm bazı temel bilgileri de tam oturması adına derleyip toplamaya çalıştım çünkü derslerde anlatan kişinin sıklıkla bu terimleri kullandığını fark ettim.\n\nHTML Kavramları ve CSS Kavramları:\n• Element – Html belgesinin yapı taşı.\n• Tag – Elementlerin nerede başlayıp nerede bittiğini gösterir.\n• Attribute – Elementlere fazladan bilgi veya özellik eklemeye yarar.\n• Entity – HTML’de özel anlamı olan karakterleri tarayıcının kod olarak algılamaması için yerlerine kullanılan kod parçacıklarıdır.\n• Selector – Stillemek istediğimiz HTML elementlerini belirlememizi sağlar.\n• Property – Değiştirmek veya şekillendirmek istediğimiz stilin adıdır.\n• Value – Belirlediğimiz özelliğe atadığımız durum ve ölçü birimidir.\n• Declaration – Özellik ve değer ikilisinin bir araya gelmesiyle oluşan kuraldır.\n• Rule – Bir selector ile bu selectora uygulanacak tüm bildirimlerin birleşimidir.\n\nBu kavramların dışında diğer bahsettiğim şey ise elementlere class belirleyerek onları CSS ile stillemek istediğimizde işimizi çok daha kolaylaştırmaya yardımcı olduğunu gördüm.\n\nYeni geçtiğim ve üzerinde çalıştığım bu derste ise html dosyasının içerisindeki yazıları genel olarak düzenlemeyi öğrendim. Font-family, font-size, font-weight, font-style, text-decoration gibi komutların yanı sıra text-align komutu ile yazıyı istediğimiz gibi konumlandırabileceğimizi de öğrendim. Satırlar arası boşluğu dengelemek için line-height komutunu kullanabileceğimizi öğrendim. Ayrıca yazıya width ayarlayarak hangi kelimeden sonra yazının aşağı satıra geçip devam edeceğini de kontrol edebileceğimizi gördüm.\n\nTemel kavramları derlediğim bölümde de bahsettiğim gibi, “Entity” kullanarak özel karakterleri metinlere eklemenin de faydalı olduğunu, ihtiyacımız olan özel karakterleri internetten kolaylıkla bulabileceğimizi gördüm. Bununla beraber eklediğimiz paragraf elementlerinin biz eklemediğimiz müddetçe otomatik değerde bir margin ile oluştuğunu öğrendim. Ders sürecinde CSS Specifity isminde bir kavramla karşılaştım ve selector’lerin öncelik sıralaması olduğunu ve dosyanın bu önceliği baz alarak düzenlemeleri oluşturduğunu gördüm. Örneğin genel bir p {} selector’ündense, .class {} şeklinde spesifize edilmiş bir selectorun daha öncelikli olduğunu gördüm. Kısacası class name selector > element name selector şeklinde bir tanımlama yapabiliriz.\n\nSon olarak ise bu derste <span> komutu ile bir metin içerisinde istediğimiz bir yazıyı sınıflandırabileceğimizi ve bu sayede CSS kısmına geçtiğimizde stillerken metnin istediğimiz spesifik bir kısmını düzenleyebileceğimizi de öğrendim.\n\n------------------------------------------------------------\nÇarşamba – 15 Temmuz 2026\n------------------------------------------------------------\nBugün ise kursta HTML'in genel yapısı hakkında daha derine inerek; !Doctype, <html>, <head> ve <body> gibi temel kısımları öğrendim. Bu yapıları yazarak yeni bir projeye başladığımızda, sistemin otomatik olarak HTML'in en güncel versiyonunu kullandığını gördüm. Ayrıca ders esnasında Nesting (iç içe geçme) isminde bir kavramla karşılaştım; bu kavramın kısaca elementlerin birbirinin içerisine yazılması anlamına geldiğini öğrendim.\n\nÖğrendiğim bu temel HTML yapısının detaylarına değinecek olursam:\n• !Doctype – Tarayıcıya belgenin güncel bir HTML belgesi olduğunu bildiren deklarasyon.\n• <html> – Tüm HTML kodlarını kapsayan ve projenin başlangıcı ile bitişini belirten ana kök element.\n• <head> – Sitede doğrudan görmediğimiz, ancak arka planda çalışan ve meta verileri içeren kısım.\n• <body> – Web sitesini ziyaret eden kullanıcıların ekranda gördüğü tüm elementleri içeren kısım.\n• <title> – Tarayıcıda açılan sekmenin ismi olarak görünen yeri değiştirmemizi sağlayan komut.\n\nBu yapısal bilgilerin yanı sıra, geliştirme sürecimi çok daha pratik hale getirecek yeni araçlar da keşfettim. VS Code içerisine \"Live Server\" isminde bir extension kurarak, projedeki tüm değişiklikleri kaydettiğim an anlık olarak browserda görebilmeye başladım.\n\nDaha önceki derste değindiğim CSS ile stilleme mantığını da bir adım öteye taşıdım. HTML dosyasının içerisinde <style> şeklinde yazdığımız tüm komutları oradan ayırıp, \".css\" uzantılı bağımsız bir dosya oluşturarak burada toplayabileceğimizi öğrendim. Bu harici CSS dosyasını htmlde linkleyerek istediğimiz classlara bağlayabildiğimizi ve bu sayede HTML projesini karmaşıklıktan ve kalabalıklıktan kurtarabileceğimizi gördüm. Son olarak internet üzerinden, özellikle de Google Fonts kullanarak projemize dilediğimiz farklı yazı tiplerini (fontları) nasıl aktarabileceğimizi de öğrendim.\n\nSon olarak ise bu derste öğrendiklerimle yaptığım pratikte, yeni öğrendiğim HTML yapısını kullanarak, farklı bir fontu içeri aktarıp harici bir CSS dosyası üzerinden linkleyerek oluşturduğum küçük projeyi hazırladım (Model 3 Tesla sipariş kartı).\n\n------------------------------------------------------------\nPerşembe – 16 Temmuz 2026\n------------------------------------------------------------\nBugün ise kursun bir sonraki dersine geçerek eğitmen ile büyük bir final projesinin yapımına başladık. Bu projenin bir YouTube sayfası tasarlama projesi olduğunu gördüm. Fakat anladığım kadarıyla kursun geri kalan tüm dersleri bu proje üzerinden anlatılacak ve ilerleyecek; yani önümdeki sürecin tamamen bu projeyi geliştirmek üzerine kurulu olduğunu anladım. Bu çalışma, önceki küçük pratiklerime kıyasla çok daha büyük olacağı için dosyaların kalabalıklaşıp karışmaması adına yeni bir klasör açarak tüm kaynakları bu klasörde topladım.\n\nArdından, yine bir önceki derste öğrendiğim gibi HTML yapısını (structure) sıfırdan oluşturarak projeye açılış yaptım. Süreç boyunca da eğitmenin halihazırda bitirilmiş projesini inceleyerek onun üzerinden gitmeye özen gösterdim.\n\nBu ders kapsamında web sayfasına görsel ve etkileşimli ögeler eklemeyi ve bunları yönetmeyi öğrendim:\n• <img> – HTML dosyasının içerisine dışarıdan resim dahil etmemizi sağlayan element.\n• Void Element – Diğer elementler gibi kapatma etiketine (closing tag) ihtiyaç duymayan, kendi kendini kapatan element türü. Öğrendiğim <img> ve <input> elementleri de bu sınıfa girmektedir.\n• <input> – Kullanıcıdan veri almak için kullanılan; arama çubuğu veya işaretleme kutusu gibi alanlar oluşturan etkileşimli element.\n\nProjeyi geliştirirken görseller ve veri giriş alanları üzerinde çalışarak şu kritik bilgileri edindim:\nResimleri VS Code içerisinde ayrı bir klasöre koyduğumuzda, HTML dosyasının doğrudan resmi bulamadığını fark ettim. Ancak resim dosyasının isminden önce o klasörün ismini belirterek (örneğin <img src=\"thumbnails/image.jpg\"> şeklinde) konumu tam olarak işaret ettiğimizde bu sorunu çözebileceğimizi öğrendim. Dahası, resme bir class belirledikten sonra CSS kısmında düzenleme yaparken; resme sadece width ayarlamanın görselin şeklini bozmazken, height ayarlamanın resmi basıklaştırarak şekli bozduğunu gördüm. Fakat object-fit: cover; komutunu kullandığımızda yükseklik eklesek bile görselin orijinal oranını koruyarak resmi yeniden boyutlandırabildiğimizi öğrendim. Ayrıca object-position: komutu ile de resmin tam olarak istediğimiz kısmına doğru odaklama ve konumlama yapabildiğimizi gördüm.\n\nSon olarak veri giriş kutularını incelerken; <input type=\"text\"> ile arama kutucuğu, <input type=\"checkbox\"> komutu ile de işaretleme kutucuğu yapmayı öğrendim. Ayrıca bu elemente placeholder niteliği (attribute) ekleyerek, biz tıklamadan önce kutucuğun içinde otomatik olarak ne yazmasını istediğimizi de belirleyebileceğimizi gördüm.\n\n------------------------------------------------------------\nCuma – 17 Temmuz 2026\n------------------------------------------------------------\nBugün ise derslere kaldığım yerden devam ederek başladım. Bu dersin ana odak noktası, web elementlerinin sayfadaki yerleşim mantığını belirleyen CSS Display Property konusu oldu. Ders sürecinde elementlerin tarayıcı tarafından nasıl konumlandırıldığını ve birbirleriyle nasıl etkileşime girdiklerini detaylıca inceledik.\n\nDers esnasında öğrendiğim temel kavramları ve çalışma mantıklarını şu şekilde derledim:\n• Display Property – Bir HTML elementinin sayfada nasıl görüntüleneceğini ve diğer elementlerin yanına mı yoksa altına mı yerleşeceğini belirleyen CSS özelliğidir.\n• Block Element – Sayfada yatayda tüm satırı (ekranın başından sonuna kadar) kaplayan elementlerdir. Kendisinden sonra gelen her elementi otomatik olarak bir alt satıra kaydırır.\n• In-line Block Element – Sadece kendi içeriği (yazı veya görsel boyutu) kadar yer kaplayan elementlerdir. Yan yana dizilebilirler ancak block elementler gibi width ve height değerlerini de tamamen kabul ederler.\n• Inline Element – Sadece bir metin satırının parçası gibi davranan ve yalnızca içerik hacmi kadar alan kaplayan elementlerdir. Yan yana gelebilirler fakat doğrudan genişlik ve yükseklik değerlerini almazlar.\n\nKod yazım sürecini kısaltan çok pratik bir CSS kuralı daha öğrendim. İki farklı CSS selector'ının tamamen aynı stilleri paylaşması durumunda, kod tekrarını önlemek adına selector'ların arasına virgül koyarak bunları tek bir kural kümesinde birleştirebildiğimizi gördüm. (Örneğin; p, .class-ismi { display: block; } şeklinde hedefleme yapabiliyoruz).\n\nTeknik konuların ayriyeten, geliştirme sürecimde fark ettiğim ve bana çok yardımcı olan bazı durumları da eklemek istedim. VS Code içerisindeki AI desteğini kullanarak kodda oluşan hataları sisteme gösterdiğimde, bana hatanın nedenini açıklayıp doğrudan düzeltebildiğini fark ettim. Bu durum öğrenme sürecimi oldukça hızlandırıyor.\n\nKişisel bir değerlendirme yapacak olursam; kursta ilerledikçe ve daha fazla yeni komut öğrendikçe, en başta öğrendiğim bazı bilgilerin zihnimde yavaş yavaş kaybolduğunu hissediyorum. Ancak bunun yazılım dünyasına henüz yeni girmiş olmamın doğal bir etkisi olduğunu düşünüyor ve pratik yaptıkça her şeyin yerine oturacağına inanıyorum.\n\n------------------------------------------------------------\nCumartesi – 18 Temmuz 2026\n------------------------------------------------------------\nBugün ise kursun bir sonraki dersine geçerek, web tasarımının en temel iskelet taşlarından biri olan <div> elementini öğrendim. Bu ders sayesinde HTML sayfalarında elementleri nasıl gruplayacağımı ve daha düzenli yapılar kurabileceğimi keşfettim.\n\nDers sürecinde <div> elementine dair edindiğim kritik bilgileri şu şekilde özetledim:\n• <div> (Division) – Kelime anlamı \"bölüm\" olan ve aslında web sayfasında görünmez bir kutu (box) görevi gören elementtir.\n• Container Mantığı – <div> elementi içerisine diğer HTML elementlerini alabilir. Bu yönüyle elementleri bir arada tutan, organize eden ve gruplayan bir container işlevi görür.\n• Block Yapısı – <div> bir block elementtir. Dün öğrendiğim block element mantığında olduğu gibi, kendi konteyneri içerisindeki tüm satırı yatayda tamamen kaplar.\n\nÖzellikle sosyal medya platformları başta olmak üzere günümüzdeki birçok web sitesinin arayüz tasarımında bu elementin bolca ve sıklıkla kullanıldığını öğrendim. YouTube projemizin ilerleyen aşamalarında da bu kutu mantığının işimizi ne kadar kolaylaştıracağını şimdiden görebiliyorum.\n\nCuma günü raporunda da bahsettiğim gibi, display özelliklerini öğrendiğim bir önceki dersin pratiklerini bu dersteki <div> kutu yapısıyla birleştirerek çok daha düzenli bir hale getirdim.\n\nBu ders sonucunda, öğrendiğim yeni yapıları uygulayarak YouTube video kartı prototipini tamamladım."
   }
 ]

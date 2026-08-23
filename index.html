@@ -2,7 +2,11 @@
 <html lang="tr" class="h-full bg-[#FAFAFA] dark:bg-[#0B0F17] text-slate-800 dark:text-slate-200 antialiased">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, viewport-fit=cover" />
+  <meta name="theme-color" content="#FAFAFA" media="(prefers-color-scheme: light)">
+  <meta name="theme-color" content="#0B0F17" media="(prefers-color-scheme: dark)">
+  <meta name="apple-mobile-web-app-capable" content="yes">
+  <meta name="apple-mobile-web-app-status-bar-style" content="default">
   <title>Haftalık Rapor - Araştırma & Pratik Takip Paneli</title>
   <meta name="description" content="Haftalık araştırma notları, tam metin raporları, pratik uygulamalar ve özetlerin modern takip paneli." />
   
@@ -30,6 +34,9 @@
           fontFamily: {
             sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
             mono: ['"JetBrains Mono"', 'monospace'],
+          },
+          screens: {
+            'xs': '420px',
           }
         }
       }
@@ -40,12 +47,34 @@
   <script src="https://unpkg.com/lucide@latest"></script>
 
   <style>
+    * {
+      -webkit-tap-highlight-color: transparent;
+    }
     body {
       font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+      touch-action: manipulation;
+      overflow-x: hidden;
     }
+    
+    /* Mobil & Dokunmatik için Kaydırma İyileştirmeleri */
+    .no-scrollbar::-webkit-scrollbar {
+      display: none;
+    }
+    .no-scrollbar {
+      -ms-overflow-style: none;
+      scrollbar-width: none;
+      -webkit-overflow-scrolling: touch;
+    }
+
     .custom-scrollbar::-webkit-scrollbar {
-      height: 6px;
-      width: 6px;
+      height: 4px;
+      width: 4px;
+    }
+    @media (min-width: 640px) {
+      .custom-scrollbar::-webkit-scrollbar {
+        height: 6px;
+        width: 6px;
+      }
     }
     .custom-scrollbar::-webkit-scrollbar-track {
       background: transparent;
@@ -65,11 +94,15 @@
     }
 
     /* Notion / Doküman Tarzı Tipografi */
+    .document-content {
+      word-break: break-word;
+      overflow-wrap: break-word;
+    }
     .document-content h2 {
-      font-size: 1.25rem;
+      font-size: 1.15rem;
       font-weight: 700;
       color: #0f172a;
-      margin-top: 2rem;
+      margin-top: 1.5rem;
       margin-bottom: 0.75rem;
       padding-bottom: 0.5rem;
       border-bottom: 1px solid #f1f5f9;
@@ -77,33 +110,57 @@
       align-items: center;
       gap: 0.5rem;
     }
+    @media (min-width: 640px) {
+      .document-content h2 {
+        font-size: 1.25rem;
+        margin-top: 2rem;
+      }
+    }
     .dark .document-content h2 {
       color: #f8fafc;
       border-bottom: 1px solid #1e293b;
     }
     .document-content h3 {
-      font-size: 1.05rem;
+      font-size: 1rem;
       font-weight: 700;
       color: #1e293b;
-      margin-top: 1.5rem;
+      margin-top: 1.25rem;
       margin-bottom: 0.5rem;
+    }
+    @media (min-width: 640px) {
+      .document-content h3 {
+        font-size: 1.05rem;
+        margin-top: 1.5rem;
+      }
     }
     .dark .document-content h3 {
       color: #e2e8f0;
     }
     .document-content p {
-      margin-bottom: 1rem;
-      line-height: 1.75;
+      margin-bottom: 0.85rem;
+      line-height: 1.7;
       color: #334155;
+    }
+    @media (min-width: 640px) {
+      .document-content p {
+        margin-bottom: 1rem;
+        line-height: 1.75;
+      }
     }
     .dark .document-content p {
       color: #cbd5e1;
     }
     .document-content ul {
-      margin-bottom: 1.25rem;
-      padding-left: 1.25rem;
+      margin-bottom: 1rem;
+      padding-left: 1rem;
       list-style-type: disc;
       color: #334155;
+    }
+    @media (min-width: 640px) {
+      .document-content ul {
+        margin-bottom: 1.25rem;
+        padding-left: 1.25rem;
+      }
     }
     .dark .document-content ul {
       color: #cbd5e1;
@@ -114,14 +171,20 @@
     }
     .document-content blockquote {
       border-left: 3px solid #0f172a;
-      padding-left: 1rem;
-      margin: 1.25rem 0;
+      padding-left: 0.75rem;
+      margin: 1rem 0;
       font-style: italic;
       color: #475569;
       background-color: #f8fafc;
       padding-top: 0.5rem;
       padding-bottom: 0.5rem;
       border-radius: 0 0.5rem 0.5rem 0;
+    }
+    @media (min-width: 640px) {
+      .document-content blockquote {
+        padding-left: 1rem;
+        margin: 1.25rem 0;
+      }
     }
     .dark .document-content blockquote {
       border-left: 3px solid #94a3b8;
@@ -130,12 +193,13 @@
     }
     .document-content code {
       font-family: "JetBrains Mono", monospace;
-      font-size: 0.85em;
+      font-size: 0.82em;
       background-color: #f1f5f9;
       color: #0f172a;
-      padding: 0.15rem 0.35rem;
+      padding: 0.12rem 0.3rem;
       border-radius: 0.375rem;
       border: 1px solid #e2e8f0;
+      word-break: break-all;
     }
     .dark .document-content code {
       background-color: #1e293b;
@@ -170,31 +234,31 @@
 
   <!-- Üst Navigasyon Çubuğu (Header) -->
   <header class="sticky top-0 z-40 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 no-print transition-colors">
-    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
-      <div class="flex items-center justify-between h-16">
+    <div class="max-w-6xl mx-auto px-3 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-14 sm:h-16 gap-2">
         
         <!-- Sol: Logo ve Başlık -->
-        <div class="flex items-center gap-3 cursor-pointer select-none" onclick="app.navigateTo('ana-sayfa')">
-          <div class="w-9 h-9 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center font-bold text-xs tracking-wider shadow-sm">
+        <div class="flex items-center gap-2 sm:gap-3 cursor-pointer select-none shrink-0" onclick="app.navigateTo('ana-sayfa')">
+          <div class="w-8 h-8 sm:w-9 sm:h-9 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center font-bold text-xs tracking-wider shadow-sm">
             WR
           </div>
           <div>
-            <span class="font-bold text-slate-900 dark:text-white tracking-tight text-base sm:text-lg">Haftalık Rapor</span>
+            <span class="font-bold text-slate-900 dark:text-white tracking-tight text-sm sm:text-base md:text-lg">Haftalık Rapor</span>
             <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden md:block">Araştırma Notları & Pratik Takip Sistemi</p>
           </div>
         </div>
 
         <!-- Sağ: Navigasyon Sekmeleri ve Tema Butonu -->
-        <div class="flex items-center gap-1.5 sm:gap-2">
+        <div class="flex items-center gap-1 sm:gap-2 min-w-0">
           
-          <nav class="flex items-center gap-1 sm:gap-1.5 overflow-x-auto">
+          <nav class="flex items-center gap-1 sm:gap-1.5 overflow-x-auto no-scrollbar py-0.5 max-w-[calc(100vw-150px)] sm:max-w-none">
             <!-- 1. Ana Sayfa -->
             <button 
               id="nav-ana-sayfa"
               onclick="app.navigateTo('ana-sayfa')"
-              class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap"
+              class="nav-btn px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 transition-all flex items-center gap-1 sm:gap-1.5 whitespace-nowrap shrink-0"
             >
-              <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+              <i data-lucide="layout-dashboard" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
               <span>Ana Sayfa</span>
             </button>
 
@@ -202,40 +266,41 @@
             <button 
               id="nav-tam-raporlar"
               onclick="app.navigateTo('tam-raporlar')"
-              class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap"
+              class="nav-btn px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1 sm:gap-1.5 whitespace-nowrap shrink-0"
             >
-              <i data-lucide="file-text" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+              <i data-lucide="file-text" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-indigo-600 dark:text-indigo-400"></i>
               <span>Tam Raporlar</span>
-              <span class="hidden sm:inline-block text-[10px] px-1.5 py-0.2 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold rounded">PDF / Metin</span>
+              <span class="hidden md:inline-block text-[10px] px-1.5 py-0.2 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold rounded">PDF / Metin</span>
             </button>
 
             <!-- 3. İpuçları & Öneriler -->
             <button 
               id="nav-ipuclari"
               onclick="app.navigateTo('ipuclari')"
-              class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap"
+              class="nav-btn px-2.5 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1 sm:gap-1.5 whitespace-nowrap shrink-0"
             >
-              <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i>
-              <span>İpuçları & Öneriler</span>
+              <i data-lucide="lightbulb" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-amber-500"></i>
+              <span class="hidden xs:inline">İpuçları & Öneriler</span>
+              <span class="xs:hidden">İpuçları</span>
             </button>
 
             <!-- 4. Hakkında -->
             <button 
               id="nav-hakkinda"
               onclick="app.openModal('hakkindaModal')"
-              class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap"
+              class="nav-btn px-2 sm:px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1 sm:gap-1.5 whitespace-nowrap shrink-0"
             >
-              <i data-lucide="info" class="w-4 h-4"></i>
+              <i data-lucide="info" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
               <span>Hakkında</span>
             </button>
           </nav>
 
           <!-- Tema Değiştirme Butonu (Güneş / Ay) -->
-          <div class="pl-1.5 sm:pl-2 border-l border-slate-200 dark:border-slate-800">
+          <div class="pl-1 sm:pl-2 border-l border-slate-200 dark:border-slate-800 shrink-0">
             <button 
               id="themeToggleBtn"
               onclick="app.toggleTheme()"
-              class="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-xs"
+              class="p-1.5 sm:p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-xs"
               title="Temayı Değiştir (Açık / Koyu)"
               aria-label="Temayı Değiştir"
             >
@@ -251,63 +316,65 @@
   </header>
 
   <!-- Ana İçerik Alanı -->
-  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
+  <main class="flex-1 max-w-6xl w-full mx-auto px-3 sm:px-6 lg:px-8 py-4 sm:py-8 space-y-4 sm:space-y-6">
 
     <!-- ==================== GÖRÜNÜM 1: ANA SAYFA ==================== -->
-    <div id="view-ana-sayfa" class="space-y-6">
+    <div id="view-ana-sayfa" class="space-y-4 sm:space-y-6">
       
       <!-- CATCHY HERO & İNTERAKTİF TAKVİM ALANI -->
-      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6 transition-colors">
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-8 shadow-xs space-y-4 sm:space-y-6 transition-colors">
         
         <!-- Catchy Başlık ve Alt Yazı -->
-        <div class="text-center max-w-2xl mx-auto space-y-2">
-          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+        <div class="text-center max-w-2xl mx-auto space-y-1 sm:space-y-2">
+          <h1 class="text-xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug">
             Haftalık raporları detaylıca incele
           </h1>
-          <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-medium">
+          <p class="text-xs sm:text-base text-slate-500 dark:text-slate-400 font-medium">
             Neler olup bitiyor
           </p>
         </div>
 
         <!-- İNTERAKTİF TAKVİM SEÇİCİ KUTUCUĞU -->
-        <div class="bg-slate-50 dark:bg-[#161F30] border border-slate-200/90 dark:border-slate-800 rounded-2xl p-4 sm:p-6 space-y-5 max-w-3xl mx-auto transition-colors">
+        <div class="bg-slate-50 dark:bg-[#161F30] border border-slate-200/90 dark:border-slate-800 rounded-xl sm:rounded-2xl p-3 sm:p-6 space-y-3 sm:space-y-5 max-w-3xl mx-auto transition-colors">
           
           <!-- Üst Bar: Yıl & Ay Seçimi ve Ok Tuşları -->
-          <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-200 dark:border-slate-800">
+          <div class="flex items-center justify-between gap-2 pb-2.5 sm:pb-3 border-b border-slate-200 dark:border-slate-800">
             
             <!-- Sol: Önceki Ay Oku -->
             <button 
               onclick="app.prevMonth()" 
-              class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors shadow-xs"
+              class="p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors shadow-xs shrink-0"
               title="Önceki Ay"
             >
               <i data-lucide="chevron-left" class="w-4 h-4"></i>
             </button>
 
             <!-- Orta: Yıl ve Ay Seçim Göstergesi -->
-            <div class="flex items-center gap-3">
-              <div class="flex items-center gap-1.5 bg-white dark:bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
-                <i data-lucide="calendar" class="w-4 h-4 text-slate-500 dark:text-slate-400"></i>
-                <span id="calendarMonthYearLabel" class="text-sm font-bold text-slate-900 dark:text-white">
+            <div class="flex items-center gap-1.5 sm:gap-3 min-w-0">
+              <div class="flex items-center gap-1.5 bg-white dark:bg-slate-800 px-2.5 sm:px-3 py-1 sm:py-1.5 rounded-lg sm:rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+                <i data-lucide="calendar" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-slate-500 dark:text-slate-400 shrink-0"></i>
+                <span id="calendarMonthYearLabel" class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white whitespace-nowrap">
                   Haziran 2026
                 </span>
               </div>
 
               <!-- Hızlı Ay Değiştirici Butonları -->
-              <div class="hidden sm:flex items-center gap-1">
+              <div class="flex items-center gap-1">
                 <button 
                   onclick="app.setCalendarMonth(5, 2026)" 
                   id="btnMonth-5"
-                  class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-900 dark:bg-white text-white dark:text-slate-900 transition-all"
+                  class="px-2 sm:px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-semibold bg-slate-900 dark:bg-white text-white dark:text-slate-900 transition-all cursor-pointer"
                 >
-                  Haziran
+                  <span class="hidden sm:inline">Haziran</span>
+                  <span class="sm:hidden">Haz</span>
                 </button>
                 <button 
                   onclick="app.setCalendarMonth(6, 2026)" 
                   id="btnMonth-6"
-                  class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 transition-all"
+                  class="px-2 sm:px-2.5 py-1 rounded-lg text-[11px] sm:text-xs font-medium bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 transition-all cursor-pointer"
                 >
-                  Temmuz
+                  <span class="hidden sm:inline">Temmuz</span>
+                  <span class="sm:hidden">Tem</span>
                 </button>
               </div>
             </div>
@@ -315,7 +382,7 @@
             <!-- Sağ: Sonraki Ay Oku -->
             <button 
               onclick="app.nextMonth()" 
-              class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors shadow-xs"
+              class="p-1.5 sm:p-2 rounded-lg sm:rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors shadow-xs shrink-0"
               title="Sonraki Ay"
             >
               <i data-lucide="chevron-right" class="w-4 h-4"></i>
@@ -324,31 +391,35 @@
           </div>
 
           <!-- Haftanın Günleri Başlıkları -->
-          <div class="grid grid-cols-7 gap-1.5 text-center">
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Pzt</span>
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Sal</span>
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Çar</span>
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Per</span>
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Cum</span>
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Cmt</span>
-            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Paz</span>
+          <div class="grid grid-cols-7 gap-1 sm:gap-1.5 text-center">
+            <span class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider py-0.5 sm:py-1">Pzt</span>
+            <span class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider py-0.5 sm:py-1">Sal</span>
+            <span class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider py-0.5 sm:py-1">Çar</span>
+            <span class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider py-0.5 sm:py-1">Per</span>
+            <span class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider py-0.5 sm:py-1">Cum</span>
+            <span class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider py-0.5 sm:py-1">Cmt</span>
+            <span class="text-[10px] sm:text-[11px] font-bold text-slate-400 uppercase tracking-wider py-0.5 sm:py-1">Paz</span>
           </div>
 
           <!-- İnteraktif Gün Kutucukları Izgarası -->
-          <div id="calendarGrid" class="grid grid-cols-7 gap-1.5 sm:gap-2">
+          <div id="calendarGrid" class="grid grid-cols-7 gap-1 sm:gap-2">
             <!-- JS Dinamik Olarak Kutucukları Üretir -->
           </div>
 
           <!-- Takvim Altı Bilgilendirme / Seçili Gün Özeti -->
-          <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
-            <div class="flex items-center gap-2">
-              <span class="w-2.5 h-2.5 rounded-full bg-slate-900 dark:bg-white"></span>
-              <span class="text-slate-600 dark:text-slate-300 font-medium">Seçili Gün</span>
-              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 ml-2"></span>
-              <span class="text-slate-600 dark:text-slate-300 font-medium">Rapor Kaydı Var</span>
+          <div class="pt-2.5 sm:pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row sm:items-center justify-between gap-2 text-xs">
+            <div class="flex items-center gap-2 flex-wrap text-[11px] sm:text-xs">
+              <div class="flex items-center gap-1.5">
+                <span class="w-2 h-2 rounded-full bg-slate-900 dark:bg-white"></span>
+                <span class="text-slate-600 dark:text-slate-300 font-medium">Seçili Gün</span>
+              </div>
+              <div class="flex items-center gap-1.5 ml-1">
+                <span class="w-2 h-2 rounded-full bg-emerald-500"></span>
+                <span class="text-slate-600 dark:text-slate-300 font-medium">Rapor Kaydı Var</span>
+              </div>
             </div>
             
-            <div id="calendarSelectedInfo" class="text-slate-700 dark:text-slate-200 font-semibold bg-white dark:bg-slate-800 px-3 py-1 rounded-lg border border-slate-200 dark:border-slate-700">
+            <div id="calendarSelectedInfo" class="text-slate-700 dark:text-slate-200 font-semibold bg-white dark:bg-slate-800 px-2.5 sm:px-3 py-1 rounded-lg border border-slate-200 dark:border-slate-700 text-[11px] sm:text-xs truncate">
               Seçili: Pazartesi (29 Haziran 2026)
             </div>
           </div>
@@ -358,26 +429,26 @@
       </section>
 
       <!-- SEÇİLİ HAFTA BAŞLIK & İSTATİSTİK KARTI -->
-      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-7 shadow-xs transition-colors">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-100 dark:border-slate-800">
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-7 shadow-xs transition-colors">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 sm:pb-5 border-b border-slate-100 dark:border-slate-800">
           <div>
-            <div class="flex items-center gap-2.5 mb-2">
+            <div class="flex items-center gap-2 sm:gap-2.5 mb-1.5 sm:mb-2">
               <span id="activeWeekNumber" class="px-2.5 py-1 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-semibold rounded-md">
-                1. Hafta
+                1. Haftalık Rapor
               </span>
               <span id="activeWeekDates" class="text-xs font-medium text-slate-500 dark:text-slate-400 font-mono">
                 29 Haziran – 04 Temmuz 2026
               </span>
             </div>
-            <h2 id="activeWeekTitle" class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight">
+            <h2 id="activeWeekTitle" class="text-base sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight leading-snug">
               Web Teknolojileri, Yapay Zeka, Dijital Pazarlama ve HTML Temelleri
             </h2>
           </div>
 
-          <div class="flex items-center gap-2 self-start md:self-auto">
+          <div class="flex items-center gap-2 self-stretch sm:self-start md:self-auto shrink-0">
             <button 
               onclick="app.navigateTo('tam-raporlar')" 
-              class="px-3.5 py-2 text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 rounded-xl transition-colors inline-flex items-center gap-1.5 shadow-xs border border-indigo-200 dark:border-indigo-800"
+              class="flex-1 sm:flex-initial justify-center px-3.5 py-2 text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 rounded-xl transition-colors inline-flex items-center gap-1.5 shadow-xs border border-indigo-200 dark:border-indigo-800 cursor-pointer"
               title="Orijinal Tam Rapor Metnini Gör"
             >
               <i data-lucide="file-text" class="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400"></i>
@@ -385,7 +456,7 @@
             </button>
             <button 
               onclick="window.print()" 
-              class="px-3.5 py-2 text-xs font-semibold border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl transition-colors inline-flex items-center gap-1.5 shadow-xs"
+              class="flex-1 sm:flex-initial justify-center px-3.5 py-2 text-xs font-semibold border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl transition-colors inline-flex items-center gap-1.5 shadow-xs cursor-pointer"
               title="Raporu Yazdır veya PDF Kaydet"
             >
               <i data-lucide="printer" class="w-3.5 h-3.5"></i>
@@ -394,27 +465,27 @@
           </div>
         </div>
 
-        <p id="activeWeekDesc" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mt-4">
+        <p id="activeWeekDesc" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed mt-3 sm:mt-4">
           Bu rapor, verilen konular üzerinde yapılan araştırmalar, alınan notlar, edinilen bilgiler ve üzerinde çalışılan pratik uygulamaların haftalık bir derlemesidir.
         </p>
 
         <!-- Özet Sayaçlar / Şerit -->
-        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs">
-          <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-3 border border-slate-100 dark:border-slate-800">
-            <span class="text-slate-400 block text-[11px]">Toplam Çalışma</span>
-            <strong id="statSaat" class="text-slate-800 dark:text-slate-100 font-semibold text-sm">38 Saat</strong>
+        <div class="grid grid-cols-2 lg:grid-cols-4 gap-2 sm:gap-3 mt-4 pt-3 sm:pt-4 border-t border-slate-100 dark:border-slate-800 text-xs">
+          <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-2.5 sm:p-3 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[10px] sm:text-[11px]">Toplam Çalışma</span>
+            <strong id="statSaat" class="text-slate-800 dark:text-slate-100 font-semibold text-xs sm:text-sm block truncate">45 Saat (6G × 7.5s)</strong>
           </div>
-          <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-3 border border-slate-100 dark:border-slate-800">
-            <span class="text-slate-400 block text-[11px]">İncelenen Konu</span>
-            <strong id="statKonu" class="text-slate-800 dark:text-slate-100 font-semibold text-sm">14 Başlık</strong>
+          <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-2.5 sm:p-3 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[10px] sm:text-[11px]">İncelenen Konu</span>
+            <strong id="statKonu" class="text-slate-800 dark:text-slate-100 font-semibold text-xs sm:text-sm block">14 Başlık</strong>
           </div>
-          <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-3 border border-slate-100 dark:border-slate-800">
-            <span class="text-slate-400 block text-[11px]">Kodlanan Dosya</span>
-            <strong id="statDosya" class="text-slate-800 dark:text-slate-100 font-semibold text-sm">6 HTML Sayfası</strong>
+          <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-2.5 sm:p-3 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[10px] sm:text-[11px]">Kodlanan Dosya</span>
+            <strong id="statDosya" class="text-slate-800 dark:text-slate-100 font-semibold text-xs sm:text-sm block">6 HTML Sayfası</strong>
           </div>
-          <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-3 border border-slate-100 dark:border-slate-800">
-            <span class="text-slate-400 block text-[11px]">Rapor Durumu</span>
-            <strong class="text-emerald-700 dark:text-emerald-400 font-semibold text-sm flex items-center gap-1">
+          <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-2.5 sm:p-3 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[10px] sm:text-[11px]">Rapor Durumu</span>
+            <strong class="text-emerald-700 dark:text-emerald-400 font-semibold text-xs sm:text-sm flex items-center gap-1">
               <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i> Tamamlandı
             </strong>
           </div>
@@ -422,53 +493,53 @@
       </section>
 
       <!-- GÜNLÜK İNCELEME NOTLARI (GÜN SEKMELERİ + DETAYLI İÇERİK) -->
-      <section class="space-y-4">
+      <section class="space-y-3 sm:space-y-4">
         <div class="flex items-center justify-between">
           <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
             <i data-lucide="calendar-days" class="w-4 h-4 text-slate-400"></i>
             Günlük İnceleme Notları
           </h3>
-          <span class="text-xs text-slate-400 dark:text-slate-500">Güne tıklayarak ayrıntılı notları inceleyin</span>
+          <span class="text-[11px] sm:text-xs text-slate-400 dark:text-slate-500 hidden xs:inline">Güne dokunarak notları inceleyin</span>
         </div>
 
         <!-- Gün Sekmeleri Butonları -->
-        <div id="dayTabsContainer" class="flex items-center gap-2 overflow-x-auto pb-1 custom-scrollbar">
+        <div id="dayTabsContainer" class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1.5 no-scrollbar -mx-1 px-1 sm:mx-0 sm:px-0">
           <!-- JS dinamik olarak doldurur -->
         </div>
 
         <!-- Seçili Günün İçerik Alanı -->
-        <div id="dayContentArea" class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-7 shadow-xs space-y-6 transition-colors">
+        <div id="dayContentArea" class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-7 shadow-xs space-y-5 sm:space-y-6 transition-colors">
           <!-- JS dinamik olarak doldurur -->
         </div>
       </section>
 
       <!-- HAFTALIK GENEL DEĞERLENDİRME KARTI -->
-      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-7 shadow-xs space-y-5 transition-colors">
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-4 sm:p-7 shadow-xs space-y-4 sm:space-y-5 transition-colors">
         <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
           <div class="flex items-center gap-2.5">
-            <div class="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 flex items-center justify-center">
+            <div class="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 flex items-center justify-center shrink-0">
               <i data-lucide="award" class="w-4 h-4"></i>
             </div>
             <div>
-              <h3 class="text-base font-bold text-slate-900 dark:text-white">Haftalık Genel Değerlendirme</h3>
-              <p class="text-xs text-slate-500 dark:text-slate-400">Haftanın öne çıkan kazanımları ve gelecek hedefleri</p>
+              <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Haftalık Genel Değerlendirme</h3>
+              <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">Haftanın öne çıkan kazanımları ve hedefleri</p>
             </div>
           </div>
-          <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">
+          <span class="text-[11px] sm:text-xs font-semibold px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full whitespace-nowrap">
             Hafta Sonu Özeti
           </span>
         </div>
 
-        <p id="haftalikGenelOzetMetni" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        <p id="haftalikGenelOzetMetni" class="text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
           <!-- JS ile doldurulur -->
         </p>
 
-        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-4 sm:gap-5 pt-1 sm:pt-2">
           
           <!-- Kazanımlar -->
-          <div class="bg-slate-50 dark:bg-[#161F30] rounded-xl p-4 border border-slate-100 dark:border-slate-800 space-y-3">
+          <div class="bg-slate-50 dark:bg-[#161F30] rounded-xl p-3.5 sm:p-4 border border-slate-100 dark:border-slate-800 space-y-2.5 sm:space-y-3">
             <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-              <i data-lucide="check-check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+              <i data-lucide="check-check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"></i>
               Önemli Kazanımlar
             </h4>
             <ul id="haftalikKazanimlarListesi" class="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-normal">
@@ -477,9 +548,9 @@
           </div>
 
           <!-- Hedefler -->
-          <div class="bg-slate-50 dark:bg-[#161F30] rounded-xl p-4 border border-slate-100 dark:border-slate-800 space-y-3">
+          <div class="bg-slate-50 dark:bg-[#161F30] rounded-xl p-3.5 sm:p-4 border border-slate-100 dark:border-slate-800 space-y-2.5 sm:space-y-3">
             <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
-              <i data-lucide="compass" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+              <i data-lucide="compass" class="w-4 h-4 text-indigo-600 dark:text-indigo-400 shrink-0"></i>
               Gelecek Hafta Hedefleri
             </h4>
             <ul id="haftalikHedeflerListesi" class="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-normal">
@@ -494,19 +565,19 @@
 
 
     <!-- ==================== GÖRÜNÜM 2: TAM RAPORLAR ==================== -->
-    <div id="view-tam-raporlar" class="hidden space-y-6">
+    <div id="view-tam-raporlar" class="hidden space-y-4 sm:space-y-6">
       
       <!-- Üst Başlık & Takvim / Hafta Seçici -->
-      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-7 shadow-xs space-y-6 transition-colors">
-        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-100 dark:border-slate-800">
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-7 shadow-xs space-y-4 sm:space-y-6 transition-colors">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-4 sm:pb-5 border-b border-slate-100 dark:border-slate-800">
           <div>
             <div class="flex items-center gap-2 mb-1.5">
               <span class="px-2.5 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold text-xs">
                 Orijinal Ham Metin & PDF
               </span>
-              <span class="text-xs font-mono text-slate-400 dark:text-slate-500">Notion Tarzı Görünüm</span>
+              <span class="text-[11px] sm:text-xs font-mono text-slate-400 dark:text-slate-500">Notion Tarzı Görünüm</span>
             </div>
-            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            <h2 class="text-lg sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-snug">
               Tam Haftalık Araştırma Raporları
             </h2>
             <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
@@ -520,17 +591,17 @@
             <button 
               id="btnDownloadPdf"
               onclick="app.downloadPdfReport()" 
-              class="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-2"
+              class="flex-1 sm:flex-initial justify-center px-3.5 sm:px-4 py-2 sm:py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-2 cursor-pointer"
               title="Orijinal PDF Belgesini İndir / Yazdır"
             >
-              <i data-lucide="download" class="w-4 h-4 text-emerald-400 dark:text-emerald-600"></i>
+              <i data-lucide="download" class="w-3.5 h-3.5 sm:w-4 sm:h-4 text-emerald-400 dark:text-emerald-600"></i>
               <span>Orijinal PDF'i İndir</span>
             </button>
 
             <!-- Metni Kopyala Butonu -->
             <button 
               onclick="app.copyRawContent()" 
-              class="px-3.5 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 border border-slate-200 dark:border-slate-700"
+              class="flex-1 sm:flex-initial justify-center px-3 sm:px-3.5 py-2 sm:py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 border border-slate-200 dark:border-slate-700 cursor-pointer"
               title="Tüm rapor metnini panoya kopyala"
             >
               <i data-lucide="copy" class="w-3.5 h-3.5"></i>
@@ -540,7 +611,7 @@
             <!-- Yazdır Butonu -->
             <button 
               onclick="window.print()" 
-              class="px-3.5 py-2.5 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-200 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 border border-slate-200 dark:border-slate-700"
+              class="px-3 sm:px-3.5 py-2 sm:py-2.5 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-200 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 border border-slate-200 dark:border-slate-700 cursor-pointer"
               title="Sayfayı Doğrudan Yazdır"
             >
               <i data-lucide="printer" class="w-3.5 h-3.5"></i>
@@ -549,57 +620,85 @@
           </div>
         </div>
 
-        <!-- Hafta & Takvim Seçim Şeridi -->
-        <div class="bg-slate-50 dark:bg-[#161F30] border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
-          <div class="flex items-center gap-3">
-            <div class="w-9 h-9 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center shadow-xs shrink-0">
-              <i data-lucide="calendar" class="w-4 h-4"></i>
+        <!-- HİYERARŞİK DÖNEM & RAPOR GEZGİNİ (YIL -> AY -> HAFTA) -->
+        <div class="bg-slate-50 dark:bg-[#161F30] border border-slate-200/80 dark:border-slate-800 rounded-xl sm:rounded-2xl p-3.5 sm:p-5 space-y-3 sm:space-y-4">
+          
+          <!-- 1. Kademe: Yıl & Görüntülenen Rapor -->
+          <div class="flex flex-col sm:flex-row sm:items-center justify-between gap-2.5 pb-2.5 sm:pb-3 border-b border-slate-200/70 dark:border-slate-800">
+            <div class="flex items-center gap-2.5">
+              <div class="w-7 h-7 sm:w-8 sm:h-8 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center shadow-xs shrink-0">
+                <i data-lucide="calendar" class="w-3.5 h-3.5 sm:w-4 sm:h-4"></i>
+              </div>
+              <div class="min-w-0">
+                <span class="text-[9px] sm:text-[10px] font-bold text-slate-400 uppercase tracking-wider block">Görüntülenen Rapor</span>
+                <strong id="rawReportWeekTitle" class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white block truncate">
+                  1. Haftalık Rapor (29 Haziran – 04 Temmuz 2026)
+                </strong>
+              </div>
             </div>
-            <div>
-              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Görüntülenen Rapor</span>
-              <strong id="rawReportWeekTitle" class="text-sm font-bold text-slate-900 dark:text-white">
-                1. Hafta (29 Haziran – 04 Temmuz 2026)
-              </strong>
+
+            <div class="flex items-center gap-2 shrink-0 self-start sm:self-auto">
+              <span class="text-xs font-semibold text-slate-500 dark:text-slate-400">Dönem Seçimi:</span>
+              <span id="rawReportYearLabel" class="px-2.5 py-0.5 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-xs">
+                2026
+              </span>
             </div>
           </div>
 
-          <!-- Hafta Değiştirici Butonları -->
-          <div id="rawReportWeekSelector" class="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto">
-            <!-- JS ile doldurulur -->
+          <!-- 2. Kademe: Ay Seçimi -->
+          <div class="space-y-1.5">
+            <span class="text-xs font-semibold text-slate-700 dark:text-slate-300 block">1. Adım: Ay Seçin</span>
+            <div id="rawReportMonthSelector" class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 no-scrollbar -mx-1 px-1 sm:mx-0 sm:px-0">
+              <!-- JS ile doldurulur -->
+            </div>
           </div>
+
+          <!-- 3. Kademe: Seçilen Ayın Haftaları -->
+          <div class="space-y-1.5 pt-2 border-t border-slate-200/70 dark:border-slate-800">
+            <div class="flex items-center justify-between">
+              <span class="text-xs font-semibold text-slate-700 dark:text-slate-300">2. Adım: Haftalık Rapor Seçin</span>
+              <span id="rawReportActiveMonthIndicator" class="text-[11px] sm:text-xs font-medium text-indigo-600 dark:text-indigo-400">
+                Haziran 2026 Haftalık Raporları
+              </span>
+            </div>
+            <div id="rawReportWeekSelector" class="flex flex-wrap items-center gap-1.5 sm:gap-2">
+              <!-- JS ile dinamik olarak haftalar doldurulur -->
+            </div>
+          </div>
+
         </div>
       </section>
 
       <!-- DOKÜMAN / MAKALE OKUMA ALANI (NOTION TARZI ELEGANT OKUMA KARTI) -->
-      <article class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xs space-y-8 max-w-4xl mx-auto print-full-width transition-colors">
+      <article class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-10 lg:p-12 shadow-xs space-y-6 sm:space-y-8 max-w-4xl mx-auto print-full-width transition-colors">
         
         <!-- Doküman Başlığı & Meta Bilgileri -->
-        <header class="space-y-4 pb-6 border-b border-slate-200 dark:border-slate-800">
+        <header class="space-y-3 sm:space-y-4 pb-4 sm:pb-6 border-b border-slate-200 dark:border-slate-800">
           <div class="flex flex-wrap items-center justify-between gap-2">
-            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-semibold">
+            <div class="inline-flex items-center gap-2 px-2.5 sm:px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-semibold">
               <i data-lucide="book-open" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400"></i>
-              <span id="docMetaHafta">Haftalık Rapor 1</span>
+              <span id="docMetaHafta">1. Haftalık Rapor</span>
             </div>
-            <span id="docMetaTarih" class="text-xs font-mono text-slate-500 dark:text-slate-400 font-medium bg-slate-50 dark:bg-slate-800 px-2.5 py-1 rounded border border-slate-100 dark:border-slate-700">
+            <span id="docMetaTarih" class="text-[11px] sm:text-xs font-mono text-slate-500 dark:text-slate-400 font-medium bg-slate-50 dark:bg-slate-800 px-2.5 py-1 rounded border border-slate-100 dark:border-slate-700">
               29 Haziran – 4 Temmuz 2026
             </span>
           </div>
 
-          <h1 id="docTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+          <h1 id="docTitle" class="text-xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
             Web Teknolojileri, Yapay Zeka, Dijital Pazarlama ve HTML Temelleri
           </h1>
 
-          <div class="flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400 pt-1">
+          <div class="flex flex-wrap items-center gap-2.5 sm:gap-4 text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 pt-1">
             <div class="flex items-center gap-1.5">
               <i data-lucide="user" class="w-3.5 h-3.5 text-slate-400"></i>
-              <span id="docAuthor" class="text-slate-700 dark:text-slate-300 font-medium">Araştırmacı (Teknoloji & Pazarlama)</span>
+              <span id="docAuthor" class="text-slate-700 dark:text-slate-300 font-medium">Araştırmacı</span>
             </div>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <span class="text-slate-300 dark:text-slate-700 hidden xs:inline">•</span>
             <div class="flex items-center gap-1.5">
               <i data-lucide="file-check" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i>
               <span class="text-emerald-700 dark:text-emerald-400 font-medium">Doğrulanmış Orijinal Doküman</span>
             </div>
-            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <span class="text-slate-300 dark:text-slate-700 hidden xs:inline">•</span>
             <div class="flex items-center gap-1.5">
               <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400"></i>
               <span id="docReadingTime">~5 dk okuma süresi</span>
@@ -613,7 +712,7 @@
         </div>
 
         <!-- Doküman Sonu İmza & Onay Kartı -->
-        <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+        <footer class="pt-6 sm:pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
           <div class="flex items-center gap-2">
             <div class="w-7 h-7 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center font-bold text-[10px]">
               WR
@@ -624,7 +723,7 @@
           <div class="flex items-center gap-2">
             <button 
               onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
-              class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex items-center gap-1"
+              class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex items-center gap-1 cursor-pointer"
             >
               <i data-lucide="arrow-up" class="w-3 h-3"></i>
               <span>Başa Dön</span>
@@ -638,26 +737,26 @@
 
 
     <!-- ==================== GÖRÜNÜM 3: İPUÇLARI & ÖNERİLER (HİYERARŞİK TARİH GEZGİNİ) ==================== -->
-    <div id="view-ipuclari" class="hidden space-y-6">
+    <div id="view-ipuclari" class="hidden space-y-4 sm:space-y-6">
       
       <!-- Başlık Kartı -->
-      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs transition-colors">
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xs transition-colors">
         <div class="flex items-center gap-3">
-          <div class="w-9 h-9 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 flex items-center justify-center">
+          <div class="w-9 h-9 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 flex items-center justify-center shrink-0">
             <i data-lucide="sparkles" class="w-5 h-5"></i>
           </div>
           <div>
-            <h2 class="text-xl font-bold text-slate-900 dark:text-white">İpuçları & Gelecek Önerileri</h2>
+            <h2 class="text-base sm:text-xl font-bold text-slate-900 dark:text-white">İpuçları & Gelecek Önerileri</h2>
             <p class="text-xs text-slate-500 dark:text-slate-400">Yıl, ay ve hafta bazında derlenmiş geliştirme tüyoları ve araştırma tavsiyeleri.</p>
           </div>
         </div>
       </section>
 
       <!-- HİYERARŞİK TARİH GEZGİNİ KUTUSU (YIL -> AY -> HAFTA) -->
-      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-5 transition-colors">
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-4 sm:p-6 shadow-xs space-y-4 sm:space-y-5 transition-colors">
         
         <!-- 1. Kademe: Yıl Başlığı -->
-        <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center justify-between pb-2.5 sm:pb-3 border-b border-slate-100 dark:border-slate-800">
           <div class="flex items-center gap-2">
             <i data-lucide="calendar" class="w-4 h-4 text-slate-500 dark:text-slate-400"></i>
             <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Dönem Seçimi:</span>
@@ -665,26 +764,26 @@
               2026
             </span>
           </div>
-          <span class="text-[11px] text-slate-400">Bir ay ve hafta seçerek önerileri görüntüleyin</span>
+          <span class="text-[10px] sm:text-[11px] text-slate-400 hidden xs:inline">Ay ve hafta seçerek önerileri görüntüleyin</span>
         </div>
 
         <!-- 2. Kademe: Yan Yana Aylar -->
-        <div class="space-y-2">
+        <div class="space-y-1.5 sm:space-y-2">
           <span class="text-xs font-semibold text-slate-700 dark:text-slate-300 block">1. Adım: Ay Seçin</span>
-          <div id="tipsMonthSelector" class="flex items-center gap-2 overflow-x-auto pb-1 custom-scrollbar">
+          <div id="tipsMonthSelector" class="flex items-center gap-1.5 sm:gap-2 overflow-x-auto pb-1 no-scrollbar -mx-1 px-1 sm:mx-0 sm:px-0">
             <!-- JS ile doldurulur: Haziran, Temmuz, Ağustos, Eylül vb. -->
           </div>
         </div>
 
         <!-- 3. Kademe: Seçilen Ayın Haftaları -->
-        <div class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+        <div class="space-y-1.5 sm:space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
           <div class="flex items-center justify-between">
-            <span class="text-xs font-semibold text-slate-700 dark:text-slate-300">2. Adım: Hafta Seçin</span>
-            <span id="tipsActiveMonthIndicator" class="text-xs font-medium text-indigo-600 dark:text-indigo-400">
-              Haziran 2026 Haftaları
+            <span class="text-xs font-semibold text-slate-700 dark:text-slate-300">2. Adım: Haftalık Rapor Seçin</span>
+            <span id="tipsActiveMonthIndicator" class="text-[11px] sm:text-xs font-medium text-indigo-600 dark:text-indigo-400">
+              Haziran 2026 Haftalık Raporları
             </span>
           </div>
-          <div id="tipsWeekSelector" class="flex flex-wrap items-center gap-2">
+          <div id="tipsWeekSelector" class="flex flex-wrap items-center gap-1.5 sm:gap-2">
             <!-- JS ile dinamik olarak haftalar doldurulur -->
           </div>
         </div>
@@ -692,8 +791,8 @@
       </section>
 
       <!-- SEÇİLİ HAFTANIN İPUÇLARI & ÖNERİLERİ (İKİ GENİŞ BENTO KART) -->
-      <div id="tipsContentDisplay" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
-        <!-- JS ile dinamik olarak 2 kart (Geliştirme Önerileri & İleriye Dönük Araştırma) doldurulur -->
+      <div id="tipsContentDisplay" class="grid grid-cols-1 lg:grid-cols-2 gap-4 sm:gap-6">
+        <!-- JS ile dinamik olarak 2 kart doldurulur -->
       </div>
 
     </div>
@@ -701,9 +800,9 @@
   </main>
 
 
-  <!-- ==================== HAKKINDA MODAL (YENİ KULLANICI ODAKLI METİN) ==================== -->
-  <div id="hakkindaModal" class="fixed inset-0 z-50 bg-slate-900/50 dark:bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 hidden no-print">
-    <div class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl space-y-5 animate-in fade-in zoom-in duration-150 transition-colors">
+  <!-- ==================== HAKKINDA MODAL ==================== -->
+  <div id="hakkindaModal" class="fixed inset-0 z-50 bg-slate-900/50 dark:bg-black/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 hidden no-print">
+    <div class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl max-w-lg w-full p-4 sm:p-7 shadow-2xl space-y-4 sm:space-y-5 animate-in fade-in zoom-in duration-150 transition-colors max-h-[92vh] overflow-y-auto custom-scrollbar">
       
       <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
         <div class="flex items-center gap-2.5">
@@ -711,25 +810,25 @@
             WR
           </div>
           <div>
-            <h3 class="text-base font-bold text-slate-900 dark:text-white">Haftalık Rapor Hakkında</h3>
-            <p class="text-xs text-slate-500 dark:text-slate-400">Kullanıcı Odaklı Takip & Analiz Paneli</p>
+            <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Haftalık Rapor Hakkında</h3>
+            <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400">Kullanıcı Odaklı Takip & Analiz Paneli</p>
           </div>
         </div>
         <button 
           onclick="app.closeModal('hakkindaModal')"
-          class="p-1 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          class="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
           title="Kapat"
         >
           <i data-lucide="x" class="w-5 h-5"></i>
         </button>
       </div>
 
-      <div class="space-y-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+      <div class="space-y-3 sm:space-y-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
         <p class="text-slate-700 dark:text-slate-200 font-medium">
           Bu uygulama, haftalık araştırma ve pratik çalışmaların daha düzenli, şeffaf ve anlaşılır biçimde sunulması için tasarlanmıştır:
         </p>
 
-        <div class="bg-slate-50 dark:bg-[#161F30] rounded-2xl p-4 border border-slate-100 dark:border-slate-800 space-y-3">
+        <div class="bg-slate-50 dark:bg-[#161F30] rounded-xl sm:rounded-2xl p-3.5 sm:p-4 border border-slate-100 dark:border-slate-800 space-y-3">
           <ul class="space-y-2.5 text-xs text-slate-700 dark:text-slate-200">
             <li class="flex items-start gap-2.5">
               <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
@@ -766,7 +865,7 @@
       <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-end">
         <button 
           onclick="app.closeModal('hakkindaModal')"
-          class="px-4 py-2 bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 rounded-xl text-xs font-semibold transition-colors"
+          class="px-4 py-2 bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 rounded-xl text-xs font-semibold transition-colors cursor-pointer"
         >
           Anladım & Kapat
         </button>
@@ -787,6 +886,10 @@
       calendarYear: 2026,
       calendarMonth: 5, // 5 = Haziran (0-indexed: 0=Ocak, 5=Haziran, 6=Temmuz)
       
+      // Tam Raporlar Hiyerarşi Durumu
+      rawReportYear: 2026,
+      rawReportMonthIndex: 5, // Varsayılan Haziran (5)
+
       // İpuçları & Öneriler Hiyerarşi Durumu
       tipsYear: 2026,
       tipsMonthIndex: 5, // Varsayılan Haziran (5)
@@ -957,24 +1060,24 @@
             cellsHtml += `
               <button 
                 onclick="app.selectCalendarDay('${reportDay.reportIndex}', '${reportDay.dayObj.id}')"
-                class="min-h-[56px] sm:min-h-[64px] p-2 rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
+                class="min-h-[48px] xs:min-h-[54px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
                   isSelected 
-                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-md ring-2 ring-slate-900 dark:ring-white ring-offset-2 dark:ring-offset-[#161F30]' 
+                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-md ring-2 ring-slate-900 dark:ring-white ring-offset-1 sm:ring-offset-2 dark:ring-offset-[#161F30]' 
                     : 'bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-slate-800 dark:text-slate-200 hover:bg-emerald-100/90 dark:hover:bg-emerald-900/50 shadow-xs'
                 }"
               >
                 <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-800 dark:text-slate-200'}">${dayNum}</span>
+                  <span class="text-[11px] sm:text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-800 dark:text-slate-200'}">${dayNum}</span>
                   <span class="w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'}"></span>
                 </div>
-                <span class="text-[10px] truncate block ${isSelected ? 'text-slate-300 dark:text-slate-700 font-medium' : 'text-emerald-800 dark:text-emerald-300 font-medium'}">
+                <span class="text-[9px] sm:text-[10px] truncate block ${isSelected ? 'text-slate-300 dark:text-slate-700 font-medium' : 'text-emerald-800 dark:text-emerald-300 font-medium'}">
                   ${reportDay.dayObj.gun}
                 </span>
               </button>
             `;
           } else {
             cellsHtml += `
-              <div class="min-h-[56px] sm:min-h-[64px] p-2 rounded-xl border border-transparent text-slate-300 dark:text-slate-700 text-xs font-medium select-none bg-slate-100/30 dark:bg-slate-800/20">
+              <div class="min-h-[48px] xs:min-h-[54px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-transparent text-slate-300 dark:text-slate-700 text-[11px] sm:text-xs font-medium select-none bg-slate-100/30 dark:bg-slate-800/20">
                 ${dayNum}
               </div>
             `;
@@ -990,22 +1093,22 @@
             cellsHtml += `
               <button 
                 onclick="app.selectCalendarDay('${reportDay.reportIndex}', '${reportDay.dayObj.id}')"
-                class="min-h-[56px] sm:min-h-[64px] p-2 rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
+                class="min-h-[48px] xs:min-h-[54px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
                   isSelected 
-                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-md ring-2 ring-slate-900 dark:ring-white ring-offset-2 dark:ring-offset-[#161F30]' 
+                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-md ring-2 ring-slate-900 dark:ring-white ring-offset-1 sm:ring-offset-2 dark:ring-offset-[#161F30]' 
                     : 'bg-emerald-50 dark:bg-emerald-950/50 border-emerald-300 dark:border-emerald-800 text-slate-800 dark:text-slate-100 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 shadow-xs'
                 }"
                 title="${reportDay.dayObj.gun} - ${reportDay.dayObj.etiket}"
               >
                 <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-900 dark:text-white'}">${dayNum}</span>
-                  <span class="w-2 h-2 rounded-full ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'} animate-pulse"></span>
+                  <span class="text-[11px] sm:text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-900 dark:text-white'}">${dayNum}</span>
+                  <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'} animate-pulse"></span>
                 </div>
                 <div>
-                  <span class="text-[10px] font-bold block ${isSelected ? 'text-slate-200 dark:text-slate-800' : 'text-emerald-900 dark:text-emerald-300'}">
+                  <span class="text-[9px] sm:text-[10px] font-bold block ${isSelected ? 'text-slate-200 dark:text-slate-800' : 'text-emerald-900 dark:text-emerald-300'}">
                     ${reportDay.dayObj.gun}
                   </span>
-                  <span class="text-[9px] truncate block ${isSelected ? 'text-slate-300 dark:text-slate-700' : 'text-slate-600 dark:text-slate-400'}">
+                  <span class="text-[8px] sm:text-[9px] truncate block ${isSelected ? 'text-slate-300 dark:text-slate-700' : 'text-slate-600 dark:text-slate-400'}">
                     ${reportDay.dayObj.etiket.split('&')[0]}
                   </span>
                 </div>
@@ -1013,9 +1116,9 @@
             `;
           } else {
             cellsHtml += `
-              <div class="min-h-[56px] sm:min-h-[64px] p-2 rounded-xl border border-slate-200/60 dark:border-slate-800/80 bg-white/70 dark:bg-slate-800/30 text-slate-400 dark:text-slate-600 text-xs flex flex-col justify-between select-none">
+              <div class="min-h-[48px] xs:min-h-[54px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-slate-200/60 dark:border-slate-800/80 bg-white/70 dark:bg-slate-800/30 text-slate-400 dark:text-slate-600 text-[11px] sm:text-xs flex flex-col justify-between select-none">
                 <span class="font-medium">${dayNum}</span>
-                <span class="text-[9px] text-slate-300 dark:text-slate-700">-</span>
+                <span class="text-[8px] sm:text-[9px] text-slate-300 dark:text-slate-700">-</span>
               </div>
             `;
           }
@@ -1035,24 +1138,24 @@
             cellsHtml += `
               <button 
                 onclick="app.selectCalendarDay('${reportDay.reportIndex}', '${reportDay.dayObj.id}')"
-                class="min-h-[56px] sm:min-h-[64px] p-2 rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
+                class="min-h-[48px] xs:min-h-[54px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
                   isSelected 
-                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-md ring-2 ring-slate-900 dark:ring-white ring-offset-2 dark:ring-offset-[#161F30]' 
+                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-md ring-2 ring-slate-900 dark:ring-white ring-offset-1 sm:ring-offset-2 dark:ring-offset-[#161F30]' 
                     : 'bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-slate-800 dark:text-slate-200 hover:bg-emerald-100/90 dark:hover:bg-emerald-900/50 shadow-xs'
                 }"
               >
                 <div class="flex items-center justify-between">
-                  <span class="text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-800 dark:text-slate-200'}">${i}</span>
+                  <span class="text-[11px] sm:text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-800 dark:text-slate-200'}">${i}</span>
                   <span class="w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'}"></span>
                 </div>
-                <span class="text-[10px] truncate block ${isSelected ? 'text-slate-300 dark:text-slate-700 font-medium' : 'text-emerald-800 dark:text-emerald-300 font-medium'}">
+                <span class="text-[9px] sm:text-[10px] truncate block ${isSelected ? 'text-slate-300 dark:text-slate-700 font-medium' : 'text-emerald-800 dark:text-emerald-300 font-medium'}">
                   ${reportDay.dayObj.gun}
                 </span>
               </button>
             `;
           } else {
             cellsHtml += `
-              <div class="min-h-[56px] sm:min-h-[64px] p-2 rounded-xl border border-transparent text-slate-300 dark:text-slate-700 text-xs font-medium select-none bg-slate-100/30 dark:bg-slate-800/20">
+              <div class="min-h-[48px] xs:min-h-[54px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-transparent text-slate-300 dark:text-slate-700 text-[11px] sm:text-xs font-medium select-none bg-slate-100/30 dark:bg-slate-800/20">
                 ${i}
               </div>
             `;
@@ -1093,11 +1196,24 @@
       selectCalendarDay(reportIndex, dayId) {
         this.activeReportIndex = parseInt(reportIndex, 10);
         this.activeDayId = dayId;
+        this.tipsSelectedReportIndex = this.activeReportIndex;
+
+        const report = this.reports[this.activeReportIndex];
+        if (report) {
+          if (report.aylar && report.aylar.includes('Temmuz') && !report.aylar.includes('Haziran')) {
+            this.rawReportMonthIndex = 6;
+            this.tipsMonthIndex = 6;
+          } else if (report.aylar && report.aylar.includes('Haziran')) {
+            this.rawReportMonthIndex = 5;
+            this.tipsMonthIndex = 5;
+          }
+        }
 
         this.renderCalendar();
         this.renderAnaSayfa();
+        this.renderTamRaporlar();
+        this.renderTipsExplorer();
 
-        const report = this.reports[this.activeReportIndex];
         const day = report?.gunler?.find(g => g.id === dayId);
         if (day) {
           const infoEl = document.getElementById('calendarSelectedInfo');
@@ -1149,8 +1265,15 @@
         if (descEl) descEl.textContent = report.aciklama;
 
         if (report.istatistikler) {
+          const totalDays = report.gunler?.length || 6;
+          const dailyHours = 7.5;
+          const totalHours = (totalDays * dailyHours);
+          const formattedHours = totalHours % 1 === 0 ? totalHours : totalHours.toFixed(1);
+
           const st1 = document.getElementById('statSaat');
-          if (st1) st1.textContent = `${report.istatistikler.toplamSaat || 38} Saat`;
+          if (st1) {
+            st1.textContent = `${formattedHours} Saat (${totalDays} Gün × 7.5s)`;
+          }
 
           const st2 = document.getElementById('statKonu');
           if (st2) st2.textContent = `${report.istatistikler.konuSayisi || 14} Başlık`;
@@ -1201,7 +1324,7 @@
           return `
             <button 
               onclick="app.selectDay('${g.id}')"
-              class="px-4 py-2.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap flex items-center gap-2 border cursor-pointer ${
+              class="px-3 xs:px-4 py-2 xs:py-2.5 rounded-lg sm:rounded-xl text-xs font-semibold transition-all whitespace-nowrap flex items-center gap-1.5 xs:gap-2 border cursor-pointer shrink-0 ${
                 isActive 
                   ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-xs' 
                   : 'bg-white dark:bg-[#161F30] text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 border-slate-200 dark:border-slate-800'
@@ -1231,33 +1354,39 @@
 
         container.innerHTML = `
           <!-- Gün Başlığı ve Etiketi -->
-          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800">
+          <div class="flex flex-wrap items-center justify-between gap-2.5 pb-3 sm:pb-4 border-b border-slate-100 dark:border-slate-800">
             <div>
               <div class="flex items-center gap-2">
-                <h3 class="text-base font-bold text-slate-900 dark:text-white">${day.gun} Notları</h3>
-                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 font-medium">${day.tarih}</span>
+                <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">${day.gun} Notları</h3>
+                <span class="text-[11px] sm:text-xs font-mono text-slate-400 dark:text-slate-500 font-medium">${day.tarih}</span>
               </div>
-              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Odak Alanı: <strong class="text-slate-700 dark:text-slate-200">${day.etiket}</strong></p>
+              <p class="text-[11px] sm:text-xs text-slate-500 dark:text-slate-400 mt-0.5">Odak Alanı: <strong class="text-slate-700 dark:text-slate-200">${day.etiket}</strong></p>
             </div>
-            <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700">
-              ${day.arastirilanKonular?.length || 0} İnceleme Maddesi
-            </span>
+            <div class="flex items-center gap-2">
+              <span class="px-2.5 py-1 bg-emerald-50 dark:bg-emerald-950/50 text-emerald-800 dark:text-emerald-300 rounded-lg text-xs font-semibold border border-emerald-200 dark:border-emerald-800 flex items-center gap-1">
+                <i data-lucide="clock" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i>
+                7.5 Saat
+              </span>
+              <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700">
+                ${day.arastirilanKonular?.length || 0} İnceleme Maddesi
+              </span>
+            </div>
           </div>
 
           <!-- 1. Araştırılan Konular Bölümü -->
-          <div class="space-y-3">
+          <div class="space-y-2.5 sm:space-y-3">
             <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
               <i data-lucide="book" class="w-4 h-4 text-slate-400"></i>
               Araştırılan Konular & Notlar
             </h4>
-            <div class="grid grid-cols-1 gap-3">
+            <div class="grid grid-cols-1 gap-2.5 sm:gap-3">
               ${(day.arastirilanKonular || []).map((k, idx) => `
-                <div class="bg-slate-50/80 dark:bg-[#161F30] rounded-xl p-4 border border-slate-100 dark:border-slate-800 space-y-1">
+                <div class="bg-slate-50/80 dark:bg-[#161F30] rounded-xl p-3.5 sm:p-4 border border-slate-100 dark:border-slate-800 space-y-1">
                   <div class="flex items-center gap-2">
                     <span class="w-5 h-5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-[10px] font-bold flex items-center justify-center shrink-0">
                       ${idx + 1}
                     </span>
-                    <strong class="text-xs font-bold text-slate-900 dark:text-white">${k.baslik}</strong>
+                    <strong class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">${k.baslik}</strong>
                   </div>
                   <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-7">
                     ${k.icerik}
@@ -1269,14 +1398,14 @@
 
           <!-- 2. Pratik Uygulama & Çalışmalar -->
           ${day.pratikUygulama ? `
-            <div class="space-y-3 pt-2">
+            <div class="space-y-2.5 sm:space-y-3 pt-2">
               <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
                 <i data-lucide="terminal" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
                 Pratik Uygulama & Testler
               </h4>
-              <div class="bg-emerald-50/40 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-850/50 rounded-xl p-4 sm:p-5 space-y-3">
+              <div class="bg-emerald-50/40 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-850/50 rounded-xl p-3.5 sm:p-5 space-y-3">
                 <div class="flex flex-wrap items-center justify-between gap-2">
-                  <strong class="text-xs font-bold text-emerald-950 dark:text-emerald-200">${day.pratikUygulama.baslik}</strong>
+                  <strong class="text-xs sm:text-sm font-bold text-emerald-950 dark:text-emerald-200">${day.pratikUygulama.baslik}</strong>
                   <span class="text-[10px] font-semibold px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/80 text-emerald-800 dark:text-emerald-200 rounded-md">
                     Uygulandı
                   </span>
@@ -1289,7 +1418,7 @@
                 ${day.pratikUygulama.etiketler ? `
                   <div class="flex flex-wrap items-center gap-1.5 pt-1">
                     ${day.pratikUygulama.etiketler.map(t => `
-                      <span class="text-[11px] font-medium px-2 py-0.5 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 rounded-md border border-emerald-200 dark:border-emerald-800 shadow-xs">
+                      <span class="text-[10px] sm:text-[11px] font-medium px-2 py-0.5 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 rounded-md border border-emerald-200 dark:border-emerald-800 shadow-xs">
                         #${t}
                       </span>
                     `).join('')}
@@ -1302,7 +1431,7 @@
                     <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-900 dark:text-emerald-300 block mb-2">
                       Üretilen ve Test Edilen Çalışma Dosyaları:
                     </span>
-                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
+                    <div class="grid grid-cols-1 xs:grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
                       ${day.pratikUygulama.dosyalar.map(d => `
                         <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 flex items-center gap-2 shadow-xs">
                           <i data-lucide="file-code" class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"></i>
@@ -1318,12 +1447,12 @@
 
           <!-- 3. Günün Öne Çıkan Notu / Alıntısı -->
           ${day.oneCikanBilgi ? `
-            <div class="bg-amber-50/50 dark:bg-amber-950/30 border border-amber-200/70 dark:border-amber-900/50 rounded-xl p-4 flex items-start gap-3">
+            <div class="bg-amber-50/50 dark:bg-amber-950/30 border border-amber-200/70 dark:border-amber-900/50 rounded-xl p-3.5 sm:p-4 flex items-start gap-2.5 sm:gap-3">
               <div class="w-7 h-7 rounded-lg bg-amber-100 dark:bg-amber-900/80 text-amber-800 dark:text-amber-200 flex items-center justify-center shrink-0 mt-0.5">
                 <i data-lucide="key" class="w-4 h-4"></i>
               </div>
               <div class="space-y-0.5">
-                <span class="text-[11px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-300 block">Kilit Çıkarım</span>
+                <span class="text-[10px] sm:text-[11px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-300 block">Kilit Çıkarım</span>
                 <p class="text-xs text-amber-950 dark:text-amber-100 leading-relaxed font-medium">
                   "${day.oneCikanBilgi}"
                 </p>
@@ -1348,7 +1477,7 @@
         if (docTitle) docTitle.textContent = report.baslik;
 
         const docMetaHafta = document.getElementById('docMetaHafta');
-        if (docMetaHafta) docMetaHafta.textContent = `Haftalık Rapor - ${report.haftaNo}`;
+        if (docMetaHafta) docMetaHafta.textContent = report.haftaNo;
 
         const docMetaTarih = document.getElementById('docMetaTarih');
         if (docMetaTarih) docMetaTarih.textContent = report.tarihAraligi;
@@ -1358,24 +1487,78 @@
           docAuthor.textContent = `${report.arastirmaci.isim} (${report.arastirmaci.rol})`;
         }
 
-        // Hafta seçici butonları
-        const selectorContainer = document.getElementById('rawReportWeekSelector');
-        if (selectorContainer) {
-          selectorContainer.innerHTML = this.reports.map((r, idx) => {
-            const isCurrent = idx === this.activeReportIndex;
+        // Yıl Göstergesi
+        const yearLabel = document.getElementById('rawReportYearLabel');
+        if (yearLabel) yearLabel.textContent = this.rawReportYear;
+
+        // 1. Kademe: Ay Seçici Butonları
+        const monthContainer = document.getElementById('rawReportMonthSelector');
+        if (monthContainer) {
+          const availableMonths = [5, 6, 7, 8, 9];
+          monthContainer.innerHTML = availableMonths.map(mIdx => {
+            const mName = this.monthNames[mIdx];
+            const isSelected = mIdx === this.rawReportMonthIndex;
+            const hasData = (mIdx === 5 || mIdx === 6);
+
             return `
               <button 
-                onclick="app.selectRawReportWeek(${idx})"
-                class="px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all border cursor-pointer ${
-                  isCurrent 
+                onclick="app.selectRawReportMonth(${mIdx})"
+                class="px-4 py-2 rounded-xl text-xs font-semibold transition-all whitespace-nowrap flex items-center gap-1.5 border cursor-pointer ${
+                  isSelected 
                     ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-xs' 
-                    : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border-slate-200 dark:border-slate-700'
+                    : (hasData 
+                        ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/60' 
+                        : 'bg-slate-50 dark:bg-slate-800/40 text-slate-400 dark:text-slate-500 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800')
                 }"
               >
-                ${r.haftaNo}
+                <span>${mName}</span>
+                ${hasData ? `<span class="w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'}"></span>` : ''}
               </button>
             `;
           }).join('');
+        }
+
+        // 2. Kademe: Hafta Göstergesi & Butonları
+        const activeMonthName = this.monthNames[this.rawReportMonthIndex];
+        const monthIndicator = document.getElementById('rawReportActiveMonthIndicator');
+        if (monthIndicator) {
+          monthIndicator.textContent = `${activeMonthName} ${this.rawReportYear} Haftalık Raporları`;
+        }
+
+        const selectorContainer = document.getElementById('rawReportWeekSelector');
+        if (selectorContainer) {
+          const matchingReports = this.reports.map((r, idx) => ({ report: r, index: idx })).filter(item => {
+            const r = item.report;
+            if (r.aylar && r.aylar.includes(activeMonthName)) return true;
+            if (r.ay && r.ay.includes(activeMonthName)) return true;
+            return false;
+          });
+
+          if (matchingReports.length > 0) {
+            selectorContainer.innerHTML = matchingReports.map(item => {
+              const isCurrent = item.index === this.activeReportIndex;
+              return `
+                <button 
+                  onclick="app.selectRawReportWeek(${item.index})"
+                  class="px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 border cursor-pointer ${
+                    isCurrent 
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-md ring-2 ring-indigo-600/30' 
+                      : 'bg-white dark:bg-[#161F30] text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-600'
+                  }"
+                >
+                  <i data-lucide="file-text" class="w-4 h-4"></i>
+                  <span>${item.report.haftaNo}</span>
+                  <span class="text-[10px] opacity-80 font-normal font-mono">(${item.report.tarihAraligi})</span>
+                </button>
+              `;
+            }).join('');
+          } else {
+            selectorContainer.innerHTML = `
+              <div class="text-xs text-slate-400 italic py-2">
+                Bu ay için henüz eklenmiş bir rapor bulunmamaktadır.
+              </div>
+            `;
+          }
         }
 
         // Ham Metin Renderer (Temiz Notion / Doküman Biçimlendirmesi)
@@ -1394,9 +1577,37 @@
         lucide.createIcons();
       },
 
+      // Ay seçildiğinde
+      selectRawReportMonth(mIdx) {
+        this.rawReportMonthIndex = mIdx;
+        const activeMonthName = this.monthNames[mIdx];
+        
+        // Eğer şu an seçili rapor bu ayda yoksa, bu ayın ilk raporuna geç
+        const currentReport = this.reports[this.activeReportIndex];
+        const hasCurrent = currentReport && ((currentReport.aylar && currentReport.aylar.includes(activeMonthName)) || (currentReport.ay && currentReport.ay.includes(activeMonthName)));
+        
+        if (!hasCurrent) {
+          const firstMatchIdx = this.reports.findIndex(r => 
+            (r.aylar && r.aylar.includes(activeMonthName)) || (r.ay && r.ay.includes(activeMonthName))
+          );
+          if (firstMatchIdx !== -1) {
+            this.activeReportIndex = firstMatchIdx;
+            this.activeDayId = this.reports[firstMatchIdx].gunler[0]?.id || 'pazartesi';
+          }
+        }
+
+        this.renderTamRaporlar();
+        this.renderAnaSayfa();
+        this.renderCalendar();
+      },
+
       // Farklı haftanın tam raporunu seç
       selectRawReportWeek(index) {
         this.activeReportIndex = index;
+        const report = this.reports[index];
+        if (report && report.gunler && report.gunler.length > 0) {
+          this.activeDayId = report.gunler[0].id;
+        }
         this.renderTamRaporlar();
         this.renderAnaSayfa();
         this.renderCalendar();
@@ -1602,7 +1813,7 @@
         const activeMonthName = this.monthNames[this.tipsMonthIndex];
         const monthIndicator = document.getElementById('tipsActiveMonthIndicator');
         if (monthIndicator) {
-          monthIndicator.textContent = `${activeMonthName} ${this.tipsYear} Haftaları`;
+          monthIndicator.textContent = `${activeMonthName} ${this.tipsYear} Haftalık Raporları`;
         }
 
         const weekContainer = document.getElementById('tipsWeekSelector');
@@ -1649,17 +1860,26 @@
 
       selectTipsMonth(mIdx) {
         this.tipsMonthIndex = mIdx;
-        // Eğer Haziran veya Temmuz ise 1. Haftayı seçili yap
-        if (mIdx === 5 || mIdx === 6) {
-          this.tipsSelectedReportIndex = 0;
+        const activeMonthName = this.monthNames[mIdx];
+        
+        // Eğer şu anki seçili rapor bu aya ait değilse, bu ayın ilk raporunu seç
+        const currentReport = this.reports[this.tipsSelectedReportIndex];
+        const hasCurrent = currentReport && ((currentReport.aylar && currentReport.aylar.includes(activeMonthName)) || (currentReport.ay && currentReport.ay.includes(activeMonthName)));
+        
+        if (!hasCurrent) {
+          const firstMatchIdx = this.reports.findIndex(r => 
+            (r.aylar && r.aylar.includes(activeMonthName)) || (r.ay && r.ay.includes(activeMonthName))
+          );
+          if (firstMatchIdx !== -1) {
+            this.tipsSelectedReportIndex = firstMatchIdx;
+          }
         }
         this.renderTipsExplorer();
       },
 
       selectTipsWeek(reportIdx) {
         this.tipsSelectedReportIndex = reportIdx;
-        this.renderTipsContent();
-        lucide.createIcons();
+        this.renderTipsExplorer();
       },
 
       renderTipsContent() {
@@ -1803,7 +2023,7 @@
         return [
           {
             "id": "hafta-1",
-            "haftaNo": "1. Hafta",
+            "haftaNo": "1. Haftalık Rapor",
             "tarihAraligi": "29 Haziran – 04 Temmuz 2026",
             "yil": 2026,
             "ay": "Haziran / Temmuz",
