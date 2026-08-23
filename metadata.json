@@ -1,0 +1,6 @@
+{
+  "name": "Haftalık Rapor",
+  "description": "Haftalık araştırma notları, pratik uygulamalar ve özetlerin modern takip paneli.",
+  "requestFramePermissions": [],
+  "majorCapabilities": ["MAJOR_CAPABILITY_SERVER_SIDE_GEMINI_API"]
+}

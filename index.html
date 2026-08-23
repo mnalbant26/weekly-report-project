@@ -1,0 +1,2107 @@
+<!DOCTYPE html>
+<html lang="tr" class="h-full bg-[#FAFAFA] dark:bg-[#0B0F17] text-slate-800 dark:text-slate-200 antialiased">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Haftalık Rapor - Araştırma & Pratik Takip Paneli</title>
+  <meta name="description" content="Haftalık araştırma notları, tam metin raporları, pratik uygulamalar ve özetlerin modern takip paneli." />
+  
+  <!-- FOUC Önleyici Tema Betiği -->
+  <script>
+    if (localStorage.getItem('theme') === 'dark' || (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches)) {
+      document.documentElement.classList.add('dark');
+    } else {
+      document.documentElement.classList.remove('dark');
+    }
+  </script>
+
+  <!-- Google Fonts: Plus Jakarta Sans & JetBrains Mono -->
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700;800&family=JetBrains+Mono:wght@400;500;600&display=swap" rel="stylesheet">
+  
+  <!-- Tailwind CSS CDN -->
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script>
+    tailwind.config = {
+      darkMode: 'class',
+      theme: {
+        extend: {
+          fontFamily: {
+            sans: ['"Plus Jakarta Sans"', 'system-ui', '-apple-system', 'sans-serif'],
+            mono: ['"JetBrains Mono"', 'monospace'],
+          }
+        }
+      }
+    }
+  </script>
+  
+  <!-- Lucide Icons CDN -->
+  <script src="https://unpkg.com/lucide@latest"></script>
+
+  <style>
+    body {
+      font-feature-settings: "cv02", "cv03", "cv04", "cv11";
+    }
+    .custom-scrollbar::-webkit-scrollbar {
+      height: 6px;
+      width: 6px;
+    }
+    .custom-scrollbar::-webkit-scrollbar-track {
+      background: transparent;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #CBD5E1;
+      border-radius: 9999px;
+    }
+    .dark .custom-scrollbar::-webkit-scrollbar-thumb {
+      background: #334155;
+    }
+    .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #94A3B8;
+    }
+    .dark .custom-scrollbar::-webkit-scrollbar-thumb:hover {
+      background: #475569;
+    }
+
+    /* Notion / Doküman Tarzı Tipografi */
+    .document-content h2 {
+      font-size: 1.25rem;
+      font-weight: 700;
+      color: #0f172a;
+      margin-top: 2rem;
+      margin-bottom: 0.75rem;
+      padding-bottom: 0.5rem;
+      border-bottom: 1px solid #f1f5f9;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+    .dark .document-content h2 {
+      color: #f8fafc;
+      border-bottom: 1px solid #1e293b;
+    }
+    .document-content h3 {
+      font-size: 1.05rem;
+      font-weight: 700;
+      color: #1e293b;
+      margin-top: 1.5rem;
+      margin-bottom: 0.5rem;
+    }
+    .dark .document-content h3 {
+      color: #e2e8f0;
+    }
+    .document-content p {
+      margin-bottom: 1rem;
+      line-height: 1.75;
+      color: #334155;
+    }
+    .dark .document-content p {
+      color: #cbd5e1;
+    }
+    .document-content ul {
+      margin-bottom: 1.25rem;
+      padding-left: 1.25rem;
+      list-style-type: disc;
+      color: #334155;
+    }
+    .dark .document-content ul {
+      color: #cbd5e1;
+    }
+    .document-content li {
+      margin-bottom: 0.35rem;
+      line-height: 1.6;
+    }
+    .document-content blockquote {
+      border-left: 3px solid #0f172a;
+      padding-left: 1rem;
+      margin: 1.25rem 0;
+      font-style: italic;
+      color: #475569;
+      background-color: #f8fafc;
+      padding-top: 0.5rem;
+      padding-bottom: 0.5rem;
+      border-radius: 0 0.5rem 0.5rem 0;
+    }
+    .dark .document-content blockquote {
+      border-left: 3px solid #94a3b8;
+      color: #94a3b8;
+      background-color: #1e293b;
+    }
+    .document-content code {
+      font-family: "JetBrains Mono", monospace;
+      font-size: 0.85em;
+      background-color: #f1f5f9;
+      color: #0f172a;
+      padding: 0.15rem 0.35rem;
+      border-radius: 0.375rem;
+      border: 1px solid #e2e8f0;
+    }
+    .dark .document-content code {
+      background-color: #1e293b;
+      color: #38bdf8;
+      border-color: #334155;
+    }
+
+    /* Baskı (Print / PDF) Stilleri */
+    @media print {
+      header, nav, .no-print, button {
+        display: none !important;
+      }
+      body {
+        background: white !important;
+        color: black !important;
+      }
+      .print-full-width {
+        max-width: 100% !important;
+        width: 100% !important;
+        margin: 0 !important;
+        padding: 0 !important;
+        border: none !important;
+        box-shadow: none !important;
+      }
+      .page-break {
+        page-break-after: always;
+      }
+    }
+  </style>
+</head>
+<body class="min-h-full flex flex-col bg-[#F9FAFB] dark:bg-[#0B0F17] text-slate-800 dark:text-slate-200 transition-colors duration-200">
+
+  <!-- Üst Navigasyon Çubuğu (Header) -->
+  <header class="sticky top-0 z-40 bg-white/95 dark:bg-[#0F172A]/95 backdrop-blur-md border-b border-slate-200/80 dark:border-slate-800/80 no-print transition-colors">
+    <div class="max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
+      <div class="flex items-center justify-between h-16">
+        
+        <!-- Sol: Logo ve Başlık -->
+        <div class="flex items-center gap-3 cursor-pointer select-none" onclick="app.navigateTo('ana-sayfa')">
+          <div class="w-9 h-9 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center font-bold text-xs tracking-wider shadow-sm">
+            WR
+          </div>
+          <div>
+            <span class="font-bold text-slate-900 dark:text-white tracking-tight text-base sm:text-lg">Haftalık Rapor</span>
+            <p class="text-[11px] text-slate-500 dark:text-slate-400 hidden md:block">Araştırma Notları & Pratik Takip Sistemi</p>
+          </div>
+        </div>
+
+        <!-- Sağ: Navigasyon Sekmeleri ve Tema Butonu -->
+        <div class="flex items-center gap-1.5 sm:gap-2">
+          
+          <nav class="flex items-center gap-1 sm:gap-1.5 overflow-x-auto">
+            <!-- 1. Ana Sayfa -->
+            <button 
+              id="nav-ana-sayfa"
+              onclick="app.navigateTo('ana-sayfa')"
+              class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-semibold text-slate-900 dark:text-white bg-slate-100 dark:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap"
+            >
+              <i data-lucide="layout-dashboard" class="w-4 h-4"></i>
+              <span>Ana Sayfa</span>
+            </button>
+
+            <!-- 2. Tam Raporlar -->
+            <button 
+              id="nav-tam-raporlar"
+              onclick="app.navigateTo('tam-raporlar')"
+              class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap"
+            >
+              <i data-lucide="file-text" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+              <span>Tam Raporlar</span>
+              <span class="hidden sm:inline-block text-[10px] px-1.5 py-0.2 bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold rounded">PDF / Metin</span>
+            </button>
+
+            <!-- 3. İpuçları & Öneriler -->
+            <button 
+              id="nav-ipuclari"
+              onclick="app.navigateTo('ipuclari')"
+              class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap"
+            >
+              <i data-lucide="lightbulb" class="w-4 h-4 text-amber-500"></i>
+              <span>İpuçları & Öneriler</span>
+            </button>
+
+            <!-- 4. Hakkında -->
+            <button 
+              id="nav-hakkinda"
+              onclick="app.openModal('hakkindaModal')"
+              class="nav-btn px-3 py-1.5 rounded-lg text-xs sm:text-sm font-medium text-slate-600 dark:text-slate-400 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-800 transition-all flex items-center gap-1.5 whitespace-nowrap"
+            >
+              <i data-lucide="info" class="w-4 h-4"></i>
+              <span>Hakkında</span>
+            </button>
+          </nav>
+
+          <!-- Tema Değiştirme Butonu (Güneş / Ay) -->
+          <div class="pl-1.5 sm:pl-2 border-l border-slate-200 dark:border-slate-800">
+            <button 
+              id="themeToggleBtn"
+              onclick="app.toggleTheme()"
+              class="p-2 rounded-xl border border-slate-200 dark:border-slate-800 bg-white dark:bg-slate-800/80 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-all shadow-xs"
+              title="Temayı Değiştir (Açık / Koyu)"
+              aria-label="Temayı Değiştir"
+            >
+              <i id="themeIconSun" data-lucide="sun" class="w-4 h-4 hidden dark:block text-amber-400"></i>
+              <i id="themeIconMoon" data-lucide="moon" class="w-4 h-4 block dark:hidden text-slate-700"></i>
+            </button>
+          </div>
+
+        </div>
+
+      </div>
+    </div>
+  </header>
+
+  <!-- Ana İçerik Alanı -->
+  <main class="flex-1 max-w-6xl w-full mx-auto px-4 sm:px-6 lg:px-8 py-6 sm:py-8 space-y-6">
+
+    <!-- ==================== GÖRÜNÜM 1: ANA SAYFA ==================== -->
+    <div id="view-ana-sayfa" class="space-y-6">
+      
+      <!-- CATCHY HERO & İNTERAKTİF TAKVİM ALANI -->
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-8 shadow-xs space-y-6 transition-colors">
+        
+        <!-- Catchy Başlık ve Alt Yazı -->
+        <div class="text-center max-w-2xl mx-auto space-y-2">
+          <h1 class="text-2xl sm:text-3xl lg:text-4xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+            Haftalık raporları detaylıca incele
+          </h1>
+          <p class="text-sm sm:text-base text-slate-500 dark:text-slate-400 font-medium">
+            Neler olup bitiyor
+          </p>
+        </div>
+
+        <!-- İNTERAKTİF TAKVİM SEÇİCİ KUTUCUĞU -->
+        <div class="bg-slate-50 dark:bg-[#161F30] border border-slate-200/90 dark:border-slate-800 rounded-2xl p-4 sm:p-6 space-y-5 max-w-3xl mx-auto transition-colors">
+          
+          <!-- Üst Bar: Yıl & Ay Seçimi ve Ok Tuşları -->
+          <div class="flex items-center justify-between gap-2 pb-3 border-b border-slate-200 dark:border-slate-800">
+            
+            <!-- Sol: Önceki Ay Oku -->
+            <button 
+              onclick="app.prevMonth()" 
+              class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors shadow-xs"
+              title="Önceki Ay"
+            >
+              <i data-lucide="chevron-left" class="w-4 h-4"></i>
+            </button>
+
+            <!-- Orta: Yıl ve Ay Seçim Göstergesi -->
+            <div class="flex items-center gap-3">
+              <div class="flex items-center gap-1.5 bg-white dark:bg-slate-800 px-3 py-1.5 rounded-xl border border-slate-200 dark:border-slate-700 shadow-xs">
+                <i data-lucide="calendar" class="w-4 h-4 text-slate-500 dark:text-slate-400"></i>
+                <span id="calendarMonthYearLabel" class="text-sm font-bold text-slate-900 dark:text-white">
+                  Haziran 2026
+                </span>
+              </div>
+
+              <!-- Hızlı Ay Değiştirici Butonları -->
+              <div class="hidden sm:flex items-center gap-1">
+                <button 
+                  onclick="app.setCalendarMonth(5, 2026)" 
+                  id="btnMonth-5"
+                  class="px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-900 dark:bg-white text-white dark:text-slate-900 transition-all"
+                >
+                  Haziran
+                </button>
+                <button 
+                  onclick="app.setCalendarMonth(6, 2026)" 
+                  id="btnMonth-6"
+                  class="px-2.5 py-1 rounded-lg text-xs font-medium bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 transition-all"
+                >
+                  Temmuz
+                </button>
+              </div>
+            </div>
+
+            <!-- Sağ: Sonraki Ay Oku -->
+            <button 
+              onclick="app.nextMonth()" 
+              class="p-2 rounded-xl bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-100 dark:hover:bg-slate-700 transition-colors shadow-xs"
+              title="Sonraki Ay"
+            >
+              <i data-lucide="chevron-right" class="w-4 h-4"></i>
+            </button>
+
+          </div>
+
+          <!-- Haftanın Günleri Başlıkları -->
+          <div class="grid grid-cols-7 gap-1.5 text-center">
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Pzt</span>
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Sal</span>
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Çar</span>
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Per</span>
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Cum</span>
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Cmt</span>
+            <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider py-1">Paz</span>
+          </div>
+
+          <!-- İnteraktif Gün Kutucukları Izgarası -->
+          <div id="calendarGrid" class="grid grid-cols-7 gap-1.5 sm:gap-2">
+            <!-- JS Dinamik Olarak Kutucukları Üretir -->
+          </div>
+
+          <!-- Takvim Altı Bilgilendirme / Seçili Gün Özeti -->
+          <div class="pt-3 border-t border-slate-200 dark:border-slate-800 flex flex-wrap items-center justify-between gap-3 text-xs">
+            <div class="flex items-center gap-2">
+              <span class="w-2.5 h-2.5 rounded-full bg-slate-900 dark:bg-white"></span>
+              <span class="text-slate-600 dark:text-slate-300 font-medium">Seçili Gün</span>
+              <span class="w-2.5 h-2.5 rounded-full bg-emerald-500 ml-2"></span>
+              <span class="text-slate-600 dark:text-slate-300 font-medium">Rapor Kaydı Var</span>
+            </div>
+            
+            <div id="calendarSelectedInfo" class="text-slate-700 dark:text-slate-200 font-semibold bg-white dark:bg-slate-800 px-3 py-1 rounded-lg border border-slate-200 dark:border-slate-700">
+              Seçili: Pazartesi (29 Haziran 2026)
+            </div>
+          </div>
+
+        </div>
+
+      </section>
+
+      <!-- SEÇİLİ HAFTA BAŞLIK & İSTATİSTİK KARTI -->
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-7 shadow-xs transition-colors">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-100 dark:border-slate-800">
+          <div>
+            <div class="flex items-center gap-2.5 mb-2">
+              <span id="activeWeekNumber" class="px-2.5 py-1 bg-slate-900 dark:bg-white text-white dark:text-slate-900 text-xs font-semibold rounded-md">
+                1. Hafta
+              </span>
+              <span id="activeWeekDates" class="text-xs font-medium text-slate-500 dark:text-slate-400 font-mono">
+                29 Haziran – 04 Temmuz 2026
+              </span>
+            </div>
+            <h2 id="activeWeekTitle" class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white tracking-tight">
+              Web Teknolojileri, Yapay Zeka, Dijital Pazarlama ve HTML Temelleri
+            </h2>
+          </div>
+
+          <div class="flex items-center gap-2 self-start md:self-auto">
+            <button 
+              onclick="app.navigateTo('tam-raporlar')" 
+              class="px-3.5 py-2 text-xs font-semibold bg-indigo-50 dark:bg-indigo-950/60 hover:bg-indigo-100 dark:hover:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 rounded-xl transition-colors inline-flex items-center gap-1.5 shadow-xs border border-indigo-200 dark:border-indigo-800"
+              title="Orijinal Tam Rapor Metnini Gör"
+            >
+              <i data-lucide="file-text" class="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400"></i>
+              <span>Tam Metin Oku</span>
+            </button>
+            <button 
+              onclick="window.print()" 
+              class="px-3.5 py-2 text-xs font-semibold border border-slate-200 dark:border-slate-700 hover:bg-slate-50 dark:hover:bg-slate-800 text-slate-600 dark:text-slate-300 rounded-xl transition-colors inline-flex items-center gap-1.5 shadow-xs"
+              title="Raporu Yazdır veya PDF Kaydet"
+            >
+              <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+              <span>Yazdır</span>
+            </button>
+          </div>
+        </div>
+
+        <p id="activeWeekDesc" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed mt-4">
+          Bu rapor, verilen konular üzerinde yapılan araştırmalar, alınan notlar, edinilen bilgiler ve üzerinde çalışılan pratik uygulamaların haftalık bir derlemesidir.
+        </p>
+
+        <!-- Özet Sayaçlar / Şerit -->
+        <div class="grid grid-cols-2 sm:grid-cols-4 gap-3 mt-5 pt-4 border-t border-slate-100 dark:border-slate-800 text-xs">
+          <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-3 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[11px]">Toplam Çalışma</span>
+            <strong id="statSaat" class="text-slate-800 dark:text-slate-100 font-semibold text-sm">38 Saat</strong>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-3 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[11px]">İncelenen Konu</span>
+            <strong id="statKonu" class="text-slate-800 dark:text-slate-100 font-semibold text-sm">14 Başlık</strong>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-3 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[11px]">Kodlanan Dosya</span>
+            <strong id="statDosya" class="text-slate-800 dark:text-slate-100 font-semibold text-sm">6 HTML Sayfası</strong>
+          </div>
+          <div class="bg-slate-50 dark:bg-slate-800/60 rounded-xl p-3 border border-slate-100 dark:border-slate-800">
+            <span class="text-slate-400 block text-[11px]">Rapor Durumu</span>
+            <strong class="text-emerald-700 dark:text-emerald-400 font-semibold text-sm flex items-center gap-1">
+              <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i> Tamamlandı
+            </strong>
+          </div>
+        </div>
+      </section>
+
+      <!-- GÜNLÜK İNCELEME NOTLARI (GÜN SEKMELERİ + DETAYLI İÇERİK) -->
+      <section class="space-y-4">
+        <div class="flex items-center justify-between">
+          <h3 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+            <i data-lucide="calendar-days" class="w-4 h-4 text-slate-400"></i>
+            Günlük İnceleme Notları
+          </h3>
+          <span class="text-xs text-slate-400 dark:text-slate-500">Güne tıklayarak ayrıntılı notları inceleyin</span>
+        </div>
+
+        <!-- Gün Sekmeleri Butonları -->
+        <div id="dayTabsContainer" class="flex items-center gap-2 overflow-x-auto pb-1 custom-scrollbar">
+          <!-- JS dinamik olarak doldurur -->
+        </div>
+
+        <!-- Seçili Günün İçerik Alanı -->
+        <div id="dayContentArea" class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-7 shadow-xs space-y-6 transition-colors">
+          <!-- JS dinamik olarak doldurur -->
+        </div>
+      </section>
+
+      <!-- HAFTALIK GENEL DEĞERLENDİRME KARTI -->
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-7 shadow-xs space-y-5 transition-colors">
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+          <div class="flex items-center gap-2.5">
+            <div class="w-8 h-8 rounded-lg bg-emerald-50 dark:bg-emerald-950/60 text-emerald-700 dark:text-emerald-300 flex items-center justify-center">
+              <i data-lucide="award" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <h3 class="text-base font-bold text-slate-900 dark:text-white">Haftalık Genel Değerlendirme</h3>
+              <p class="text-xs text-slate-500 dark:text-slate-400">Haftanın öne çıkan kazanımları ve gelecek hedefleri</p>
+            </div>
+          </div>
+          <span class="text-xs font-semibold px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-full">
+            Hafta Sonu Özeti
+          </span>
+        </div>
+
+        <p id="haftalikGenelOzetMetni" class="text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+          <!-- JS ile doldurulur -->
+        </p>
+
+        <div class="grid grid-cols-1 md:grid-cols-2 gap-5 pt-2">
+          
+          <!-- Kazanımlar -->
+          <div class="bg-slate-50 dark:bg-[#161F30] rounded-xl p-4 border border-slate-100 dark:border-slate-800 space-y-3">
+            <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="check-check" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+              Önemli Kazanımlar
+            </h4>
+            <ul id="haftalikKazanimlarListesi" class="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-normal">
+              <!-- JS ile doldurulur -->
+            </ul>
+          </div>
+
+          <!-- Hedefler -->
+          <div class="bg-slate-50 dark:bg-[#161F30] rounded-xl p-4 border border-slate-100 dark:border-slate-800 space-y-3">
+            <h4 class="text-xs font-bold text-slate-800 dark:text-slate-200 uppercase tracking-wider flex items-center gap-1.5">
+              <i data-lucide="compass" class="w-4 h-4 text-indigo-600 dark:text-indigo-400"></i>
+              Gelecek Hafta Hedefleri
+            </h4>
+            <ul id="haftalikHedeflerListesi" class="space-y-2 text-xs text-slate-600 dark:text-slate-300 leading-normal">
+              <!-- JS ile doldurulur -->
+            </ul>
+          </div>
+
+        </div>
+      </section>
+
+    </div>
+
+
+    <!-- ==================== GÖRÜNÜM 2: TAM RAPORLAR ==================== -->
+    <div id="view-tam-raporlar" class="hidden space-y-6">
+      
+      <!-- Üst Başlık & Takvim / Hafta Seçici -->
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 sm:p-7 shadow-xs space-y-6 transition-colors">
+        <div class="flex flex-col md:flex-row md:items-center justify-between gap-4 pb-5 border-b border-slate-100 dark:border-slate-800">
+          <div>
+            <div class="flex items-center gap-2 mb-1.5">
+              <span class="px-2.5 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 font-bold text-xs">
+                Orijinal Ham Metin & PDF
+              </span>
+              <span class="text-xs font-mono text-slate-400 dark:text-slate-500">Notion Tarzı Görünüm</span>
+            </div>
+            <h2 class="text-xl sm:text-2xl font-extrabold text-slate-900 dark:text-white tracking-tight">
+              Tam Haftalık Araştırma Raporları
+            </h2>
+            <p class="text-xs sm:text-sm text-slate-500 dark:text-slate-400 mt-1">
+              Orijinal rapordaki tüm metinleri hiçbir değişiklik yapılmadan temiz bir doküman formatında okuyun ve PDF olarak indirin.
+            </p>
+          </div>
+
+          <!-- PDF İndir & Aksiyon Butonları -->
+          <div class="flex flex-wrap items-center gap-2 shrink-0">
+            <!-- PDF İndir Butonu -->
+            <button 
+              id="btnDownloadPdf"
+              onclick="app.downloadPdfReport()" 
+              class="px-4 py-2.5 bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 rounded-xl text-xs font-bold transition-all shadow-sm flex items-center gap-2"
+              title="Orijinal PDF Belgesini İndir / Yazdır"
+            >
+              <i data-lucide="download" class="w-4 h-4 text-emerald-400 dark:text-emerald-600"></i>
+              <span>Orijinal PDF'i İndir</span>
+            </button>
+
+            <!-- Metni Kopyala Butonu -->
+            <button 
+              onclick="app.copyRawContent()" 
+              class="px-3.5 py-2.5 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-200 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 border border-slate-200 dark:border-slate-700"
+              title="Tüm rapor metnini panoya kopyala"
+            >
+              <i data-lucide="copy" class="w-3.5 h-3.5"></i>
+              <span id="copyButtonText">Metni Kopyala</span>
+            </button>
+
+            <!-- Yazdır Butonu -->
+            <button 
+              onclick="window.print()" 
+              class="px-3.5 py-2.5 bg-white hover:bg-slate-50 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-600 dark:text-slate-200 rounded-xl text-xs font-semibold transition-all flex items-center gap-1.5 border border-slate-200 dark:border-slate-700"
+              title="Sayfayı Doğrudan Yazdır"
+            >
+              <i data-lucide="printer" class="w-3.5 h-3.5"></i>
+              <span>Yazdır</span>
+            </button>
+          </div>
+        </div>
+
+        <!-- Hafta & Takvim Seçim Şeridi -->
+        <div class="bg-slate-50 dark:bg-[#161F30] border border-slate-200/80 dark:border-slate-800 rounded-xl p-4 flex flex-col sm:flex-row items-start sm:items-center justify-between gap-4">
+          <div class="flex items-center gap-3">
+            <div class="w-9 h-9 rounded-lg bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-800 dark:text-slate-200 flex items-center justify-center shadow-xs shrink-0">
+              <i data-lucide="calendar" class="w-4 h-4"></i>
+            </div>
+            <div>
+              <span class="text-[11px] font-bold text-slate-400 uppercase tracking-wider block">Görüntülenen Rapor</span>
+              <strong id="rawReportWeekTitle" class="text-sm font-bold text-slate-900 dark:text-white">
+                1. Hafta (29 Haziran – 04 Temmuz 2026)
+              </strong>
+            </div>
+          </div>
+
+          <!-- Hafta Değiştirici Butonları -->
+          <div id="rawReportWeekSelector" class="flex items-center gap-1.5 w-full sm:w-auto overflow-x-auto">
+            <!-- JS ile doldurulur -->
+          </div>
+        </div>
+      </section>
+
+      <!-- DOKÜMAN / MAKALE OKUMA ALANI (NOTION TARZI ELEGANT OKUMA KARTI) -->
+      <article class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-10 lg:p-12 shadow-xs space-y-8 max-w-4xl mx-auto print-full-width transition-colors">
+        
+        <!-- Doküman Başlığı & Meta Bilgileri -->
+        <header class="space-y-4 pb-6 border-b border-slate-200 dark:border-slate-800">
+          <div class="flex flex-wrap items-center justify-between gap-2">
+            <div class="inline-flex items-center gap-2 px-3 py-1 rounded-lg bg-slate-100 dark:bg-slate-800 text-slate-800 dark:text-slate-200 text-xs font-semibold">
+              <i data-lucide="book-open" class="w-3.5 h-3.5 text-slate-500 dark:text-slate-400"></i>
+              <span id="docMetaHafta">Haftalık Rapor 1</span>
+            </div>
+            <span id="docMetaTarih" class="text-xs font-mono text-slate-500 dark:text-slate-400 font-medium bg-slate-50 dark:bg-slate-800 px-2.5 py-1 rounded border border-slate-100 dark:border-slate-700">
+              29 Haziran – 4 Temmuz 2026
+            </span>
+          </div>
+
+          <h1 id="docTitle" class="text-2xl sm:text-3xl font-extrabold text-slate-900 dark:text-white tracking-tight leading-tight">
+            Web Teknolojileri, Yapay Zeka, Dijital Pazarlama ve HTML Temelleri
+          </h1>
+
+          <div class="flex flex-wrap items-center gap-4 text-xs text-slate-500 dark:text-slate-400 pt-1">
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="user" class="w-3.5 h-3.5 text-slate-400"></i>
+              <span id="docAuthor" class="text-slate-700 dark:text-slate-300 font-medium">Araştırmacı (Teknoloji & Pazarlama)</span>
+            </div>
+            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="file-check" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400"></i>
+              <span class="text-emerald-700 dark:text-emerald-400 font-medium">Doğrulanmış Orijinal Doküman</span>
+            </div>
+            <span class="text-slate-300 dark:text-slate-700">•</span>
+            <div class="flex items-center gap-1.5">
+              <i data-lucide="clock" class="w-3.5 h-3.5 text-slate-400"></i>
+              <span id="docReadingTime">~5 dk okuma süresi</span>
+            </div>
+          </div>
+        </header>
+
+        <!-- Ham Metin Görünümü (Clean Document Renderer) -->
+        <div id="rawContentRenderer" class="document-content text-sm sm:text-base leading-relaxed text-slate-700 dark:text-slate-300 font-sans space-y-4">
+          <!-- JS ile ham metin işlenerek eksiksiz doküman formatında render edilir -->
+        </div>
+
+        <!-- Doküman Sonu İmza & Onay Kartı -->
+        <footer class="pt-8 border-t border-slate-200 dark:border-slate-800 flex flex-col sm:flex-row items-center justify-between gap-4 text-xs text-slate-500 dark:text-slate-400">
+          <div class="flex items-center gap-2">
+            <div class="w-7 h-7 rounded-full bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center font-bold text-[10px]">
+              WR
+            </div>
+            <span>Haftalık Çalışma Raporu • Resmi Arşiv</span>
+          </div>
+
+          <div class="flex items-center gap-2">
+            <button 
+              onclick="window.scrollTo({ top: 0, behavior: 'smooth' })"
+              class="px-3 py-1.5 rounded-lg border border-slate-200 dark:border-slate-700 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 transition-colors flex items-center gap-1"
+            >
+              <i data-lucide="arrow-up" class="w-3 h-3"></i>
+              <span>Başa Dön</span>
+            </button>
+          </div>
+        </footer>
+
+      </article>
+
+    </div>
+
+
+    <!-- ==================== GÖRÜNÜM 3: İPUÇLARI & ÖNERİLER (HİYERARŞİK TARİH GEZGİNİ) ==================== -->
+    <div id="view-ipuclari" class="hidden space-y-6">
+      
+      <!-- Başlık Kartı -->
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs transition-colors">
+        <div class="flex items-center gap-3">
+          <div class="w-9 h-9 rounded-xl bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-300 flex items-center justify-center">
+            <i data-lucide="sparkles" class="w-5 h-5"></i>
+          </div>
+          <div>
+            <h2 class="text-xl font-bold text-slate-900 dark:text-white">İpuçları & Gelecek Önerileri</h2>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Yıl, ay ve hafta bazında derlenmiş geliştirme tüyoları ve araştırma tavsiyeleri.</p>
+          </div>
+        </div>
+      </section>
+
+      <!-- HİYERARŞİK TARİH GEZGİNİ KUTUSU (YIL -> AY -> HAFTA) -->
+      <section class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-6 shadow-xs space-y-5 transition-colors">
+        
+        <!-- 1. Kademe: Yıl Başlığı -->
+        <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+          <div class="flex items-center gap-2">
+            <i data-lucide="calendar" class="w-4 h-4 text-slate-500 dark:text-slate-400"></i>
+            <span class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400">Dönem Seçimi:</span>
+            <span id="tipsYearLabel" class="px-2.5 py-0.5 rounded-lg bg-slate-900 dark:bg-white text-white dark:text-slate-900 font-bold text-xs">
+              2026
+            </span>
+          </div>
+          <span class="text-[11px] text-slate-400">Bir ay ve hafta seçerek önerileri görüntüleyin</span>
+        </div>
+
+        <!-- 2. Kademe: Yan Yana Aylar -->
+        <div class="space-y-2">
+          <span class="text-xs font-semibold text-slate-700 dark:text-slate-300 block">1. Adım: Ay Seçin</span>
+          <div id="tipsMonthSelector" class="flex items-center gap-2 overflow-x-auto pb-1 custom-scrollbar">
+            <!-- JS ile doldurulur: Haziran, Temmuz, Ağustos, Eylül vb. -->
+          </div>
+        </div>
+
+        <!-- 3. Kademe: Seçilen Ayın Haftaları -->
+        <div class="space-y-2 pt-2 border-t border-slate-100 dark:border-slate-800">
+          <div class="flex items-center justify-between">
+            <span class="text-xs font-semibold text-slate-700 dark:text-slate-300">2. Adım: Hafta Seçin</span>
+            <span id="tipsActiveMonthIndicator" class="text-xs font-medium text-indigo-600 dark:text-indigo-400">
+              Haziran 2026 Haftaları
+            </span>
+          </div>
+          <div id="tipsWeekSelector" class="flex flex-wrap items-center gap-2">
+            <!-- JS ile dinamik olarak haftalar doldurulur -->
+          </div>
+        </div>
+
+      </section>
+
+      <!-- SEÇİLİ HAFTANIN İPUÇLARI & ÖNERİLERİ (İKİ GENİŞ BENTO KART) -->
+      <div id="tipsContentDisplay" class="grid grid-cols-1 lg:grid-cols-2 gap-6">
+        <!-- JS ile dinamik olarak 2 kart (Geliştirme Önerileri & İleriye Dönük Araştırma) doldurulur -->
+      </div>
+
+    </div>
+
+  </main>
+
+
+  <!-- ==================== HAKKINDA MODAL (YENİ KULLANICI ODAKLI METİN) ==================== -->
+  <div id="hakkindaModal" class="fixed inset-0 z-50 bg-slate-900/50 dark:bg-black/70 backdrop-blur-xs flex items-center justify-center p-4 hidden no-print">
+    <div class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl max-w-lg w-full p-6 sm:p-7 shadow-2xl space-y-5 animate-in fade-in zoom-in duration-150 transition-colors">
+      
+      <div class="flex items-center justify-between pb-3 border-b border-slate-100 dark:border-slate-800">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-slate-900 dark:bg-white text-white dark:text-slate-900 flex items-center justify-center font-bold text-xs">
+            WR
+          </div>
+          <div>
+            <h3 class="text-base font-bold text-slate-900 dark:text-white">Haftalık Rapor Hakkında</h3>
+            <p class="text-xs text-slate-500 dark:text-slate-400">Kullanıcı Odaklı Takip & Analiz Paneli</p>
+          </div>
+        </div>
+        <button 
+          onclick="app.closeModal('hakkindaModal')"
+          class="p-1 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors"
+          title="Kapat"
+        >
+          <i data-lucide="x" class="w-5 h-5"></i>
+        </button>
+      </div>
+
+      <div class="space-y-4 text-xs sm:text-sm text-slate-600 dark:text-slate-300 leading-relaxed">
+        <p class="text-slate-700 dark:text-slate-200 font-medium">
+          Bu uygulama, haftalık araştırma ve pratik çalışmaların daha düzenli, şeffaf ve anlaşılır biçimde sunulması için tasarlanmıştır:
+        </p>
+
+        <div class="bg-slate-50 dark:bg-[#161F30] rounded-2xl p-4 border border-slate-100 dark:border-slate-800 space-y-3">
+          <ul class="space-y-2.5 text-xs text-slate-700 dark:text-slate-200">
+            <li class="flex items-start gap-2.5">
+              <div class="w-5 h-5 rounded-full bg-emerald-100 dark:bg-emerald-950/70 text-emerald-700 dark:text-emerald-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="check" class="w-3.5 h-3.5"></i>
+              </div>
+              <span><strong>Akıcı ve Sade Okuma:</strong> Haftalık araştırma ve pratik raporların akıcı, sade ve modern bir arayüzle okunmasını sağlar.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <div class="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-950/70 text-indigo-700 dark:text-indigo-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+              </div>
+              <span><strong>Hızlı Takvim Erişimi:</strong> İstenilen yıl, ay, hafta ve güne takvim üzerinden anında erişim imkanı tanır.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <div class="w-5 h-5 rounded-full bg-amber-100 dark:bg-amber-950/70 text-amber-700 dark:text-amber-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="file-text" class="w-3.5 h-3.5"></i>
+              </div>
+              <span><strong>Tam Doküman & PDF:</strong> Orijinal rapor metinlerine ve indirilebilir PDF dokümanlarına tek tıkla ulaşım sunar.</span>
+            </li>
+            <li class="flex items-start gap-2.5">
+              <div class="w-5 h-5 rounded-full bg-purple-100 dark:bg-purple-950/70 text-purple-700 dark:text-purple-400 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="sparkles" class="w-3.5 h-3.5"></i>
+              </div>
+              <span><strong>Net İçgörüler & Öneriler:</strong> Haftalık kazanımları ve geleceğe yönelik araştırma önerilerini özetleyerek paydaşlara net içgörüler sağlar.</span>
+            </li>
+          </ul>
+        </div>
+
+        <p class="text-[11px] text-slate-400 dark:text-slate-500">
+          Sade, minimalist ve kullanıcı odaklı tasarım ilkeleri (Notion/Linear estetiği) ile geliştirilmiştir.
+        </p>
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex justify-end">
+        <button 
+          onclick="app.closeModal('hakkindaModal')"
+          class="px-4 py-2 bg-slate-900 hover:bg-slate-800 dark:bg-white dark:hover:bg-slate-100 text-white dark:text-slate-900 rounded-xl text-xs font-semibold transition-colors"
+        >
+          Anladım & Kapat
+        </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ==================== UYGULAMA MANTIĞI & STATE (VANILLA JS) ==================== -->
+  <script>
+    const app = {
+      reports: [],
+      activeReportIndex: 0,
+      activeDayId: 'pazartesi',
+      
+      // Takvim Durumu
+      calendarYear: 2026,
+      calendarMonth: 5, // 5 = Haziran (0-indexed: 0=Ocak, 5=Haziran, 6=Temmuz)
+      
+      // İpuçları & Öneriler Hiyerarşi Durumu
+      tipsYear: 2026,
+      tipsMonthIndex: 5, // Varsayılan Haziran (5)
+      tipsSelectedReportIndex: 0, // 1. Hafta
+      
+      monthNames: [
+        'Ocak', 'Şubat', 'Mart', 'Nisan', 'Mayıs', 'Haziran',
+        'Temmuz', 'Ağustos', 'Eylül', 'Ekim', 'Kasım', 'Aralık'
+      ],
+
+      // Başlangıç: Veriyi yükle ve arayüzü başlat
+      async init() {
+        // Tema başlatma
+        this.initTheme();
+
+        try {
+          const res = await fetch('data.json');
+          if (!res.ok) throw new Error('Veri çekilemedi');
+          this.reports = await res.json();
+        } catch (e) {
+          console.warn('data.json doğrudan çekilemedi, yedek yerel veriye dönülüyor.', e);
+          this.reports = this.getFallbackReports();
+        }
+
+        if (this.reports.length > 0) {
+          this.activeReportIndex = 0;
+          this.activeDayId = this.reports[0].gunler[0]?.id || 'pazartesi';
+        }
+
+        this.renderCalendar();
+        this.renderAnaSayfa();
+        this.renderTamRaporlar();
+        this.renderTipsExplorer();
+        lucide.createIcons();
+      },
+
+      // ==================== TEMA YÖNETİMİ (DARK MODE) ====================
+      initTheme() {
+        const isDark = localStorage.getItem('theme') === 'dark' || 
+          (!('theme' in localStorage) && window.matchMedia('(prefers-color-scheme: dark)').matches);
+        
+        if (isDark) {
+          document.documentElement.classList.add('dark');
+        } else {
+          document.documentElement.classList.remove('dark');
+        }
+      },
+
+      toggleTheme() {
+        const isDark = document.documentElement.classList.contains('dark');
+        if (isDark) {
+          document.documentElement.classList.remove('dark');
+          localStorage.setItem('theme', 'light');
+        } else {
+          document.documentElement.classList.add('dark');
+          localStorage.setItem('theme', 'dark');
+        }
+        lucide.createIcons();
+      },
+
+      // Sayfa yönlendirmesi
+      navigateTo(viewId) {
+        document.querySelectorAll('[id^="view-"]').forEach(el => el.classList.add('hidden'));
+        document.querySelectorAll('.nav-btn').forEach(btn => {
+          btn.classList.remove('bg-slate-100', 'dark:bg-slate-800', 'text-slate-900', 'dark:text-white', 'font-semibold');
+          btn.classList.add('text-slate-600', 'dark:text-slate-400', 'font-medium');
+        });
+
+        const targetView = document.getElementById(`view-${viewId}`);
+        const targetNav = document.getElementById(`nav-${viewId}`);
+
+        if (targetView) targetView.classList.remove('hidden');
+        if (targetNav) {
+          targetNav.classList.add('bg-slate-100', 'dark:bg-slate-800', 'text-slate-900', 'dark:text-white', 'font-semibold');
+          targetNav.classList.remove('text-slate-600', 'dark:text-slate-400', 'font-medium');
+        }
+
+        if (viewId === 'tam-raporlar') {
+          this.renderTamRaporlar();
+        } else if (viewId === 'ipuclari') {
+          this.renderTipsExplorer();
+        }
+
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+        lucide.createIcons();
+      },
+
+      // Modal açma / kapama
+      openModal(modalId) {
+        const el = document.getElementById(modalId);
+        if (el) el.classList.remove('hidden');
+        lucide.createIcons();
+      },
+      closeModal(modalId) {
+        const el = document.getElementById(modalId);
+        if (el) el.classList.add('hidden');
+      },
+
+      // Takvim Ay Değiştirme
+      prevMonth() {
+        if (this.calendarMonth === 0) {
+          this.calendarMonth = 11;
+          this.calendarYear--;
+        } else {
+          this.calendarMonth--;
+        }
+        this.renderCalendar();
+      },
+
+      nextMonth() {
+        if (this.calendarMonth === 11) {
+          this.calendarMonth = 0;
+          this.calendarYear++;
+        } else {
+          this.calendarMonth++;
+        }
+        this.renderCalendar();
+      },
+
+      setCalendarMonth(monthIndex, year) {
+        this.calendarMonth = monthIndex;
+        if (year) this.calendarYear = year;
+        this.renderCalendar();
+      },
+
+      // Takvim Çizimi & Kutucuk Mantığı
+      renderCalendar() {
+        const label = document.getElementById('calendarMonthYearLabel');
+        if (label) {
+          label.textContent = `${this.monthNames[this.calendarMonth]} ${this.calendarYear}`;
+        }
+
+        // Hızlı Ay Butonlarının Aktiflik Durumu
+        [5, 6].forEach(m => {
+          const btn = document.getElementById(`btnMonth-${m}`);
+          if (btn) {
+            if (this.calendarMonth === m && this.calendarYear === 2026) {
+              btn.className = "px-2.5 py-1 rounded-lg text-xs font-semibold bg-slate-900 dark:bg-white text-white dark:text-slate-900 transition-all";
+            } else {
+              btn.className = "px-2.5 py-1 rounded-lg text-xs font-medium bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border border-slate-200 dark:border-slate-700 transition-all";
+            }
+          }
+        });
+
+        const grid = document.getElementById('calendarGrid');
+        if (!grid) return;
+
+        // Ayın ilk gününün haftanın hangi günü olduğu (Pazartesi = 0 yapmak için)
+        const firstDayOfMonth = new Date(this.calendarYear, this.calendarMonth, 1);
+        let startingDay = firstDayOfMonth.getDay() - 1; // 0: Pzt, 1: Sal, ..., 6: Paz
+        if (startingDay === -1) startingDay = 6; // Pazar için
+
+        const totalDaysInMonth = new Date(this.calendarYear, this.calendarMonth + 1, 0).getDate();
+        const prevMonthTotalDays = new Date(this.calendarYear, this.calendarMonth, 0).getDate();
+
+        let cellsHtml = '';
+
+        // Önceki aydan sarkan boşluklar / soluk günler
+        for (let i = startingDay - 1; i >= 0; i--) {
+          const dayNum = prevMonthTotalDays - i;
+          const prevMonthIndex = this.calendarMonth === 0 ? 11 : this.calendarMonth - 1;
+          const prevYear = this.calendarMonth === 0 ? this.calendarYear - 1 : this.calendarYear;
+          
+          const reportDay = this.findReportDay(prevYear, prevMonthIndex, dayNum);
+
+          if (reportDay) {
+            const isSelected = reportDay.dayObj.id === this.activeDayId;
+            cellsHtml += `
+              <button 
+                onclick="app.selectCalendarDay('${reportDay.reportIndex}', '${reportDay.dayObj.id}')"
+                class="min-h-[56px] sm:min-h-[64px] p-2 rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
+                  isSelected 
+                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-md ring-2 ring-slate-900 dark:ring-white ring-offset-2 dark:ring-offset-[#161F30]' 
+                    : 'bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-slate-800 dark:text-slate-200 hover:bg-emerald-100/90 dark:hover:bg-emerald-900/50 shadow-xs'
+                }"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-800 dark:text-slate-200'}">${dayNum}</span>
+                  <span class="w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'}"></span>
+                </div>
+                <span class="text-[10px] truncate block ${isSelected ? 'text-slate-300 dark:text-slate-700 font-medium' : 'text-emerald-800 dark:text-emerald-300 font-medium'}">
+                  ${reportDay.dayObj.gun}
+                </span>
+              </button>
+            `;
+          } else {
+            cellsHtml += `
+              <div class="min-h-[56px] sm:min-h-[64px] p-2 rounded-xl border border-transparent text-slate-300 dark:text-slate-700 text-xs font-medium select-none bg-slate-100/30 dark:bg-slate-800/20">
+                ${dayNum}
+              </div>
+            `;
+          }
+        }
+
+        // Mevcut ayın günleri
+        for (let dayNum = 1; dayNum <= totalDaysInMonth; dayNum++) {
+          const reportDay = this.findReportDay(this.calendarYear, this.calendarMonth, dayNum);
+
+          if (reportDay) {
+            const isSelected = reportDay.dayObj.id === this.activeDayId;
+            cellsHtml += `
+              <button 
+                onclick="app.selectCalendarDay('${reportDay.reportIndex}', '${reportDay.dayObj.id}')"
+                class="min-h-[56px] sm:min-h-[64px] p-2 rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
+                  isSelected 
+                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-md ring-2 ring-slate-900 dark:ring-white ring-offset-2 dark:ring-offset-[#161F30]' 
+                    : 'bg-emerald-50 dark:bg-emerald-950/50 border-emerald-300 dark:border-emerald-800 text-slate-800 dark:text-slate-100 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 shadow-xs'
+                }"
+                title="${reportDay.dayObj.gun} - ${reportDay.dayObj.etiket}"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-900 dark:text-white'}">${dayNum}</span>
+                  <span class="w-2 h-2 rounded-full ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'} animate-pulse"></span>
+                </div>
+                <div>
+                  <span class="text-[10px] font-bold block ${isSelected ? 'text-slate-200 dark:text-slate-800' : 'text-emerald-900 dark:text-emerald-300'}">
+                    ${reportDay.dayObj.gun}
+                  </span>
+                  <span class="text-[9px] truncate block ${isSelected ? 'text-slate-300 dark:text-slate-700' : 'text-slate-600 dark:text-slate-400'}">
+                    ${reportDay.dayObj.etiket.split('&')[0]}
+                  </span>
+                </div>
+              </button>
+            `;
+          } else {
+            cellsHtml += `
+              <div class="min-h-[56px] sm:min-h-[64px] p-2 rounded-xl border border-slate-200/60 dark:border-slate-800/80 bg-white/70 dark:bg-slate-800/30 text-slate-400 dark:text-slate-600 text-xs flex flex-col justify-between select-none">
+                <span class="font-medium">${dayNum}</span>
+                <span class="text-[9px] text-slate-300 dark:text-slate-700">-</span>
+              </div>
+            `;
+          }
+        }
+
+        // Sonraki aydan kalan boşlukları doldur
+        const totalRendered = startingDay + totalDaysInMonth;
+        const nextMonthCells = 35 - totalRendered > 0 ? 35 - totalRendered : (42 - totalRendered > 0 ? 42 - totalRendered : 0);
+        
+        for (let i = 1; i <= nextMonthCells; i++) {
+          const nextMonthIndex = this.calendarMonth === 11 ? 0 : this.calendarMonth + 1;
+          const nextYear = this.calendarMonth === 11 ? this.calendarYear + 1 : this.calendarYear;
+          const reportDay = this.findReportDay(nextYear, nextMonthIndex, i);
+
+          if (reportDay) {
+            const isSelected = reportDay.dayObj.id === this.activeDayId;
+            cellsHtml += `
+              <button 
+                onclick="app.selectCalendarDay('${reportDay.reportIndex}', '${reportDay.dayObj.id}')"
+                class="min-h-[56px] sm:min-h-[64px] p-2 rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
+                  isSelected 
+                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-md ring-2 ring-slate-900 dark:ring-white ring-offset-2 dark:ring-offset-[#161F30]' 
+                    : 'bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-slate-800 dark:text-slate-200 hover:bg-emerald-100/90 dark:hover:bg-emerald-900/50 shadow-xs'
+                }"
+              >
+                <div class="flex items-center justify-between">
+                  <span class="text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-800 dark:text-slate-200'}">${i}</span>
+                  <span class="w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'}"></span>
+                </div>
+                <span class="text-[10px] truncate block ${isSelected ? 'text-slate-300 dark:text-slate-700 font-medium' : 'text-emerald-800 dark:text-emerald-300 font-medium'}">
+                  ${reportDay.dayObj.gun}
+                </span>
+              </button>
+            `;
+          } else {
+            cellsHtml += `
+              <div class="min-h-[56px] sm:min-h-[64px] p-2 rounded-xl border border-transparent text-slate-300 dark:text-slate-700 text-xs font-medium select-none bg-slate-100/30 dark:bg-slate-800/20">
+                ${i}
+              </div>
+            `;
+          }
+        }
+
+        grid.innerHTML = cellsHtml;
+      },
+
+      // Belirli bir gün için rapor ara (29 Haziran, 30 Haziran, 1 Temmuz vb.)
+      findReportDay(year, monthIndex, dayNumber) {
+        for (let rIdx = 0; rIdx < this.reports.length; rIdx++) {
+          const report = this.reports[rIdx];
+          for (let dIdx = 0; dIdx < report.gunler.length; dIdx++) {
+            const day = report.gunler[dIdx];
+            
+            if (day.yil === year && day.ay === monthIndex && day.gunNo === dayNumber) {
+              return { reportIndex: rIdx, dayObj: day };
+            }
+
+            const parts = day.tarih.split(' ');
+            if (parts.length >= 3) {
+              const dNum = parseInt(parts[0], 10);
+              const mName = parts[1];
+              const yNum = parseInt(parts[2], 10);
+              const expectedMonth = this.monthNames[monthIndex];
+
+              if (dNum === dayNumber && mName === expectedMonth && yNum === year) {
+                return { reportIndex: rIdx, dayObj: day };
+              }
+            }
+          }
+        }
+        return null;
+      },
+
+      // Takvim üzerinden doğrudan gün ve hafta seçme
+      selectCalendarDay(reportIndex, dayId) {
+        this.activeReportIndex = parseInt(reportIndex, 10);
+        this.activeDayId = dayId;
+
+        this.renderCalendar();
+        this.renderAnaSayfa();
+
+        const report = this.reports[this.activeReportIndex];
+        const day = report?.gunler?.find(g => g.id === dayId);
+        if (day) {
+          const infoEl = document.getElementById('calendarSelectedInfo');
+          if (infoEl) {
+            infoEl.textContent = `Seçili: ${day.gun} (${day.tarih})`;
+          }
+        }
+
+        const contentEl = document.getElementById('dayContentArea');
+        if (contentEl) {
+          contentEl.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
+        }
+      },
+
+      // Aktif günü seç
+      selectDay(dayId) {
+        this.activeDayId = dayId;
+        this.renderCalendar();
+        this.renderDayTabs();
+        this.renderDayContent();
+        
+        const report = this.reports[this.activeReportIndex];
+        const day = report?.gunler?.find(g => g.id === dayId);
+        if (day) {
+          const infoEl = document.getElementById('calendarSelectedInfo');
+          if (infoEl) {
+            infoEl.textContent = `Seçili: ${day.gun} (${day.tarih})`;
+          }
+        }
+
+        lucide.createIcons();
+      },
+
+      // Ana Sayfa Rapor Detayını Çiz
+      renderAnaSayfa() {
+        const report = this.reports[this.activeReportIndex];
+        if (!report) return;
+
+        const numEl = document.getElementById('activeWeekNumber');
+        if (numEl) numEl.textContent = report.haftaNo;
+
+        const datesEl = document.getElementById('activeWeekDates');
+        if (datesEl) datesEl.textContent = report.tarihAraligi;
+
+        const titleEl = document.getElementById('activeWeekTitle');
+        if (titleEl) titleEl.textContent = report.baslik;
+
+        const descEl = document.getElementById('activeWeekDesc');
+        if (descEl) descEl.textContent = report.aciklama;
+
+        if (report.istatistikler) {
+          const st1 = document.getElementById('statSaat');
+          if (st1) st1.textContent = `${report.istatistikler.toplamSaat || 38} Saat`;
+
+          const st2 = document.getElementById('statKonu');
+          if (st2) st2.textContent = `${report.istatistikler.konuSayisi || 14} Başlık`;
+
+          const st3 = document.getElementById('statDosya');
+          if (st3) st3.textContent = `${report.istatistikler.dosyaSayisi || 6} Sayfa`;
+        }
+
+        this.renderDayTabs();
+        this.renderDayContent();
+
+        if (report.haftalikDegerlendirme) {
+          const ozetEl = document.getElementById('haftalikGenelOzetMetni');
+          if (ozetEl) ozetEl.textContent = report.haftalikDegerlendirme.ozet || '';
+
+          const kazanimlarContainer = document.getElementById('haftalikKazanimlarListesi');
+          if (kazanimlarContainer) {
+            kazanimlarContainer.innerHTML = (report.haftalikDegerlendirme.kazanimlar || []).map(k => `
+              <li class="flex items-start gap-2">
+                <i data-lucide="check-circle" class="w-3.5 h-3.5 text-emerald-600 dark:text-emerald-400 mt-0.5 shrink-0"></i>
+                <span>${k}</span>
+              </li>
+            `).join('');
+          }
+
+          const hedeflerContainer = document.getElementById('haftalikHedeflerListesi');
+          if (hedeflerContainer) {
+            hedeflerContainer.innerHTML = (report.haftalikDegerlendirme.gelecekHaftaHedefleri || []).map(h => `
+              <li class="flex items-start gap-2">
+                <i data-lucide="arrow-right" class="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400 mt-0.5 shrink-0"></i>
+                <span>${h}</span>
+              </li>
+            `).join('');
+          }
+        }
+
+        lucide.createIcons();
+      },
+
+      // Gün Sekmeleri Butonları
+      renderDayTabs() {
+        const report = this.reports[this.activeReportIndex];
+        const container = document.getElementById('dayTabsContainer');
+        if (!report || !container) return;
+
+        container.innerHTML = report.gunler.map(g => {
+          const isActive = g.id === this.activeDayId;
+          return `
+            <button 
+              onclick="app.selectDay('${g.id}')"
+              class="px-4 py-2.5 rounded-xl text-xs font-semibold transition-all whitespace-nowrap flex items-center gap-2 border cursor-pointer ${
+                isActive 
+                  ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-xs' 
+                  : 'bg-white dark:bg-[#161F30] text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white hover:bg-slate-50 dark:hover:bg-slate-800 border-slate-200 dark:border-slate-800'
+              }"
+            >
+              <span>${g.gun}</span>
+              <span class="text-[10px] font-mono px-1.5 py-0.5 rounded ${
+                isActive 
+                  ? 'bg-slate-800 dark:bg-slate-200 text-slate-300 dark:text-slate-800' 
+                  : 'bg-slate-100 dark:bg-slate-800 text-slate-500 dark:text-slate-400'
+              }">
+                ${g.tarih.split(' ')[0]} ${g.tarih.split(' ')[1]}
+              </span>
+            </button>
+          `;
+        }).join('');
+      },
+
+      // Seçili Günün İçeriği
+      renderDayContent() {
+        const report = this.reports[this.activeReportIndex];
+        const container = document.getElementById('dayContentArea');
+        if (!report || !container) return;
+
+        const day = report.gunler.find(g => g.id === this.activeDayId) || report.gunler[0];
+        if (!day) return;
+
+        container.innerHTML = `
+          <!-- Gün Başlığı ve Etiketi -->
+          <div class="flex flex-wrap items-center justify-between gap-3 pb-4 border-b border-slate-100 dark:border-slate-800">
+            <div>
+              <div class="flex items-center gap-2">
+                <h3 class="text-base font-bold text-slate-900 dark:text-white">${day.gun} Notları</h3>
+                <span class="text-xs font-mono text-slate-400 dark:text-slate-500 font-medium">${day.tarih}</span>
+              </div>
+              <p class="text-xs text-slate-500 dark:text-slate-400 mt-0.5">Odak Alanı: <strong class="text-slate-700 dark:text-slate-200">${day.etiket}</strong></p>
+            </div>
+            <span class="px-2.5 py-1 bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 rounded-lg text-xs font-medium border border-slate-200 dark:border-slate-700">
+              ${day.arastirilanKonular?.length || 0} İnceleme Maddesi
+            </span>
+          </div>
+
+          <!-- 1. Araştırılan Konular Bölümü -->
+          <div class="space-y-3">
+            <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+              <i data-lucide="book" class="w-4 h-4 text-slate-400"></i>
+              Araştırılan Konular & Notlar
+            </h4>
+            <div class="grid grid-cols-1 gap-3">
+              ${(day.arastirilanKonular || []).map((k, idx) => `
+                <div class="bg-slate-50/80 dark:bg-[#161F30] rounded-xl p-4 border border-slate-100 dark:border-slate-800 space-y-1">
+                  <div class="flex items-center gap-2">
+                    <span class="w-5 h-5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-200 text-[10px] font-bold flex items-center justify-center shrink-0">
+                      ${idx + 1}
+                    </span>
+                    <strong class="text-xs font-bold text-slate-900 dark:text-white">${k.baslik}</strong>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-7">
+                    ${k.icerik}
+                  </p>
+                </div>
+              `).join('')}
+            </div>
+          </div>
+
+          <!-- 2. Pratik Uygulama & Çalışmalar -->
+          ${day.pratikUygulama ? `
+            <div class="space-y-3 pt-2">
+              <h4 class="text-xs font-bold uppercase tracking-wider text-slate-500 dark:text-slate-400 flex items-center gap-1.5">
+                <i data-lucide="terminal" class="w-4 h-4 text-emerald-600 dark:text-emerald-400"></i>
+                Pratik Uygulama & Testler
+              </h4>
+              <div class="bg-emerald-50/40 dark:bg-emerald-950/30 border border-emerald-200/60 dark:border-emerald-850/50 rounded-xl p-4 sm:p-5 space-y-3">
+                <div class="flex flex-wrap items-center justify-between gap-2">
+                  <strong class="text-xs font-bold text-emerald-950 dark:text-emerald-200">${day.pratikUygulama.baslik}</strong>
+                  <span class="text-[10px] font-semibold px-2 py-0.5 bg-emerald-100 dark:bg-emerald-900/80 text-emerald-800 dark:text-emerald-200 rounded-md">
+                    Uygulandı
+                  </span>
+                </div>
+                <p class="text-xs text-slate-700 dark:text-slate-300 leading-relaxed">
+                  ${day.pratikUygulama.aciklama}
+                </p>
+
+                <!-- Etiketler -->
+                ${day.pratikUygulama.etiketler ? `
+                  <div class="flex flex-wrap items-center gap-1.5 pt-1">
+                    ${day.pratikUygulama.etiketler.map(t => `
+                      <span class="text-[11px] font-medium px-2 py-0.5 bg-white dark:bg-slate-800 text-emerald-800 dark:text-emerald-300 rounded-md border border-emerald-200 dark:border-emerald-800 shadow-xs">
+                        #${t}
+                      </span>
+                    `).join('')}
+                  </div>
+                ` : ''}
+
+                <!-- Eğer üretilen dosyalar varsa (Örn: Cumartesi HTML dosyaları) -->
+                ${day.pratikUygulama.dosyalar ? `
+                  <div class="pt-3 border-t border-emerald-200/60 dark:border-emerald-800/60">
+                    <span class="text-[11px] font-bold uppercase tracking-wider text-emerald-900 dark:text-emerald-300 block mb-2">
+                      Üretilen ve Test Edilen Çalışma Dosyaları:
+                    </span>
+                    <div class="grid grid-cols-2 sm:grid-cols-3 gap-2 font-mono text-xs">
+                      ${day.pratikUygulama.dosyalar.map(d => `
+                        <div class="p-2 rounded-lg bg-white dark:bg-slate-800 border border-emerald-200 dark:border-emerald-800 text-emerald-900 dark:text-emerald-200 flex items-center gap-2 shadow-xs">
+                          <i data-lucide="file-code" class="w-4 h-4 text-emerald-600 dark:text-emerald-400 shrink-0"></i>
+                          <span class="truncate font-semibold">${d}</span>
+                        </div>
+                      `).join('')}
+                    </div>
+                  </div>
+                ` : ''}
+              </div>
+            </div>
+          ` : ''}
+
+          <!-- 3. Günün Öne Çıkan Notu / Alıntısı -->
+          ${day.oneCikanBilgi ? `
+            <div class="bg-amber-50/50 dark:bg-amber-950/30 border border-amber-200/70 dark:border-amber-900/50 rounded-xl p-4 flex items-start gap-3">
+              <div class="w-7 h-7 rounded-lg bg-amber-100 dark:bg-amber-900/80 text-amber-800 dark:text-amber-200 flex items-center justify-center shrink-0 mt-0.5">
+                <i data-lucide="key" class="w-4 h-4"></i>
+              </div>
+              <div class="space-y-0.5">
+                <span class="text-[11px] font-bold uppercase tracking-wider text-amber-900 dark:text-amber-300 block">Kilit Çıkarım</span>
+                <p class="text-xs text-amber-950 dark:text-amber-100 leading-relaxed font-medium">
+                  "${day.oneCikanBilgi}"
+                </p>
+              </div>
+            </div>
+          ` : ''}
+        `;
+
+        lucide.createIcons();
+      },
+
+      // ==================== TAM RAPORLAR SAYFASI MANTIĞI ====================
+      renderTamRaporlar() {
+        const report = this.reports[this.activeReportIndex];
+        if (!report) return;
+
+        // Başlık ve meta
+        const titleEl = document.getElementById('rawReportWeekTitle');
+        if (titleEl) titleEl.textContent = `${report.haftaNo} (${report.tarihAraligi})`;
+
+        const docTitle = document.getElementById('docTitle');
+        if (docTitle) docTitle.textContent = report.baslik;
+
+        const docMetaHafta = document.getElementById('docMetaHafta');
+        if (docMetaHafta) docMetaHafta.textContent = `Haftalık Rapor - ${report.haftaNo}`;
+
+        const docMetaTarih = document.getElementById('docMetaTarih');
+        if (docMetaTarih) docMetaTarih.textContent = report.tarihAraligi;
+
+        const docAuthor = document.getElementById('docAuthor');
+        if (docAuthor && report.arastirmaci) {
+          docAuthor.textContent = `${report.arastirmaci.isim} (${report.arastirmaci.rol})`;
+        }
+
+        // Hafta seçici butonları
+        const selectorContainer = document.getElementById('rawReportWeekSelector');
+        if (selectorContainer) {
+          selectorContainer.innerHTML = this.reports.map((r, idx) => {
+            const isCurrent = idx === this.activeReportIndex;
+            return `
+              <button 
+                onclick="app.selectRawReportWeek(${idx})"
+                class="px-3 py-1.5 rounded-lg text-xs font-semibold whitespace-nowrap transition-all border cursor-pointer ${
+                  isCurrent 
+                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-xs' 
+                    : 'bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 hover:text-slate-900 dark:hover:text-white border-slate-200 dark:border-slate-700'
+                }"
+              >
+                ${r.haftaNo}
+              </button>
+            `;
+          }).join('');
+        }
+
+        // Ham Metin Renderer (Temiz Notion / Doküman Biçimlendirmesi)
+        const renderer = document.getElementById('rawContentRenderer');
+        if (renderer) {
+          const raw = report.raw_content || this.generateRawFallback(report);
+          renderer.innerHTML = this.formatRawTextToHtml(raw);
+
+          // Okuma süresi hesapla
+          const wordCount = raw.split(/\s+/).length;
+          const readingMinutes = Math.max(1, Math.ceil(wordCount / 200));
+          const timeEl = document.getElementById('docReadingTime');
+          if (timeEl) timeEl.textContent = `~${readingMinutes} dk okuma (${wordCount} kelime)`;
+        }
+
+        lucide.createIcons();
+      },
+
+      // Farklı haftanın tam raporunu seç
+      selectRawReportWeek(index) {
+        this.activeReportIndex = index;
+        this.renderTamRaporlar();
+        this.renderAnaSayfa();
+        this.renderCalendar();
+      },
+
+      // Ham metni temiz HTML doküman formatına çevir (Notion tarzı)
+      formatRawTextToHtml(rawText) {
+        if (!rawText) return '<p class="text-slate-400 italic">Bu rapor için ham metin kaydı bulunamadı.</p>';
+
+        const lines = rawText.split('\n');
+        let html = '';
+        let inList = false;
+
+        for (let i = 0; i < lines.length; i++) {
+          const line = lines[i].trim();
+
+          if (!line) {
+            if (inList) {
+              html += '</ul>';
+              inList = false;
+            }
+            continue;
+          }
+
+          // Ayraç çizgileri
+          if (line.startsWith('---') || line.startsWith('===')) {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += '<hr class="my-6 border-slate-200 dark:border-slate-800" />';
+            continue;
+          }
+
+          // Gün Başlıkları (Örn: Pazartesi – 29 Haziran 2026)
+          if (line.includes('Pazartesi –') || line.includes('Salı –') || line.includes('Çarşamba –') || 
+              line.includes('Perşembe –') || line.includes('Cuma –') || line.includes('Cumartesi –') || line.includes('Pazar –')) {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += `
+              <div class="mt-8 mb-4 pt-4 border-t border-slate-200 dark:border-slate-800">
+                <div class="flex items-center gap-2 text-indigo-700 dark:text-indigo-400 font-mono text-xs font-bold uppercase tracking-wider mb-1">
+                  <i data-lucide="calendar" class="w-3.5 h-3.5"></i>
+                  <span>Günlük Kayıt</span>
+                </div>
+                <h2 class="text-lg sm:text-xl font-bold text-slate-900 dark:text-white !mt-0 !border-b-0 pb-1">
+                  ${this.escapeHtml(line)}
+                </h2>
+              </div>
+            `;
+            continue;
+          }
+
+          // Ana Başlık (Örn: Haftalık Rapor 1 ...)
+          if (line.startsWith('Haftalık Rapor')) {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += `<h3 class="text-base font-bold text-slate-900 dark:text-white bg-slate-50 dark:bg-slate-800 p-3 rounded-xl border border-slate-200/80 dark:border-slate-700 mb-4">${this.escapeHtml(line)}</h3>`;
+            continue;
+          }
+
+          // AIDA Modeli veya Vurgulu Başlıklar
+          if (line.startsWith('THE AIDA MODEL') || line.startsWith('AIDA MODELİ') || line.startsWith('Kim olduğun konusunda netleş:')) {
+            if (inList) { html += '</ul>'; inList = false; }
+            html += `<h4 class="text-sm font-bold text-indigo-900 dark:text-indigo-300 mt-4 mb-2 flex items-center gap-1.5"><i data-lucide="sparkles" class="w-3.5 h-3.5 text-indigo-600 dark:text-indigo-400"></i> ${this.escapeHtml(line)}</h4>`;
+            continue;
+          }
+
+          // Liste maddeleri (• veya - veya 1.)
+          if (line.startsWith('•') || line.startsWith('- ') || /^\d+\.\s/.test(line)) {
+            if (!inList) {
+              html += '<ul class="space-y-1.5 my-3 pl-5 list-disc text-slate-700 dark:text-slate-300">';
+              inList = true;
+            }
+            const cleanItem = line.replace(/^[•\-\d+\.]\s*/, '');
+            html += `<li class="leading-relaxed">${this.formatInlineText(cleanItem)}</li>`;
+            continue;
+          }
+
+          // Tanım Blokları (Framework: ..., Deep Learning: ..., Persona: ...)
+          if (line.includes(': ') && (
+            line.startsWith('Framework:') || 
+            line.startsWith('Deep Learning:') || 
+            line.startsWith('SEO:') || 
+            line.startsWith('Persona:') || 
+            line.startsWith('Direct Response:') || 
+            line.startsWith('Brand Awareness:') || 
+            line.startsWith('Push Marketing:') || 
+            line.startsWith('Pull Marketing:') || 
+            line.startsWith('Organic Traffic:') || 
+            line.startsWith('Paid Traffic:') || 
+            line.startsWith('API:') ||
+            line.startsWith('HTML:')
+          )) {
+            if (inList) { html += '</ul>'; inList = false; }
+            const [title, ...rest] = line.split(': ');
+            const desc = rest.join(': ');
+            html += `
+              <div class="my-4 p-4 rounded-2xl bg-slate-50 dark:bg-slate-800/80 border border-slate-200/90 dark:border-slate-700 space-y-1 shadow-xs">
+                <span class="text-xs font-bold text-slate-900 dark:text-white uppercase tracking-wider block font-mono">
+                  ${this.escapeHtml(title)}
+                </span>
+                <p class="text-sm text-slate-700 dark:text-slate-300 leading-relaxed mb-0 font-medium">
+                  ${this.formatInlineText(desc)}
+                </p>
+              </div>
+            `;
+            continue;
+          }
+
+          // Normal Paragraf
+          if (inList) {
+            html += '</ul>';
+            inList = false;
+          }
+          html += `<p class="leading-relaxed mb-3">${this.formatInlineText(line)}</p>`;
+        }
+
+        if (inList) html += '</ul>';
+        return html;
+      },
+
+      // Satır içi formatlamalar (kalın, kod vb.)
+      formatInlineText(text) {
+        let formatted = this.escapeHtml(text);
+        
+        // Komutlar ve dosya adları için code görünümü
+        formatted = formatted.replace(/(\/clear|\/terminal-setup|\/init|claude-edits|\/context|\/cost|\/compact|Memory\.md|buttons\.html|exercise\.html|practice\.html|practice2\.html|practice3\.html|website\.html)/g, '<code>$1</code>');
+        
+        return formatted;
+      },
+
+      // HTML Escape
+      escapeHtml(str) {
+        return str
+          .replace(/&/g, '&amp;')
+          .replace(/</g, '&lt;')
+          .replace(/>/g, '&gt;')
+          .replace(/"/g, '&quot;')
+          .replace(/'/g, '&#039;');
+      },
+
+      // PDF İndirme Fonksiyonu
+      downloadPdfReport() {
+        const report = this.reports[this.activeReportIndex];
+        const confirmed = confirm(`"${report.haftaNo} - ${report.baslik}" orijinal raporunu PDF formatında indirmek/kaydetmek için yazdırma ekranı açılacaktır.\n\nDevam etmek istiyor musunuz?`);
+        if (confirmed) {
+          window.print();
+        }
+      },
+
+      // Ham Metni Panoya Kopyala
+      async copyRawContent() {
+        const report = this.reports[this.activeReportIndex];
+        const raw = report.raw_content || this.generateRawFallback(report);
+
+        try {
+          await navigator.clipboard.writeText(raw);
+          const btnText = document.getElementById('copyButtonText');
+          if (btnText) {
+            btnText.textContent = 'Kopyalandı!';
+            setTimeout(() => {
+              btnText.textContent = 'Metni Kopyala';
+            }, 2000);
+          }
+        } catch (err) {
+          console.error('Kopyalama hatası:', err);
+          alert('Metin panoya kopyalanamadı. Lütfen metni manuel seçerek kopyalayınız.');
+        }
+      },
+
+      // ==================== İPUÇLARI & ÖNERİLER (HİYERARŞİK GEZGİN) ====================
+      renderTipsExplorer() {
+        const yearLabel = document.getElementById('tipsYearLabel');
+        if (yearLabel) yearLabel.textContent = this.tipsYear;
+
+        // 1. Aylar Butonları
+        const monthContainer = document.getElementById('tipsMonthSelector');
+        if (monthContainer) {
+          // Haziran (5), Temmuz (6), Ağustos (7), Eylül (8), Ekim (9), Kasım (10), Aralık (11)
+          const availableMonths = [5, 6, 7, 8, 9];
+          
+          monthContainer.innerHTML = availableMonths.map(mIdx => {
+            const mName = this.monthNames[mIdx];
+            const isSelected = mIdx === this.tipsMonthIndex;
+            // Haziran ve Temmuz'da rapor kaydı var
+            const hasData = (mIdx === 5 || mIdx === 6);
+
+            return `
+              <button 
+                onclick="app.selectTipsMonth(${mIdx})"
+                class="px-4 py-2 rounded-xl text-xs font-semibold transition-all whitespace-nowrap flex items-center gap-1.5 border cursor-pointer ${
+                  isSelected 
+                    ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-xs' 
+                    : (hasData 
+                        ? 'bg-emerald-50 dark:bg-emerald-950/40 text-emerald-900 dark:text-emerald-200 border-emerald-200 dark:border-emerald-800 hover:bg-emerald-100 dark:hover:bg-emerald-900/60' 
+                        : 'bg-slate-50 dark:bg-slate-800/40 text-slate-400 dark:text-slate-500 border-slate-200 dark:border-slate-800 hover:bg-slate-100 dark:hover:bg-slate-800')
+                }"
+              >
+                <span>${mName}</span>
+                ${hasData ? `<span class="w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'}"></span>` : ''}
+              </button>
+            `;
+          }).join('');
+        }
+
+        // 2. Hafta Göstergesi & Butonları
+        const activeMonthName = this.monthNames[this.tipsMonthIndex];
+        const monthIndicator = document.getElementById('tipsActiveMonthIndicator');
+        if (monthIndicator) {
+          monthIndicator.textContent = `${activeMonthName} ${this.tipsYear} Haftaları`;
+        }
+
+        const weekContainer = document.getElementById('tipsWeekSelector');
+        if (weekContainer) {
+          // Seçili ay için raporları filtrele (Örn: Haziran veya Temmuz'u kapsayan raporlar)
+          const matchingReports = this.reports.map((r, idx) => ({ report: r, index: idx })).filter(item => {
+            const r = item.report;
+            if (r.aylar && r.aylar.includes(activeMonthName)) return true;
+            if (r.ay && r.ay.includes(activeMonthName)) return true;
+            return false;
+          });
+
+          if (matchingReports.length > 0) {
+            weekContainer.innerHTML = matchingReports.map(item => {
+              const isSelected = item.index === this.tipsSelectedReportIndex;
+              return `
+                <button 
+                  onclick="app.selectTipsWeek(${item.index})"
+                  class="px-4 py-2.5 rounded-xl text-xs font-bold transition-all flex items-center gap-2 border cursor-pointer ${
+                    isSelected 
+                      ? 'bg-indigo-600 text-white border-indigo-600 shadow-md ring-2 ring-indigo-600/30' 
+                      : 'bg-white dark:bg-[#161F30] text-slate-700 dark:text-slate-200 border-slate-200 dark:border-slate-700 hover:bg-indigo-50 dark:hover:bg-indigo-950/40 hover:text-indigo-600'
+                  }"
+                >
+                  <i data-lucide="folder-check" class="w-4 h-4"></i>
+                  <span>${item.report.haftaNo}</span>
+                  <span class="text-[10px] opacity-80 font-normal font-mono">(${item.report.tarihAraligi})</span>
+                </button>
+              `;
+            }).join('');
+          } else {
+            weekContainer.innerHTML = `
+              <div class="text-xs text-slate-400 italic py-2">
+                Bu ay için henüz eklenmiş bir rapor ve öneri kaydı bulunmamaktadır.
+              </div>
+            `;
+          }
+        }
+
+        // 3. Seçili Haftanın İpuçları & Önerileri İçeriği
+        this.renderTipsContent();
+        lucide.createIcons();
+      },
+
+      selectTipsMonth(mIdx) {
+        this.tipsMonthIndex = mIdx;
+        // Eğer Haziran veya Temmuz ise 1. Haftayı seçili yap
+        if (mIdx === 5 || mIdx === 6) {
+          this.tipsSelectedReportIndex = 0;
+        }
+        this.renderTipsExplorer();
+      },
+
+      selectTipsWeek(reportIdx) {
+        this.tipsSelectedReportIndex = reportIdx;
+        this.renderTipsContent();
+        lucide.createIcons();
+      },
+
+      renderTipsContent() {
+        const container = document.getElementById('tipsContentDisplay');
+        if (!container) return;
+
+        const report = this.reports[this.tipsSelectedReportIndex];
+        if (!report || !report.ipuclari_ve_oneriler) {
+          container.innerHTML = `
+            <div class="col-span-full bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl p-8 text-center text-slate-400">
+              Bu hafta için ipucu ve öneri kaydı bulunmamaktadır.
+            </div>
+          `;
+          return;
+        }
+
+        const { gelistirme_onerileri, ileriye_donuk_arastirma } = report.ipuclari_ve_oneriler;
+
+        container.innerHTML = `
+          <!-- 1. KART: GELİŞTİRME ÖNERİLERİ & TÜYOLAR -->
+          <div class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-7 shadow-xs space-y-5 transition-colors">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-amber-50 dark:bg-amber-950/60 text-amber-700 dark:text-amber-400 flex items-center justify-center shrink-0">
+                  <i data-lucide="lightbulb" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-white">Geliştirme Önerileri & Tüyolar</h3>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">${report.haftaNo} Araştırma Çıkarımları</p>
+                </div>
+              </div>
+              <span class="text-[11px] font-semibold px-2.5 py-1 bg-amber-100/80 dark:bg-amber-900/60 text-amber-800 dark:text-amber-200 rounded-lg">
+                ${gelistirme_onerileri?.length || 0} Madde
+              </span>
+            </div>
+
+            <div class="space-y-3">
+              ${(gelistirme_onerileri || []).map((item, idx) => `
+                <div class="bg-slate-50 dark:bg-[#161F30] rounded-2xl p-4 sm:p-5 border border-slate-100 dark:border-slate-800 space-y-2">
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex items-center gap-2">
+                      <span class="w-5 h-5 rounded-full bg-white dark:bg-slate-800 border border-slate-200 dark:border-slate-700 text-slate-700 dark:text-slate-300 text-[10px] font-bold flex items-center justify-center shrink-0">
+                        ${idx + 1}
+                      </span>
+                      <strong class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">${item.baslik}</strong>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                      <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-white dark:bg-slate-800 text-slate-600 dark:text-slate-300 border border-slate-200 dark:border-slate-700">
+                        ${item.kategori}
+                      </span>
+                      <span class="text-[10px] font-bold px-2 py-0.5 rounded-md ${
+                        item.onem === 'Kritik' 
+                          ? 'bg-rose-100 dark:bg-rose-950/80 text-rose-800 dark:text-rose-200' 
+                          : item.onem === 'Yüksek' 
+                            ? 'bg-amber-100 dark:bg-amber-950/80 text-amber-800 dark:text-amber-200' 
+                            : 'bg-slate-200 dark:bg-slate-700 text-slate-700 dark:text-slate-300'
+                      }">
+                        ${item.onem}
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-7">
+                    ${item.aciklama}
+                  </p>
+                </div>
+              `).join('')}
+            </div>
+
+          </div>
+
+          <!-- 2. KART: İLERİYE DÖNÜK ARAŞTIRMA & ÇALIŞMA ÖNERİLERİ -->
+          <div class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-3xl p-6 sm:p-7 shadow-xs space-y-5 transition-colors">
+            
+            <div class="flex items-center justify-between pb-4 border-b border-slate-100 dark:border-slate-800">
+              <div class="flex items-center gap-3">
+                <div class="w-10 h-10 rounded-2xl bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-400 flex items-center justify-center shrink-0">
+                  <i data-lucide="compass" class="w-5 h-5"></i>
+                </div>
+                <div>
+                  <h3 class="text-base font-bold text-slate-900 dark:text-white">İleriye Dönük Araştırma Önerileri</h3>
+                  <p class="text-xs text-slate-500 dark:text-slate-400">Gelecek Haftaların Yol Haritası</p>
+                </div>
+              </div>
+              <span class="text-[11px] font-semibold px-2.5 py-1 bg-indigo-100/80 dark:bg-indigo-900/60 text-indigo-800 dark:text-indigo-200 rounded-lg">
+                ${ileriye_donuk_arastirma?.length || 0} Konu
+              </span>
+            </div>
+
+            <div class="space-y-3">
+              ${(ileriye_donuk_arastirma || []).map((item, idx) => `
+                <div class="bg-slate-50 dark:bg-[#161F30] rounded-2xl p-4 sm:p-5 border border-slate-100 dark:border-slate-800 space-y-2">
+                  <div class="flex flex-wrap items-center justify-between gap-2">
+                    <div class="flex items-center gap-2">
+                      <span class="w-5 h-5 rounded-full bg-indigo-100 dark:bg-indigo-900/60 text-indigo-700 dark:text-indigo-300 text-[10px] font-bold flex items-center justify-center shrink-0">
+                        ${idx + 1}
+                      </span>
+                      <strong class="text-xs sm:text-sm font-bold text-slate-900 dark:text-white">${item.baslik}</strong>
+                    </div>
+                    <div class="flex items-center gap-1.5">
+                      <span class="text-[10px] font-semibold px-2 py-0.5 rounded-md bg-indigo-50 dark:bg-indigo-950/60 text-indigo-700 dark:text-indigo-300 border border-indigo-200 dark:border-indigo-800">
+                        ${item.odak}
+                      </span>
+                      <span class="text-[10px] font-bold px-2 py-0.5 rounded-md bg-emerald-100 dark:bg-emerald-950/80 text-emerald-800 dark:text-emerald-200">
+                        ${item.hedefSure}
+                      </span>
+                    </div>
+                  </div>
+                  <p class="text-xs text-slate-600 dark:text-slate-300 leading-relaxed pl-7">
+                    ${item.aciklama}
+                  </p>
+                </div>
+              `).join('')}
+            </div>
+
+          </div>
+        `;
+      },
+
+      // Fallback Raw Metin Üretici
+      generateRawFallback(report) {
+        let text = `${report.haftaNo} - ${report.tarihAraligi}\n${report.baslik}\n\n${report.aciklama}\n\n`;
+        (report.gunler || []).forEach(g => {
+          text += `------------------------------------------------------------\n${g.gun} – ${g.tarih}\n------------------------------------------------------------\n`;
+          (g.arastirilanKonular || []).forEach(k => {
+            text += `\n${k.baslik}\n${k.icerik}\n`;
+          });
+          if (g.pratikUygulama) {
+            text += `\nPratik Uygulama: ${g.pratikUygulama.baslik}\n${g.pratikUygulama.aciklama}\n`;
+          }
+          if (g.oneCikanBilgi) {
+            text += `\nÖne Çıkan Bilgi: ${g.oneCikanBilgi}\n`;
+          }
+          text += '\n';
+        });
+        return text;
+      },
+
+      // Tam ve Bağımsız Gömülü Veri Seti (Single-file Standalone Destek)
+      getFallbackReports() {
+        return [
+          {
+            "id": "hafta-1",
+            "haftaNo": "1. Hafta",
+            "tarihAraligi": "29 Haziran – 04 Temmuz 2026",
+            "yil": 2026,
+            "ay": "Haziran / Temmuz",
+            "aylar": ["Haziran", "Temmuz"],
+            "baslik": "Web Teknolojileri, Yapay Zeka, Dijital Pazarlama ve HTML Temelleri",
+            "aciklama": "Bu rapor, verilen konular üzerinde yapılan araştırmalar, alınan notlar, edinilen bilgiler ve üzerinde çalışılan pratik uygulamaların haftalık bir derlemesidir.",
+            "pdf_url": "haftalik_rapor_1_haziran_temmuz_2026.pdf",
+            "arastirmaci": {
+              "isim": "Araştırmacı",
+              "rol": "Teknoloji & Pazarlama Stajyeri",
+              "departman": "Ürün & İnovasyon"
+            },
+            "istatistikler": {
+              "toplamSaat": 38,
+              "konuSayisi": 14,
+              "dosyaSayisi": 6,
+              "pratikUygulama": "6 HTML Dosyası & Analizler"
+            },
+            "haftalikDegerlendirme": {
+              "ozet": "Bu hafta teorik araştırmalar ile pratik uygulamaların dengeli bir şekilde harmanlandığı oldukça verimli bir süreç oldu. Web mimarisinin temelleri (HTML, CSS, PHP ve Framework kavramı), yapay zeka ve derin öğrenme mekanizmaları, modern dijital pazarlama stratejileri (AIDA, Push/Pull, SEO, Personalar) ve Claude Code geliştirme araçları detaylıca incelendi. Haftanın son gününde ise öğrenilenler pratiğe dökülerek ilk HTML sayfaları başarıyla kodlandı.",
+              "kazanimlar": [
+                "Framework mantığı ve web teknolojilerinin (HTML iskelet, CSS makyaj, PHP beyin) rol dağılımı kavrandı.",
+                "Derin öğrenmede katmanlı yapay sinir ağları (Input, Hidden, Output) ve modern AI araçları analiz edildi.",
+                "Pazarlamada AIDA modeli, Persona oluşturma adımları ve SEO anahtar kelime araştırma metotları öğrenildi.",
+                "Claude Code CLI komutları, terminal entegrasyonu ve token tasarrufu için en iyi pratikler listelendi.",
+                "Visual Studio Code ortamında 6 adet temel HTML çalışma dosyası hazırlanarak pratik adımlar atıldı."
+              ],
+              "gelecekHaftaHedefleri": [
+                "HTML alıştırmalarını CSS stilleri (renkler, flexbox, grid) ile zenginleştirmek.",
+                "Oluşturulan sayfaları responsive (mobil uyumlu) hale getirmek.",
+                "Temel JavaScript etkileşimlerini sayfaya entegre etmek.",
+                "Dijital pazarlama için oluşturulan persona şablonunu gerçek bir vaka çalışmasında uygulamak."
+              ]
+            },
+            "ipuclari_ve_oneriler": {
+              "gelistirme_onerileri": [
+                {
+                  "baslik": "Claude Code Token & Context Yönetimi",
+                  "kategori": "Yapay Zeka & Araçlar",
+                  "onem": "Yüksek",
+                  "aciklama": "Her proje için kök dizinde Memory.md dosyası barındırmak ve commitler sonrası bu dosyayı güncellemek context kaybını engeller. Ayrıca yoğun saatler (TR 15:00 - 21:00) haricinde çalışmak ve Plan Modu'nu etkin kullanmak token tüketimini yaklaşık %40 oranında azaltır."
+                },
+                {
+                  "baslik": "Katmanlı Mimari Öğrenme Sıralaması",
+                  "kategori": "Web Mimarisi",
+                  "onem": "Kritik",
+                  "aciklama": "Doğrudan Laravel veya modern JS çatılarına atlamak yerine; önce HTML iskeletini ve CSS kutu modelini (Box Model / Flexbox) oturtmak, ardından sunucu taraflı PHP mantığına geçmek teknik borçlanmayı ve kafa karışıklığını önler."
+                },
+                {
+                  "baslik": "AIDA Modeli ile Doğrudan Eylem (CTA) Entegrasyonu",
+                  "kategori": "Dijital Pazarlama",
+                  "onem": "Orta",
+                  "aciklama": "Oluşturulan web sayfalarında doğrudan 'Satın Al' (Push) baskısı yerine kullanıcı problemine dokunan içerikler (Pull) sunulmalı; buton metinleri (CTA) 'Ücretsiz Keşfet', 'Rehberi İncele' gibi doğrudan tepki veren net aksiyonlarla kurgulanmalıdır."
+                },
+                {
+                  "baslik": "Rakip UI/UX Hatalarından Ders Çıkarma",
+                  "kategori": "Ürün Deneyimi",
+                  "onem": "Pratik",
+                  "aciklama": "Rakip platformların (ör. PR Newswire) yüksek maliyetli ve karmaşık paketleme modelleri analiz edilerek daha şeffaf, kotasız ve sade fiyatlandırma modelleri sunmak rekabette büyük avantaj sağlar."
+                }
+              ],
+              "ileriye_donuk_arastirma": [
+                {
+                  "baslik": "Modern CSS Mimarisi: Tailwind CSS & Flexbox/Grid",
+                  "odak": "Frontend Geliştirme",
+                  "hedefSure": "2. Hafta",
+                  "aciklama": "Hazırlanan 6 adet temel HTML sayfasını modern utility-first CSS (Tailwind) veya CSS Flexbox/Grid düzenleri ile stilize ederek mobil uyumlu (responsive) hale getirme çalışmaları yürütülmelidir."
+                },
+                {
+                  "baslik": "Veri Tabanı & Dinamik API Entegrasyonları",
+                  "odak": "Backend & Mimari",
+                  "hedefSure": "2. - 3. Hafta",
+                  "aciklama": "Frontend sayfalarının statik HTML'den JSON API'leri tüketen dinamik bir yapıya evrilmesi için REST API mimarisi ve PHP/Node.js veri işleme modelleri incelenmelidir."
+                },
+                {
+                  "baslik": "Persona Şablonunun Gerçek Verilerle Test Edilmesi",
+                  "odak": "Büyüme & Pazarlama",
+                  "hedefSure": "2. Hafta",
+                  "aciklama": "Oluşturulan 'Jannelle Robinson' örnek persona formatı; gerçek kullanıcı görüşmeleri, Google Ads Keyword Planner ve AnswerThePublic sorguları ile desteklenerek vaka analizi haline getirilmelidir."
+                },
+                {
+                  "baslik": "LLM Entegrasyonları ve Otomasyon İş Akışları",
+                  "odak": "Yapay Zeka",
+                  "hedefSure": "3. Hafta",
+                  "aciklama": "Gemini ve Claude API'lerini kullanarak gelen e-postaları otomatik sınıflandıran ve basın bülteni taslakları üreten mikro servislerin prototiplenmesi."
+                }
+              ]
+            },
+            "gunler": [
+              {
+                "id": "pazartesi",
+                "gun": "Pazartesi",
+                "tarih": "29 Haziran 2026",
+                "yil": 2026,
+                "ay": 5,
+                "gunNo": 29,
+                "etiket": "Web Mimarisi & PR Analizi",
+                "arastirilanKonular": [
+                  {
+                    "baslik": "Framework (Çatı) Kavramı",
+                    "icerik": "Framework: 'A framework is a guided system for building things.' Kodlama sürecinde işleri kolaylaştıran hazır kod blokları bütünüdür. Sıfırdan yapılması uzun sürecek yapıları bir araya getirerek hızlı ve standart bir geliştirme sağlar."
+                  },
+                  {
+                    "baslik": "PHP ve Laravel İlişkisi",
+                    "icerik": "PHP'nin verileri kullanıcıya sunmadan önce sunucu tarafında işleyen dinamik bir backend dili olduğunu öğrendim. Laravel framework'ü de PHP dilini kullanarak web geliştirmeyi yapısal ve güvenli hale getirmektedir."
+                  },
+                  {
+                    "baslik": "Web Sitesi Yapı Taşları Metaforu",
+                    "icerik": "Web sitesi bileşenlerini zihnimde şu şekilde somutlaştırdım: HTML = Sitenin İskeleti, CSS = Sitenin Makyajı/Görünümü, PHP = Sitenin Beyni/Veri İşleyicisi."
+                  },
+                  {
+                    "baslik": "Halkla İlişkiler (PR) Temel Kavramları",
+                    "icerik": "Marka Bilinirliği (hedef kitlenin markayı tanıması/hatırlaması), İtibar Yönetimi (özellikle kriz anlarında durumu doğru yönetebilme kabiliyeti) ve Güvenilirlik (verilen sözleri tutma ve sunulan bilginin doğruluğuna inanç) konularını inceledim."
+                  }
+                ],
+                "pratikUygulama": {
+                  "baslik": "Rakip Analizi & Pr.plus Kullanıcı Deneyimi Keşfi",
+                  "aciklama": "Pr.plus için köklü rakip firmalardan Pr Newswire incelendi. Paket fiyatlarının daha pahalı olduğu, kelime limiti aşımında ve görsel/video eklemede ekstra ücret talep edildiği tespit edildi. Ayrıca Pr.plus sitesi incelenirken alt kısımdaki 'Follow Us' alanında Instagram ve LinkedIn sosyal medya butonlarının yönlendirme linklerinin birbirine ters bağlı olduğu fark edildi ve not alındı.",
+                  "etiketler": ["Rakip İncelemesi", "UI/UX Hata Tespiti", "PR Newswire"]
+                },
+                "oneCikanBilgi": "HTML: Sitenin İskeleti, CSS: Sitenin Makyajı, PHP: Sitenin Beyni. Bir framework ise baştan yapıldığında çok zaman alacak kodları bir bütün haline getirip kolayca yönetmeyi sağlar."
+              },
+              {
+                "id": "sali",
+                "gun": "Salı",
+                "tarih": "30 Haziran 2026",
+                "yil": 2026,
+                "ay": 5,
+                "gunNo": 30,
+                "etiket": "Yapay Zeka & Derin Öğrenme",
+                "arastirilanKonular": [
+                  {
+                    "baslik": "Derin Öğrenme (Deep Learning) Mantığı",
+                    "icerik": "Yapay zeka ve makine öğreniminin özelleşmiş bir alt kümesidir. İnsan beyninin örüntüleri tanımlama şeklini taklit ederek çok katmanlı yapay sinir ağları kullanır. Süreç 3 ana aşamada işler: Input Layer (Girdi katmanı), Hidden Layers (Gizli katmanlarda karşılaştırma ve eleme), Output Layer (En doğru nihai çıktı)."
+                  },
+                  {
+                    "baslik": "Popüler Yapay Zeka Araçları & Yetenek Haritası",
+                    "icerik": "Sektörde öne çıkan AI araçları incelendi: ChatGPT, Perplexity (Araştırma ve Akademik Arama), Gemini, Copilot, Claude (Kodlama ve Mantıksal Akıl Yürütme), NotebookLM, Cursor, Midjourney, ElevenLabs, Gamma, Veo ve Sora. Perplexity ve Gamma araçları ilk kez keşfedildi."
+                  },
+                  {
+                    "baslik": "Claude Code CLI Keşfi",
+                    "icerik": "Claude Code aracının harici bir program arayüzüne ihtiyaç duymadan doğrudan bilgisayar terminalinde bağımsız çalışabildiği öğrenildi."
+                  }
+                ],
+                "pratikUygulama": {
+                  "baslik": "Pr.plus E-Posta Sistemi & Kategori İncelemesi",
+                  "aciklama": "Pr.plus altyapısının kullandığı e-posta yönetim paneline erişim sağlanarak gelen iş akışları güvenli bir şekilde incelendi. Gelen e-postaların 3 ana kategoride toplandığı gözlemlendi: 1) Telif Haklarıyla İlgili Talepler, 2) Ortaklık (Partnership) Başvuruları, 3) Basın Bülteni Yayınlama İstekleri.",
+                  "etiketler": ["E-Posta Yönetimi", "İş Akışı Analizi", "Telif & Ortaklık"]
+                },
+                "oneCikanBilgi": "Deep Learning, veriyi Input Layer'da alır, Hidden Layer'larda karşılaştırmalar yapıp olasılıkları eler ve Output Layer'da en optimize çıktıyı sunar."
+              },
+              {
+                "id": "carsamba",
+                "gun": "Çarşamba",
+                "tarih": "01 Temmuz 2026",
+                "yil": 2026,
+                "ay": 6,
+                "gunNo": 1,
+                "etiket": "Dijital Pazarlama & AIDA Modeli",
+                "arastirilanKonular": [
+                  {
+                    "baslik": "Pazarlamanın Temel Soruları",
+                    "icerik": "'İnsanların neye ihtiyacı var?' sorusunu sormak, pazar araştırması yapmak, fiyatlandırma ve dağıtımı planlamak, rekabet stratejileri geliştirmek, doğru reklam ve tatmin edici hizmet sunmak."
+                  },
+                  {
+                    "baslik": "SEO & Sosyal Medya Pazarlaması",
+                    "icerik": "SEO (Search Engine Optimization): Web sitesi içeriklerinin arama motorlarında organik olarak üst sıralara çıkması için optimize edilmesidir. Sosyal medya pazarlaması (Instagram, LinkedIn, TikTok) ise marka tanınırlığı, topluluk oluşturma ve güven tesisinde kritik rol oynar."
+                  },
+                  {
+                    "baslik": "Pazarlama Hunisi & AIDA Modeli",
+                    "icerik": "Pazarlama hiyerarşisi 4 aşamadan oluşur: 1) Awareness (Farkındalık yaratma), 2) Interest (Müşterinin ilgisini çekme ve araştırmaya yöneltme), 3) Desire (Rakiplerle kıyaslama ve istek oluşturma), 4) Action (Satın alma/eyleme geçiş)."
+                  },
+                  {
+                    "baslik": "Direct Response vs Brand Awareness",
+                    "icerik": "Direct Response (Doğrudan Tepki): Kitleyle anında eyleme geçmeyi hedefler (anlık aksiyon). Brand Awareness (Marka Bilinirliği): Zaman içinde güven ve kalıcı tanınırlık inşa eden stratejik bir süreçtir."
+                  }
+                ],
+                "pratikUygulama": {
+                  "baslik": "AIDA Modeli & Direct Response Buton Analizi",
+                  "aciklama": "Pazarlama kampanyalarında kullanılan 'Sign Up Now', 'Get Started', 'Register Now' gibi doğrudan tepki tetikleyicileri ile marka hikaye anlatımının dönüşüm oranlarına etkisi karşılaştırmalı olarak incelendi.",
+                  "etiketler": ["AIDA Şeması", "CTA Optimizasyonu", "Dönüşüm Hunisi"]
+                },
+                "oneCikanBilgi": "AIDA Modeli: Awareness (Farkındalık) → Interest (İlgi) → Desire (İstek) → Action (Eylem). Müşteri yolculuğunu adım adım eyleme dönüştüren evrensel pazarlama çerçevesidir."
+              },
+              {
+                "id": "persembe",
+                "gun": "Perşembe",
+                "tarih": "02 Temmuz 2026",
+                "yil": 2026,
+                "ay": 6,
+                "gunNo": 2,
+                "etiket": "Pazarlama Stratejileri & Persona",
+                "arastirilanKonular": [
+                  {
+                    "baslik": "Push vs Pull Marketing",
+                    "icerik": "Push Marketing: Mesajı kitleye iten/dayatan stratejidir ('Ürünümü satın al'). Pull Marketing: Değerli içerik üreterek insanların bir sorununu çözmeyi hedefleyen ve onların sizi bulmasını sağlayan stratejidir ('Bu sorunu çözmenize yardımcı olalım')."
+                  },
+                  {
+                    "baslik": "Organik Trafik vs Ücretli (Paid) Trafik",
+                    "icerik": "Organik Trafik: Yüksek zaman ve içerik çabası gerektirir (ör. YouTube kanalı veya blog). Ücretli Trafik: Reklam bütçesiyle anında görünürlük sağlar; yeni başlayanlar için organik temel kurmak daha sürdürülebilirdir."
+                  },
+                  {
+                    "baslik": "Strateji Soruları & Anahtar Kelime Araçları",
+                    "icerik": "Marka vaadi, değerler ve 'Müşterinin dilinden konuşabilme' ilkeleri çıkarıldı. Anahtar kelime tespiti için TubeBuddy, vidIQ, Google Ads Keyword Planner, Moz Keyword Analysis, Ubersuggest, ChatGPT ve Answer the Public araçları not edildi."
+                  },
+                  {
+                    "baslik": "Persona Kavramı & Yapısı",
+                    "icerik": "Persona: Benzer hedeflere, davranışlara ve zorluklara sahip bir kitleyi temsil eden yarı-kurgusal profildir. Tahminlere değil, gerçek kullanıcı verilerine dayanır. İsim, Rol, Hedefler, Sıkıntılar (Pain points), Davranışlar ve Tercih edilen kanalları içerir."
+                  }
+                ],
+                "pratikUygulama": {
+                  "baslik": "Örnek Persona İncelemesi: Jannelle Robinson (PhD Öğrencisi)",
+                  "aciklama": "Kafe & çalışma ortamı arayan Jannelle Robinson adlı örnek persona incelendi. Hızlı sipariş ihtiyacı, sessiz çalışma ortamı, uzun bekleme sürelerinden duyduğu rahatsızlık ve mobil öncelikli alışkanlıkları üzerinden hedef kitle analiz metodolojisi kavrandı.",
+                  "etiketler": ["Kullanıcı Personası", "Empati Haritası", "Pain Points"]
+                },
+                "oneCikanBilgi": "Güçlü bir pazarlama stratejisi 'Push' (mesajı dayatma) yerine 'Pull' (değer üreterek kitleyi çekme) yaklaşımını benimser ve kararlarını somut kullanıcı Personalarına dayandırır."
+              },
+              {
+                "id": "cuma",
+                "gun": "Cuma",
+                "tarih": "03 Temmuz 2026",
+                "yil": 2026,
+                "ay": 6,
+                "gunNo": 3,
+                "etiket": "Claude Code & Modern Geliştirici Araçları",
+                "arastirilanKonular": [
+                  {
+                    "baslik": "Claude Code ve VS Code Entegrasyonu",
+                    "icerik": "Terminal ve VS Code içerisinde Claude Code kullanımı, Context Rewind (bağlamı geri sarma), @ referansları ile varlıklara işaret etme ve Puppeteer entegrasyonu ile otomatik ekran görüntüsü alarak arayüz geliştirme teknikleri araştırıldı."
+                  },
+                  {
+                    "baslik": "Modern Web Framework Ekosistemi",
+                    "icerik": "Backend: Laravel (PHP), Django (Python), Express.js (Node.js). Frontend: React / Next.js, Vue / Nuxt.js, Angular. CSS: Tailwind CSS, Bootstrap. Dağıtım: GitHub (kod barındırma) ve Vercel (otomatik canlıya alma)."
+                  },
+                  {
+                    "baslik": "Claude Code Temel Komutları",
+                    "icerik": "/clear (Sohbeti temizler), /terminal-setup (Shift+Enter ile yeni satır ekler), /init (Projeyi analiz edip Claude.md üretir), claude-edits (Commitler arası farkları inceler)."
+                  },
+                  {
+                    "baslik": "Token Tasarrufu ve Maliyet Optimizasyonu",
+                    "icerik": "Memory.md dosyası tutmak, basit işlerde hafif modeller seçmek, Plan Modu ile planlama yapmak, /context ve /cost komutları ile tüketimi denetlemek, büyük belgeleri özenle eklemek ve yoğun saatlerden (TR saati ile 15:00 - 21:00 arası) kaçınmak."
+                  }
+                ],
+                "pratikUygulama": {
+                  "baslik": "Geliştirici İş Akışı & Token Optimizasyon Protokolü",
+                  "aciklama": "Claude Code CLI kullanımında token tasarrufu sağlayan 12 maddelik kontrol listesi ve GitHub -> Vercel sürekli entegrasyon şeması yapılandırıldı.",
+                  "etiketler": ["Claude Code", "Token Optimizasyonu", "DevOps & Vercel"]
+                },
+                "oneCikanBilgi": "Claude Code kullanırken Plan Modu, /context denetimi, Memory.md kılavuzu ve toplu (batch) prompt yapısı verimliliği 3 katına çıkarırken token maliyetlerini minimize eder."
+              },
+              {
+                "id": "cumartesi",
+                "gun": "Cumartesi",
+                "tarih": "04 Temmuz 2026",
+                "yil": 2026,
+                "ay": 6,
+                "gunNo": 4,
+                "etiket": "API Kavramı & İlk HTML Uygulamaları",
+                "arastirilanKonular": [
+                  {
+                    "baslik": "API (Application Programming Interface) Nedir?",
+                    "icerik": "API: İki farklı yazılım uygulamasının veya sistemin birbiriyle güvenli ve standart bir biçimde iletişim kurmasını ve veri alışverişinde bulunmasını sağlayan dijital bir köprüdür."
+                  },
+                  {
+                    "baslik": "Laravel Öncesi Öğrenme Sıralaması",
+                    "icerik": "Laravel framework'ünü öğrenmeden önce onun dili olan PHP'ye, PHP'den önce ise webin temeli olan HTML ve CSS'e hakim olmak gerektiği anlaşıldı ve çalışma rotası önce HTML/CSS temellerine çevrildi."
+                  },
+                  {
+                    "baslik": "HTML (HyperText Markup Language) Temelleri",
+                    "icerik": "HTML'in bilgisayarlara ve tarayıcılara sayfa hiyerarşisini anlatan bir hiper metin işaretleme dili olduğu kavrandı. VS Code indirilerek uygulamalı eğitime başlandı."
+                  }
+                ],
+                "pratikUygulama": {
+                  "baslik": "6 Adet Uygulamalı HTML Dosyası Geliştirildi",
+                  "aciklama": "Öğrenilen komutlar ve etiketler sıfırdan oluşturulan 6 HTML dosyasında test edildi: 1) buttons.html (farklı buton stilleri ve durumları), 2) exercise.html (metin ve başlık alıştırmaları), 3) practice.html (temel etiketler), 4) practice2.html (liste ve link yapıları), 5) practice3.html (form ve girdi elemanları), 6) website.html (bütünleşik mini web sayfası).",
+                  "etiketler": ["VS Code", "HTML5", "6 Dosya Üretildi", "Uygulamalı Kodlama"],
+                  "dosyalar": [
+                    "buttons.html",
+                    "exercise.html",
+                    "practice.html",
+                    "practice2.html",
+                    "practice3.html",
+                    "website.html"
+                  ]
+                },
+                "oneCikanBilgi": "Doğru öğrenme sırası: HTML & CSS → PHP → Laravel. Temel sağlam olmadan üst katmanları inşa etmeye çalışmak yerine sıfırdan HTML alıştırmaları ile başlamak süreci çok daha anlaşılır kıldı."
+              }
+            ],
+            "raw_content": "Haftalık Rapor 1 (29 Haziran – 4 Temmuz)\n\nBu rapor, verilen konular üzerinde yapılan araştırmalar, alınan notlar, edinilen bilgiler ve üzerinde çalışılan pratik uygulamaların haftalık bir derlemesidir.\n\n------------------------------------------------------------\nPazartesi – 29 Haziran 2026\n------------------------------------------------------------\nHaftaya sıklıkla gördüğüm fakat anlamını pek oturtamadığım bir kavramı araştırarak başladım.\n\nFramework: A framework is a guided system for building things.\n\nYani bir frameworkün aslında kodlama sürecinde işleri kolaylaştıran kodlama bütünleri olduğunu gördüm. Baştan yapmaya çalışılsa çok zaman alabilecek kodları, bir bütün haline getirip kolaylıkla kullanmayı sağlayan bir sistem.\n\nSonrasında web tasarımlarında yaygın bir programlama dili PHP’nin ne olduğunu araştırdım. Öğrendiğime göre PHP, verileri kullanıcıya sunmadan önce arka planda işleyerek dinamik ve etkileşimli web siteleri oluşturmak için kullanılan, sunucu taraflı bir programlama dili. Yani websitesinde arkaplanda sitenin beyni gibi çalışarak veri işleme görevini üstleniyor.\n\nAyrıca Laravel isimli framework de PHP programlama dilini kullanıyormuş. Başta bunların hepsi kafamı karıştırsa da, ilerleyen günlerde birbirleriyle bağlantılarını daha iyi kavramaya ve anlayabilmeye başladım.\n\nGenel anlamda kodlamayla alakalı bir araştırma yaptığımda ise kodlamanın programlama dillerinde bilgisayarın anlayabileceği ve uygulayabileceği yönergeler yazma sürecinin tamamına dendiğini gördüm. Popüler kodlama dillerinden birkaçını gördüm: Python, JavaScript, HTML, CSS, C++, C#. HTML ve CSS dillerinin web sitesi tasarımı için son derece önemli yapı taşları olduğunu öğrendim. Genel olarak bir web sitesi HTML, CSS ve PHP programlama dillerini içeriyormuş.\n\nHTML: Sitenin iskeleti | CSS: Sitenin makyajı | PHP: Sitenin Beyni\nşeklinde bir betimleme ile aklıma daha iyi bir şekilde kazımaya çalıştım.\n\nTüm bunların dışında yaptığım diğer bir araştırma da PR üzerine oldu. Bu alanda Marka Bilinirliği, İtibar Yönetimi ve Güvenilirlik gibi bazı önemli kavramlarla karşılaştım. Marka bilinirliğinin hedef kitlenin markayı tanıması, hatırlaması ve ürün veya sunulan servisleri rakip firmalardan ayırt edebilmesi anlamına geldiğini gördüm. İtibar yönetiminin ise sadece olumlu anlarda değil, kriz anlarında da durumu iyi yönetmek açısından önemli olduğunu gördüm. Son olarak güvenilirliğinse, tüketicilerin markanın verdiği sözleri yerine getirme yeteneğine ve sunduğu bilgilerin doğruluğuna duyduğu inanç olduğunu öğrendim.\n\nPr.plus için rakip firmalardan biri olan ve köklü bir geçmişe sahip olan Pr Newswire sitesine girerek inceleyip, bazı karşılaştırmalarda bulundum.\n\nGördüğüm kadarıyla:\n• Paketleri Pr.plus’tan daha pahalı\n• Kelime limit aşımı için ekstra ücret talep ediyorlar\n• Fotoğraf ve video eklemek de ekstra sayılıyor\n\nAyrıca son olarak Pr.plus sitesinde biraz daha gezinti yaptığımda fark ettiğim şeylerden biri de sitenin en alt kısımlarında bulunan ve follow us yazısının altında kalan sosyal medya butonlarından Instagram butonunun, tıklanıldığında LinkedIn sitesine yönlendirdiği ve LinkedIn butonunun ise tıklanıldığında Instagram adresine yönlendirdiği oldu. Her ne kadar küçük ve basit bir şey olsa da eklemek istedim.\n\n------------------------------------------------------------\nSalı – 30 Haziran 2026\n------------------------------------------------------------\nSalı gününe yapay zekayı (AI) araştırarak başladım. Bu bağlamda Deep Learning kavramı ile karşılaştım ve çalışma mantığını anlamak için çabaladım. Anlatımı kolaylaştıran ve hızlandıran güzel bir şema buldum:\n\nInput layerda aldığı verileri, hidden layerda işliyor, karşılaştırmalar yapıp seçenekleri eleyerek doğru noktaya ulaşmaya çalışıyor. Output layerda ise en son doğru olduğuna karar kıldığı ürünü önümüze sunuyor. Bu şekilde üç farklı layer sonucunda yapay zekanın bilgiyi işleyip, son aşamada ürünü ortaya koyduğunu gördüm. Bu sürecin isminin ise Deep Learning olduğunu öğrendim. Tanım olarak ise;\n\nDeep Learning: Yapay zeka ve makine öğreniminin özelleşmiş bir alt kümesidir. İnsan beyninin örüntüleri tanımlama ve öğrenme şeklini taklit ederek, muazzam miktarda yapılandırılmamış veriyi işlemek suretiyle karmaşık problemleri çözmek için çok katmanlı yapay sinir ağları kullanır.\n\nSonrasında en çok kullanılan/popüler olan AI Chatbotlarına ve Toollara baktım. Gördüğüm kadarıyla bunların arasında en üste çıkan isimler: ChatGPT, Perplexity (Araştırma ve Akademik Arama), Gemini, Copilot, Claude (Kodlama, Mantık), Notebook LM, Cursor, Midjourney, Elevenlabs, Gamma, Veo ve Sora.\n\nBunların çoğunu halihazırda duymuş olsam da Perplexity ve Gamma’yı ilk kez gördüm. Diğerlerininse bir iki tanesi hariç hepsini zaten kullanmışlığım vardı. Bu yüzden bu isimleri gördüğümde çok yabancılık çekmedim.\n\nBu araştırmaların arasında ise Claude Code’un bilgisayarda ek bir program gerekmeden direkt terminalde çalışabildiğini öğrendim.\n\nBu günü kapatmadan önce bana iletilen pr.plus websitesinin kullandığı mail sistemini ilk kez gördüğüm için biraz incelemek amacıyla verilen bilgilerle giriş yaptım. Sitede yanlışlıkla bir şeylere basıp mahvetme düşüncesinden dolayı bugün içerisinde çok fazla şey yapmadım. Yine de sitedeki ana bileşenleri görebildim ve gelen bazı mail kategorilerini mailleri hiç açmadan görebildim:\n• Telif Haklarıyla ilgili mailler\n• Partnership mailleri\n• Yayınlama istekleri\n\n------------------------------------------------------------\nÇarşamba – 01 Temmuz 2026\n------------------------------------------------------------\nBugün Marketing kavramını araştırmaya karar verdim ve gün bu şekilde başladı.\n\nMarketingin, yani pazarlamanın, tanımı aslında onun amacında yatıyor. Ürün satarak ya da hizmet sunarak bundan gelir elde etmek. Oldukça basit ve anlaması kolay bir kavram. Fakat işin daha derinine dalınca farklı kavramlar ortaya çıkıyor. Bundan önce marketingde uygulanması/yapılması ve sorulması gerekenleri özetle bir araya getirdim:\n\n• 'İnsanların neye ihtiyacı var?' sorusunu sormak\n• Satış pazarını araştırmak\n• Fiyatları ve dağıtımı planlamak\n• Pazarda hayatta kalmak için stratejiler uygulamak\n• Marka ve ürün/hizmet için reklam yapmak\n• İyi kalitede ve tatmin edici ürün/hizmet sağlamak\n\nBu basit gibi görünen noktaların pazarlama stratejilerinde önemli bir yeri olduğunu gördüm. Ayrıca marketingin alt başlıklarından biri olan ve günümüzde oldukça fazla kullanılan Digital Marketing (Dijital Pazarlama) başlığıyla da karşılaştım.\n\nBuradaki en önemli kavramlardan biri ise SEO (Search Engine Optimization) oldu. Bu kavram dijital pazarlamada önemli çünkü websitesi içeriklerini, arama motorlarında daha üstlerde çıkması için optimize etme anlamını taşıyor. Özellikle PR alanında müşterilerin büyük önem verdiği ise aşikar.\n\nBunların yanısıra, Social Media Marketing’in de önemini vurgulayan birkaç yazıyla karşılaştım. Markaların kitlelerle Instagram, LinkedIn, TikTok gibi sosyal medya mecralarında etkileşime geçtiğini zaten günlük yaşantımızda da açıkça görebiliyoruz. Bu sayede markalar marka tanınırlığını artırıyor, bir topluluk oluşturuyor ve sosyal pazarlama yapmış oluyorlar. Bu da onları, bunu yapmayan rakiplerine kıyasla büyük ölçüde öne geçiriyor.\n\nPazarlamada dikkat edilmesi gereken birkaç unsur daha keşfettim:\n• Kim olduğun ve ne yaptığın\n• Hedef kitlen\n• Mesajın\n• Konumlandırma stratejin\n• Kanalların\n• Hunin\n\nÖzellikle huni oldukça dikkatimi çekti çünkü bu genel bir pazarlama hiyerarşisi gibi görünüyordu.\n\nTHE AIDA MODEL:\n1. Awareness (Farkındalık): Hiyerarşinin en üst kısmında farkındalık var. Marka tarafından müşterilerin ilgisinin çekileceği aşama.\n2. Interest (İlgi): Müşteriler yavaş yavaş araştırma yapmaya başlıyorlar.\n3. Desire (İstek): Müşteriler, markayı rakip firmalarla kıyaslıyorlar.\n4. Action (Eylem): En son aşamada müşteriler ürünü ya da hizmeti satın alıyorlar.\n\nBu model bana hem çok mantıklı hem de uygulanabilir bir bakış açısı olarak göründü.\n\nSonrasında marketingdeki stratejilere göz atarken şu iki kavramla karşılaştım:\n• Direct Response: Kitleyle doğrudan veya anında eyleme geçmek. (Bir eylem)\n• Brand Awareness: Zaman içinde kitleyle güven ve tanınırlık oluşturmak. (Bir süreç)\n\n------------------------------------------------------------\nPerşembe – 02 Temmuz 2026\n------------------------------------------------------------\nPerşembe günü marketing araştırmalarına devam ederek güne başladım. En son öğrenmiş olduğum SEO, Digital Marketing ve AIDA modeli üzerine, yeni iki kavramla karşılaştım: Push Marketing ve Pull Marketing.\n\nPush Marketing: İnsanlara talep edilip edilmemesine bakmaksızın mesajını itmek/göstermekle ilgili bir strateji. İsminden de anlaşılacağı gibi bir nevi mesajını dayatmak üzerine kuruludur. ('Ürünümü satın al.' gibi.)\n\nPull Marketing: Kitleyle iletişim kurmak, insanlara bir problemi çözmelerinde gerçekten yardımcı olmayı istemektir ('Bu problemi çözmenize yardımcı olalım.' gibi). İnsanların sizi arayıp bulmalarını sağlayacak kadar değerli içerikler üretmek önem taşır.\n\nAyrıca Organic Traffic ve Paid Traffic şeklinde iki kavram daha öğrendim:\n• Organic Traffic: Dikkat çekmek için çok fazla zaman ve çaba harcamaktır. (Bir YouTube kanalı kurmak gibi.)\n• Paid Traffic: Erişim sağlamak için para harcamaktır / platformlardaki izlenmeler için ödeme yapmaktır. (Bütçe gerektirdiğinden dolayı yeni başlayanlar için en mantıklı seçenek sayılmaz.)\n\nModern pazarlamada AI’ın yerine baktığımda ise yaptığımız işi daha hızlı hale getirecek bir araç olması gerektiğini, tamamen yerimizi almaması gerektiğini gördüm.\n\nMarketingde stratejimizi ve yol haritamızı iyileştirmek için bazı önemli noktalar keşfettim.\nKim olduğun konusunda netleş:\n• Taviz veremeyeceğim/vazgeçemeyeceğim şeyler neler? (Non-negotiables)\n• Değer verdiğim şeyler neler?\n• Sektörümde görmek istediğim değişim ne?\n• Kitleme nasıl hizmet etmek istiyorum?\n• Marka vaadim nedir?\n\nBu soruları es geçmeden belirleyerek ilerlemenin, pazardaki yerini yükseklere taşıyacak basit ama önemli bilgiler olduğunu gördüm. Ayrıca müşterilerin dilinden konuşabilmenin de her zaman artı bir puan olduğunu öğrendim. Onlarla duygusal bir bağ kurup, şunları öğrenmenin önemini gördüm:\n• Arzuları/istekleri neler?\n• Korkuları neler?\n• Motivasyonları neler?\n• Onları ne geri tutuyor/engelliyor?\n• Onlara hiç kimsenin sunmadığı şekilde nasıl hizmet sunabilirim?\n\nSonrasında tanınırlığı ve görünürlüğü artırmak için Keyword kullanımının olmasını gerektiğini gördüm. Kitlenin gerçekte sorduğu ilgili anahtar kelimeleri ve soruları bulmak gerektiğini öğrendim. Araçlar: TubeBuddy, vidIQ, Google Ads Keyword Planner, Moz Keyword Analysis, Ubersuggest, ChatGPT, Answer the Public.\n\nYine marketingde rakiplerin ne yaptığını, ne tür içerik paylaştıklarını, ne gibi teklifleri/ürünleri olduğunu ve neyi onlardan daha iyi veya daha farklı yapabileceğimizi takip etmenin oldukça değerli olduğunu öğrendim.\n\nPersona: Benzer hedeflere, davranışlara ve zorluklara sahip bir grup insanı temsil eden yarı kurgusal bir profildir. Tahminlere değil, gerçek kullanıcı araştırmalarına dayanarak oluşturulur.\nGüçlü bir persona genellikle şunları içerir: İsim, Persona Türü, Rol veya Kimlik Özeti, Arka Plan / Bağlam, Hedefler, Ağrı Noktaları / Sıkıntılar, Davranışlar, Karar Tetikleyicileri, Tercih Edilen Kanallar, Alıntı / Söz, Üründen Ne İhtiyaç Duyulduğu.\n\n------------------------------------------------------------\nCuma – 03 Temmuz 2026\n------------------------------------------------------------\nBugüne ise Claude Code araştırması yaparak başladım. En başta edindiğim bilgilerin bazıları şunlardı:\n• Bilgisayardaki terminal ile kullanılabilir.\n• Visual Studio Code adlı uygulama ile kullanılabilir.\n• Terminal, VS Code uygulamasının içerisine entegre edilerek kullanılabilir.\n• Claude Code CLI içerisinde Context Rewind (Bağlamı Geri Sarma) yapmak mümkündür.\n\nVS Code içerisinde web sitesinin assetleri için klasör oluşturabileceğimizi ve @ işareti ile bunlara referans verebileceğimizi öğrendim. Ayrıca Puppeteer sayesinde Claude Code'un değişiklik yapmayı kolaylaştırmak için ekran görüntülerini otomatik olarak alabileceğini öğrendim. 'Allow dangerously skip permissions' açılırsa soru sormayı bırakır ancak sandbox modunda yapmak daha güvenlidir.\n\nBir websitesinde genellikle 1 ila 3 framework kullanılır:\nBackend: Laravel (PHP), Django (Python), Express.js (JavaScript)\nFrontend: React veya Next.js, Vue veya Nuxt.js, Angular\nCSS: Tailwind CSS, Bootstrap\nGitHub & Vercel: Kodları barındırma ve yayındaki web sitesini otomatik güncelleme.\n\nClaude Code Temel Komutları:\n• /clear: Mevcut sohbeti temizler.\n• /terminal-setup: Shift+Enter kombinasyonunu ekler.\n• /init: Projeyi analiz eder ve Claude.md oluşturur.\n• claude-edits: Commitler arasındaki değişiklikleri incelemeyi sağlar.\n\nClaude Token Tasarrufu İpuçları:\n• Memory.md dosyası oluşturup commitlerde güncellenmesini sağlamak.\n• Temel görevler için daha düşük modeller seçmek.\n• Yeni sohbetler açmak.\n• Claude Skills kullanmak.\n• MCP bağlantılarını yönetmek.\n• Promptları tek bir mesajda toplu (batch) iletmek.\n• Plan Modu'nu kullanmak.\n• /context ve /cost komutları ile harcamayı izlemek.\n• Yoğun saatlerden (TR 15:00 - 21:00) kaçınmak.\n\n------------------------------------------------------------\nCumartesi – 04 Temmuz 2026\n------------------------------------------------------------\nCumartesi gününe API (Application Programming Interface)'in ne olduğunu öğrenerek başladım. İki farklı yazılım uygulamasının veya sistemin birbirleriyle iletişim kurmasını ve veri alışverişinde bulunmasını sağlayan dijital bir köprü olduğunu öğrendim.\n\nDaha sonrasında Laravel araştırması yapmak istedim fakat gördüm ki Laravel'den önce PHP'ye, PHP'den önce ise HTML ve CSS'e hakim olmak gerekiyor. Bu sebeple araştırmamı HTML ve CSS yönüne doğru çevirdim.\n\nHTML'in bilgisayarlara talimat veren hiper metin işaretleme dili olduğunu gördüm. Visual Studio Code indirerek video dersleri eşliğinde sıfırdan uygulamalı çalışmaya başladım.\n\nOluşturulan 6 Adet HTML Uygulama Dosyası:\n1. buttons.html (Buton stilleri ve durumları)\n2. exercise.html (Metin ve başlık denemeleri)\n3. practice.html (Temel etiket pratikleri)\n4. practice2.html (Liste ve bağlantı yapıları)\n5. practice3.html (Form ve giriş elemanları)\n6. website.html (Bütünleşik mini web sayfası)\n\nDevam edip ilerletmeyi planlıyorum."
+          }
+        ];
+      }
+    };
+
+    // Sayfa Yüklendiğinde Başlat
+    document.addEventListener('DOMContentLoaded', () => {
+      app.init();
+    });
+  </script>
+</body>
+</html>

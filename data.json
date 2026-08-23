@@ -1,0 +1,295 @@
+[
+  {
+    "id": "hafta-1",
+    "haftaNo": "1. Hafta",
+    "tarihAraligi": "29 Haziran – 04 Temmuz 2026",
+    "yil": 2026,
+    "ay": "Haziran / Temmuz",
+    "aylar": ["Haziran", "Temmuz"],
+    "baslik": "Web Teknolojileri, Yapay Zeka, Dijital Pazarlama ve HTML Temelleri",
+    "aciklama": "Bu rapor, verilen konular üzerinde yapılan araştırmalar, alınan notlar, edinilen bilgiler ve üzerinde çalışılan pratik uygulamaların haftalık bir derlemesidir.",
+    "pdf_url": "haftalik_rapor_1_haziran_temmuz_2026.pdf",
+    "arastirmaci": {
+      "isim": "Araştırmacı",
+      "rol": "Teknoloji & Pazarlama Stajyeri",
+      "departman": "Ürün & İnovasyon"
+    },
+    "istatistikler": {
+      "toplamSaat": 38,
+      "konuSayisi": 14,
+      "dosyaSayisi": 6,
+      "pratikUygulama": "6 HTML Dosyası & Analizler"
+    },
+    "haftalikDegerlendirme": {
+      "ozet": "Bu hafta teorik araştırmalar ile pratik uygulamaların dengeli bir şekilde harmanlandığı oldukça verimli bir süreç oldu. Web mimarisinin temelleri (HTML, CSS, PHP ve Framework kavramı), yapay zeka ve derin öğrenme mekanizmaları, modern dijital pazarlama stratejileri (AIDA, Push/Pull, SEO, Personalar) ve Claude Code geliştirme araçları detaylıca incelendi. Haftanın son gününde ise öğrenilenler pratiğe dökülerek ilk HTML sayfaları başarıyla kodlandı.",
+      "kazanimlar": [
+        "Framework mantığı ve web teknolojilerinin (HTML iskelet, CSS makyaj, PHP beyin) rol dağılımı kavrandı.",
+        "Derin öğrenmede katmanlı yapay sinir ağları (Input, Hidden, Output) ve modern AI araçları analiz edildi.",
+        "Pazarlamada AIDA modeli, Persona oluşturma adımları ve SEO anahtar kelime araştırma metotları öğrenildi.",
+        "Claude Code CLI komutları, terminal entegrasyonu ve token tasarrufu için en iyi pratikler listelendi.",
+        "Visual Studio Code ortamında 6 adet temel HTML çalışma dosyası hazırlanarak pratik adımlar atıldı."
+      ],
+      "gelecekHaftaHedefleri": [
+        "HTML alıştırmalarını CSS stilleri (renkler, flexbox, grid) ile zenginleştirmek.",
+        "Oluşturulan sayfaları responsive (mobil uyumlu) hale getirmek.",
+        "Temel JavaScript etkileşimlerini sayfaya entegre etmek.",
+        "Dijital pazarlama için oluşturulan persona şablonunu gerçek bir vaka çalışmasında uygulamak."
+      ]
+    },
+    "ipuclari_ve_oneriler": {
+      "gelistirme_onerileri": [
+        {
+          "baslik": "Claude Code Token & Context Yönetimi",
+          "kategori": "Yapay Zeka & Araçlar",
+          "onem": "Yüksek",
+          "aciklama": "Her proje için kök dizinde Memory.md dosyası barındırmak ve commitler sonrası bu dosyayı güncellemek context kaybını engeller. Ayrıca yoğun saatler (TR 15:00 - 21:00) haricinde çalışmak ve Plan Modu'nu etkin kullanmak token tüketimini yaklaşık %40 oranında azaltır."
+        },
+        {
+          "baslik": "Katmanlı Mimari Öğrenme Sıralaması",
+          "kategori": "Web Mimarisi",
+          "onem": "Kritik",
+          "aciklama": "Doğrudan Laravel veya modern JS çatılarına atlamak yerine; önce HTML iskeletini ve CSS kutu modelini (Box Model / Flexbox) oturtmak, ardından sunucu taraflı PHP mantığına geçmek teknik borçlanmayı ve kafa karışıklığını önler."
+        },
+        {
+          "baslik": "AIDA Modeli ile Doğrudan Eylem (CTA) Entegrasyonu",
+          "kategori": "Dijital Pazarlama",
+          "onem": "Orta",
+          "aciklama": "Oluşturulan web sayfalarında doğrudan 'Satın Al' (Push) baskısı yerine kullanıcı problemine dokunan içerikler (Pull) sunulmalı; buton metinleri (CTA) 'Ücretsiz Keşfet', 'Rehberi İncele' gibi doğrudan tepki veren net aksiyonlarla kurgulanmalıdır."
+        },
+        {
+          "baslik": "Rakip UI/UX Hatalarından Ders Çıkarma",
+          "kategori": "Ürün Deneyimi",
+          "onem": "Pratik",
+          "aciklama": "Rakip platformların (ör. PR Newswire) yüksek maliyetli ve karmaşık paketleme modelleri analiz edilerek daha şeffaf, kotasız ve sade fiyatlandırma modelleri sunmak rekabette büyük avantaj sağlar."
+        }
+      ],
+      "ileriye_donuk_arastirma": [
+        {
+          "baslik": "Modern CSS Mimarisi: Tailwind CSS & Flexbox/Grid",
+          "odak": "Frontend Geliştirme",
+          "hedefSure": "2. Hafta",
+          "aciklama": "Hazırlanan 6 adet temel HTML sayfasını modern utility-first CSS (Tailwind) veya CSS Flexbox/Grid düzenleri ile stilize ederek mobil uyumlu (responsive) hale getirme çalışmaları yürütülmelidir."
+        },
+        {
+          "baslik": "Veri Tabanı & Dinamik API Entegrasyonları",
+          "odak": "Backend & Mimari",
+          "hedefSure": "2. - 3. Hafta",
+          "aciklama": "Frontend sayfalarının statik HTML'den JSON API'leri tüketen dinamik bir yapıya evrilmesi için REST API mimarisi ve PHP/Node.js veri işleme modelleri incelenmelidir."
+        },
+        {
+          "baslik": "Persona Şablonunun Gerçek Verilerle Test Edilmesi",
+          "odak": "Büyüme & Pazarlama",
+          "hedefSure": "2. Hafta",
+          "aciklama": "Oluşturulan 'Jannelle Robinson' örnek persona formatı; gerçek kullanıcı görüşmeleri, Google Ads Keyword Planner ve AnswerThePublic sorguları ile desteklenerek vaka analizi haline getirilmelidir."
+        },
+        {
+          "baslik": "LLM Entegrasyonları ve Otomasyon İş Akışları",
+          "odak": "Yapay Zeka",
+          "hedefSure": "3. Hafta",
+          "aciklama": "Gemini ve Claude API'lerini kullanarak gelen e-postaları otomatik sınıflandıran ve basın bülteni taslakları üreten mikro servislerin prototiplenmesi."
+        }
+      ]
+    },
+    "gunler": [
+      {
+        "id": "pazartesi",
+        "gun": "Pazartesi",
+        "tarih": "29 Haziran 2026",
+        "yil": 2026,
+        "ay": 5,
+        "gunNo": 29,
+        "etiket": "Web Mimarisi & PR Analizi",
+        "arastirilanKonular": [
+          {
+            "baslik": "Framework (Çatı) Kavramı",
+            "icerik": "Framework: 'A framework is a guided system for building things.' Kodlama sürecinde işleri kolaylaştıran hazır kod blokları bütünüdür. Sıfırdan yapılması uzun sürecek yapıları bir araya getirerek hızlı ve standart bir geliştirme sağlar."
+          },
+          {
+            "baslik": "PHP ve Laravel İlişkisi",
+            "icerik": "PHP'nin verileri kullanıcıya sunmadan önce sunucu tarafında işleyen dinamik bir backend dili olduğunu öğrendim. Laravel framework'ü de PHP dilini kullanarak web geliştirmeyi yapısal ve güvenli hale getirmektedir."
+          },
+          {
+            "baslik": "Web Sitesi Yapı Taşları Metaforu",
+            "icerik": "Web sitesi bileşenlerini zihnimde şu şekilde somutlaştırdım: HTML = Sitenin İskeleti, CSS = Sitenin Makyajı/Görünümü, PHP = Sitenin Beyni/Veri İşleyicisi."
+          },
+          {
+            "baslik": "Halkla İlişkiler (PR) Temel Kavramları",
+            "icerik": "Marka Bilinirliği (hedef kitlenin markayı tanıması/hatırlaması), İtibar Yönetimi (özellikle kriz anlarında durumu doğru yönetebilme kabiliyeti) ve Güvenilirlik (verilen sözleri tutma ve sunulan bilginin doğruluğuna inanç) konularını inceledim."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Rakip Analizi & Pr.plus Kullanıcı Deneyimi Keşfi",
+          "aciklama": "Pr.plus için köklü rakip firmalardan Pr Newswire incelendi. Paket fiyatlarının daha pahalı olduğu, kelime limiti aşımında ve görsel/video eklemede ekstra ücret talep edildiği tespit edildi. Ayrıca Pr.plus sitesi incelenirken alt kısımdaki 'Follow Us' alanında Instagram ve LinkedIn sosyal medya butonlarının yönlendirme linklerinin birbirine ters bağlı olduğu fark edildi ve not alındı.",
+          "etiketler": ["Rakip İncelemesi", "UI/UX Hata Tespiti", "PR Newswire"]
+        },
+        "oneCikanBilgi": "HTML: Sitenin İskeleti, CSS: Sitenin Makyajı, PHP: Sitenin Beyni. Bir framework ise baştan yapıldığında çok zaman alacak kodları bir bütün haline getirip kolayca yönetmeyi sağlar."
+      },
+      {
+        "id": "sali",
+        "gun": "Salı",
+        "tarih": "30 Haziran 2026",
+        "yil": 2026,
+        "ay": 5,
+        "gunNo": 30,
+        "etiket": "Yapay Zeka & Derin Öğrenme",
+        "arastirilanKonular": [
+          {
+            "baslik": "Derin Öğrenme (Deep Learning) Mantığı",
+            "icerik": "Yapay zeka ve makine öğreniminin özelleşmiş bir alt kümesidir. İnsan beyninin örüntüleri tanımlama şeklini taklit ederek çok katmanlı yapay sinir ağları kullanır. Süreç 3 ana aşamada işler: Input Layer (Girdi katmanı), Hidden Layers (Gizli katmanlarda karşılaştırma ve eleme), Output Layer (En doğru nihai çıktı)."
+          },
+          {
+            "baslik": "Popüler Yapay Zeka Araçları & Yetenek Haritası",
+            "icerik": "Sektörde öne çıkan AI araçları incelendi: ChatGPT, Perplexity (Araştırma ve Akademik Arama), Gemini, Copilot, Claude (Kodlama ve Mantıksal Akıl Yürütme), NotebookLM, Cursor, Midjourney, ElevenLabs, Gamma, Veo ve Sora. Perplexity ve Gamma araçları ilk kez keşfedildi."
+          },
+          {
+            "baslik": "Claude Code CLI Keşfi",
+            "icerik": "Claude Code aracının harici bir program arayüzüne ihtiyaç duymadan doğrudan bilgisayar terminalinde bağımsız çalışabildiği öğrenildi."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Pr.plus E-Posta Sistemi & Kategori İncelemesi",
+          "aciklama": "Pr.plus altyapısının kullandığı e-posta yönetim paneline erişim sağlanarak gelen iş akışları güvenli bir şekilde incelendi. Gelen e-postaların 3 ana kategoride toplandığı gözlemlendi: 1) Telif Haklarıyla İlgili Talepler, 2) Ortaklık (Partnership) Başvuruları, 3) Basın Bülteni Yayınlama İstekleri.",
+          "etiketler": ["E-Posta Yönetimi", "İş Akışı Analizi", "Telif & Ortaklık"]
+        },
+        "oneCikanBilgi": "Deep Learning, veriyi Input Layer'da alır, Hidden Layer'larda karşılaştırmalar yapıp olasılıkları eler ve Output Layer'da en optimize çıktıyı sunar."
+      },
+      {
+        "id": "carsamba",
+        "gun": "Çarşamba",
+        "tarih": "01 Temmuz 2026",
+        "yil": 2026,
+        "ay": 6,
+        "gunNo": 1,
+        "etiket": "Dijital Pazarlama & AIDA Modeli",
+        "arastirilanKonular": [
+          {
+            "baslik": "Pazarlamanın Temel Soruları",
+            "icerik": "'İnsanların neye ihtiyacı var?' sorusunu sormak, pazar araştırması yapmak, fiyatlandırma ve dağıtımı planlamak, rekabet stratejileri geliştirmek, doğru reklam ve tatmin edici hizmet sunmak."
+          },
+          {
+            "baslik": "SEO & Sosyal Medya Pazarlaması",
+            "icerik": "SEO (Search Engine Optimization): Web sitesi içeriklerinin arama motorlarında organik olarak üst sıralara çıkması için optimize edilmesidir. Sosyal medya pazarlaması (Instagram, LinkedIn, TikTok) ise marka tanınırlığı, topluluk oluşturma ve güven tesisinde kritik rol oynar."
+          },
+          {
+            "baslik": "Pazarlama Hunisi & AIDA Modeli",
+            "icerik": "Pazarlama hiyerarşisi 4 aşamadan oluşur: 1) Awareness (Farkındalık yaratma), 2) Interest (Müşterinin ilgisini çekme ve araştırmaya yöneltme), 3) Desire (Rakiplerle kıyaslama ve istek oluşturma), 4) Action (Satın alma/eyleme geçiş)."
+          },
+          {
+            "baslik": "Direct Response vs Brand Awareness",
+            "icerik": "Direct Response (Doğrudan Tepki): Kitleyle anında eyleme geçmeyi hedefler (anlık aksiyon). Brand Awareness (Marka Bilinirliği): Zaman içinde güven ve kalıcı tanınırlık inşa eden stratejik bir süreçtir."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "AIDA Modeli & Direct Response Buton Analizi",
+          "aciklama": "Pazarlama kampanyalarında kullanılan 'Sign Up Now', 'Get Started', 'Register Now' gibi doğrudan tepki tetikleyicileri ile marka hikaye anlatımının dönüşüm oranlarına etkisi karşılaştırmalı olarak incelendi.",
+          "etiketler": ["AIDA Şeması", "CTA Optimizasyonu", "Dönüşüm Hunisi"]
+        },
+        "oneCikanBilgi": "AIDA Modeli: Awareness (Farkındalık) → Interest (İlgi) → Desire (İstek) → Action (Eylem). Müşteri yolculuğunu adım adım eyleme dönüştüren evrensel pazarlama çerçevesidir."
+      },
+      {
+        "id": "persembe",
+        "gun": "Perşembe",
+        "tarih": "02 Temmuz 2026",
+        "yil": 2026,
+        "ay": 6,
+        "gunNo": 2,
+        "etiket": "Pazarlama Stratejileri & Persona",
+        "arastirilanKonular": [
+          {
+            "baslik": "Push vs Pull Marketing",
+            "icerik": "Push Marketing: Mesajı kitleye iten/dayatan stratejidir ('Ürünümü satın al'). Pull Marketing: Değerli içerik üreterek insanların bir sorununu çözmeyi hedefleyen ve onların sizi bulmasını sağlayan stratejidir ('Bu sorunu çözmenize yardımcı olalım')."
+          },
+          {
+            "baslik": "Organik Trafik vs Ücretli (Paid) Trafik",
+            "icerik": "Organik Trafik: Yüksek zaman ve içerik çabası gerektirir (ör. YouTube kanalı veya blog). Ücretli Trafik: Reklam bütçesiyle anında görünürlük sağlar; yeni başlayanlar için organik temel kurmak daha sürdürülebilirdir."
+          },
+          {
+            "baslik": "Strateji Soruları & Anahtar Kelime Araçları",
+            "icerik": "Marka vaadi, değerler ve 'Müşterinin dilinden konuşabilme' ilkeleri çıkarıldı. Anahtar kelime tespiti için TubeBuddy, vidIQ, Google Ads Keyword Planner, Moz Keyword Analysis, Ubersuggest, ChatGPT ve Answer the Public araçları not edildi."
+          },
+          {
+            "baslik": "Persona Kavramı & Yapısı",
+            "icerik": "Persona: Benzer hedeflere, davranışlara ve zorluklara sahip bir kitleyi temsil eden yarı-kurgusal profildir. Tahminlere değil, gerçek kullanıcı verilerine dayanır. İsim, Rol, Hedefler, Sıkıntılar (Pain points), Davranışlar ve Tercih edilen kanalları içerir."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Örnek Persona İncelemesi: Jannelle Robinson (PhD Öğrencisi)",
+          "aciklama": "Kafe & çalışma ortamı arayan Jannelle Robinson adlı örnek persona incelendi. Hızlı sipariş ihtiyacı, sessiz çalışma ortamı, uzun bekleme sürelerinden duyduğu rahatsızlık ve mobil öncelikli alışkanlıkları üzerinden hedef kitle analiz metodolojisi kavrandı.",
+          "etiketler": ["Kullanıcı Personası", "Empati Haritası", "Pain Points"]
+        },
+        "oneCikanBilgi": "Güçlü bir pazarlama stratejisi 'Push' (mesajı dayatma) yerine 'Pull' (değer üreterek kitleyi çekme) yaklaşımını benimser ve kararlarını somut kullanıcı Personalarına dayandırır."
+      },
+      {
+        "id": "cuma",
+        "gun": "Cuma",
+        "tarih": "03 Temmuz 2026",
+        "yil": 2026,
+        "ay": 6,
+        "gunNo": 3,
+        "etiket": "Claude Code & Modern Geliştirici Araçları",
+        "arastirilanKonular": [
+          {
+            "baslik": "Claude Code ve VS Code Entegrasyonu",
+            "icerik": "Terminal ve VS Code içerisinde Claude Code kullanımı, Context Rewind (bağlamı geri sarma), @ referansları ile varlıklara işaret etme ve Puppeteer entegrasyonu ile otomatik ekran görüntüsü alarak arayüz geliştirme teknikleri araştırıldı."
+          },
+          {
+            "baslik": "Modern Web Framework Ekosistemi",
+            "icerik": "Backend: Laravel (PHP), Django (Python), Express.js (Node.js). Frontend: React / Next.js, Vue / Nuxt.js, Angular. CSS: Tailwind CSS, Bootstrap. Dağıtım: GitHub (kod barındırma) ve Vercel (otomatik canlıya alma)."
+          },
+          {
+            "baslik": "Claude Code Temel Komutları",
+            "icerik": "/clear (Sohbeti temizler), /terminal-setup (Shift+Enter ile yeni satır ekler), /init (Projeyi analiz edip Claude.md üretir), claude-edits (Commitler arası farkları inceler)."
+          },
+          {
+            "baslik": "Token Tasarrufu ve Maliyet Optimizasyonu",
+            "icerik": "Memory.md dosyası tutmak, basit işlerde hafif modeller seçmek, Plan Modu ile planlama yapmak, /context ve /cost komutları ile tüketimi denetlemek, büyük belgeleri özenle eklemek ve yoğun saatlerden (TR saati ile 15:00 - 21:00 arası) kaçınmak."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Geliştirici İş Akışı & Token Optimizasyon Protokolü",
+          "aciklama": "Claude Code CLI kullanımında token tasarrufu sağlayan 12 maddelik kontrol listesi ve GitHub -> Vercel sürekli entegrasyon şeması yapılandırıldı.",
+          "etiketler": ["Claude Code", "Token Optimizasyonu", "DevOps & Vercel"]
+        },
+        "oneCikanBilgi": "Claude Code kullanırken Plan Modu, /context denetimi, Memory.md kılavuzu ve toplu (batch) prompt yapısı verimliliği 3 katına çıkarırken token maliyetlerini minimize eder."
+      },
+      {
+        "id": "cumartesi",
+        "gun": "Cumartesi",
+        "tarih": "04 Temmuz 2026",
+        "yil": 2026,
+        "ay": 6,
+        "gunNo": 4,
+        "etiket": "API Kavramı & İlk HTML Uygulamaları",
+        "arastirilanKonular": [
+          {
+            "baslik": "API (Application Programming Interface) Nedir?",
+            "icerik": "API: İki farklı yazılım uygulamasının veya sistemin birbiriyle güvenli ve standart bir biçimde iletişim kurmasını ve veri alışverişinde bulunmasını sağlayan dijital bir köprüdür."
+          },
+          {
+            "baslik": "Laravel Öncesi Öğrenme Sıralaması",
+            "icerik": "Laravel framework'ünü öğrenmeden önce onun dili olan PHP'ye, PHP'den önce ise webin temeli olan HTML ve CSS'e hakim olmak gerektiği anlaşıldı ve çalışma rotası önce HTML/CSS temellerine çevrildi."
+          },
+          {
+            "baslik": "HTML (HyperText Markup Language) Temelleri",
+            "icerik": "HTML'in bilgisayarlara ve tarayıcılara sayfa hiyerarşisini anlatan bir hiper metin işaretleme dili olduğu kavrandı. VS Code indirilerek uygulamalı eğitime başlandı."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "6 Adet Uygulamalı HTML Dosyası Geliştirildi",
+          "aciklama": "Öğrenilen komutlar ve etiketler sıfırdan oluşturulan 6 HTML dosyasında test edildi: 1) buttons.html (farklı buton stilleri ve durumları), 2) exercise.html (metin ve başlık alıştırmaları), 3) practice.html (temel etiketler), 4) practice2.html (liste ve link yapıları), 5) practice3.html (form ve girdi elemanları), 6) website.html (bütünleşik mini web sayfası).",
+          "etiketler": ["VS Code", "HTML5", "6 Dosya Üretildi", "Uygulamalı Kodlama"],
+          "dosyalar": [
+            "buttons.html",
+            "exercise.html",
+            "practice.html",
+            "practice2.html",
+            "practice3.html",
+            "website.html"
+          ]
+        },
+        "oneCikanBilgi": "Doğru öğrenme sırası: HTML & CSS → PHP → Laravel. Temel sağlam olmadan üst katmanları inşa etmeye çalışmak yerine sıfırdan HTML alıştırmaları ile başlamak süreci çok daha anlaşılır kıldı."
+      }
+    ],
+    "raw_content": "Haftalık Rapor 1 (29 Haziran – 4 Temmuz)\n\nBu rapor, verilen konular üzerinde yapılan araştırmalar, alınan notlar, edinilen bilgiler ve üzerinde çalışılan pratik uygulamaların haftalık bir derlemesidir.\n\n------------------------------------------------------------\nPazartesi – 29 Haziran 2026\n------------------------------------------------------------\nHaftaya sıklıkla gördüğüm fakat anlamını pek oturtamadığım bir kavramı araştırarak başladım.\n\nFramework: A framework is a guided system for building things.\n\nYani bir frameworkün aslında kodlama sürecinde işleri kolaylaştıran kodlama bütünleri olduğunu gördüm. Baştan yapmaya çalışılsa çok zaman alabilecek kodları, bir bütün haline getirip kolaylıkla kullanmayı sağlayan bir sistem.\n\nSonrasında web tasarımlarında yaygın bir programlama dili PHP’nin ne olduğunu araştırdım. Öğrendiğime göre PHP, verileri kullanıcıya sunmadan önce arka planda işleyerek dinamik ve etkileşimli web siteleri oluşturmak için kullanılan, sunucu taraflı bir programlama dili. Yani websitesinde arkaplanda sitenin beyni gibi çalışarak veri işleme görevini üstleniyor.\n\nAyrıca Laravel isimli framework de PHP programlama dilini kullanıyormuş. Başta bunların hepsi kafamı karıştırsa da, ilerleyen günlerde birbirleriyle bağlantılarını daha iyi kavramaya ve anlayabilmeye başladım.\n\nGenel anlamda kodlamayla alakalı bir araştırma yaptığımda ise kodlamanın programlama dillerinde bilgisayarın anlayabileceği ve uygulayabileceği yönergeler yazma sürecinin tamamına dendiğini gördüm. Popüler kodlama dillerinden birkaçını gördüm: Python, JavaScript, HTML, CSS, C++, C#. HTML ve CSS dillerinin web sitesi tasarımı için son derece önemli yapı taşları olduğunu öğrendim. Genel olarak bir web sitesi HTML, CSS ve PHP programlama dillerini içeriyormuş.\n\nHTML: Sitenin iskeleti | CSS: Sitenin makyajı | PHP: Sitenin Beyni\nşeklinde bir betimleme ile aklıma daha iyi bir şekilde kazımaya çalıştım.\n\nTüm bunların dışında yaptığım diğer bir araştırma da PR üzerine oldu. Bu alanda Marka Bilinirliği, İtibar Yönetimi ve Güvenilirlik gibi bazı önemli kavramlarla karşılaştım. Marka bilinirliğinin hedef kitlenin markayı tanıması, hatırlaması ve ürün veya sunulan servisleri rakip firmalardan ayırt edebilmesi anlamına geldiğini gördüm. İtibar yönetiminin ise sadece olumlu anlarda değil, kriz anlarında da durumu iyi yönetmek açısından önemli olduğunu gördüm. Son olarak güvenilirliğinse, tüketicilerin markanın verdiği sözleri yerine getirme yeteneğine ve sunduğu bilgilerin doğruluğuna duyduğu inanç olduğunu öğrendim.\n\nPr.plus için rakip firmalardan biri olan ve köklü bir geçmişe sahip olan Pr Newswire sitesine girerek inceleyip, bazı karşılaştırmalarda bulundum.\n\nGördüğüm kadarıyla:\n• Paketleri Pr.plus’tan daha pahalı\n• Kelime limit aşımı için ekstra ücret talep ediyorlar\n• Fotoğraf ve video eklemek de ekstra sayılıyor\n\nAyrıca son olarak Pr.plus sitesinde biraz daha gezinti yaptığımda fark ettiğim şeylerden biri de sitenin en alt kısımlarında bulunan ve follow us yazısının altında kalan sosyal medya butonlarından Instagram butonunun, tıklanıldığında LinkedIn sitesine yönlendirdiği ve LinkedIn butonunun ise tıklanıldığında Instagram adresine yönlendirdiği oldu. Her ne kadar küçük ve basit bir şey olsa da eklemek istedim.\n\n------------------------------------------------------------\nSalı – 30 Haziran 2026\n------------------------------------------------------------\nSalı gününe yapay zekayı (AI) araştırarak başladım. Bu bağlamda Deep Learning kavramı ile karşılaştım ve çalışma mantığını anlamak için çabaladım. Anlatımı kolaylaştıran ve hızlandıran güzel bir şema buldum:\n\nInput layerda aldığı verileri, hidden layerda işliyor, karşılaştırmalar yapıp seçenekleri eleyerek doğru noktaya ulaşmaya çalışıyor. Output layerda ise en son doğru olduğuna karar kıldığı ürünü önümüze sunuyor. Bu şekilde üç farklı layer sonucunda yapay zekanın bilgiyi işleyip, son aşamada ürünü ortaya koyduğunu gördüm. Bu sürecin isminin ise Deep Learning olduğunu öğrendim. Tanım olarak ise;\n\nDeep Learning: Yapay zeka ve makine öğreniminin özelleşmiş bir alt kümesidir. İnsan beyninin örüntüleri tanımlama ve öğrenme şeklini taklit ederek, muazzam miktarda yapılandırılmamış veriyi işlemek suretiyle karmaşık problemleri çözmek için çok katmanlı yapay sinir ağları kullanır.\n\nSonrasında en çok kullanılan/popüler olan AI Chatbotlarına ve Toollara baktım. Gördüğüm kadarıyla bunların arasında en üste çıkan isimler: ChatGPT, Perplexity (Araştırma ve Akademik Arama), Gemini, Copilot, Claude (Kodlama, Mantık), Notebook LM, Cursor, Midjourney, Elevenlabs, Gamma, Veo ve Sora.\n\nBunların çoğunu halihazırda duymuş olsam da Perplexity ve Gamma’yı ilk kez gördüm. Diğerlerininse bir iki tanesi hariç hepsini zaten kullanmışlığım vardı. Bu yüzden bu isimleri gördüğümde çok yabancılık çekmedim.\n\nBu araştırmaların arasında ise Claude Code’un bilgisayarda ek bir program gerekmeden direkt terminalde çalışabildiğini öğrendim.\n\nBu günü kapatmadan önce bana iletilen pr.plus websitesinin kullandığı mail sistemini ilk kez gördüğüm için biraz incelemek amacıyla verilen bilgilerle giriş yaptım. Sitede yanlışlıkla bir şeylere basıp mahvetme düşüncesinden dolayı bugün içerisinde çok fazla şey yapmadım. Yine de sitedeki ana bileşenleri görebildim ve gelen bazı mail kategorilerini mailleri hiç açmadan görebildim:\n• Telif Haklarıyla ilgili mailler\n• Partnership mailleri\n• Yayınlama istekleri\n\n------------------------------------------------------------\nÇarşamba – 01 Temmuz 2026\n------------------------------------------------------------\nBugün Marketing kavramını araştırmaya karar verdim ve gün bu şekilde başladı.\n\nMarketingin, yani pazarlamanın, tanımı aslında onun amacında yatıyor. Ürün satarak ya da hizmet sunarak bundan gelir elde etmek. Oldukça basit ve anlaması kolay bir kavram. Fakat işin daha derinine dalınca farklı kavramlar ortaya çıkıyor. Bundan önce marketingde uygulanması/yapılması ve sorulması gerekenleri özetle bir araya getirdim:\n\n• 'İnsanların neye ihtiyacı var?' sorusunu sormak\n• Satış pazarını araştırmak\n• Fiyatları ve dağıtımı planlamak\n• Pazarda hayatta kalmak için stratejiler uygulamak\n• Marka ve ürün/hizmet için reklam yapmak\n• İyi kalitede ve tatmin edici ürün/hizmet sağlamak\n\nBu basit gibi görünen noktaların pazarlama stratejilerinde önemli bir yeri olduğunu gördüm. Ayrıca marketingin alt başlıklarından biri olan ve günümüzde oldukça fazla kullanılan Digital Marketing (Dijital Pazarlama) başlığıyla da karşılaştım.\n\nBuradaki en önemli kavramlardan biri ise SEO (Search Engine Optimization) oldu. Bu kavram dijital pazarlamada önemli çünkü websitesi içeriklerini, arama motorlarında daha üstlerde çıkması için optimize etme anlamını taşıyor. Özellikle PR alanında müşterilerin büyük önem verdiği ise aşikar.\n\nBunların yanısıra, Social Media Marketing’in de önemini vurgulayan birkaç yazıyla karşılaştım. Markaların kitlelerle Instagram, LinkedIn, TikTok gibi sosyal medya mecralarında etkileşime geçtiğini zaten günlük yaşantımızda da açıkça görebiliyoruz. Bu sayede markalar marka tanınırlığını artırıyor, bir topluluk oluşturuyor ve sosyal pazarlama yapmış oluyorlar. Bu da onları, bunu yapmayan rakiplerine kıyasla büyük ölçüde öne geçiriyor.\n\nPazarlamada dikkat edilmesi gereken birkaç unsur daha keşfettim:\n• Kim olduğun ve ne yaptığın\n• Hedef kitlen\n• Mesajın\n• Konumlandırma stratejin\n• Kanalların\n• Hunin\n\nÖzellikle huni oldukça dikkatimi çekti çünkü bu genel bir pazarlama hiyerarşisi gibi görünüyordu.\n\nTHE AIDA MODEL:\n1. Awareness (Farkındalık): Hiyerarşinin en üst kısmında farkındalık var. Marka tarafından müşterilerin ilgisinin çekileceği aşama.\n2. Interest (İlgi): Müşteriler yavaş yavaş araştırma yapmaya başlıyorlar.\n3. Desire (İstek): Müşteriler, markayı rakip firmalarla kıyaslıyorlar.\n4. Action (Eylem): En son aşamada müşteriler ürünü ya da hizmeti satın alıyorlar.\n\nBu model bana hem çok mantıklı hem de uygulanabilir bir bakış açısı olarak göründü.\n\nSonrasında marketingdeki stratejilere göz atarken şu iki kavramla karşılaştım:\n• Direct Response: Kitleyle doğrudan veya anında eyleme geçmek. (Bir eylem)\n• Brand Awareness: Zaman içinde kitleyle güven ve tanınırlık oluşturmak. (Bir süreç)\n\n------------------------------------------------------------\nPerşembe – 02 Temmuz 2026\n------------------------------------------------------------\nPerşembe günü marketing araştırmalarına devam ederek güne başladım. En son öğrenmiş olduğum SEO, Digital Marketing ve AIDA modeli üzerine, yeni iki kavramla karşılaştım: Push Marketing ve Pull Marketing.\n\nPush Marketing: İnsanlara talep edilip edilmemesine bakmaksızın mesajını itmek/göstermekle ilgili bir strateji. İsminden de anlaşılacağı gibi bir nevi mesajını dayatmak üzerine kuruludur. ('Ürünümü satın al.' gibi.)\n\nPull Marketing: Kitleyle iletişim kurmak, insanlara bir problemi çözmelerinde gerçekten yardımcı olmayı istemektir ('Bu problemi çözmenize yardımcı olalım.' gibi). İnsanların sizi arayıp bulmalarını sağlayacak kadar değerli içerikler üretmek önem taşır.\n\nAyrıca Organic Traffic ve Paid Traffic şeklinde iki kavram daha öğrendim:\n• Organic Traffic: Dikkat çekmek için çok fazla zaman ve çaba harcamaktır. (Bir YouTube kanalı kurmak gibi.)\n• Paid Traffic: Erişim sağlamak için para harcamaktır / platformlardaki izlenmeler için ödeme yapmaktır. (Bütçe gerektirdiğinden dolayı yeni başlayanlar için en mantıklı seçenek sayılmaz.)\n\nModern pazarlamada AI’ın yerine baktığımda ise yaptığımız işi daha hızlı hale getirecek bir araç olması gerektiğini, tamamen yerimizi almaması gerektiğini gördüm.\n\nMarketingde stratejimizi ve yol haritamızı iyileştirmek için bazı önemli noktalar keşfettim.\nKim olduğun konusunda netleş:\n• Taviz veremeyeceğim/vazgeçemeyeceğim şeyler neler? (Non-negotiables)\n• Değer verdiğim şeyler neler?\n• Sektörümde görmek istediğim değişim ne?\n• Kitleme nasıl hizmet etmek istiyorum?\n• Marka vaadim nedir?\n\nBu soruları es geçmeden belirleyerek ilerlemenin, pazardaki yerini yükseklere taşıyacak basit ama önemli bilgiler olduğunu gördüm. Ayrıca müşterilerin dilinden konuşabilmenin de her zaman artı bir puan olduğunu öğrendim. Onlarla duygusal bir bağ kurup, şunları öğrenmenin önemini gördüm:\n• Arzuları/istekleri neler?\n• Korkuları neler?\n• Motivasyonları neler?\n• Onları ne geri tutuyor/engelliyor?\n• Onlara hiç kimsenin sunmadığı şekilde nasıl hizmet sunabilirim?\n\nSonrasında tanınırlığı ve görünürlüğü artırmak için Keyword kullanımının olmasını gerektiğini gördüm. Kitlenin gerçekte sorduğu ilgili anahtar kelimeleri ve soruları bulmak gerektiğini öğrendim. Araçlar: TubeBuddy, vidIQ, Google Ads Keyword Planner, Moz Keyword Analysis, Ubersuggest, ChatGPT, Answer the Public.\n\nYine marketingde rakiplerin ne yaptığını, ne tür içerik paylaştıklarını, ne gibi teklifleri/ürünleri olduğunu ve neyi onlardan daha iyi veya daha farklı yapabileceğimizi takip etmenin oldukça değerli olduğunu öğrendim.\n\nPersona: Benzer hedeflere, davranışlara ve zorluklara sahip bir grup insanı temsil eden yarı kurgusal bir profildir. Tahminlere değil, gerçek kullanıcı araştırmalarına dayanarak oluşturulur.\nGüçlü bir persona genellikle şunları içerir: İsim, Persona Türü, Rol veya Kimlik Özeti, Arka Plan / Bağlam, Hedefler, Ağrı Noktaları / Sıkıntılar, Davranışlar, Karar Tetikleyicileri, Tercih Edilen Kanallar, Alıntı / Söz, Üründen Ne İhtiyaç Duyulduğu.\n\n------------------------------------------------------------\nCuma – 03 Temmuz 2026\n------------------------------------------------------------\nBugüne ise Claude Code araştırması yaparak başladım. En başta edindiğim bilgilerin bazıları şunlardı:\n• Bilgisayardaki terminal ile kullanılabilir.\n• Visual Studio Code adlı uygulama ile kullanılabilir.\n• Terminal, VS Code uygulamasının içerisine entegre edilerek kullanılabilir.\n• Claude Code CLI içerisinde Context Rewind (Bağlamı Geri Sarma) yapmak mümkündür.\n\nVS Code içerisinde web sitesinin assetleri için klasör oluşturabileceğimizi ve @ işareti ile bunlara referans verebileceğimizi öğrendim. Ayrıca Puppeteer sayesinde Claude Code'un değişiklik yapmayı kolaylaştırmak için ekran görüntülerini otomatik olarak alabileceğini öğrendim. 'Allow dangerously skip permissions' açılırsa soru sormayı bırakır ancak sandbox modunda yapmak daha güvenlidir.\n\nBir websitesinde genellikle 1 ila 3 framework kullanılır:\nBackend: Laravel (PHP), Django (Python), Express.js (JavaScript)\nFrontend: React veya Next.js, Vue veya Nuxt.js, Angular\nCSS: Tailwind CSS, Bootstrap\nGitHub & Vercel: Kodları barındırma ve yayındaki web sitesini otomatik güncelleme.\n\nClaude Code Temel Komutları:\n• /clear: Mevcut sohbeti temizler.\n• /terminal-setup: Shift+Enter kombinasyonunu ekler.\n• /init: Projeyi analiz eder ve Claude.md oluşturur.\n• claude-edits: Commitler arasındaki değişiklikleri incelemeyi sağlar.\n\nClaude Token Tasarrufu İpuçları:\n• Memory.md dosyası oluşturup commitlerde güncellenmesini sağlamak.\n• Temel görevler için daha düşük modeller seçmek.\n• Yeni sohbetler açmak.\n• Claude Skills kullanmak.\n• MCP bağlantılarını yönetmek.\n• Promptları tek bir mesajda toplu (batch) iletmek.\n• Plan Modu'nu kullanmak.\n• /context ve /cost komutları ile harcamayı izlemek.\n• Yoğun saatlerden (TR 15:00 - 21:00) kaçınmak.\n\n------------------------------------------------------------\nCumartesi – 04 Temmuz 2026\n------------------------------------------------------------\nCumartesi gününe API (Application Programming Interface)'in ne olduğunu öğrenerek başladım. İki farklı yazılım uygulamasının veya sistemin birbirleriyle iletişim kurmasını ve veri alışverişinde bulunmasını sağlayan dijital bir köprü olduğunu öğrendim.\n\nDaha sonrasında Laravel araştırması yapmak istedim fakat gördüm ki Laravel'den önce PHP'ye, PHP'den önce ise HTML ve CSS'e hakim olmak gerekiyor. Bu sebeple araştırmamı HTML ve CSS yönüne doğru çevirdim.\n\nHTML'in bilgisayarlara talimat veren hiper metin işaretleme dili olduğunu gördüm. Visual Studio Code indirerek video dersleri eşliğinde sıfırdan uygulamalı çalışmaya başladım.\n\nOluşturulan 6 Adet HTML Uygulama Dosyası:\n1. buttons.html (Buton stilleri ve durumları)\n2. exercise.html (Metin ve başlık denemeleri)\n3. practice.html (Temel etiket pratikleri)\n4. practice2.html (Liste ve bağlantı yapıları)\n5. practice3.html (Form ve giriş elemanları)\n6. website.html (Bütünleşik mini web sayfası)\n\nDevam edip ilerletmeyi planlıyorum."
+  }
+]
