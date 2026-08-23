@@ -2490,15 +2490,37 @@
       isAiLoading: false,
       isFloatingChatOpen: false,
 
+      STORAGE_KEY: 'haftalik_rapor_ai_chat_history',
+
       initAIChat() {
-        if (this.chatHistory.length === 0) {
-          this.chatHistory.push({
+        // LocalStorage'dan kayıtlı geçmişi yükle
+        try {
+          const saved = localStorage.getItem(this.STORAGE_KEY);
+          if (saved) {
+            this.chatHistory = JSON.parse(saved);
+          }
+        } catch (e) {
+          console.warn('Chat history could not be loaded from storage', e);
+        }
+
+        if (!Array.isArray(this.chatHistory) || this.chatHistory.length === 0) {
+          this.chatHistory = [{
             role: 'model',
             text: 'Merhaba! Ben **Haftalık Rapor Asistanı**. Araştırmacının hazırladığı haftalık raporlar, günlük çalışma notları, kodlanan pratik alıştırmalar ve gelecek planları hakkında sorularınızı yanıtlayabilirim.\n\n*Örnek:* *"1. ay verimli miydi?"*, *"1. haftadaki pazartesi günü öne çıkanlar neler?"* veya *"2. haftada yapılan alıştırmalar neler?"*'
-          });
+          }];
+          this.saveChatHistory();
         }
+
         this.renderChatMessages();
         this.renderFloatingChatMessages();
+      },
+
+      saveChatHistory() {
+        try {
+          localStorage.setItem(this.STORAGE_KEY, JSON.stringify(this.chatHistory));
+        } catch (e) {
+          console.warn('Could not save chat history to localStorage', e);
+        }
       },
 
       toggleFloatingChat(forceState) {
@@ -2658,6 +2680,7 @@
       async sendMessage(question) {
         // Kullanıcı mesajını geçmişe ekle
         this.chatHistory.push({ role: 'user', text: question });
+        this.saveChatHistory();
         this.renderChatMessages();
         this.renderFloatingChatMessages();
 
@@ -2675,7 +2698,7 @@
 
           if (!res.ok) {
             const errData = await res.json().catch(() => ({}));
-            throw new Error(errData.error || `Sunucu hatası: ${res.status}`);
+            throw new Error(errData.error || `Sunucu hatası (${res.status})`);
           }
 
           const data = await res.json();
@@ -2687,9 +2710,10 @@
           console.error('AI Chat Hatası:', err);
           this.chatHistory.push({
             role: 'model',
-            text: `⚠️ **Bağlantı Hatası:** ${err.message || 'Yapay zeka asistanına bağlanırken bir sorun oluştu.'} Lütfen daha sonra tekrar deneyiniz.`
+            text: `⚠️ **Bağlantı Hatası:** ${err.message || 'Yapay zeka asistanına bağlanırken bir sorun oluştu.'} Lütfen birkaç saniye sonra tekrar deneyiniz.`
           });
         } finally {
+          this.saveChatHistory();
           this.setLoading(false);
           this.renderChatMessages();
           this.renderFloatingChatMessages();
@@ -2716,6 +2740,9 @@
       },
 
       clearChatHistory() {
+        try {
+          localStorage.removeItem(this.STORAGE_KEY);
+        } catch (e) {}
         this.chatHistory = [];
         this.initAIChat();
       },
