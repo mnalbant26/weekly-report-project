@@ -39,8 +39,14 @@ function apiChatPlugin(): Plugin {
 }
 
 export default defineConfig(() => {
+  const geminiKey = process.env.GEMINI_API_KEY || process.env.VITE_GEMINI_API_KEY || '';
   return {
     plugins: [react(), tailwindcss(), apiChatPlugin()],
+    define: {
+      'process.env.GEMINI_API_KEY': JSON.stringify(geminiKey),
+      'process.env.VITE_GEMINI_API_KEY': JSON.stringify(geminiKey),
+      '__GEMINI_API_KEY__': JSON.stringify(geminiKey),
+    },
     resolve: {
       alias: {
         '@': path.resolve(__dirname, '.'),

@@ -1000,7 +1000,15 @@
             </div>
           </div>
 
-          <div class="flex items-center gap-2 self-start sm:self-auto shrink-0">
+          <div class="flex items-center gap-2 self-start sm:self-auto shrink-0 flex-wrap">
+            <button 
+              onclick="app.openApiKeyModal()"
+              class="px-3 py-1.5 rounded-xl bg-indigo-500/30 hover:bg-indigo-500/50 text-xs font-semibold text-white transition-colors flex items-center gap-1.5 cursor-pointer border border-indigo-400/40 backdrop-blur-xs shadow-xs"
+              title="Gemini API Anahtarını Yapılandır"
+            >
+              <i data-lucide="key" class="w-3.5 h-3.5"></i>
+              <span>API Anahtarı</span>
+            </button>
             <button 
               onclick="app.clearChatHistory()"
               class="px-3 py-1.5 rounded-xl bg-white/10 hover:bg-white/20 text-xs font-semibold text-white/90 hover:text-white transition-colors flex items-center gap-1.5 cursor-pointer border border-white/10 backdrop-blur-xs"
@@ -1258,6 +1266,77 @@
         >
           Anladım & Kapat
         </button>
+      </div>
+
+    </div>
+  </div>
+
+
+  <!-- ==================== GEMINI API ANAHTARI MODAL ==================== -->
+  <div id="apiKeyModal" class="fixed inset-0 z-50 bg-slate-900/50 dark:bg-black/70 backdrop-blur-xs flex items-center justify-center p-3 sm:p-4 hidden no-print">
+    <div class="bg-white dark:bg-[#111827] border border-slate-200 dark:border-slate-800 rounded-2xl sm:rounded-3xl p-5 sm:p-6 max-w-md w-full shadow-2xl space-y-4 animate-in fade-in zoom-in-95 duration-150">
+      
+      <div class="flex items-center justify-between">
+        <div class="flex items-center gap-2.5">
+          <div class="w-8 h-8 rounded-xl bg-indigo-100 dark:bg-indigo-950/70 text-indigo-600 dark:text-indigo-400 flex items-center justify-center font-bold">
+            <i data-lucide="key" class="w-4 h-4"></i>
+          </div>
+          <div>
+            <h3 class="text-sm sm:text-base font-bold text-slate-900 dark:text-white">Gemini API Anahtarı</h3>
+            <span class="text-[11px] text-slate-500 dark:text-slate-400">İstemci Taraflı Doğrudan AI Bağlantısı</span>
+          </div>
+        </div>
+        <button 
+          onclick="app.closeModal('apiKeyModal')"
+          class="p-1.5 text-slate-400 hover:text-slate-700 dark:hover:text-slate-200 rounded-lg hover:bg-slate-100 dark:hover:bg-slate-800 transition-colors cursor-pointer"
+        >
+          <i data-lucide="x" class="w-4 h-4"></i>
+        </button>
+      </div>
+
+      <div class="space-y-3 text-xs text-slate-600 dark:text-slate-300">
+        <p>
+          Uygulamanız statik barındırmada (Vercel / GitHub Pages) çalışırken doğrudan tarayıcı üzerinden <strong>Google Gemini API</strong> ile iletişim kurar.
+        </p>
+
+        <div class="space-y-1.5">
+          <label class="font-semibold text-slate-700 dark:text-slate-200 block">API Anahtarınız (Google AI Studio):</label>
+          <input 
+            type="password" 
+            id="apiKeyInput" 
+            placeholder="AIzaSy..." 
+            class="w-full px-3.5 py-2.5 bg-slate-100 dark:bg-slate-800 border border-slate-200 dark:border-slate-700 rounded-xl text-xs sm:text-sm text-slate-900 dark:text-white placeholder:text-slate-400 focus:outline-none focus:ring-2 focus:ring-indigo-500 font-mono"
+            autocomplete="off"
+          />
+          <span class="text-[10px] text-slate-400 block">
+            Anahtarınız yalnızca sizin tarayıcınızın yerel hafızasında (localStorage) saklanır, üçüncü şahıslara gönderilmez.
+          </span>
+        </div>
+
+        <div id="apiKeyStatusMessage" class="hidden p-2.5 rounded-xl text-xs"></div>
+      </div>
+
+      <div class="pt-3 border-t border-slate-100 dark:border-slate-800 flex items-center justify-between gap-2">
+        <button 
+          onclick="app.clearStoredApiKey()"
+          class="px-3 py-2 text-rose-600 dark:text-rose-400 hover:bg-rose-50 dark:hover:bg-rose-950/30 rounded-xl text-xs font-semibold transition-colors cursor-pointer"
+        >
+          Anahtarı Sil
+        </button>
+        <div class="flex items-center gap-2">
+          <button 
+            onclick="app.closeModal('apiKeyModal')"
+            class="px-3.5 py-2 bg-slate-100 hover:bg-slate-200 dark:bg-slate-800 dark:hover:bg-slate-700 text-slate-700 dark:text-slate-300 rounded-xl text-xs font-semibold transition-colors cursor-pointer"
+          >
+            İptal
+          </button>
+          <button 
+            onclick="app.saveApiKeyFromModal()"
+            class="px-4 py-2 bg-indigo-600 hover:bg-indigo-700 text-white rounded-xl text-xs font-semibold transition-colors shadow-xs cursor-pointer"
+          >
+            Kaydet & Kullan
+          </button>
+        </div>
       </div>
 
     </div>
@@ -2677,6 +2756,157 @@
         await this.sendMessage(text);
       },
 
+      // ==================== GEMINI API & İSTEMCİ TARAFLI SOHBET MOTORU ====================
+      // NOT: Vercel gibi sunucusuz/statik barındırma ortamlarında 404 hatasını önlemek ve 
+      // doğrudan istemci üzerinden data.json verisiyle Gemini API'yi çalıştırmak için eklenmiştir.
+      API_KEY_STORAGE_KEY: 'haftalik_rapor_gemini_api_key',
+
+      getApiKey() {
+        // 1. Tarayıcı yerel hafızasından oku
+        try {
+          const stored = localStorage.getItem(this.API_KEY_STORAGE_KEY);
+          if (stored && stored.trim()) return stored.trim();
+        } catch (e) {}
+
+        // 2. Window nesnesinde tanımlı anahtar (eğer varsa)
+        try {
+          if (typeof window !== 'undefined') {
+            if (window.__GEMINI_API_KEY__) return window.__GEMINI_API_KEY__;
+            if (window.VITE_GEMINI_API_KEY) return window.VITE_GEMINI_API_KEY;
+            if (window.GEMINI_API_KEY) return window.GEMINI_API_KEY;
+          }
+        } catch (e) {}
+
+        return '';
+      },
+
+      openApiKeyModal() {
+        const modal = document.getElementById('apiKeyModal');
+        const input = document.getElementById('apiKeyInput');
+        const status = document.getElementById('apiKeyStatusMessage');
+        if (input) {
+          input.value = this.getApiKey();
+        }
+        if (status) {
+          status.classList.add('hidden');
+        }
+        if (modal) {
+          modal.classList.remove('hidden');
+        }
+        lucide.createIcons();
+      },
+
+      saveApiKeyFromModal() {
+        const input = document.getElementById('apiKeyInput');
+        const status = document.getElementById('apiKeyStatusMessage');
+        const val = input ? input.value.trim() : '';
+
+        if (!val) {
+          if (status) {
+            status.className = 'p-2.5 rounded-xl text-xs bg-amber-50 dark:bg-amber-950/40 text-amber-800 dark:text-amber-300 border border-amber-200 dark:border-amber-900/50 block';
+            status.textContent = 'Lütfen geçerli bir Gemini API anahtarı giriniz.';
+          }
+          return;
+        }
+
+        try {
+          localStorage.setItem(this.API_KEY_STORAGE_KEY, val);
+          if (status) {
+            status.className = 'p-2.5 rounded-xl text-xs bg-emerald-50 dark:bg-emerald-950/40 text-emerald-800 dark:text-emerald-300 border border-emerald-200 dark:border-emerald-900/50 block';
+            status.textContent = 'API Anahtarı başarıyla tarayıcınıza kaydedildi!';
+          }
+          setTimeout(() => {
+            this.closeModal('apiKeyModal');
+          }, 700);
+        } catch (e) {
+          console.error('API Key kaydedilemedi:', e);
+        }
+      },
+
+      clearStoredApiKey() {
+        try {
+          localStorage.removeItem(this.API_KEY_STORAGE_KEY);
+          const input = document.getElementById('apiKeyInput');
+          const status = document.getElementById('apiKeyStatusMessage');
+          if (input) input.value = '';
+          if (status) {
+            status.className = 'p-2.5 rounded-xl text-xs bg-slate-100 dark:bg-slate-800 text-slate-700 dark:text-slate-300 border border-slate-200 dark:border-slate-700 block';
+            status.textContent = 'Kayıtlı API anahtarı tarayıcıdan temizlendi.';
+          }
+        } catch (e) {}
+      },
+
+      // Doğrudan İstemci Taraflı Gemini API Çağrısı
+      async callGeminiClient(question, history) {
+        const apiKey = this.getApiKey();
+        if (!apiKey) {
+          throw new Error('MISSING_API_KEY');
+        }
+
+        const reportDataset = (this.reports && this.reports.length > 0) ? this.reports : this.getFallbackReports();
+        
+        const systemPrompt = `Sen "Haftalık Rapor Asistanı"sın. Görevin, araştırmacının hazırlamış olduğu haftalık ve günlük staj/araştırma/geliştirme raporlarını derinlemesine ve objektif analiz ederek kullanıcıların sorularını yanıtlamaktır.
+
+Elindeki Rapor Veri Tabanı (Tüm haftalık raporlar, günlük konular, pratikler ve çıkarımlar):
+\`\`\`json
+${JSON.stringify(reportDataset, null, 2)}
+\`\`\`
+
+Cevaplama Kuralları:
+1. Sadece verilen verilere ve rapor kayıtlarına dayanarak, gerçekçi ve yapıcı değerlendirmeler yap.
+2. Kullanıcı "1. ay verimli miydi?", "Araştırmalar doğru düzende mi?", "Pazartesi günü ne yapıldı?" gibi sorular sorduğunda:
+   - İlgili haftanın/günün metriklerini, tamamlanan pratik projeleri, kilit çıkarımları ve kazanımları özetle.
+   - Güçlü yönleri ve (varsa) geliştirilmesi önerilen noktaları maddeleyerek açık, profesyonel ve samimi bir Türkçe ile açıkla.
+3. Yanıtlarında Markdown biçimlendirmesi (kalın harfler, listeler, kod blokları) kullanarak okunabilirliği yüksek tut.
+4. Rapor verisinde bulunmayan bir konu sorulursa bunu dürüstçe belirt ve rapordaki mevcut bilgiler üzerinden rehberlik et.`;
+
+        const contents = [];
+        if (Array.isArray(history) && history.length > 0) {
+          history.slice(-6).forEach(h => {
+            contents.push({
+              role: h.role === 'user' ? 'user' : 'model',
+              parts: [{ text: h.text }]
+            });
+          });
+        }
+        contents.push({
+          role: 'user',
+          parts: [{ text: question.trim() }]
+        });
+
+        // Google Gemini REST API Endpoint
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-2.5-flash:generateContent?key=${apiKey}`;
+
+        const response = await fetch(apiUrl, {
+          method: 'POST',
+          headers: {
+            'Content-Type': 'application/json'
+          },
+          body: JSON.stringify({
+            system_instruction: {
+              parts: [{ text: systemPrompt }]
+            },
+            contents: contents,
+            generationConfig: {
+              temperature: 0.7
+            }
+          })
+        });
+
+        if (!response.ok) {
+          const errData = await response.json().catch(() => ({}));
+          const msg = errData.error?.message || `Gemini API Hatası (${response.status})`;
+          throw new Error(msg);
+        }
+
+        const data = await response.json();
+        const replyText = data.candidates?.[0]?.content?.parts?.[0]?.text;
+        if (!replyText) {
+          throw new Error('Modelden yanıt metni alınamadı.');
+        }
+        return replyText;
+      },
+
       async sendMessage(question) {
         // Kullanıcı mesajını geçmişe ekle
         this.chatHistory.push({ role: 'user', text: question });
@@ -2687,31 +2917,52 @@
         this.setLoading(true);
 
         try {
-          const res = await fetch('/api/chat', {
-            method: 'POST',
-            headers: { 'Content-Type': 'application/json' },
-            body: JSON.stringify({
-              question: question,
-              history: this.chatHistory.slice(0, -1)
-            })
-          });
+          let reply = '';
+          const apiKey = this.getApiKey();
 
-          if (!res.ok) {
-            const errData = await res.json().catch(() => ({}));
-            throw new Error(errData.error || `Sunucu hatası (${res.status})`);
+          // 1. Doğrudan İstemci Taraflı Çağrı (Vercel Statik Vite Projesi için 404'süz çözüm)
+          if (apiKey) {
+            reply = await this.callGeminiClient(question, this.chatHistory.slice(0, -1));
+          } else {
+            // API anahtarı henüz girilmemiş ise önce backend /api/chat dene, 404 dönerse API Key modalını aç
+            try {
+              const res = await fetch('/api/chat', {
+                method: 'POST',
+                headers: { 'Content-Type': 'application/json' },
+                body: JSON.stringify({
+                  question: question,
+                  history: this.chatHistory.slice(0, -1)
+                })
+              });
+              if (res.ok) {
+                const data = await res.json();
+                reply = data.reply || 'Cevap üretilemedi.';
+              } else {
+                throw new Error('MISSING_API_KEY');
+              }
+            } catch (e) {
+              throw new Error('MISSING_API_KEY');
+            }
           }
 
-          const data = await res.json();
           this.chatHistory.push({
             role: 'model',
-            text: data.reply || 'Cevap üretilemedi.'
+            text: reply || 'Cevap üretilemedi.'
           });
         } catch (err) {
           console.error('AI Chat Hatası:', err);
-          this.chatHistory.push({
-            role: 'model',
-            text: `⚠️ **Bağlantı Hatası:** ${err.message || 'Yapay zeka asistanına bağlanırken bir sorun oluştu.'} Lütfen birkaç saniye sonra tekrar deneyiniz.`
-          });
+          if (err.message === 'MISSING_API_KEY') {
+            this.chatHistory.push({
+              role: 'model',
+              text: `🔑 **Gemini API Anahtarı Gerekli:**\n\nVercel statik barındırma ortamında doğrudan tarayıcı üzerinden analiz yapabilmek için lütfen **API Anahtarı** butonuna tıklayarak Google AI Studio API anahtarınızı giriniz veya Vercel projenize \`VITE_GEMINI_API_KEY\` değişkenini ekleyiniz.\n\n*(Anahtarınız yalnızca tarayıcınızın yerel hafızasında saklanır.)*`
+            });
+            this.openApiKeyModal();
+          } else {
+            this.chatHistory.push({
+              role: 'model',
+              text: `⚠️ **Bağlantı Hatası:** ${err.message || 'Yapay zeka asistanına bağlanırken bir sorun oluştu.'} Lütfen API anahtarınızı kontrol edip tekrar deneyiniz.`
+            });
+          }
         } finally {
           this.saveChatHistory();
           this.setLoading(false);
@@ -3066,10 +3317,17 @@
       }
     };
 
+    // Global nesneye bağla
+    window.app = app;
+
     // Sayfa Yüklendiğinde Başlat
-    document.addEventListener('DOMContentLoaded', () => {
+    if (document.readyState === 'loading') {
+      document.addEventListener('DOMContentLoaded', () => {
+        app.init();
+      });
+    } else {
       app.init();
-    });
+    }
   </script>
 </body>
 </html>
