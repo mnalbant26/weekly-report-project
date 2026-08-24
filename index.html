@@ -1265,7 +1265,7 @@
 
 
   <!-- ==================== UYGULAMA MANTIĞI & STATE (VANILLA JS) ==================== -->
-  <script>
+  <script type="module">
     const app = {
       reports: [],
       activeReportIndex: 0,
@@ -2678,8 +2678,16 @@
       },
 
       // ==================== GEMINI API & İSTEMCİ TARAFLI SOHBET MOTORU ====================
-      // API anahtarını doğrudan arka planda çevre değişkenlerinden okur. Ziyaretçiden asla anahtar sormaz.
+      GEMINI_MODEL: 'gemini-3.6-flash',
+
+      // API anahtarını import.meta.env.VITE_GEMINI_API_KEY üzerinden okur
       getApiKey() {
+        try {
+          if (typeof import.meta !== 'undefined' && import.meta.env && import.meta.env.VITE_GEMINI_API_KEY) {
+            return import.meta.env.VITE_GEMINI_API_KEY;
+          }
+        } catch (e) {}
+
         try {
           if (typeof __GEMINI_API_KEY__ !== 'undefined' && __GEMINI_API_KEY__) {
             return __GEMINI_API_KEY__;
@@ -2694,9 +2702,8 @@
         } catch (e) {}
 
         try {
-          if (typeof window !== 'undefined') {
-            if (window.__GEMINI_API_KEY__) return window.__GEMINI_API_KEY__;
-            if (window.VITE_GEMINI_API_KEY) return window.VITE_GEMINI_API_KEY;
+          if (typeof window !== 'undefined' && window.VITE_GEMINI_API_KEY) {
+            return window.VITE_GEMINI_API_KEY;
           }
         } catch (e) {}
 
@@ -2741,8 +2748,8 @@ Cevaplama Kuralları:
           parts: [{ text: question.trim() }]
         });
 
-        // Google Gemini REST API Endpoint (gemini-3.6-flash modeli)
-        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/gemini-3.6-flash:generateContent?key=${apiKey}`;
+        // Google Gemini REST API Endpoint (gemini-3.6-flash)
+        const apiUrl = `https://generativelanguage.googleapis.com/v1beta/models/${this.GEMINI_MODEL}:generateContent?key=${apiKey}`;
 
         const response = await fetch(apiUrl, {
           method: 'POST',
@@ -2784,29 +2791,16 @@ Cevaplama Kuralları:
         this.setLoading(true);
 
         try {
-          let reply = '';
           const apiKey = this.getApiKey();
-
-          if (apiKey) {
-            reply = await this.callGeminiClient(question, this.chatHistory.slice(0, -1));
-          } else {
-            // Arka planda sunucu rotası varsa dene
-            const res = await fetch('/api/chat', {
-              method: 'POST',
-              headers: { 'Content-Type': 'application/json' },
-              body: JSON.stringify({
-                question: question,
-                history: this.chatHistory.slice(0, -1)
-              })
-            }).catch(() => null);
-
-            if (res && res.ok) {
-              const data = await res.json();
-              reply = data.reply || 'Cevap üretilemedi.';
-            } else {
-              throw new Error('MISSING_API_KEY');
-            }
+          if (!apiKey) {
+            this.chatHistory.push({
+              role: 'model',
+              text: '⚠️ **Sistem Yapılandırma Bildirimi:** `VITE_GEMINI_API_KEY` ortam değişkeni tanımlı değil. Lütfen Vercel veya `.env` ortam değişkenlerinize `VITE_GEMINI_API_KEY` anahtarınızı ekleyiniz.'
+            });
+            return;
           }
+
+          const reply = await this.callGeminiClient(question, this.chatHistory.slice(0, -1));
 
           this.chatHistory.push({
             role: 'model',
@@ -2817,7 +2811,7 @@ Cevaplama Kuralları:
           if (err.message === 'MISSING_API_KEY') {
             this.chatHistory.push({
               role: 'model',
-              text: `⚠️ **Sistem Yapılandırma Bildirimi:** Vercel veya sunucu ortamında \`VITE_GEMINI_API_KEY\` tanımlı değil. Lütfen Vercel projenizin Environment Variables bölümüne anahtarı ekleyiniz.`
+              text: '⚠️ **Sistem Yapılandırma Bildirimi:** `VITE_GEMINI_API_KEY` ortam değişkeni tanımlı değil. Lütfen Vercel veya `.env` ortam değişkenlerinize `VITE_GEMINI_API_KEY` anahtarınızı ekleyiniz.'
             });
           } else {
             this.chatHistory.push({
