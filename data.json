@@ -1658,5 +1658,304 @@
       }
     ],
     "raw_content": "Haftalık Rapor 5 ( 10 Ağustos - 15 Ağustos)\n\nBu rapor, verilen konular üzerinde yapılan araştırmalar, alınan notlar, edinilen bilgiler ve üzerinde çalışılan pratik uygulamaların haftalık bir derlemesidir.\n\n------------------------------------------------------------\nPazartesi – 10 Ağustos 2026\n------------------------------------------------------------\nBu haftaya, üretken yapay zeka araçlarının ileri düzey özelliklerini, Claude ekosistemini ve Google AI Studio platformunu detaylıca inceleyerek başladım.\n\nClaude ve Model Yapısı\nClaude ayarlarındaki instructions kısmını doldurarak modelin vereceği yanıtların kapsamını ve tarzını şekillendirebildiğimizi öğrendim. Farklı görev tipleri için optimize edilmiş modelleri ve kullanım senaryolarını şu şekilde derledim:\n• Haiku: Basit görevler, soru-cevap ve hızlı özet çıkarma işlemleri için optimize edilmiş oldukça hızlı bir modeldir.\n• Sonnet: Yazma, kodlama, analiz ve araştırma gibi temel iş yüklerinde ana model olarak kullanılır; Opus modeline kıyasla beş kat daha az kaynak harcar.\n• Opus: Karmaşık ve çok katmanlı problemleri çözebilen, diğer modellerin yetersiz kaldığı durumlar ile yüksek context içeren metin analizleri için saklanması gereken en gelişmiş modeldir.\n• Extended Thinking: Bu özellik aktif edildiğinde model yalnızca doğrudan yanıt vermekle kalmayıp karmaşık analizleri adım adım gerçekleştirir; mesaj limitini daha fazla kullansa da çok katmanlı problemlerde daha spesifik ve kullanışlı çıktılar sağlar.\n• Memory: Modelin tüm konuşmalar boyunca kritik detayları hatırlamasına olanak tanır.\n\nClaude kullanımına başlarken çalışma bağlamı, iletişim tercihleri ile mevcut proje ve hedeflerin tanımlandığı üç temel sohbetin açılmasının verimliliği artırdığını gördüm. Ayrıca Claude'un çoklu dosya yüklemelerinde bağlamı kaybetmediğini; doğrudan görsel veya video üretemese de görsel oluşturma araçları için prompt yazdırarak kullanılabileceğini öğrendim.\n\nProjects, Claude Cowork ve Claude Code\nFarklı çalışma alanları için Projects başlığı altında özel alanlar açılabildiğini, referans dosyalarının bu projelere tanımlanabildiğini ve projelerin public veya private olarak ayarlanabildiğini inceledim. Claude'un Excel tabloları, PowerPoint sunumları ve çalışan HTML dosyaları oluşturabildiğini gördüm. Claude ile çalışırken önce bir outline oluşturup ardından bölüm bölüm genişletme ve final düzenleme yapma akışının en sağlıklı yöntem olduğunu belirledim.\n\nİleri düzey araçlar tarafında edindiğim teknik bilgileri şu şekilde özetledim:\n• Claude Cowork: Standart sohbet arayüzünden farklı olarak bir çalışan gibi hareket eden, bilgisayar dosyalarına ve klasörlerine erişebilen, karmaşık ve tekrarlayan işlerde kullanılan bir yapıdır. Yapılandırma için .md dosyalarına instruction ve bilgiler yazılır; yapılan değişikliklerde dosyayı sıfırdan oluşturmak yerine mevcut yapının üzerine inşa eder.\n• Skills & Scheduled Tasks: Belirli görevleri istenilen formatta yürütmek için hazır instruction kümeleri (Skills) oluşturulabildiğini ve promptları belirli gün/saatlerde otomatik tetiklemek için görev planlayıcı (Scheduled Tasks) kullanılabildiğini öğrendim.\n• Claude Code: Bir projeyi aşama aşama üzerine ekleyerek ve düzenleyerek ilerletmenin en sağlıklı yaklaşım olduğunu; Claude Code kullanabilmek için profesyonel bir yazılımcı olmaktan ziyade ne oluşturulmak istendiğini net bilmenin kritik olduğunu gördüm. Geliştirme sürecinde projeye başlamadan önce Claude.md dosyası oluşturulması, çok dosyalı projelerde planlama modunun atlanmaması ve bir hata iki defadan fazla tekrarlanırsa oturumu sıfırlayıp yeni bir sohbet başlatılması gerektiğini öğrendim.\n• Claude Design: Getdesign.md üzerinden farklı markaların tasarım estetiğinin .md formatında projeye aktarılabildiğini, daha kısa promptların daha az token harcadığını ve oluşturulan tasarımların template olarak dışa aktarılabildiğini öğrendim.\n\nGoogle AI Studio ve Temel Parametreler\nGoogle'ın Gemini, Gemma, Imagen, Veo ve Text-to-Speech modellerini denemek için geliştirilmiş ücretsiz web tabanlı platformu olan Google AI Studio'yu inceledim. İki veya daha fazla yazılımın iletişimini sağlayan API kavramının yanında model çıktılarını doğrudan etkileyen parametreleri öğrendim:\n• Temperature: Çıktının ne kadar mantıksal/güvenli ya da yaratıcı olacağını belirler.\n• Media Resolution: Modele girdi olarak verilen görsel verilerin piksel yoğunluk seviyesini ifade eder.\n• System Instructions: Modelin temel davranış kalıplarını özelleştiren alandır.\n• Advanced Settings: Çıktıyı belirli bir kelime veya sembol dizisinde durduran Add Stop Sequence kuralı ile tek yanıtta üretilebilecek azami kelime adedini belirleyen Output Length sınırlarını kapsar.\n\nGünün Pratik Çalışması\nGoogle AI Studio üzerinde edindiğim parametre bilgilerini kullanarak bir uygulama geliştirdim. Yapıştırılan bir YouTube bağlantısı üzerinden ilgili videonun thumbnail görselini çekip analiz eden ve görsel üzerinde uygulanabilecek iyileştirme önerilerini sunan bir prompt akışı oluşturdum.\n\n------------------------------------------------------------\nSalı – 11 Ağustos 2026\n------------------------------------------------------------\nBugün, Claude içerisindeki otomasyon mekanizmalarını, etkili prompt yapılarını, Google AI Studio üzerindeki dağıtım süreçlerini ve şirket uygulaması olan Handyman Instant test hazırlıklarını inceledim.\n\nClaude Routines ve Otomasyon Mimarisi\nClaude Code içerisinde yer alan ve görevleri belirli zamanlarda ya da tetikleyicilerle otomatik olarak yürüten Claude Routines otomasyon sistemini öğrendim. Görevlerin Anthropic bulut altyapısı üzerinde Remote olarak veya yerel makinede Local olarak çalışabildiğini gördüm.\n\nRoutines sistemine dair edindiğim yapısal bilgileri ve kuralları şu şekilde derledim:\n• Çalışma Mantığı ve Limitler: Normal kullanımda yazılan prompt anında sonuç üretirken, Routine kullanımında tanımlanan görevler bir tetikleyici çalıştığında devreye girer. Token harcamasını Claude Code ile aynı havuzdan yapar ve plan seviyelerine göre günlük belirli limitlere sahiptir (Pro için 5, Max için 15, Teams için 25 Routine/gün).\n• Triggers: Görevleri manuel başlatmak için App Trigger, belirlenen zaman aralıklarında otomatik çalıştırmak (örneğin repository çekme, analiz etme ve sonuç üretme) için Schedule Trigger kullanıldığını öğrendim.\n• Connectors & MCP Server: Routines yapısının dış dünyayla iletişim kurmasını sağlayan entegrasyonlara Connectors dendiğini, arka planda MCP server yapısı üzerinden çalıştığını ve kullanıcının doğrudan hazır ya da özel sunucuları bağlayabildiğini gördüm.\n\nClaude için Prompt Formülü\nClaude'a ne kadar iyi context verilirse o kadar kaliteli çıktılar alındığını gözlemledim. Modelden en doğru sonucu alabilmek için prompt yapısının dört ana bileşenden oluşması gerektiğini öğrendim:\n• Instructions: Modelin neyi, hangi kimlikle ve nasıl yapacağını belirten kurallar.\n• Context: Arka plan bilgisi, kaynak belgeler ve sınırlılıklar.\n• Task: İstenen net, tek ve spesifik teslim edilebilir görev.\n• Output Format: Çıktının tam olarak hangi formatta ve yapıda olması gerektiği.\n\nClaude ile Web Geliştirme Pratiği (Emotio)\nÖğrendiğim teorik bilgileri pekiştirmek amacıyla Claude üzerinde sıfırdan bir web arayüzü tasarladım. Sıradan bir sayfa yerine bir konsept oluşturmak istedim ve duygu ile günlük kavramlarını birleştirerek Emotio isimli interaktif bir duygu günlüğü projesi kurguladım. Claude'a aşama aşama yönlendirmeler vererek interaktif butonlar, farklı seçimlerde değişen duygu kutucukları ve logolu bir header içeren genel sayfa iskeletini başarıyla oluşturdum.\n\nGoogle AI Studio ve Antigravity\nGoogle AI Studio'da hazırlanan uygulamaların paylaşım ve dağıtım adımlarını inceledim. Share sekmesinden görünürlük izinlerinin ayarlanabildiğini, Publish sekmesiyle doğrudan bağlantı üzerinden erişilebilir bir uygulamaya dönüştürülebildiğini öğrendim. Ayrıca Export seçeneği üzerinden Google Antigravity aracını kullanarak projenin yerel bilgisayara aktarılabildiğini ve test edilebildiğini deneyimledim.\n\nHandyman Instant Test Süreci\nŞirket uygulaması olan Handyman Instant için Musa Abi ile görüşerek bilgisayarıma bir Android Emulator kurdum. Emulator üzerine uygulamanın hem müşteri hem de uzman (Pro) sürümlerini yükledim. İlk aşamada gönderilen test senaryolarını netleştirmekte zorlansam da ertesi gün iletilen sadeleştirilmiş rehber doğrultusunda test ortamını hazır hale getirdim.\n\n------------------------------------------------------------\nÇarşamba – 12 Ağustos 2026\n------------------------------------------------------------\nBugün, yazılım geliştirme ortamları ve işletim sistemlerinin dinamiklerini daha iyi kavramak adına Windows vs Linux karşılaştırması üzerine kapsamlı bir araştırma gerçekleştirdim. İki işletim sisteminin kurulum, donanım desteği, uygulama ekosistemi, performans ve geliştirici deneyimi açısından sunduğu avantaj ve dezavantajları inceledim.\n\nYapmış olduğum detaylı karşılaştırmayı ve edindiğim temel çıkarımları şu başlıklar altında derledim:\n\nKurulum ve Sürücü Desteği\n• Kurulum Süreci: Her iki işletim sisteminde de kurulum süreçlerinin zor olmadığını ancak Windows'un kurulum esnasında bir Microsoft hesabı zorunlu kıldığını, Linux tarafının ise bu konuda çok daha özgür bir yapı sunduğunu gördüm. Ayrıca mevcut Windows sisteminin yanına Linux'un Dual Boot olarak kolaylıkla kurulabildiğini inceledim.\n• Sürücü (Driver) Yönetimi: Windows tarafında sürücülerin genellikle manuel veya üçüncü parti yazılımlarla kurulması gerektiğini, pazar payının büyüklüğü sebebiyle donanım desteğinde Windows'un önde olduğunu belirledim. Linux'ta ise çoğu sürücünün doğrudan çekirdeğe (Kernel) gömülü olarak otomatik yüklendiğini; yalnızca Nvidia ekran kartları veya bazı Wi-Fi donanımlarında manuel işlem gerekebildiğini öğrendim. Ancak fare, klavye ve mikrofon gibi donanımların ince ayarlarını yapmaya yarayan üretici yazılımlarının Linux ekosisteminde bulunmadığını fark ettim.\n\nUygulama Ekosistemi ve Kişiselleştirme\n• Uygulama Kurulumu: Windows'ta en yaygın yöntemin web sitelerinden .exe dosyası indirmek olduğunu, Microsoft Store'un aranan çoğu uygulamayı barındırmaması sebebiyle az kullanıldığını gördüm. Linux tarafında ise çoğu uygulamanın doğrudan dağıtımın uygulama mağazasından tek tıkla veya birkaç terminal komutuyla zahmetsizce kurulduğunu, genellikle açık kaynaklı alternatif yazılımlara yönelindiğini öğrendim.\n• Kişiselleştirme Sınırları: Windows'un dahili kişiselleştirme olanaklarının kısıtlı olduğunu (Windhawk gibi üçüncü parti araçlara ihtiyaç duyulduğunu), Linux tarafında ise arayüz ve sistem özelleştirmelerinin tamamen kullanıcının bilgi düzeyine ve tercihine bağlı olarak sınırsız olduğunu gördüm.\n\nPerformans, Gizlilik ve Oyun Desteği\n• Gizlilik ve Kaynak Tüketimi: Windows'un arka planda yoğun bir veri çekme (telemetri) ve servis çalıştırma işlemi gerçekleştirdiğini, bu durumun sistemi özellikle giriş seviyesi cihazlarda daha hantal hale getirdiğini saptadım. Linux dağıtımlarında ise telemetrinin neredeyse hiç bulunmadığını ve arka planda gereksiz servisler çalışmadığı için sistemin oldukça hafif ve akıcı işlediğini gördüm.\n• Oyun Uyumluluğu: Oyun desteği konusunda Windows'un tartışmasız liderliğini koruduğunu; Linux tarafında ise çevrimdışı (offline) oyunların sorunsuz çalışmasına rağmen hile karşıtı (Anti-Cheat) yazılımlar nedeniyle bazı çevrimiçi oyunların oynanamadığını inceledim.\n\nGeliştirici Deneyimi ve Genel Değerlendirme\nYazılımcı topluluklarında ve forumlarda yaptığım araştırmalarda, \"Windows programlama için kötü bir tercih mi?\" sorusuna geliştiricilerin çoğunlukla olumsuz yanıt vermediğini, Windows'un geliştirici araçları tarafında geçmişe kıyasla önemli bir yol katettiğini gördüm. Buna karşın genel kullanıcı deneyimi açısından Windows'un (özellikle en çok sorun bildirilen Windows 11 sürümünün) hesap yönetimi zorunlulukları, beklenmedik çökmeler, uzun süren sistem güncellemeleri ve gizlilik kaygıları nedeniyle eleştirildiğini; gizlilik ve güvenlik konularında Linux'un belirgin bir üstünlüğe sahip olduğunu tespit ettim.\n\n------------------------------------------------------------\nPerşembe – 13 Ağustos 2026\n------------------------------------------------------------\nBugün, Linux işletim sisteminin pratik kullanım detaylarını, dosya mimarisini, yazılım yönetimini ve terminal temellerini kapsayan geniş bir araştırma yaptım. Ayrıca şirket uygulaması olan Handyman Instant üzerindeki test senaryolarını tamamladım.\n\nLinux Dağıtımları, Kurulum ve Yazılım Yönetimi\nLinux dünyasına adım atarken en çok kafa karıştıran konunun Distro seçimi olduğunu, ancak sürece doğrudan sade arayüze sahip bir dağıtımla başlamanın en sağlıklı yöntem olduğunu gördüm. Bu doğrultuda başlangıç seviyesi için Linux Mint ve Zorin OS dağıtımlarının öne çıktığını belirledim.\n\nİşletim sisteminin kurulum ve yönetim süreçlerine dair edindiğim temel bilgileri şu şekilde derledim:\n• Kurulum Süreci: Seçilen dağıtımın ISO dosyasını indirip Rufus veya Balena gibi araçlarla bir USB belleğe yazdırarak bilgisayarı bu bellek üzerinden başlatıp kurulumun tamamlandığını inceledim.\n• Yazılım ve Güncelleme Yönetimi: Windows tarafındaki web sitelerinden .exe arayıp kurma yönteminin aksine, Linux'ta uygulama mağazalarını kullanmanın güncelleme takibi ve güvenlik açısından çok daha pratik olduğunu gördüm. Yazılımların ve sistem bileşenlerinin tek bir komutla toplu halde güncellenebildiğini ve güncellemelerden sonra genellikle sistemi yeniden başlatmaya gerek kalmadığını öğrendim.\n• Uyumluluk Araçları: Windows uygulamalarını çalıştırmak için Wine uyumluluk aracından ve .exe dosyalarını yönetmek için Bottles uygulamasından yararlanılabildiğini, ancak Adobe yazılımları gibi bazı özel programlar için halen Windows ihtiyacının sürdüğünü belirledim.\n• Oyun Uyumluluğu: Singleplayer oyunların büyük bir kısmının sorunsuz çalıştığını, ancak Anti-Cheat yazılımları barındıran Counter-Strike, Riot oyunları ve Fortnite gibi multiplayer yapımlarda kısıtlamalar yaşandığını gördüm.\n\nLinux Dosya Sistemi ve Güvenlik\nLinux'un Windows'tan tamamen farklı olan kök dizin ve dosya sistemi hiyerarşisini detaylıca inceledim:\n• bin: Çalıştırılabilir ikili sistem dosyalarının ve komutların derlendiği klasördür.\n• lib: Programların çalışırken ihtiyaç duyduğu kütüphane kodlarının toplandığı alandır. (Windows'taki System32 mantığı gibi bin ve lib klasörlerinin silinmemesi gerektiğini öğrendim.)\n• etc: Sistemin ve kurulu yazılımların yapılandırma dosyalarını barındırır.\n• boot: Linux'un sistem başlatma ve çekirdek dosyalarını içerir.\n• home: Kullanıcıya ait kişisel belgelerin ve ayarların bulunduğu ana dizindir.\n• usr & var: Kullanıcı programlarını, değişken verileri ve log dosyalarını tutar.\n• dev & tmp: Donanım aygıt dosyalarını ve geçici sistem dosyalarını barındırır.\n\nGüvenlik tarafında, uygulamaların merkezi depolar üzerinden yüklenmesi ve sistem mimarisi sebebiyle genel olarak bir antivirüs ihtiyacı bulunmadığını, gerek duyulursa ClamAV yazılımının kullanılabileceğini öğrendim.\n\nTerminal Komutları, Özelleştirme ve Sorun Giderme\nGrafik arayüzler gelişmiş olsa da terminal kullanımının geliştirici süreçlerinde kritik olduğunu fark ettim. Terminalde Tab tuşunun otomatik tamamlama işlevini gördüğünü ve en temel komutların şunlar olduğunu öğrendim:\n• cd: Dizin değiştirmeyi sağlar.\n• cp: Dosya ve klasörleri kopyalar.\n• mv: Dosyaları taşır veya yeniden adlandırır.\n• ls: Bulunulan dizindeki dosyaları listeler.\n• pwd: O an bulunulan aktif dizin yolunu ekrana yazdırır.\n\nArayüzü özelleştirmek için yeni başlayanların mevcut Desktop Environment yapısına sadık kalmasının paket çakışmalarını önlediğini; dağıtım değiştirirken (Distro Hopping) home dizinindeki gizli .config klasörünü yedekleyip (Ctrl + H) yeni sisteme aktarmanın tüm ayarları koruduğunu gördüm. Olası teknik sorunlarda yapay zeka araçlarından destek almanın ve İngilizce aramalar yapmanın en hızlı çözüm yöntemi olduğunu saptadım.\n\nHandyman Instant Test Çalışmaları\nHandyman Instant'ın hem mobil uygulaması hem de web sitesi için Musa Abi tarafından iletilen sadeleştirilmiş test rehberini adım adım uyguladım. İstenen tüm test senaryolarını detaylı bir şekilde yürüterek elde ettiğim bulguları eksiksiz olarak raporlayıp ilettim.\n\n------------------------------------------------------------\nCuma – 14 Ağustos 2026\n------------------------------------------------------------\nBugün, Claude Code ekosisteminin gelişmiş modlarını, token optimizasyonu stratejilerini ve açık kaynaklı iş akışı otomasyon platformu olan n8n üzerinde yapay zeka destekli otonom sistemler kurgulamayı inceledim.\n\nClaude Code Modları, Proje Mimarisi ve Token Optimizasyonu\nClaude tarafında abonelik modelinin, yoğun API kullanım maliyetlerine kıyasla çok daha ekonomik bir çözüm sunduğunu belirledim. Claude Code arayüzündeki operasyonel modları, komutları ve token tasarrufu yöntemlerini şu şekilde derledim:\n• Çalışma Modları (Modes):\n  o Manual: Her kod düzenlemesinden önce kullanıcıdan tek tek onay alır.\n  o Edit Automatically: Seçili metin bloğunu veya tüm dosyayı otomatik olarak günceller.\n  o Plan: Üretim aşamasına geçmeden önce kodu analiz ederek detaylı bir yol haritası sunar; mimariyi tasarlarken kullanılması gereken en kritik moddur.\n  o Auto: Güvenlik testlerinden geçen adımları onaylar, riskli işlemlerde durur.\n  o Bypass Permissions: Eklenti ayarlarından aktifleştirildiğinde kullanıcıya hiçbir onay sormadan tüm görevleri duraksız yürütür.\n• Token ve Efor Yönetimi: Efor seviyesi yükseltildiğinde hata payı minimuma iner ancak harcanan token miktarı artar. /context komutuyla oturumun limit durumu ve harcanan tokenler takip edilebilir. Limit yaklaşırken /compact komutu ile mevcut bağlam özetlenerek temiz bir oturuma aktarılabilir; başarısız denemeleri hafızadan silmek için ise /rewind komutu kullanılır.\n• Proje Yapılandırması (Claude.md): Projenin tüm kurallarını, sınırlarını ve gereksinimlerini tanımlayan kılavuz dosyasıdır; /init komutuyla oluşturulur.\n• Optimizasyon Stratejileri: Türkçe karakterlerin İngilizceye kıyasla yaklaşık 2 kat daha fazla token tüketmesi nedeniyle .md dosyalarının ve skill tanımlarının İngilizce tutulması gerektiğini gördüm. Dosyaların .md formatına dönüştürülmesinde Docling CLI aracının token tasarrufu sağladığını, büyük dosyaların .cloudignore ile hariç tutulabildiğini; yerel çalıştırmanın (Local) testler için, bulut çalıştırmanın (Cloud) ise kesintisiz operasyonlar için ideal olduğunu belirledim.\n\nn8n ile Yapay Zeka Destekli İş Akışı (Workflow) Otomasyonu\nFarklı servis ve uygulamaları birbirine bağlayarak süreçleri otomatikleştiren n8n platformunu inceledim. Platformun bulut aboneliği yerine kendi sunucularımızda ücretsiz olarak barındırılabileceğini (Self-hosted) öğrendim.\n\nSistem mimarisine dair edindiğim temel kavramlar:\n• Workflow: Sistemin ve otomasyon akışının bütünü.\n• Node: İş akışı içerisindeki her bir işlem kutucuğu/adımı.\n• Execution: Bir akışın baştan sona tek bir kez tetiklenip çalışması.\n\nPratik Otomasyon Uygulaması: Telegram & AI Agent Entegrasyonu\nÖğrendiklerimi uygulamak adına Telegram üzerinden çalışan akıllı bir asistan botu kurguladım:\n1. Trigger Entegrasyonu: Akışı başlatmak için telegram-on message tetikleyicisini seçtim; Telegram üzerinde oluşturduğum botun API anahtarını tanımlayarak platforma bağladım.\n2. AI Agent & Node Yapısı: Akışa bir AI Agent düğümü ekledim. Bu düğümün Input (gelen veri), Settings (model seçimi, API parametreleri) ve Output (üretilen çıktı) alanlarını yapılandırdım.\n3. Çift Yönlü İletişim: Modelin ürettiği yanıtın Telegram'a geri gönderilmesi için akışın sonuna telegram-send text message düğümünü bağladım. Akışın kesintisiz çalışması için projeyi Publish durumuna getirdim.\n4. Memory ve Context Tanımlama: Botun geçmiş mesajları unutmaması için sisteme bir Memory düğümü entegre ettim. Ardından System Messages alanına rol, satış koşulları ve sınırları belirten detaylı bir bağlam (Context) tanımladım.\n5. Araç Entegrasyonu (Tavily): Botun güncel internet aramaları yapabilmesi adına Tavily arama motorunun API bağlantısını bir Tool olarak sisteme dahil ettim ve model talimatlarına internet araması gerektiğinde bu aracı kullanması kuralını ekledim.\n\n------------------------------------------------------------\nCumartesi – 15 Ağustos 2026\n------------------------------------------------------------\nHaftanın son gününde mobil üzerinden uzaktan geliştirme iş akışlarını, SaaS platform mimarisini, Google AI Studio'nun gelişmiş kullanım senaryolarını inceledim ve edindiğim tüm bu araçları bir araya getirecek yeni bir proje planı kurguladım.\n\nClaude Uzaktan Yönetim ve SaaS Mimari Temelleri\nGeliştirme süreçlerini mekandan bağımsız hale getirmek ve modern SaaS projeleri inşa etmek adına edindiğim temel altyapı prensiplerini şu şekilde derledim:\n• Mobil Remote Control: Evdeki bilgisayar açık ve bağlı durumdayken cep telefonundaki Claude App üzerinden aynı aktif geliştirme oturumuna bağlanarak kod üretiminin ve proje takibinin kesintisiz sürdürülebileceğini gördüm. Sistemin kesintiye uğramaması adına Mac sistemlerde Amphetamine gibi uyku modu engelleyici araçların kullanım mantığını inceledim.\n• SaaS Temel Bileşenleri: Bir SaaS projesinin arayüz (Frontend), iş mantığı/doğrulama kuralları (Backend) ve verilerin kalıcı saklandığı veri tabanı (Database) olmak üzere üç ana ayaktan oluştuğunu; bağımsız veri yönetimi için Cloudflare D1 (SQLite) gibi çözümlerin ideal olduğunu belirledim.\n• Dağıtım ve Alan Adı Yönetimi: Projelerin Cloudflare, Vercel veya Netlify üzerinden yayınlanabileceğini; VS Code terminalinde Wrangler CLI (wrangler login) ile Cloudflare entegrasyonu kurularak özel domain ve sub-domain bağlantılarının saniyeler içinde yapılandırılabildiğini öğrendim.\n• Güvenlik ve Çevre Değişkenleri: API anahtarlarının doğrudan koda yazılmayıp .env dosyalarında tutulması, bu dosyaların GitHub'a sızmasını önlemek adına .gitignore içine dahil edilmesi gerektiğini gördüm. Ayrıca projelerin güvenlik açıklarını denetlemek için Claude üzerinden Security Audit yaptırmanın (istek sınırlandırma, bot koruması kontrolü) kritik önemini kavradım.\n• Ödeme ve API Entegrasyonları: Üçüncü parti sohbet botu entegrasyonlarında bağımsız OpenAI API anahtarları tanımlanması ve bütçe aşımına karşı harcama limiti konulması gerektiğini; Türkiye operasyonlarında ödeme altyapısı olarak Paddle veya Creem gibi sağlayıcıların regülasyon süreçlerini kolaylaştırdığını inceledim.\n\nGoogle AI Studio Kullanım Alanları ve Veri Gizliliği\nGoogle AI Studio platformunun sunduğu olanakları ve dikkat edilmesi gereken noktaları şu başlıklar altında özetledim:\n• System Instructions ile Marka Kimliği: Modele belirli bir marka sesi, tonlama ve negatif kural kümesi tanımlanarak her sorguda aynı bağlamı baştan anlatma ihtiyacının ortadan kalktığını gördüm.\n• Canlı Analiz ve UX Çözümleri: Ekran paylaşımı özelliğiyle rakip web sitelerinin canlı olarak analiz ettirilebildiğini; yüklenen ekran görüntülerinden font, renk ve yerleşim detaylarını içeren UX tasarım promptları üretilebildiğini deneyimledim.\n• Multimodal Üretim (TTS ve Imagen): Gemini Flash ile özelleştirilebilir ton ve aksanlarda seslendirmeler (Text-to-Speech) yapılabildiğini; Imagen modelleriyle profesyonel ürün görselleri üretilebildiğini öğrendim.\n• Maliyet ve Veri Gizliliği Dengesi: Platformun kullandığın kadar öde (Pay-per-request) modeliyle aylık çok düşük maliyetler sunduğunu; ancak ücretsiz plandaki verilerin model eğitiminde kullanılabileceğini, bu nedenle kurumsal ve hassas verilerle çalışırken mutlaka API veya ücretli plana geçilerek veri gizliliğinin güvenceye alınması gerektiğini saptadım.\n\nHaftalık Rapor Portalı Proje Tasarımı\nHafta boyunca öğrendiğim araçları somut bir ürüne dönüştürmek adına pratik bir proje fikri geliştirdim. Bugüne kadar hazırladığım tüm haftalık raporların görüntülenebileceği, istatistiklerinin ve detaylarının incelenebileceği bir Haftalık Rapor Web Portalı tasarlamaya karar verdim.\n\nProjenin iskeletini ve mimari yol haritasını şu şekilde planladım:\n1. Geliştirme: Uygulamanın temel bileşenlerini ve arayüzünü Google AI Studio desteğiyle kurgulamak.\n2. Versiyonlama & Dağıtım: Kod dosyalarını GitHub üzerine aktarıp Vercel entegrasyonuyla projeyi canlı bir web sitesine dönüştürmek.\n3. Otomasyon (n8n): Sisteme her yeni haftalık rapor eklendiğinde portalın otomatik olarak güncellenmesini sağlayacak bir n8n iş akışı kurmak.\n\nÖnümüzdeki hafta bu portalın geliştirme ve dağıtım süreçlerine doğrudan başlayacağım."
+  },
+  {
+    "id": "hafta-6",
+    "haftaNo": "6. Haftalık Rapor",
+    "tarihAraligi": "17 Ağustos – 22 Ağustos 2026",
+    "yil": 2026,
+    "ay": "Ağustos",
+    "aylar": [
+      "Ağustos"
+    ],
+    "baslik": "Bulut Otomasyonu, Çoklu Ajanlar, Linux Dual Boot, Emotio Projesi ve Haftalık Rapor Portalı Canlı Dağıtımı",
+    "aciklama": "Bu rapor, verilen konular üzerinde yapılan araştırmalar, alınan notlar, edinilen bilgiler ve üzerinde çalışılan pratik uygulamaların haftalık bir derlemesidir.",
+    "pdf_url": "haftalik_rapor_6_agustos_2026.pdf",
+    "arastirmaci": {
+      "isim": "Araştırmacı",
+      "rol": "Teknoloji & Yazılım Geliştirici",
+      "departman": "Yapay Zeka & Sistem Mimarisi"
+    },
+    "istatistikler": {
+      "toplamSaat": 45,
+      "gunlukSaat": 7.5,
+      "toplamGun": 6,
+      "konuSayisi": 16,
+      "dosyaSayisi": 8,
+      "pratikUygulama": "Emotio Web App, Rapor Portalı Canlı Dağıtımı & Linux Dual Boot"
+    },
+    "haftalikDegerlendirme": {
+      "ozet": "Bu hafta bulut tabanlı otomasyon altyapıları (Trigger.dev, Compoz.io, Apify), çoklu yapay zeka ajan mimarileri, Linux işletim sistemi optimizasyonu ve Dual Boot kurulumu üzerine yoğunlaşıldı. Claude ile geliştirilen interaktif Emotio duygu günlüğü projesi ve Google AI Studio destekli Haftalık Rapor Portalı (haftalikrapor.vercel.app) Gemini API chatbot entegrasyonuyla birlikte Vercel üzerinde başarıyla canlıya alındı.",
+      "kazanimlar": [
+        "Trigger.dev ve Compoz.io ile API bariyerlerini aşan 7/24 bulut otomasyon akışları incelendi.",
+        "VS Code içerisinde modelden bağımsız Ajanlar (Agents) ve Yetenekler (Skills) kurgulanarak çoklu model yönetimi pekiştirildi.",
+        "Microsoft Copilot eleştirileri ve kullanıcı deneyimi sorunları analiz edilerek, senaryolara göre en doğru Linux dağıtım haritası (Zorin, Garuda, Qubes, NixOS) çıkarıldı.",
+        "Yazılımcılar için Server Parity avantajı, BIOS/UEFI yapılandırması ve 5GB FAT32 /boot + BTRFS kök bölümlendirmesiyle kararlı Dual Boot kurulum mantığı kavrandı.",
+        "Emotio duygu günlüğü (emotio-app.vercel.app) ve Haftalık Rapor Portalı (haftalikrapor.vercel.app) Gemini AI desteğiyle Vercel'de canlıya aktarıldı.",
+        "Claude Code ortamında Dumb Zone, /compact, /plan modu, Work Trees ve TDD (Test Odaklı Geliştirme) geliştirici taktikleri pekiştirildi."
+      ],
+      "gelecekHaftaHedefleri": [
+        "Haftalık Rapor Portalı'na yeni raporların yüklenmesini kolaylaştıran dinamik yönetim paneli eklemek.",
+        "NixOS ve deklaratif sistem yönetimi araçları üzerine ileri düzey denemeler yapmak.",
+        "Google AI Studio ile kurgulanan mobil uygulamaların Play Store kapalı test sürecini başlatmak.",
+        "n8n üzerinde çok kanallı sesli ve metin tabanlı müşteri destek botları geliştirmek."
+      ]
+    },
+    "ipuclari_ve_oneriler": {
+      "gelistirme_onerileri": [
+        {
+          "baslik": "Claude Code Dumb Zone & Compact Stratejisi",
+          "kategori": "Yapay Zeka & Araçlar",
+          "onem": "Kritik",
+          "aciklama": "Bağlam penceresi (Context Window) dolmaya başladığında /compact komutuyla geçmişi özetlemek veya kritik aşamalarda yeni oturum açmak halüsinasyonları ve hatalı kod üretimini engeller."
+        },
+        {
+          "baslik": "BTRFS ve 5GB /boot ile Sağlam Dual Boot",
+          "kategori": "Sistem & Linux",
+          "onem": "Yüksek",
+          "aciklama": "Windows yanına Linux kurulumunda BIOS'ta Secure/Fast Boot kapatılmalı; /boot için 5GB FAT32 ve kök için BTRFS seçilerek sistem tek tıkla eski yedeğine dönülebilir hale getirilmelidir."
+        },
+        {
+          "baslik": "n8n Çift Kanallı Çoklu Ajan Mimarisi",
+          "kategori": "Otomasyon & n8n",
+          "onem": "Yüksek",
+          "aciklama": "Metin ve sesli mesajları Speech-to-Text düğümü ve IF Node ile ayrıştırıp özel HTTP Request araçlarıyla donatılmış alt uzman ajanlara dağıtmak operasyonel esneklik sağlar."
+        },
+        {
+          "baslik": "Google Play Store 14 Günlük Kapalı Test Hazırlığı",
+          "kategori": "Mobil Geliştirme",
+          "onem": "Orta",
+          "aciklama": "Mobil uygulama yayınlamadan önce veritabanı karmaşasından kaçınıp yerel depolama tercih edilmeli ve 12 kişilik 14 günlük test süreci için şimdiden test ekibi oluşturulmalıdır."
+        }
+      ],
+      "ileriye_donuk_arastirma": [
+        {
+          "baslik": "NixOS ve Deklaratif Sistem Yönetimi",
+          "aciklama": "Tüm işletim sistemi ve geliştirici ortamının tek bir konfigürasyon dosyasıyla kurulup yönetilmesini sağlayan NixOS mimarisinin incelenmesi."
+        },
+        {
+          "baslik": "Ajanlar Arası İletişim Protokolleri (MCP & Custom Tools)",
+          "aciklama": "n8n ve Claude ortamında farklı uzman AI ajanlarının birbiriyle veri alışverişi yapmasını sağlayan protokollerin derinleştirilmesi."
+        },
+        {
+          "baslik": "Mobil Uygulamalar için Çapraz Platform Çözümleri",
+          "aciklama": "AI Studio'da tasarlanan mobil konseptlerin üretime hazır çapraz platform kodlarına (React Native / Flutter) dönüştürülmesi."
+        }
+      ]
+    },
+    "gunler": [
+      {
+        "id": "pazartesi-h6",
+        "gun": "Pazartesi",
+        "tarih": "17 Ağustos 2026",
+        "yil": 2026,
+        "ay": 7,
+        "gunNo": 17,
+        "etiket": "Bulut Otomasyonu, Ajan Yapıları & Web Tasarımı",
+        "arastirilanKonular": [
+          {
+            "baslik": "Bulut Otomasyonu ve Ekosistem Bağımsız Ajan Yapıları",
+            "icerik": "Trigger.dev (7/24 bulut kod tabanlı otomasyon), Compoz.io (hızlı API izin köprüsü), Apify ile web scraping ve girdi-çıktı akışı (Trigger.dev > Apify > OpenAI API > Compoz.io/Gmail) incelendi. VS Code içerisinde şirket kurallarını tutan Ajanlar (.md) ve Yetenekler (.md) ile modelden bağımsız çalışma mimarisi; danışma kurulu (Advisory Board) ve müşteri avatarı (ICP Avatar) konseptleri öğrenildi."
+          },
+          {
+            "baslik": "Google AI Studio ile Web Tasarımı",
+            "icerik": "Tasarım DNA'sı (rakip blueprint context), Dönüşüm Odaklı Mimari (7 kelime kuralı, tek CTA, credibility strips), Görsel ve Hız Dengesi (latency optimizasyonu) ve System Instructions ile marka tonu sabitleme kuralları derlendi."
+          },
+          {
+            "baslik": "Haftalık Rapor Portalı Geliştirme Süreci",
+            "icerik": "n8n bulut deneme süresi sınırı nedeniyle mimari GitHub Actions'a taşındı. Google AI Studio ile takvim seçicili, filtrelemeli, istatistikli ve açık/koyu tema destekli web arayüzü inşa edildi. GitHub repository açılarak Google AI Studio API anahtarı bağlandı."
+          },
+          {
+            "baslik": "Handyman Instant Test Güncellemeleri",
+            "icerik": "İletilen test bulguları doğrultusunda güncellenen Handyman Instant yeni uygulama sürümleri detaylı testlerden geçirildi."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Haftalık Rapor Portalı Geliştirmesi Başlatıldı & Handyman Instant Testleri",
+          "aciklama": "Google AI Studio ile arayüz iskeleti oluşturuldu, GitHub reposu açıldı ve Handyman Instant güncel sürümleri test edildi.",
+          "etiketler": [
+            "Trigger.dev",
+            "Compoz.io",
+            "Google AI Studio",
+            "Haftalık Rapor Portalı",
+            "Ajan Mimarisi",
+            "Handyman Instant"
+          ]
+        },
+        "oneCikanBilgi": "Trigger.dev ve Compoz.io ile API bariyerleri aşılırken; AI Studio ve GitHub entegrasyonuyla Haftalık Rapor Portalı arayüz geliştirmesine başlandı."
+      },
+      {
+        "id": "sali-h6",
+        "gun": "Salı",
+        "tarih": "18 Ağustos 2026",
+        "yil": 2026,
+        "ay": 7,
+        "gunNo": 18,
+        "etiket": "Claude Optimizasyonu, Vercel Dağıtımı & Benchmark",
+        "arastirilanKonular": [
+          {
+            "baslik": "Claude Kullanım Stratejileri ve Optimizasyon Önerileri",
+            "icerik": "Memory Import ile geçmiş bağlamı aktarma, Model seçimi (günlükte Sonnet, ağır analizde Opus, token tasarrufu için Fable kısıtlaması), Düşünme Seviyesi (Effort Level: Medium/High/Extra High), Context Interview yöntemi ile mülakat yaptırma, Projects ile çalışma alanlarını izole etme ve Yetenekler (Skills) ile Co-work / Plan Mode avantajları saptandı."
+          },
+          {
+            "baslik": "Google AI Studio ve Haftalık Rapor Portalı Geliştirmesi",
+            "icerik": "GitHub Actions iş akışındaki kararsızlıklar nedeniyle manuel dağıtım ve Vercel entegrasyonuna geçildi. Raporlar Google AI Studio projesine manuel yüklenip GitHub reposuna push'lanarak Vercel üzerinden canlıya aktarılan temiz ve kararlı bir yapı kuruldu."
+          },
+          {
+            "baslik": "Handyman Instant Benchmark Analizi",
+            "icerik": "Handyman Instant ile Getir uygulamaları ve web siteleri UI/UX açısından kapsamlı karşılaştırılarak detaylı benchmark analizi raporlandı."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Haftalık Rapor Portalı Vercel Canlıya Alındı & Getir Benchmark Analizi",
+          "aciklama": "GitHub Actions yerine stabil Vercel dağıtım altyapısına geçildi; Handyman Instant vs Getir detaylı benchmark raporu teslim edildi.",
+          "etiketler": [
+            "Claude Stratejileri",
+            "Effort Level",
+            "Vercel Dağıtımı",
+            "Handyman Instant",
+            "Getir Benchmark",
+            "UI/UX"
+          ]
+        },
+        "oneCikanBilgi": "Claude Projects ve Context Interview ile bağlam korunurken; Rapor Portalı Vercel'e taşındı ve Handyman Instant vs Getir UI/UX benchmark analizi tamamlandı."
+      },
+      {
+        "id": "carsamba-h6",
+        "gun": "Çarşamba",
+        "tarih": "19 Ağustos 2026",
+        "yil": 2026,
+        "ay": 7,
+        "gunNo": 19,
+        "etiket": "Microsoft Copilot Eleştirisi & Linux Distro Seçim Rehberi",
+        "arastirilanKonular": [
+          {
+            "baslik": "Microsoft Copilot İncelemesi ve Kullanıcı Deneyimi Sorunları",
+            "icerik": "Agresif dağıtım politikasının bloatware algısı oluşturması, yavaşlatılmış model deneyimi, kullanıcı/geliştirici tepkileri ('Micro Slop' ve Clippy benzetmesi), başarılı olduğu alanlar (hızlı Windows ayarları, Excel formülleri, satır içi kod tamamlama) ve kritik eksiklikleri (uzun talimatlar verme, alakasız dosya analizi, otonomi yetersizliği) derlendi."
+          },
+          {
+            "baslik": "Linux Dağıtımları (Distros) ve Kullanım Senaryolarına Göre Seçim Stratejileri",
+            "icerik": "Yazılımcılar için genel yaklaşım (Python, Node.js, Git, VS Code her dağıtımda sorunsuz), Yeni başlayanlar (Zorin OS ve Btrfs yedeklemeli Garuda Linux), Oyuncular (ChimeraOS ve Garuda Gaming), Gizlilik & Güvenlik (Tails ve Qubes OS), Düşük Donanım (MX Linux Fluxbox), Sunucular (Debian, Arch, LFS) ve İleri Seviye (Arch Rolling, Gentoo, NixOS Rollback) dağıtım haritası çıkarıldı."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Microsoft Copilot UX Analizi & Kapsamlı Linux Dağıtım Haritası",
+          "aciklama": "Copilot'ın zayıf ve güçlü yanları incelendi; amaca ve donanıma göre (Zorin, Garuda, Tails, Qubes, NixOS) en uygun dağıtım haritası çıkarıldı.",
+          "etiketler": [
+            "Microsoft Copilot",
+            "Bloatware",
+            "Linux Dağıtımları",
+            "Zorin OS",
+            "Garuda Linux",
+            "Qubes OS",
+            "NixOS"
+          ]
+        },
+        "oneCikanBilgi": "Copilot'ın otonomi eksiklikleri tespit edildi; amaca göre Zorin (başlangıç), Qubes OS (güvenlik), NixOS (özelleştirme) ve MX Linux (eski donanım) yol haritası çıkarıldı."
+      },
+      {
+        "id": "persembe-h6",
+        "gun": "Perşembe",
+        "tarih": "20 Ağustos 2026",
+        "yil": 2026,
+        "ay": 7,
+        "gunNo": 20,
+        "etiket": "Yazılımcılar için Linux Ekosistemi & Dual Boot Rehberi",
+        "arastirilanKonular": [
+          {
+            "baslik": "Yazılımcılar Açısından Linux Ekosistemi ve İstisnalar",
+            "icerik": "Hızlı paket yönetimi ve terminalden tek komutla kurulum, Canlı Sunucu Uyumu (Server Parity - canlı sunucuyla sıfır bağımlılık hatası), Bash ve Nix ile tek dosyada ortam paylaşımı, hafif masaüstü ortamları ve Window Manager kişiselleştirmeleri; Mac/Xcode ve .NET gibi Linux dışı istisnai senaryolar incelendi."
+          },
+          {
+            "baslik": "Linux Kurulumu, BIOS Ayarları ve Manuel Dual Boot Yapılandırması",
+            "icerik": "BIOS/UEFI ayarları (Secure Boot ve Fast Boot Disabled), Manuel Disk Bölümlendirme (Boot: 5000MB FAT32 /boot flag:boot; Root: Kalan alan BTRFS /), KDE Plasma arayüzü, Limine Bootloader önceliği ve Türkçe klavye / İngilizce sistem dili stratejisi derlendi."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Manuel Disk Bölümlendirme (FAT32/BTRFS) & Dual Boot Kurulum Rehberi",
+          "aciklama": "Windows yanına kararlı Linux kurulumu için BIOS ayarları, FAT32 /boot (5GB), BTRFS kök bölümü ve Limine Bootloader yapılandırma adımları hazırlandı.",
+          "etiketler": [
+            "Linux Dual Boot",
+            "UEFI / BIOS",
+            "Secure Boot",
+            "BTRFS",
+            "Limine Bootloader",
+            "KDE Plasma",
+            "Server Parity"
+          ]
+        },
+        "oneCikanBilgi": "Geliştiriciler için Server Parity kritik avantajdır; BIOS'ta Secure/Fast Boot kapatılarak 5GB FAT32 /boot ve BTRFS kök bölümlendirmesiyle güvenli Dual Boot kurulur."
+      },
+      {
+        "id": "cuma-h6",
+        "gun": "Cuma",
+        "tarih": "21 Ağustos 2026",
+        "yil": 2026,
+        "ay": 7,
+        "gunNo": 21,
+        "etiket": "Emotio Canlı Yayını & n8n İleri Düzey Çoklu Ajan Akışları",
+        "arastirilanKonular": [
+          {
+            "baslik": "Claude ile Emotio Uygulamasının Geliştirilmesi ve Canlıya Alınması",
+            "icerik": "Emotiometer ölçer barı, dinamik kombinasyonlar ve Easter Egg ('Roller coaster of emotions!'), tarih bazlı takvim ve kayıt sistemi, çoklu dil desteği, gradyant arayüz yenilemesi, çevrilebilir günlük şans çarkı ve Vercel canlı dağıtımı (emotio-app.vercel.app) tamamlandı."
+          },
+          {
+            "baslik": "n8n ile İleri Düzey İş Akışı ve Çoklu Ajan Mimarileri",
+            "icerik": "HTTP Request düğümü ile özel API aracı (Tool) entegrasyonu, IF Node ve Speech-to-Text ile metin/ses çift kanallı yönlendirme, Loop döngüleri ve dinamik işlemler, On Chat Message Trigger ile yerel test ortamı ve uzmanlaşmış çoklu ajan (Multi-Agent) dağıtımı incelendi."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Emotio Web Uygulaması Canlıya Alındı (emotio-app.vercel.app) & n8n Ses/Agent Akışı",
+          "aciklama": "Emotiometer, şans çarkı, geçmiş takvimi ve çoklu dil içeren Emotio Vercel'de yayınlandı; n8n üzerinde sesli mesaj ayrıştıran çoklu ajan akışı kurgulandı.",
+          "etiketler": [
+            "Emotio Web App",
+            "Vercel",
+            "Emotiometer",
+            "Easter Egg",
+            "n8n Multi-Agent",
+            "Speech-to-Text",
+            "HTTP Request Tool"
+          ]
+        },
+        "oneCikanBilgi": "Emotio duygu günlüğü interaktif bileşenlerle Vercel'de canlıya alındı; n8n'de HTTP Request ve Speech-to-Text ile çift kanallı çoklu ajan mimarisi modellendi."
+      },
+      {
+        "id": "cumartesi-h6",
+        "gun": "Cumartesi",
+        "tarih": "22 Ağustos 2026",
+        "yil": 2026,
+        "ay": 7,
+        "gunNo": 22,
+        "etiket": "Claude Code Gelişmiş Taktikler, Mobil Yayın & Gemini AI Portal",
+        "arastirilanKonular": [
+          {
+            "baslik": "Claude Code İleri Düzey Geliştirici Taktikleri ve Optimizasyon",
+            "icerik": "Dumb Zone eşiği ve /compact ile token yönetimi, Test Odaklı Geliştirme (TDD) ve ekran görüntüsü doğrulamaları, /plan modu, skill.md dosyaları ve /loop otonom hata taraması, Git Work Trees (iş ağaçları) ve Opus planlama / Sonnet kodlama hibrit modeli, MCP entegrasyonu, claude.md ve /voice sesli komut pratikleri derlendi."
+          },
+          {
+            "baslik": "Google AI Studio ile Mobil Uygulama Geliştirme ve Play Store Yayın Süreci",
+            "icerik": "Lokal veri stratejisi ile maliyetsiz ve hızlı onay, modern referans ekran görüntüleriyle tasarım ve AI Studio canlı cihaz testi, QA testi ve hata revizyon yönetimi, 25$ geliştirici hesabı ve 12 kişilik 14 günlük kapalı test kuralları incelendi."
+          },
+          {
+            "baslik": "Haftalık Rapor Portalı Geliştirmesi ve Canlıya Alınması",
+            "icerik": "Raporları analiz edebilen Gemini API destekli interaktif AI Chatbot entegrasyonu yapıldı; istatistik, takvim ve filtreleme alanları optimize edilerek haftalikrapor.vercel.app adresinde proje canlıya alındı."
+          }
+        ],
+        "pratikUygulama": {
+          "baslik": "Haftalık Rapor Portalı Gemini AI ile Canlıya Alındı (haftalikrapor.vercel.app)",
+          "aciklama": "Google AI Studio ile geliştirilen portala Gemini destekli sohbet asistanı entegre edildi; arayüz optimize edilerek Vercel üzerinde canlıya aktarıldı.",
+          "etiketler": [
+            "Claude Code TDD",
+            "Work Trees",
+            "Google Play Store",
+            "Kapalı Test",
+            "Gemini API",
+            "Haftalık Rapor Portalı",
+            "Vercel Canlı"
+          ]
+        },
+        "oneCikanBilgi": "Claude Code'da TDD ve /plan modu hataları önlerken; Google AI Studio ile geliştirilen Haftalık Rapor Portalı, Gemini AI Chatbot entegrasyonuyla haftalikrapor.vercel.app adresinde canlıya alındı."
+      }
+    ]
   }
 ]
