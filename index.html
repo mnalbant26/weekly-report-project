@@ -1539,28 +1539,33 @@
 
           if (reportDay) {
             const isSelected = reportDay.dayObj.id === this.activeDayId;
+            const shortGun = reportDay.dayObj.gun ? reportDay.dayObj.gun.substring(0, 3) : '';
             cellsHtml += `
               <button 
                 onclick="app.selectCalendarDay('${reportDay.reportIndex}', '${reportDay.dayObj.id}')"
-                class="min-h-[48px] xs:min-h-[54px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
+                class="w-full min-w-0 overflow-hidden min-h-[46px] xs:min-h-[52px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
                   isSelected 
                     ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-md ring-2 ring-slate-900 dark:ring-white ring-offset-1 sm:ring-offset-2 dark:ring-offset-[#161F30]' 
                     : 'bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-slate-800 dark:text-slate-200 hover:bg-emerald-100/90 dark:hover:bg-emerald-900/50 shadow-xs'
                 }"
               >
-                <div class="flex items-center justify-between">
-                  <span class="text-[11px] sm:text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-800 dark:text-slate-200'}">${dayNum}</span>
-                  <span class="w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'}"></span>
+                <div class="flex items-center justify-between w-full min-w-0">
+                  <span class="text-[10px] xs:text-[11px] sm:text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-800 dark:text-slate-200'}">${dayNum}</span>
+                  <span class="w-1.5 h-1.5 rounded-full shrink-0 ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'}"></span>
                 </div>
-                <span class="text-[9px] sm:text-[10px] truncate block ${isSelected ? 'text-slate-300 dark:text-slate-700 font-medium' : 'text-emerald-800 dark:text-emerald-300 font-medium'}">
-                  ${reportDay.dayObj.gun}
-                </span>
+                <div class="w-full min-w-0 mt-0.5">
+                  <span class="text-[9px] sm:text-[10px] truncate block leading-tight font-medium ${isSelected ? 'text-slate-300 dark:text-slate-700' : 'text-emerald-800 dark:text-emerald-300'}">
+                    <span class="sm:hidden">${shortGun}</span>
+                    <span class="hidden sm:inline">${reportDay.dayObj.gun}</span>
+                  </span>
+                </div>
               </button>
             `;
           } else {
             cellsHtml += `
-              <div class="min-h-[48px] xs:min-h-[54px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-transparent text-slate-300 dark:text-slate-700 text-[11px] sm:text-xs font-medium select-none bg-slate-100/30 dark:bg-slate-800/20">
-                ${dayNum}
+              <div class="w-full min-w-0 overflow-hidden min-h-[46px] xs:min-h-[52px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-transparent text-slate-300 dark:text-slate-700 text-[10px] xs:text-[11px] sm:text-xs font-medium select-none bg-slate-100/30 dark:bg-slate-800/20 flex flex-col justify-between">
+                <span class="leading-none">${dayNum}</span>
+                <span class="text-[8px] sm:text-[9px] text-slate-300 dark:text-slate-700 hidden sm:block">-</span>
               </div>
             `;
           }
@@ -1572,25 +1577,27 @@
 
           if (reportDay) {
             const isSelected = reportDay.dayObj.id === this.activeDayId;
+            const shortGun = reportDay.dayObj.gun ? reportDay.dayObj.gun.substring(0, 3) : '';
             cellsHtml += `
               <button 
                 onclick="app.selectCalendarDay('${reportDay.reportIndex}', '${reportDay.dayObj.id}')"
-                class="min-h-[48px] xs:min-h-[54px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
+                class="w-full min-w-0 overflow-hidden min-h-[46px] xs:min-h-[52px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
                   isSelected 
                     ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-md ring-2 ring-slate-900 dark:ring-white ring-offset-1 sm:ring-offset-2 dark:ring-offset-[#161F30]' 
                     : 'bg-emerald-50 dark:bg-emerald-950/50 border-emerald-300 dark:border-emerald-800 text-slate-800 dark:text-slate-100 hover:bg-emerald-100 dark:hover:bg-emerald-900/60 shadow-xs'
                 }"
                 title="${reportDay.dayObj.gun} - ${reportDay.dayObj.etiket}"
               >
-                <div class="flex items-center justify-between">
-                  <span class="text-[11px] sm:text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-900 dark:text-white'}">${dayNum}</span>
-                  <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'} animate-pulse"></span>
+                <div class="flex items-center justify-between w-full min-w-0">
+                  <span class="text-[10px] xs:text-[11px] sm:text-xs font-bold leading-none ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-900 dark:text-white'}">${dayNum}</span>
+                  <span class="w-1.5 h-1.5 sm:w-2 sm:h-2 rounded-full shrink-0 ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'} animate-pulse"></span>
                 </div>
-                <div>
-                  <span class="text-[9px] sm:text-[10px] font-bold block ${isSelected ? 'text-slate-200 dark:text-slate-800' : 'text-emerald-900 dark:text-emerald-300'}">
-                    ${reportDay.dayObj.gun}
+                <div class="w-full min-w-0 mt-0.5 sm:mt-1">
+                  <span class="text-[9px] sm:text-[10px] font-bold block truncate leading-tight ${isSelected ? 'text-slate-200 dark:text-slate-800' : 'text-emerald-900 dark:text-emerald-300'}">
+                    <span class="sm:hidden">${shortGun}</span>
+                    <span class="hidden sm:inline">${reportDay.dayObj.gun}</span>
                   </span>
-                  <span class="text-[8px] sm:text-[9px] truncate block ${isSelected ? 'text-slate-300 dark:text-slate-700' : 'text-slate-600 dark:text-slate-400'}">
+                  <span class="text-[8px] sm:text-[9px] truncate block leading-tight ${isSelected ? 'text-slate-300 dark:text-slate-700' : 'text-slate-600 dark:text-slate-400'} hidden sm:block">
                     ${reportDay.dayObj.etiket.split('&')[0]}
                   </span>
                 </div>
@@ -1598,9 +1605,9 @@
             `;
           } else {
             cellsHtml += `
-              <div class="min-h-[48px] xs:min-h-[54px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-slate-200/60 dark:border-slate-800/80 bg-white/70 dark:bg-slate-800/30 text-slate-400 dark:text-slate-600 text-[11px] sm:text-xs flex flex-col justify-between select-none">
-                <span class="font-medium">${dayNum}</span>
-                <span class="text-[8px] sm:text-[9px] text-slate-300 dark:text-slate-700">-</span>
+              <div class="w-full min-w-0 overflow-hidden min-h-[46px] xs:min-h-[52px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-slate-200/60 dark:border-slate-800/80 bg-white/70 dark:bg-slate-800/30 text-slate-400 dark:text-slate-600 text-[10px] xs:text-[11px] sm:text-xs flex flex-col justify-between select-none">
+                <span class="font-medium leading-none">${dayNum}</span>
+                <span class="text-[8px] sm:text-[9px] text-slate-300 dark:text-slate-700 hidden sm:block">-</span>
               </div>
             `;
           }
@@ -1617,28 +1624,33 @@
 
           if (reportDay) {
             const isSelected = reportDay.dayObj.id === this.activeDayId;
+            const shortGun = reportDay.dayObj.gun ? reportDay.dayObj.gun.substring(0, 3) : '';
             cellsHtml += `
               <button 
                 onclick="app.selectCalendarDay('${reportDay.reportIndex}', '${reportDay.dayObj.id}')"
-                class="min-h-[48px] xs:min-h-[54px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
+                class="w-full min-w-0 overflow-hidden min-h-[46px] xs:min-h-[52px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border text-left transition-all relative flex flex-col justify-between cursor-pointer ${
                   isSelected 
                     ? 'bg-slate-900 dark:bg-white text-white dark:text-slate-900 border-slate-900 dark:border-white shadow-md ring-2 ring-slate-900 dark:ring-white ring-offset-1 sm:ring-offset-2 dark:ring-offset-[#161F30]' 
                     : 'bg-emerald-50/80 dark:bg-emerald-950/40 border-emerald-300 dark:border-emerald-800 text-slate-800 dark:text-slate-200 hover:bg-emerald-100/90 dark:hover:bg-emerald-900/50 shadow-xs'
                 }"
               >
-                <div class="flex items-center justify-between">
-                  <span class="text-[11px] sm:text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-800 dark:text-slate-200'}">${i}</span>
-                  <span class="w-1.5 h-1.5 rounded-full ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'}"></span>
+                <div class="flex items-center justify-between w-full min-w-0">
+                  <span class="text-[10px] xs:text-[11px] sm:text-xs font-bold ${isSelected ? 'text-white dark:text-slate-900' : 'text-slate-800 dark:text-slate-200'}">${i}</span>
+                  <span class="w-1.5 h-1.5 rounded-full shrink-0 ${isSelected ? 'bg-amber-300 dark:bg-amber-500' : 'bg-emerald-600 dark:bg-emerald-400'}"></span>
                 </div>
-                <span class="text-[9px] sm:text-[10px] truncate block ${isSelected ? 'text-slate-300 dark:text-slate-700 font-medium' : 'text-emerald-800 dark:text-emerald-300 font-medium'}">
-                  ${reportDay.dayObj.gun}
-                </span>
+                <div class="w-full min-w-0 mt-0.5">
+                  <span class="text-[9px] sm:text-[10px] truncate block leading-tight font-medium ${isSelected ? 'text-slate-300 dark:text-slate-700' : 'text-emerald-800 dark:text-emerald-300'}">
+                    <span class="sm:hidden">${shortGun}</span>
+                    <span class="hidden sm:inline">${reportDay.dayObj.gun}</span>
+                  </span>
+                </div>
               </button>
             `;
           } else {
             cellsHtml += `
-              <div class="min-h-[48px] xs:min-h-[54px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-transparent text-slate-300 dark:text-slate-700 text-[11px] sm:text-xs font-medium select-none bg-slate-100/30 dark:bg-slate-800/20">
-                ${i}
+              <div class="w-full min-w-0 overflow-hidden min-h-[46px] xs:min-h-[52px] sm:min-h-[64px] p-1 xs:p-1.5 sm:p-2 rounded-lg sm:rounded-xl border border-transparent text-slate-300 dark:text-slate-700 text-[10px] xs:text-[11px] sm:text-xs font-medium select-none bg-slate-100/30 dark:bg-slate-800/20 flex flex-col justify-between">
+                <span class="leading-none">${i}</span>
+                <span class="text-[8px] sm:text-[9px] text-slate-300 dark:text-slate-700 hidden sm:block">-</span>
               </div>
             `;
           }
@@ -2207,10 +2219,20 @@
         return html;
       },
 
-      // Satır içi formatlamalar (kalın, kod vb.)
+      // Satır içi formatlamalar (kalın, kod, italik vb.)
       formatInlineText(text) {
         if (!text) return '';
         let formatted = this.escapeHtml(text);
+        
+        // Markdown Inline Code: `kod`
+        formatted = formatted.replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-mono text-[11px] font-semibold text-indigo-600 dark:text-indigo-400 border border-slate-200 dark:border-slate-700">$1</code>');
+
+        // Markdown Kalın: **kalın** veya __kalın__
+        formatted = formatted.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-slate-900 dark:text-white">$1</strong>');
+        formatted = formatted.replace(/__(.*?)__/g, '<strong class="font-bold text-slate-900 dark:text-white">$1</strong>');
+
+        // Markdown İtalik: *italik* veya _italik_
+        formatted = formatted.replace(/\*([^\*\n]+)\*/g, '<em class="italic opacity-95">$1</em>');
         
         // HTML etiketleri (&lt;img&gt;, &lt;input&gt;, &lt;span&gt;, &lt;div&gt;, vb.) için güvenli ve şık kod rozeti
         formatted = formatted.replace(/(&lt;[a-zA-Z0-9!_\-\/]+&gt;)/g, '<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-mono text-[11px] font-semibold text-indigo-700 dark:text-indigo-300 border border-slate-200 dark:border-slate-700">$1</code>');
@@ -2631,20 +2653,144 @@
 
       formatMarkdownText(text) {
         if (!text) return '';
-        let html = this.escapeHtml(text);
 
-        // Bold
-        html = html.replace(/\*\*(.*?)\*\*/g, '<strong class="font-bold text-indigo-950 dark:text-indigo-200">$1</strong>');
-        // Italic
-        html = html.replace(/\*(.*?)\*/g, '<em class="italic opacity-90">$1</em>');
-        // Inline Code
-        html = html.replace(/`([^`]+)`/g, '<code class="px-1.5 py-0.5 rounded bg-slate-100 dark:bg-slate-800 font-mono text-[11px] text-indigo-600 dark:text-indigo-400 border border-slate-200 dark:border-slate-700">$1</code>');
-        // Madde işaretleri
-        html = html.replace(/^\s*[-•]\s+(.*)$/gm, '<li class="ml-4 list-disc my-1">$1</li>');
-        // Satır sonları
-        html = html.replace(/\n/g, '<br/>');
+        let clean = text;
 
-        return html;
+        // 1. LaTeX & Matematiksel İfade Temizliği (Unicode sembollere dönüştürme)
+        clean = clean.replace(/\$\s*\\rightarrow\s*\$/gi, '→')
+                     .replace(/\\rightarrow/gi, '→')
+                     .replace(/\$\s*\\to\s*\$/gi, '→')
+                     .replace(/\\to/gi, '→')
+                     .replace(/\$\s*\\Rightarrow\s*\$/gi, '⇒')
+                     .replace(/\\Rightarrow/gi, '⇒')
+                     .replace(/\$\s*\\implies\s*\$/gi, '⇒')
+                     .replace(/\\implies/gi, '⇒')
+                     .replace(/\$\s*\\leftarrow\s*\$/gi, '←')
+                     .replace(/\\leftarrow/gi, '←')
+                     .replace(/\$\s*\\leftrightarrow\s*\$/gi, '↔')
+                     .replace(/\\leftrightarrow/gi, '↔')
+                     .replace(/\$\s*\\cdot\s*\$/gi, '•')
+                     .replace(/\\cdot/gi, '•')
+                     .replace(/\$\s*\\times\s*\$/gi, '×')
+                     .replace(/\\times/gi, '×')
+                     .replace(/\$\s*\\le(q)?\s*\$/gi, '≤')
+                     .replace(/\$\s*\\ge(q)?\s*\$/gi, '≥')
+                     .replace(/\$\s*\\neq\s*\$/gi, '≠')
+                     .replace(/\$([^\$\n\r]+?)\$/g, '$1'); // Kalan tekli $ işaretlerini kaldır
+
+        // 2. Çok satırlı kod bloklarını geçici olarak sakla
+        const codeBlocks = [];
+        clean = clean.replace(/```([a-zA-Z0-9_-]*)\n([\s\S]*?)```/g, (match, lang, code) => {
+          const id = `__CODE_BLOCK_${codeBlocks.length}__`;
+          codeBlocks.push({ lang, code });
+          return id;
+        });
+
+        // 3. Satır bazlı Markdown Ayrıştırma
+        const lines = clean.split('\n');
+        const output = [];
+        let inUl = false;
+        let inOl = false;
+
+        const closeLists = () => {
+          if (inUl) { output.push('</ul>'); inUl = false; }
+          if (inOl) { output.push('</ol>'); inOl = false; }
+        };
+
+        for (let i = 0; i < lines.length; i++) {
+          const rawLine = lines[i];
+          const trimmed = rawLine.trim();
+
+          // Kod bloğu yer tutucusu
+          if (trimmed.startsWith('__CODE_BLOCK_') && trimmed.endsWith('__')) {
+            closeLists();
+            const index = parseInt(trimmed.replace('__CODE_BLOCK_', '').replace('__', ''), 10);
+            const block = codeBlocks[index];
+            if (block) {
+              output.push(`
+                <pre class="my-2.5 p-3 rounded-xl bg-slate-900 text-slate-100 text-[11px] font-mono overflow-x-auto border border-slate-800 shadow-inner"><code>${this.escapeHtml(block.code.trim())}</code></pre>
+              `);
+            }
+            continue;
+          }
+
+          if (!trimmed) {
+            closeLists();
+            continue;
+          }
+
+          // Ayraç Çizgisi
+          if (/^(\-{3,}|\*{3,}|_{3,})$/.test(trimmed)) {
+            closeLists();
+            output.push('<hr class="my-3 border-slate-200 dark:border-slate-800" />');
+            continue;
+          }
+
+          // Başlıklar (H1 - H4)
+          if (/^####\s+(.*)$/.test(trimmed)) {
+            closeLists();
+            const title = trimmed.replace(/^####\s+/, '');
+            output.push(`<h6 class="text-xs font-bold text-indigo-600 dark:text-indigo-400 mt-3 mb-1 uppercase tracking-wider">${this.formatInlineText(title)}</h6>`);
+            continue;
+          }
+          if (/^###\s+(.*)$/.test(trimmed)) {
+            closeLists();
+            const title = trimmed.replace(/^###\s+/, '');
+            output.push(`<h5 class="text-xs sm:text-sm font-bold text-slate-900 dark:text-slate-100 mt-3.5 mb-1.5 flex items-center gap-1.5"><span class="w-1.5 h-1.5 rounded-full bg-indigo-500"></span>${this.formatInlineText(title)}</h5>`);
+            continue;
+          }
+          if (/^##\s+(.*)$/.test(trimmed)) {
+            closeLists();
+            const title = trimmed.replace(/^##\s+/, '');
+            output.push(`<h4 class="text-sm sm:text-base font-bold text-indigo-900 dark:text-indigo-300 mt-4 mb-2 pb-1 border-b border-indigo-100 dark:border-indigo-900/40">${this.formatInlineText(title)}</h4>`);
+            continue;
+          }
+          if (/^#\s+(.*)$/.test(trimmed)) {
+            closeLists();
+            const title = trimmed.replace(/^#\s+/, '');
+            output.push(`<h3 class="text-base sm:text-lg font-extrabold text-slate-900 dark:text-white mt-4 mb-2 pb-1 border-b border-slate-200 dark:border-slate-700">${this.formatInlineText(title)}</h3>`);
+            continue;
+          }
+
+          // Alıntı (Blockquote)
+          if (/^>\s+(.*)$/.test(trimmed)) {
+            closeLists();
+            const quote = trimmed.replace(/^>\s+/, '');
+            output.push(`<blockquote class="border-l-3 border-indigo-500 pl-3 py-1 my-2 bg-indigo-50/50 dark:bg-indigo-950/20 rounded-r-lg text-slate-700 dark:text-slate-300 italic text-xs sm:text-sm">${this.formatInlineText(quote)}</blockquote>`);
+            continue;
+          }
+
+          // Madde İşareti Listesi (- veya * veya •)
+          if (/^[\-\*\•]\s+(.*)$/.test(trimmed)) {
+            if (inOl) { output.push('</ol>'); inOl = false; }
+            if (!inUl) {
+              output.push('<ul class="space-y-1.5 my-2 pl-4 list-disc text-slate-700 dark:text-slate-300 marker:text-indigo-500 text-xs sm:text-sm">');
+              inUl = true;
+            }
+            const item = trimmed.replace(/^[\-\*\•]\s+/, '');
+            output.push(`<li class="leading-relaxed">${this.formatInlineText(item)}</li>`);
+            continue;
+          }
+
+          // Numaralı Liste (1. 2. 3.)
+          if (/^\d+\.\s+(.*)$/.test(trimmed)) {
+            if (inUl) { output.push('</ul>'); inUl = false; }
+            if (!inOl) {
+              output.push('<ol class="space-y-1.5 my-2 pl-4 list-decimal text-slate-700 dark:text-slate-300 marker:text-indigo-600 dark:marker:text-indigo-400 font-medium text-xs sm:text-sm">');
+              inOl = true;
+            }
+            const item = trimmed.replace(/^\d+\.\s+/, '');
+            output.push(`<li class="leading-relaxed">${this.formatInlineText(item)}</li>`);
+            continue;
+          }
+
+          // Normal Paragraf
+          closeLists();
+          output.push(`<p class="leading-relaxed my-1.5 text-xs sm:text-sm text-slate-700 dark:text-slate-300">${this.formatInlineText(trimmed)}</p>`);
+        }
+
+        closeLists();
+        return output.join('\n');
       },
 
       askSuggestedQuestion(question) {
@@ -2726,12 +2872,16 @@ Elindeki Rapor Veri Tabanı (Tüm haftalık raporlar, günlük konular, pratikle
 ${JSON.stringify(reportDataset, null, 2)}
 \`\`\`
 
-Cevaplama Kuralları:
-1. Sadece verilen verilere ve rapor kayıtlarına dayanarak, gerçekçi ve yapıcı değerlendirmeler yap.
+Cevaplama ve Biçimlendirme Kuralları:
+1. Sadece verilen verilere ve rapor kayıtlarına dayanarak gerçekçi, yapıcı ve samimi değerlendirmeler yap.
 2. Kullanıcı "1. ay verimli miydi?", "Araştırmalar doğru düzende mi?", "Pazartesi günü ne yapıldı?" gibi sorular sorduğunda:
    - İlgili haftanın/günün metriklerini, tamamlanan pratik projeleri, kilit çıkarımları ve kazanımları özetle.
-   - Güçlü yönleri ve (varsa) geliştirilmesi önerilen noktaları maddeleyerek açık, profesyonel ve samimi bir Türkçe ile açıkla.
-3. Yanıtlarında Markdown biçimlendirmesi (kalın harfler, listeler, kod blokları) kullanarak okunabilirliği yüksek tut.
+   - Güçlü yönleri ve geliştirilmesi önerilen noktaları temiz maddeler halinde açıkla.
+3. Görsel ve Tipografik Kurallar (ÇOK ÖNEMLİ):
+   - KESİNLİKLE LaTeX veya matematik sözdizimleri (örneğin $\\rightarrow$, \\rightarrow, $\\to$, \\to, $\\implies$, $ sembolleri vb.) KULLANMA.
+   - Aşamaları veya geçişleri belirtmek için doğrudan Unicode ok sembolü (→ veya ⇒) kullan. (Örnek: HTML → CSS → PHP)
+   - Başlıkları hiyerarşik ve temiz tut (### Başlık veya ## Başlık şeklinde).
+   - Metinleri okunabilir paragraflar, düzenli madde işaretleri (• veya -) ve kalın (bold) kilit kavramlar ile biçimlendir.
 4. Rapor verisinde bulunmayan bir konu sorulursa bunu dürüstçe belirt ve rapordaki mevcut bilgiler üzerinden rehberlik et.`;
 
         const contents = [];
